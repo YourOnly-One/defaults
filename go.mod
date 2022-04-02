@@ -1,3 +1,3 @@
-module github.com/YourOnly-One/yoo-hugo-defaults
+module gitlab.com/youronlyone/defaults
 
 go 1.18
