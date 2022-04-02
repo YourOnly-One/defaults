@@ -1,0 +1,84 @@
+id = "https://yelosan.youronly.one/"
+foundingdate = "2020-06-02"
+legalname = "Yelosan Publishing"
+#slogan = ""
+#taxid = ""
+#vatid = ""
+alternatenames = ["Yelosan"]
+description = "We specialise in content creation and web development."
+name = "Yelosan Publishing"
+sameas = ["https://facebook.com/101597304949708/", "https://facebook.com/yelosanpub/"]
+url = "https://yelosan.youronly.one/"
+
+# brands: optional
+[[brands]]
+	id = "https://im.youronly.one/love/"
+	logo = "https://rsc.youronly.one/img/y/Love_and_Relationship.webp"
+	name = "Love and Relationship"
+	url = "https://im.youronly.one/love/"
+	iswebsite = true
+[[brands]]
+	id = "https://im.youronly.one/snoworld/"
+	logo = "https://rsc.youronly.one/img/y/snoworld-square.webp"
+	name = "Snoworld"
+	url = "https://im.youronly.one/snoworld/"
+	iswebsite = true
+[[brands]]
+	id = "https://im.youronly.one/techmagus/"
+	logo = "https://rsc.youronly.one/img/y/techmagus-Architetto-Esperiment-chimico.webp"
+	name = "techmagus"
+	url = "https://im.youronly.one/techmagus/"
+	iswebsite = true
+[[brands]]
+	id = "https://im.youronly.one/way/"
+	logo = "https://rsc.youronly.one/img/y/Way-Hanukkahns4.svg"
+	name = "Way of Believers"
+	url = "https://im.youronly.one/way/"
+	iswebsite = true
+[[brands]]
+	id = "https://im.youronly.one/yuki/"
+	logo = "https://rsc.youronly.one/img/y/Yuki_flag-square-888x.webp"
+	name = "YOOki Chronicles"
+	url = "https://im.youronly.one/yuki/"
+	iswebsite = true
+[[brands]]
+	id = "https://im.youronly.one/confidentraveler/"
+	logo = "https://rsc.youronly.one/img/y/Confident_Traveler-logo-01-1500x.webp"
+	name = "Confident Traveler"
+	url = "https://im.youronly.one/confidentraveler/"
+	iswebsite = true
+[[brands]]
+	id = "https://im.youronly.one/faithfulathlete/"
+	logo = "https://rsc.youronly.one/img/y/Faithful_Athlete-logo-02-1500x.webp"
+	name = "Faithful Athlete"
+	url = "https://im.youronly.one/faithfulathlete/"
+	iswebsite = true
+[[brands]]
+	id = "https://im.youronly.one/yugenbard/"
+	logo = "https://rsc.youronly.one/img/y/Yūgen_Bard-logo-01-1500x.webp"
+	name = "Yūgen Bard"
+	url = "https://im.youronly.one/yugenbard/"
+	iswebsite = true
+[[brands]]
+	id = "https://im.youronly.one/"
+	logo = "https://rsc.youronly.one/img/y/Yuki_flag-square-888x.webp"
+	name = "I'M YourOnly.One"
+	url = "https://im.youronly.one/"
+	iswebsite = true
+
+# founders: optional
+[[founders]]
+	id = "https://iam.youronly.one/#yuki"
+	#name = ""
+	#sameas = [""]
+	#url = ""
+
+# images: required
+[[images]]
+	caption = "Logo"
+	url = "https://rsc.youronly.one/img/y/Yuki_flag-square-300x.png"
+	islogo = false
+[[images]]
+	caption = "Logo"
+	url = "https://rsc.youronly.one/img/y/Yuki_flag-square-300x.webp"
+	islogo = true

@@ -1,0 +1,32 @@
+{{- $pc := .Site.Config.Privacy.Disqus -}}
+{{- if not $pc.Disable -}}
+  {{ if and (.Site.DisqusShortname) (not .Site.IsServer) }}
+    {{ $canonurl := urls.Parse .Params.relcanonical }}
+    {{ $disqusid := path.Base $canonurl.Path }}
+    {{- /* YourOnly.One: Ideally this one but we can't split /path1/ in /path1/path2/path3/
+      {{ $disqusurl := printf "%s://%s%s" $canonurl.Scheme $canonurl.Host (path.Base $canonurl.EscapedPath) }}
+    */ -}}
+    {{ $disqusurl := printf "%s://%s%s" $canonurl.Scheme $canonurl.Host $canonurl.EscapedPath }}
+
+    <div id="disqus_thread"></div>
+    <script type="application/javascript">
+      window.disqus_config = function () {
+        {{/* {{ with or (.Params.disqus_identifier) ($url.Path) }}this.page.identifier = '{{ . | urlize }}';{{ end }} */}}
+        {{ with or (.Params.disqus_identifier) ($disqusid) }}this.page.identifier = '{{ . }}';{{ end }}
+        {{ with or (.Params.disqus_title) (.Title ) }}this.page.title = '{{ . }}';{{ end }}
+        {{ with or (.Params.disqus_url) ($disqusurl) }}this.page.url = '{{ . | html }}';{{ end }}
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.async = true;
+        s.src = 'https://' + {{ .Site.DisqusShortname }} + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  {{ else if .Site.IsServer }}
+    <p id="hugoserver_disqus">Disqus is not available when using hugo server.</p>
+  {{ end }}
+{{- end -}}

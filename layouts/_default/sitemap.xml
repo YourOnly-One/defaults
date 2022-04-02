@@ -1,0 +1,42 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  {{- /* {{- range .Data.Pages }} */ -}}
+  {{- /*
+    NOTE: sort by last modified date to keep updated content on top
+          last modified date should only be updated for 'meaningful' changes
+
+    see: https://developers.google.com/search/blog/2014/10/best-practices-for-xml-sitemaps-rssatom
+  */ -}}
+  {{- range or (where .Data.Pages "Type" "in" site.Params.mainTypes).ByLastmod.Reverse }}
+    {{ if or (.Params.relcanonical) (.Permalink) }}
+      {{- $canonurl := urls.Parse .Params.relcanonical -}}
+      {{- $escapedurl := printf "%s://%s%s" $canonurl.Scheme $canonurl.Host $canonurl.EscapedPath -}}
+    <url>
+      <loc>{{ or ($escapedurl) (.Permalink) }}</loc>
+      {{ if not .Lastmod.IsZero }}<lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05Z" ) }}</lastmod>{{ end }}
+      {{ with .Sitemap.ChangeFreq }}<changefreq>{{ . }}</changefreq>{{ end -}}
+      {{ if ge .Sitemap.Priority 0.0 }}<priority>{{ .Sitemap.Priority }}</priority>{{ end -}}
+      {{- if .IsTranslated -}}
+      {{ range .AllTranslations -}}
+      <xhtml:link rel="alternate" hreflang="{{ or (.Site.LanguageCode) (.Site.Language.Lang) }}" href="{{ .Permalink }}" />
+      {{ end -}}
+      {{ range first 1 .AllTranslations }}<xhtml:link rel="alternate" hreflang="x-default" href="{{ $escapedurl }}" />{{ end }}
+      {{- end -}}
+      {{- with .Params.images -}}
+      {{ range . }}
+      <image:image>
+        <image:loc>{{ . }}</image:loc>
+        {{- /*  TODO: add optional information
+                NOTE: may have to refactor the whole image block
+        <image:caption></image:caption>
+        <image:geo_location></image:geo_location>
+        <image:title></image:title>
+        <image:license></image:license>
+        */}}
+      </image:image>
+      {{- end }}
+      {{- end }}
+    </url>
+    {{- end -}}
+  {{ end }}
+</urlset>

@@ -1,0 +1,11 @@
+{{- $partofseries := $.Site.RegularPages.RelatedIndices . "series" -}}
+{{- with $partofseries -}}
+  <aside class="partofseries">
+    <p>
+      {{ i18n "partofseries" }} {{ range ( $.GetTerms "series" ) }}<a href="{{ .Permalink }}">{{ .LinkTitle }}</a>{{ end }}
+    </p>
+    <ul>
+      {{ range .Reverse }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+    </ul>
+  </aside>
+{{- end -}}
