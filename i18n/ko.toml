@@ -2,30 +2,32 @@
 # https://gohugo.io/content-management/multilingual/#translation-of-strings
 
 # BGN: Date and Time Formats
+  [timezone.abbr]
+    other = "KST"
   [datetimeformat]
-    other = "2006년 01월 02일 15시 04분 MST"
+    other = "2006년01월02일15시04분"
   [datetimelongtzd]
-    other = "2006년 01월 02일 15시 04분 05초 -0700"
+    other = "2006년01월02일15시04분05초 -0700"
   [datetimelongtzn]
-    other = "2006년 01월 02일 15시 04분 05초 MST"
+    other = "2006년01월02일15시04분05초 MST"
   [datetimetzd]
-    other = "2006년 01월 02일 15시 04분 -0700"
+    other = "2006년01월02일15시04분 -0700"
   [datetimetzn]
-    other = "2006년 01월 02일 15시 04분 MST"
+    other = "2006년01월02일15시04분 MST"
   [datetimeonly]
-    other = "2006년 01월 02일 15시 04분 15:04"
+    other = "2006년01월02일15시04분"
   [dateonly]
-    other = "2006년 01월 02일"
+    other = "2006년01월02일"
   [timelongtzd]
-    other = "15시 04분 05초 -0700"
+    other = "15시04분05초 -0700"
   [timelongtzn]
-    other = "15시 04분 05초 MST"
+    other = "15시04분05초 MST"
   [timetzd]
-    other = "15시 04분 -0700"
+    other = "15시04분 -0700"
   [timetzn]
-    other = "15시 04분 MST"
+    other = "15시04분 MST"
   [timeonly]
-    other = "15시 04분"
+    other = "15시04분"
 # END: Date and Time Formats
 
 # BGN: YourOnly.One: Global

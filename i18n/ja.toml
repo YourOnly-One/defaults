@@ -2,18 +2,20 @@
 # https://gohugo.io/content-management/multilingual/#translation-of-strings
 
 # BGN: Date and Time Formats
+  [timezone.abbr]
+    other = "JST"
   [datetimeformat]
-    other = "2006年1月2日 15時04分 MST"
+    other = "2006年1月2日15時04分"
   [datetimelongtzd]
-    other = "2006年1月2日 15時04分05秒 -0700"
+    other = "2006年1月2日15時04分05秒 -0700"
   [datetimelongtzn]
-    other = "2006年1月2日 15時04分05秒 MST"
+    other = "2006年1月2日15時04分05秒 MST"
   [datetimetzd]
-    other = "2006年1月2日 15時04分 -0700"
+    other = "2006年1月2日15時04分 -0700"
   [datetimetzn]
-    other = "2006年1月2日 15時04分 MST"
+    other = "2006年1月2日15時04分 MST"
   [datetimeonly]
-    other = "2006年1月2日 15時04分"
+    other = "2006年1月2日15時04分"
   [dateonly]
     other = "2006年1月2日"
   [timelongtzd]

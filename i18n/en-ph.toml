@@ -2,8 +2,10 @@
 # https://gohugo.io/content-management/multilingual/#translation-of-strings
 
 # BGN: Date and Time Formats
+  [timezone.abbr]
+    other = "PHT"
   [datetimeformat]
-    other = "2006-01-02 15:04 MST"
+    other = "2006-01-02 15:04"
   [datetimelongtzd]
     other = "2006-01-02 15:04:05Z07:00"
   [datetimelongtzn]
