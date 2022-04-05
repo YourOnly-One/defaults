@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontawesome5pro/css/all.min.css" media="all" type="text/css" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome/css/fork-awesome.min.css" media="all" type="text/css" crossorigin="anonymous" />
 
-	<link rel="stylesheet" href="https://rsc.youronly.one/css/paninap-fonts.min.css" media="all" type="text/css" />
+	<link rel="stylesheet" href="https://rsc.youronly.one/css/paninap-fonts.min.css" media="all" type="text/css" crossorigin="anonymous" />
 	<script defer="defer" src="https://cdn.jsdelivr.net/npm/twemoji/dist/twemoji.min.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">//<![CDATA[
 		/* Source: https://stackoverflow.com/a/40310653/306674 */
@@ -44,7 +44,7 @@
 	//]]></script>
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cc-icons/cc-icons/css/cc-icons.min.css" media="all" type="text/css" crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://rsc.youronly.one/css/yuki-style.min.css" media="all" type="text/css" />
+	<link rel="stylesheet" href="https://rsc.youronly.one/css/yuki-style.min.css" media="all" type="text/css" crossorigin="anonymous" />
 
 	<link href="https://iam.youronly.one" rel="author me" />
 	<link href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license" />
@@ -302,7 +302,7 @@
 <!-- END: YourOnly.One Head-03-Custom Theme -->
 
 {{ with .Site.Params.analytics.microanalyticsio }}<script data-host="https://microanalytics.io" data-dnt="true" src="https://microanalytics.io/js/script.js" id="{{ . }}" async defer></script>{{ end }}
-{{ with .Site.Params.analytics.cfwebanalytics }}<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}'></script>{{ end }}
+{{ with .Site.Params.analytics.cfwebanalytics }}<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}' crossorigin="anonymous"></script>{{ end }}
 {{- with .Site.Params.analytics.microsoftclarity }}
 	<script type="text/javascript">
     //<![CDATA[
