@@ -4,9 +4,11 @@
 */ -}}
 {{- $iso8601 := "2006-01-02T15:04:05Z07:00" -}}
 <meta charset="utf-8">
-{{ if not .Site.IsServer }}
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'none'; child-src 'self' https:; connect-src 'self' https:; font-src 'self' data: https:; frame-src 'self' https:; img-src 'self' data: https:; manifest-src 'self' https:; media-src 'self' https:; object-src 'none'; prefetch-src 'self' https:; script-src 'self' https: 'unsafe-inline'; style-src 'self' https: 'unsafe-inline'; worker-src 'self' https:; base-uri 'self'; form-action 'self' https:;" />
-{{ end }}
+{{- /* NOTE: No longer needed, temporarily left in source for reference
+  {{ if not .Site.IsServer }}
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'none'; child-src 'self' https:; connect-src 'self' https:; font-src 'self' data: https:; frame-src 'self' https:; img-src 'self' data: https:; manifest-src 'self' https:; media-src 'self' https:; object-src 'none'; prefetch-src 'self' https:; script-src 'self' https: 'unsafe-inline'; style-src 'self' https: 'unsafe-inline'; worker-src 'self' https:; base-uri 'self'; form-action 'self' https:;" />
+  {{ end }}
+*/ -}}
 <link rel="canonical" href="{{ with .Params.relcanonical }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 {{- /* BGN: Translations */ -}}
