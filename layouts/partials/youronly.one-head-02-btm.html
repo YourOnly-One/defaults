@@ -1,320 +1,95 @@
-{{- with .Site.Params.jquerycdn }}
-	<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js" crossorigin="anonymous"></script>
-{{- end -}}
+{{- /*
+  NOTE:
+	- do not re-arrange
+*/ -}}
+{{- $semwebcss := resources.Get "css/semweb-style.css" | minify -}}
+{{- $globalcss := resources.Get "css/youronly.one-head-03-global.css" | minify -}}
+{{- $localcss := resources.Get "css/youronly.one-head-05-local.css" | minify -}}
+{{- $beampipeioid := .Site.Params.analytics.beampipeio -}}
+{{- $counterdevid := .Site.Params.analytics.counterdev -}}
+{{- $insightsioid := .Site.Params.analytics.insightsio -}}
+{{- $microanalyticsioid := .Site.Params.analytics.microanalyticsio -}}
+{{- $swetrixid := .Site.Params.analytics.swetrix -}}
+{{- $cfwebanalyticsid := .Site.Params.analytics.cfwebanalytics -}}
+{{- $msftclarityid := .Site.Params.analytics.microsoftclarity -}}
+{{- $counterdevjs := resources.Get "js/analytics-counterdev.js" | minify -}}
+{{- $counterdevjs = $counterdevjs | js.Build ( dict "params" ( dict "counterdevid" $counterdevid ) ) -}}
+{{- $insightsiojs := resources.Get "js/analytics-insightsio.js" | minify -}}
+{{- $insightsiojs = $insightsiojs | js.Build ( dict "params" ( dict "insightsioid" $insightsioid ) ) -}}
+{{- $swetrixjs := resources.Get "js/analytics-swetrix.js" | minify -}}
+{{- $swetrixjs = $swetrixjs | js.Build ( dict "params" ( dict "swetrixid" $swetrixid ) ) -}}
+{{- $msftclarityjs := resources.Get "js/analytics-msftclarity.js" | minify -}}
+{{- $msftclarityjs = $msftclarityjs | js.Build ( dict "params" ( dict "msftclarityid" $msftclarityid ) ) -}}
 
+{{- with .Site.Params.jquerycdn }}
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+{{ end -}}
 {{- with .Params.math }}
-	<!-- BGN: MathJax -->
-		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
-		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" crossorigin="anonymous"></script>
-	<!-- END: MathJax -->
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es2022" integrity="sha512-k9jJn8XEk1zjlilocFacpT31WGAV9jEugq631jQrNVQi4FS1eOkXzlvyMJoJ1nr0Qcbp1YMRECv3fggDEIf+qg==" crossorigin="anonymous"></script>
+	<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" integrity="sha512-ehyCwiYKL3B7bx/X+X0rs1JKF9ANzwjOeOvB69YoPOZnpBhC9GRSu2ry9vAuv4Z460WI7Yt4iq0dEPPeCElnXA==" crossorigin="anonymous" async="async"></script>
 {{ end -}}
 
-<!-- BGN: Yuki -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="all" type="text/css" crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontawesome5pro/css/all.min.css" media="all" type="text/css" crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome/css/fork-awesome.min.css" media="all" type="text/css" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontawesome5pro@5.14.0/css/all.min.css" integrity="sha512-lapRU23YyAdbHOZLhCSITpHY8XGBFSldLZxKm1+syxp7VnX5qKDbaixFj7VRnPR4ciR/AeosNhaRlEnyD13muQ==" crossorigin="anonymous" media="all" type="text/css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" media="all" type="text/css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha512-aupidr80M36SeyviA/hZ2uEPnvt2dTJfyjm9y6z1MgaV13TgzmDiFdsH3cvSNG27mRIj7gJ2gNeg1HeySJyE3Q==" crossorigin="anonymous" media="all" type="text/css" />
+<link rel="stylesheet" href="https://rsc.youronly.one/css/paninap-fonts.min.css" crossorigin="anonymous" media="all" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" integrity="sha512-LK/JJPwWWzXIbw4noGosPmzUQo4Wq+gcwt5vF5ytytrbdzB8FNcHPyGygZue6fq6pxyPaFspIsJ26titsKcUrg==" crossorigin="anonymous" defer="defer"></script>
+<script src="https://rsc.youronly.one/js/twemoji-settings.js" crossorigin="anonymous" defer="defer"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.min.css" integrity="sha512-K/9D60UQF+wLPWxI61jBWA9aNVmEfmsi7gBxiLi/e+hlhjT/QhJxM18aQjBIkRYH9qnz+wfog9a5opdsh4BdtA==" crossorigin="anonymous" media="all" type="text/css" />
+<link rel="stylesheet" href="https://rsc.youronly.one/css/yuki-style.min.css" crossorigin="anonymous" media="all" type="text/css" />
 
-	<link rel="stylesheet" href="https://rsc.youronly.one/css/paninap-fonts.min.css" media="all" type="text/css" crossorigin="anonymous" />
-	<script defer="defer" src="https://cdn.jsdelivr.net/npm/twemoji/dist/twemoji.min.js" crossorigin="anonymous"></script>
-	<script type="text/javascript">//<![CDATA[
-		/* Source: https://stackoverflow.com/a/40310653/306674 */
-		function onReady(insertTwemoji) {
-			var readyStateCheckInterval = setInterval(function() {
-				if (document && document.readyState === 'complete') {
-					clearInterval(readyStateCheckInterval);
-					insertTwemoji();
-				}
-			}, 10);
-		}
-		onReady(function() {
-			twemoji.parse( document.body, {
-				ext: '.svg',
-				folder: 'svg',
-				callback: function(icon, options) {
-					return ''.concat(
-						options.base,
-						options.size,
-						'/',
-						icon,
-						options.ext
-					);
-				}
-			});
-		});
-	//]]></script>
+<link rel="stylesheet" href="{{ $semwebcss.RelPermalink }}" crossorigin="anonymous" media="all" type="text/css" />
+<link rel="stylesheet" href="{{ $globalcss.RelPermalink }}" crossorigin="anonymous" media="all" type="text/css" />
+{{- if templates.Exists "partials/youronly.one-head-04-local.html" -}}
+	{{ partial "youronly.one-head-04-local.html" . }}
+{{- end }}
+{{- if fileExists "assets/css/youronly.one-head-05-local.css" -}}
+	<link rel="stylesheet" href="{{ $localcss.RelPermalink }}" crossorigin="anonymous" media="all" type="text/css" />
+{{- end }}
 
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cc-icons/cc-icons/css/cc-icons.min.css" media="all" type="text/css" crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://rsc.youronly.one/css/yuki-style.min.css" media="all" type="text/css" crossorigin="anonymous" />
+{{/* BGN: analytics */}}
+	{{ with $beampipeioid }}<script src="https://beampipe.io/js/tracker.js" data-beampipe-domain="{{ . }}" async="async" defer="defer"></script>{{ end }}
+	{{ with $counterdevid }}<script src="{{ $counterdevjs.RelPermalink }}" crossorigin="anonymous" async="async" defer="defer"></script>{{ end }}
+	{{ with $insightsioid }}
+		<script src="https://getinsights.io/js/insights.js" async="async" defer="defer"></script>
+		<script src="{{ $insightsiojs.RelPermalink }}" crossorigin="anonymous" async="async" defer="defer"></script>
+	{{ end }}
+	{{ with $microanalyticsioid }}<script src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true" id="{{ . }}" async="async" defer="defer"></script>{{ end }}
+	{{ with $swetrixid }}
+		<script src="https://swetrix.org/swetrix.js" async="async" defer="defer"></script>
+		<script src="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" async="async" defer="defer"></script>
+		<noscript><img src="https://api.swetrix.com/log/noscript?pid={{ . }}" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+	{{ end }}
+	{{ with $cfwebanalyticsid }}<script src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}' crossorigin="anonymous" async="async" defer="defer"></script>{{ end }}
+	{{ with $msftclarityid }}<script src="{{ $msftclarityjs.RelPermalink }}" crossorigin="anonymous" async="async" defer="defer"></script>{{ end }}
+{{/* END: analytics */}}
 
-	<link href="https://iam.youronly.one" rel="author me" />
-	<link href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license" />
+{{/* BGN: favicon */}}
+	<link rel="apple-touch-icon" sizes="180x180" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/apple-touch-icon.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
+	{{- /* NOTE: disabled temporarily until we upload this file in each blog
+		<link rel="icon" type="image/svg+xml" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon.svg?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
+	*/ -}}
+	<link rel="icon" type="image/png" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
+	<link rel="icon" type="image/png" sizes="32x32" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon-32x32.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
+	<link rel="icon" type="image/png" sizes="192x192" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/android-chrome-192x192.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
+	<link rel="icon" type="image/png" sizes="16x16" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon-16x16.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
+	<link rel="mask-icon" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/safari-pinned-tab.svg?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" color="#5bbad5" crossorigin="anonymous" />
+	<link rel="shortcut icon" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon.ico?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
+	<meta name="msapplication-TileColor" content="#603cba" />
+	<meta name="msapplication-config" content="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/browserconfig.xml?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" />
+	<meta name="theme-color" content="{{ .Site.Params.themeColor | default "#ffffff" }}" />
+{{/* END: favicon */}}
 
-	<!-- BGN: rel-me -->
-		<!-- Keybase -->
-			<link href="https://keybase.io/yukino" rel="me" />
-			<link href="https://iam.youronly.one" rel="me" />
-			<link href="https://keybase.pub/yukino" />
-			<link href="https://yukino.keybase.pub" />
+<meta name="DC.title" content="IM YourOnly.One 🔏" />
+<meta name="geo.region" content="PH-00" />
+<meta name="geo.placename" content="Manila" />
+<meta name="geo.position" content="14.599781;120.973935" />
+<meta name="ICBM" content="14.599781, 120.973935" />
 
-		<!-- My Sites -->
-			<!-- Yuki Services -->
-				<link href="https://rsc.youronly.one" />
-				<link href="https://img.youronly.one" />
-				<link href="https://rsc.laibcoms.com" />
-				<link href="https://img.laibcoms.com" />
-
-			<!-- YourOnly.One (main) -->
-				<link href="https://youronly.one" rel="me" />
-				<link href="https://im.youronly.one" rel="me" />
-				<link href="https://www.youronly.one" rel="me" />
-				<link href="https://mastodon.social/@youronlyone" rel="me" />
-				<!-- <link href="https://nerd.town/@youronlyone" rel="me" /> -->
-				<link href="https://pixelfed.social/youronlyone" rel="me" />
-				<link href="https://peertube.social/video-channels/youronlyone" rel="me" />
-
-				<link href="https://facebook.com/YourOnly.ONE.ofcl" rel="me" />
-				<link href="https://twitter.com/YourOnlyONEofcl" rel="me" />
-				<link href="https://instagram.com/YourOnly.One" rel="me" />
-				<link href="https://youtube.com/YourOnlyONEofcl" rel="me" />
-
-			<!-- Way of Believers -->
-				<link href="https://im.youronly.one/way/" rel="me" />
-				<!-- <link href="https://theres.life/@1wayfaith" rel="me" /> -->
-
-				<link href="https://facebook.com/WayOfBelievers" rel="me" />
-				<link href="https://facebook.com/One-Way-Faith-133673070153815/" rel="me" />
-				<link href="https://instagram.com/1way.faith" rel="me" />
-				<link href="https://twitter.com/1wayfaith" rel="me" />
-
-			<!-- Love and Relationship -->
-				<link href="https://im.youronly.one/love/" rel="me" />
-
-				<link href="https://facebook.com/YourOnlyOne7" rel="me" />
-
-			<!-- Snoworld -->
-				<link href="https://im.youronly.one/snoworld/" rel="me" />
-				<link href="https://peertube.social/accounts/snoworld" rel="me" />
-
-				<link href="https://facebook.com/snoworld" rel="me" />
-				<link href="https://instagram.com/snoworld1" rel="me" />
-				<link href="https://twitter.com/snoworld" rel="me" />
-				<link href="https://youtube.com/SnoworldOrg23" rel="me" />
-
-			<!-- techmagus -->
-				<link href="https://im.youronly.one/techmagus/" rel="me" />
-				<link href="https://qoto.org/@techmagus" rel="me" />
-				<link href="https://open.tube/accounts/techmagus" rel="me" />
-				<link href="https://open.tube/video-channels/techprobe" rel="me" />
-				<link href="https://open.tube/video-channels/howto" rel="me" />
-
-				<link href="https://facebook.com/techmagus" rel="me" />
-				<link href="https://instagram.com/techmagus" rel="me" />
-				<link href="https://twitter.com/techmagusninja" rel="me" />
-				<link href="https://youtube.com/techmagusninja8" rel="me" />
-
-			<!-- The Faithful Athlete -->
-				<link href="https://im.youronly.one/faithfulathlete" rel="me" />
-				<link href="https://koyu.space/@faithfulathlete" rel="me" />
-				<link href="https://peertube.social/video-channels/faithfulathlete" rel="me" />
-
-				<link href="https://facebook.com/faithful.athlete" rel="me" />
-				<link href="https://instagram.com/faithful.athlete" rel="me" />
-				<link href="https://twitter.com/faithfulatleta" rel="me" />
-				<link href="https://youtube.com/channel/UCgRoTRj_3cVi6DlVk_d6RRQ/" rel="me" />
-				<link href="https://storyteller.fit/writer/41154967" rel="me" />
-
-			<!-- The Confident Traveler -->
-				<link href="https://im.youronly.one/confidentraveler" rel="me" />
-				<link href="https://peertube.social/video-channels/confidentraveler" rel="me" />
-
-				<link href="https://facebook.com/confidentraveler" rel="me" />
-				<link href="https://instagram.com/confidentraveler" rel="me" />
-				<link href="https://twitter.com/confidentravel" rel="me" />
-				<link href="https://youtube.com/channel/UCdOr3nZaEpkIrPP_vJt4bog/" rel="me" />
-
-			<!-- The Yūgen Bard -->
-				<link href="https://im.youronly.one/yugenbard" rel="me" />
-				<link href="https://peertube.social/video-channels/yugenbard" rel="me" />
-
-				<link href="https://facebook.com/yugenbard" rel="me" />
-				<link href="https://instagram.com/yugenbard" rel="me" />
-				<link href="https://twitter.com/yugenbard" rel="me" />
-				<link href="https://youtube.com/channel/UCAVvgdxvgjvm_WLPVwSS7Hw/" rel="me" />
-
-			<link href="https://jcsesecuneta.com" rel="me" />
-			<link href="https://laibcoms.com" rel="me" />
-			<link href="https://fediverse.blog/~/WhenSnowFalls/" rel="me" />
-			<link href="https://fediverse.blog/~/Sandbox/" rel="me" />
-			<link href="https://medium.com/@youronly.one" rel="me" />
-
-		<!-- Fediverse -->
-			<!-- <link href="https://hub.zilla.tech/channel/yahananxie" rel="me" /> -->
-			<link href="https://aleph.land/@yahananxie" rel="me" />
-			<link href="https://diasp.org/u/jcsesecuneta" rel="me" />
-			<link href="https://fediverse.blog/@/yuki" rel="me" />
-			<link href="https://peertube.social/accounts/yuki" rel="me" />
-
-		<!-- Proprietary networks -->
-			<link href="https://news.ycombinator.com/user?id=techmagus" rel="me" />
-			<!-- <link href="https://steemit.com/@yahananxie" rel="me" /> -->
-			<link href="https://linkedin.com/in/youronlyone/" rel="me" />
-			<link href="https://facebook.com/jcsesecuneta" rel="me" />
-			<link href="https://facebook.com/jcjohnsesecuneta" rel="me" />
-			<link href="https://plurk.com/Laibcoms" rel="me" />
-			<link href="https://twitter.com/yahananxie" rel="me" />
-
-		<!-- Other Central Networks -->
-			<link href="https://gravatar.com/jcjohnsesecuneta" rel="me" />
-
-		<!-- My Brands -->
-			<!-- YELOSAN PUBLISHING -->
-				<link href="https://yelosan.youronly.one" rel="me" />
-
-			<!-- gameshogun.xyz -->
-				<link href="https://peertube.social/accounts/gameshogun" rel="me" />
-				<link href="https://peertube.social/video-channels/linuxgaming" rel="me" />
-				<link href="https://peertube.social/video-channels/gamespressrelease" rel="me" />
-				<link href="https://peertube.social/video-channels/shogunplays" rel="me" />
-
-				<link href="https://facebook.com/gameshogun" rel="me" />
-				<link href="https://instagram.com/gameshogun" rel="me" />
-				<link href="https://pinterest.com/gameshogun/" rel="me" />
-				<link href="https://twitter.com/gameshogun" rel="me" />
-				<link href="https://youtube.com/gameshogunws" rel="me" />
-
-			<!-- verses.space -->
-				<link href="https://verses.space" rel="me" />
-				<link href="https://writing.exchange/@VersesSpace" rel="me" />
-				<link href="https://write.as/versesspace/" rel="me" />
-
-				<link href="https://facebook.com/verses.space" rel="me" />
-				<link href="https://instagram.com/verses.space" rel="me" />
-				<link href="https://twitter.com/versesspace" rel="me" />
-
-			<!-- welfareness.icu -->
-				<link href="https://mstdn.social/@welfareness" rel="me" />
-
-				<link href="https://facebook.com/welfareness" rel="me" />
-				<link href="https://facebook.com/healthwelfareness" rel="me" />
-				<link href="https://facebook.com/wealthwelfareness" rel="me" />
-				<link href="https://instagram.com/welfareness" rel="me" />
-				<link href="https://instagram.com/healthwelfareness" rel="me" />
-				<link href="https://instagram.com/wealthwelfareness" rel="me" />
-				<link href="https://pinterest.com/CleanRealFood/" rel="me" />
-				<link href="https://twitter.com/welfareness" rel="me" />
-				<link href="https://youtube.com/RealfoodSpace24" rel="me" />
-
-		<!-- Dev/Crowdsourcing -->
-			<link href="https://gitlab.com/techmagus" rel="me" />
-			<link href="https://bitbucket.org/techmagus/" rel="me" />
-			<link href="https://framagit.org/techmagus" rel="me" />
-			<link href="https://launchpad.net/~techmagus" rel="me" />
-			<link href="https://github.com/techmagus" rel="me" />
-			<link href="https://stackexchange.com/users/117040/yukino" rel="me" />
-
-		<!-- Photo/Images/Sound/Video -->
-			<link href="https://eyeem.com/u/youronlyone" rel="me" />
-			<link href="https://flickr.com/people/laibcoms/" rel="me" />
-			<link href="https://instagram.com/YourOnly.One" rel="me" />
-			<link href="https://instagram.com/yahananxie" rel="me" />
-			<link href="https://instagram.com/jcsesecuneta" rel="me" />
-			<link href="https://last.fm/user/Laibcoms" rel="me" />
-			<link href="https://libre.fm/user/Laibcoms" rel="me" />
-			<link href="https://pinterest.com/jcsesecuneta/" rel="me" />
-			<link href="https://soundcloud.com/jcsesecuneta" rel="me" />
-			<link href="https://open.spotify.com/user/jcsesecuneta" rel="me" />
-			<link href="https://vimeo.com/jcsesecuneta" rel="me" />
-			<link href="https://youtube.com/laibcoms" rel="me" />
-			<link href="https://youtube.com/jcjohnsesecuneta" rel="me" />
-
-		<!-- Creatives -->
-			<link href="https://www.deviantart.com/laibcoms" rel="me" />
-			<link href="https://fictionpress.com/~yugenbard" rel="me" />
-			<link href="https://fanfiction.net/~yugenbard" rel="me" />
-			<link href="https://wattpad.com/user/yugenbard" rel="me" />
-
-		<!-- Bookmark Networks / Forums -->
-			<link href="https://digg.com/u/yukino" rel="me" />
-			<link href="https://reddit.com/user/Laibcoms/" rel="me" />
-			<link href="https://stumbleupon.com/stumbler/Laibcoms" rel="me" />
-
-		<!-- Gaming -->
-			<link href="https://steamcommunity.com/id/gameshogun" rel="me" />
-			<link href="https://twitch.tv/gameshogun" rel="me" />
-
-		<!-- Others -->
-			<link href="https://www.amazon.com/hz/wishlist/ls/1YHYZNMDYDDB6/ref=nav_wishlist_lists_1?_encoding=UTF8&type=wishlist" rel="me" />
-			<link href="https://anime-planet.com/users/snoworld" rel="me" />
-			<link href="https://goodreads.com/snoworld" rel="me" />
-			<link href="https://myanimelist.net/profile/YourOnlyOne" rel="me" />
-			<link href="https://mydramalist.com/profile/Shael" rel="me" />
-			<link href="https://www.themoviedb.org/u/YourOnlyOne" rel="me" />
-			<link href="https://trakt.tv/users/youronlyone" rel="me" />
-			<link href="https://tripadvisor.com/members/snoworldone" rel="me" />
-			<link href="https://google.com/maps/contrib/107219430233856542092/reviews?hl=en-PH" rel="me" />
-
-	<!-- END: rel-me -->
-<!-- END: Yuki -->
-
-<link rel="apple-touch-icon" sizes="180x180" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/apple-touch-icon.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}">
-{{- /* YourOnly.One: disabled temporarily until we upload this file in each blog
-	<link rel="icon" type="image/svg+xml" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon.svg?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}">
-*/ -}}
-<link rel="icon" type="image/png" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}">
-<link rel="icon" type="image/png" sizes="32x32" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon-32x32.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}">
-<link rel="icon" type="image/png" sizes="192x192" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/android-chrome-192x192.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}">
-<link rel="icon" type="image/png" sizes="16x16" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon-16x16.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}">
-<link rel="mask-icon" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/safari-pinned-tab.svg?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" color="#5bbad5">
-<link rel="shortcut icon" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon.ico?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}">
-<meta name="msapplication-TileColor" content="#603cba">
-<meta name="msapplication-config" content="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/browserconfig.xml?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}">
-<meta name="theme-color" content="{{ .Site.Params.themeColor | default "#ffffff" }}">
-
-{{ $semwebcss := resources.Get "css/semweb-style.css" }}
-{{ $semwebstyle := $semwebcss | resources.Minify }}
-<link rel="stylesheet" href="{{ $semwebstyle.RelPermalink }}" media="all" type="text/css" />
-
-<style>
-	/*
-	sup[id^="fnref"] > a.footnote-ref {
-		background-color: #c0ffee;
-		border-radius: 10px;
-		padding: 1px 5px;
-		font-size: 0.6rem;
-	}
-	*/
-	sup[id^="fnref"] > a.footnote-ref::before {
-		content: "[";
-	}
-	sup[id^="fnref"] > a.footnote-ref::after {
-		content: "]";
-	}
-	sup[id^="fnref"] > a.footnote-ref {
-		font-size: 0.7rem;
-		vertical-align: super;
-	}
-</style>
-
-<!-- BGN: YourOnly.One Head-03-Custom Theme -->
-	{{- if templates.Exists "partials/youronly.one-head-03-custom-theme.html" -}}
-		{{ partial "youronly.one-head-03-custom-theme.html" . }}
-	{{- end }}
-<!-- END: YourOnly.One Head-03-Custom Theme -->
-
-{{ with .Site.Params.analytics.microanalyticsio }}<script data-host="https://microanalytics.io" data-dnt="true" src="https://microanalytics.io/js/script.js" id="{{ . }}" async defer></script>{{ end }}
-{{ with .Site.Params.analytics.cfwebanalytics }}<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}' crossorigin="anonymous"></script>{{ end }}
-{{- with .Site.Params.analytics.microsoftclarity }}
-	<script type="text/javascript">
-    //<![CDATA[
-	  (function(c,l,a,r,i,t,y){
-	    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-	    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-	    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-	  })(window, document, "clarity", "script", "{{ . }}");
-    //]]>
-	</script>
+{{- if templates.Exists "partials/relme.html" -}}
+	{{ partial "relme.html" . }}
 {{- end }}
 
 {{- with .Site.Params.googleadsense }}
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous"></script>
+	<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous" async="async"></script>
 {{- end -}}

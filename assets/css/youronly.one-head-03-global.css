@@ -1,0 +1,18 @@
+/*
+sup[id^="fnref"] > a.footnote-ref {
+  background-color: #c0ffee;
+  border-radius: 10px;
+  padding: 1px 5px;
+  font-size: 0.6rem;
+}
+*/
+sup[id^="fnref"] > a.footnote-ref::before {
+  content: "[";
+}
+sup[id^="fnref"] > a.footnote-ref::after {
+  content: "]";
+}
+sup[id^="fnref"] > a.footnote-ref {
+  font-size: 0.7rem;
+  vertical-align: super;
+}

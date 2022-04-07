@@ -1,24 +1,21 @@
 {{- /*
-  - All dates/times are in UTC for uniformity.
+  NOTE:
+  - All non-visible dates/times are in UTC for uniformity.
   - The consumer app/software can do the conversion as needed.
+  - do not re-arrange
 */ -}}
 {{- $iso8601 := "2006-01-02T15:04:05Z07:00" -}}
 <meta charset="utf-8">
-{{- /* NOTE: No longer needed, temporarily left in source for reference
-  {{ if not .Site.IsServer }}
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'none'; child-src 'self' https:; connect-src 'self' https:; font-src 'self' data: https:; frame-src 'self' https:; img-src 'self' data: https:; manifest-src 'self' https:; media-src 'self' https:; object-src 'none'; prefetch-src 'self' https:; script-src 'self' https: 'unsafe-inline'; style-src 'self' https: 'unsafe-inline'; worker-src 'self' https:; base-uri 'self'; form-action 'self' https:;" />
-  {{ end }}
-*/ -}}
 <link rel="canonical" href="{{ with .Params.relcanonical }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-{{- /* BGN: Translations */ -}}
+{{/* BGN: Translations */}}
   {{- if .IsTranslated }}
   {{ range .AllTranslations -}}
   <link rel="alternate" hreflang="{{ or (.Site.LanguageCode) (.Site.Language.Lang) }}" href="{{ .Permalink }}" />
   {{ end -}}
   {{ range first 1 .AllTranslations }}<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />{{ end }}
   {{- end -}}
-{{- /* END: Translations */ -}}
+{{/* END: Translations */}}
 {{ range .AlternativeOutputFormats }}
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ .Permalink | safeURL }}" />
 {{- end }}
@@ -28,7 +25,9 @@
   <link rel="hub" href="{{ . }}" />
   {{- end }}
 {{- end }}
-{{- /* <meta name="robots" content="{{ if or (eq .Kind "taxonomy") (eq .Kind "term") }}noindex{{ else if .Params.metarobots }}{{ .Params.metarobots }}{{ else }}index{{ end }}, follow" /> */}}
+{{- /* NOTE: for reference, if we need it again
+  <meta name="robots" content="{{ if or (eq .Kind "taxonomy") (eq .Kind "term") }}noindex{{ else if .Params.metarobots }}{{ .Params.metarobots }}{{ else }}index{{ end }}, follow" />
+*/ -}}
 <meta name="robots" content="{{ if .Params.metarobots }}{{ .Params.metarobots }}{{ else }}index{{ end }}, follow" />
 {{ with .Params.redirectto }}<meta http-equiv="refresh" content="0; url='{{ . }}'" />{{ end }}
 <meta name="author" content="{{ $.Param "author.name" }}" />
@@ -41,7 +40,9 @@
   <meta property="article:section" content="{{ . }}" />
 {{ end }}
 
-{{- /* YourOnly.One: No longer needed since we have SemWeb support {{ template "_internal/schema.html" . }} */ -}}
+{{- /* NOTE: No longer needed since we have SemWeb support; for reference
+  {{ template "_internal/schema.html" . }}
+*/ -}}
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
 {{ with .Site.Social.twitter_creator }}<meta name="twitter:creator" content="{{ . }}" />{{ end }}
@@ -51,14 +52,14 @@
 {{ partial "schemas/semweb.html" . }}
 {{ partial "schemas/schema_Global.html" . }}
 
-<link rel="manifest" href="{{ .Site.BaseURL }}site.webmanifest">
+<link rel="manifest" href="{{ .Site.BaseURL }}site.webmanifest" />
 {{ if site.IsServer }}
   <meta http-equiv="cache-control" content="no-cache">
 {{ end }}
 
-{{/* YourOnly.One: Everything above must be in that particular order, do NOT move. */}}
+{{/* NOTE: above was ordered intentionally */}}
 
-<link rel="authorization_endpoint" href="https://indieauth.com/auth">
+<link rel="authorization_endpoint" href="https://indieauth.com/auth" />
 {{ with .Site.Params.verify.flattr }}<meta name="flattr:id" content="{{ . }}" />{{ end }}
 {{ with .Site.Params.verify.naver }}<meta name="naver-site-verification" content="{{ . }}" />{{ end }}
 {{ with .Site.Params.verify.wot }}<meta name="wot-verification" content="{{ . }}" />{{ end }}
@@ -66,36 +67,45 @@
 {{ with .Site.Params.verify.followit }}<meta name="follow.it-verification-code" content="{{ . }}" />{{ end }}
 
 {{ hugo.Generator }}
-
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license" />
 
-{{/* See: https://developer.mozilla.org/en-US/docs/Web/Performance/dns-prefetch */}}
-<!-- BGN: preconnect and dns-prefetch -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-  <!-- <link rel="preconnect" href="https://unpkg.com" crossorigin="anonymous" /> -->
-  <link rel="dns-prefetch" href="https://unpkg.com" />
-  <!-- <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous" /> -->
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
-  <!-- <link rel="preconnect" href="https://ajax.cloudflare.com" crossorigin="anonymous" /> -->
-  <link rel="dns-prefetch" href="https://ajax.cloudflare.com" />
-<!-- END: preconnect and dns-prefetch -->
+{{- /*
+  NOTE:
+  - will disable the prefetch feature, which we need for external resources
+  - best left to User-Agent setting
+  <meta http-equiv="x-dns-prefetch-control" content="off" />
+*/ -}}
 
-{{/* See: https://csswizardry.com/2020/05/the-fastest-google-fonts/ */}}
-<!-- BGN: Google Fonts API v2 -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Music&family=Noto+Rashi+Hebrew:wght@400;700&family=Noto+Sans+Buhid&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+HK:wght@400;700&family=Noto+Sans+Hanunoo&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+Math&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Phoenician&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+Symbols+2&family=Noto+Sans+Symbols:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+Hebrew:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Music&family=Noto+Rashi+Hebrew:wght@400;700&family=Noto+Sans+Buhid&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+HK:wght@400;700&family=Noto+Sans+Hanunoo&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+Math&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Phoenician&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+Symbols+2&family=Noto+Sans+Symbols:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+Hebrew:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" media="print" onload="this.media='all'" />
+{{/* RESEARCH: https://developer.mozilla.org/en-US/docs/Web/Performance/dns-prefetch */}}
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+
+{{- /* NOTE: Disabled, currently not needed
+  <link rel="preconnect" href="https://unpkg.com" crossorigin="anonymous" />
+  <link rel="dns-prefetch" href="https://unpkg.com" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous" />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://ajax.cloudflare.com" crossorigin="anonymous" />
+  <link rel="dns-prefetch" href="https://ajax.cloudflare.com" crossorigin="anonymous" />
+*/ -}}
+
+{{- /*
+  RESEARCH:
+  - https://csswizardry.com/2020/05/the-fastest-google-fonts/
+  - https://sia.codes/posts/making-google-fonts-faster/
+
+  NOTE:
+  - due to CSP, we can not use the media="print" onload="this.media='all'" hack in rel="stylesheet"
+*/ -}}
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" media="all" crossorigin="anonymous" />
+{{- /* NOTE: We do not need this since the print hack is disabled
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Music&family=Noto+Rashi+Hebrew:wght@400;700&family=Noto+Sans+Buhid&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+HK:wght@400;700&family=Noto+Sans+Hanunoo&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+Math&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Phoenician&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+Symbols+2&family=Noto+Sans+Symbols:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+Hebrew:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2??family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" crossorigin="anonymous" />
   </noscript>
-<!-- END: Google Fonts API v2 -->
-
-<meta name="DC.title" content="IM YourOnly.One 🔏" />
-<meta name="geo.region" content="PH-00" />
-<meta name="geo.placename" content="Manila" />
-<meta name="geo.position" content="14.599781;120.973935" />
-<meta name="ICBM" content="14.599781, 120.973935" />
+*/ -}}
