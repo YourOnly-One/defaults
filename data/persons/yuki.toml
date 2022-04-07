@@ -10,23 +10,41 @@ description = "Yuki loves writing, from content to world building. He is also in
 mainentityofpage = "https://iam.youronly.one/"
 name = "JC John Sese Cuneta"
 sameas = [
-	"https://keybase.io/yukino/",
 	"https://iam.youronly.one/",
+	"https://keybase.io/yukino/",
 	"https://im.youronly.one/",
 	"https://youronly.one/",
-	"https://mastodon.social/@YourOnlyOne",
+	"https://mastodon.social/@youronlyone",
 	"https://pixelfed.social/youronlyone",
 	"https://eyeem.com/u/youronlyone",
-	"https://goodreads.com/youronlyone",
-	"https://last.fm/user/Laibcoms",
-	"https://trakt.tv/users/youronlyone",
-	"https://open.spotify.com/user/jcsesecuneta",
+	"https://linkedin.com/in/youronlyone/",
+	"https://www.goodreads.com/youronlyone",
 	"https://instagram.com/YourOnly.One",
 	"https://youtube.com/YourOnlyONEofcl",
 	"https://twitter.com/YourOnlyONEofcl",
 	"https://facebook.com/YourOnly.ONE.ofcl",
-	"https://facebook.com/jcsesecuneta/"
+	"https://libre.fm/user/Laibcoms",
+	"https://last.fm/user/Laibcoms"
 ]
+	#"https://diasp.org/u/jcsesecuneta",
+	#"https://peertube.social/video-channels/youronlyone",
+	#"https://trakt.tv/users/youronlyone",
+	#"https://mydramalist.com/profile/Shael",
+	#"https://myanimelist.net/profile/YourOnlyOne",
+	#"https://wattpad.com/user/yugenbard",
+	#"https://fictionpress.com/~yugenbard",
+	#"https://fanfiction.net/~yugenbard",
+	#"https://www.deviantart.com/laibcoms",
+	#"https://steamcommunity.com/id/gameshogun",
+	#"https://open.spotify.com/user/jcsesecuneta",
+	#"https://facebook.com/jcsesecuneta",
+	#"https://facebook.com/jcjohnsesecuneta",
+	#"https://gravatar.com/jcjohnsesecuneta",
+	#"https://gitlab.com/techmagus",
+	#"https://framagit.org/techmagus",
+	#"https://bitbucket.org/techmagus/",
+	#"https://launchpad.net/~techmagus",
+	#"https://github.com/techmagus"
 url = "https://iam.youronly.one/"
 
 # BGN: Other params
