@@ -1,29 +1,38 @@
 {{- $pc := .Site.Config.Privacy.Disqus -}}
 {{- if not $pc.Disable -}}
+  {{- /* if (.Site.DisqusShortname) */ -}}
   {{ if and (.Site.DisqusShortname) (not .Site.IsServer) }}
-    {{ $canonurl := urls.Parse .Params.relcanonical }}
-    {{ $disqusid := path.Base $canonurl.Path }}
-    {{- /* YourOnly.One: Ideally this one but we can't split /path1/ in /path1/path2/path3/
-      {{ $disqusurl := printf "%s://%s%s" $canonurl.Scheme $canonurl.Host (path.Base $canonurl.EscapedPath) }}
+    {{- $relcanonical := urls.Parse .Params.relcanonical -}}
+    {{- $permalink := urls.Parse .Permalink -}}
+
+    {{- $disqus_identifier_fm := .Params.disqus_identifier -}}
+    {{- $disqus_title_fm := .Params.disqus_title -}}
+    {{- $disqus_url_fm := .Params.disqus_url -}}
+
+    {{- $disqus_identifier_auto := path.Base $relcanonical.Path -}}
+    {{- $disqus_title_auto := .Title | htmlUnescape -}}
+    {{- /* TODO: aggregate-friendly $disqusurl
+      NOTE: current implementation is
+        - im.youronly.one/aggr-site/post-title/ => im.youronly.one/aggr-site/post-title/
+        - im.youronly.one/aggr-site/ja/post-title/ => im.youronly.one/aggr-site/ja/post-title/
+
+      IDEA: if aggregated from another site, $disqusurl should point back to the source
+        - im.youronly.one/aggr-site/post-title/ => im.youronly.one/main-site/post-title/
+        - im.youronly.one/aggr-site/ja/post-title/ => im.youronly.one/main-site/ja/post-title/
+
+      {{- $disqus_url_auto := printf "%s://%s%s" $relcanonical.Scheme $relcanonical.Host (path.Base $relcanonical.EscapedPath) -}}
     */ -}}
-    {{ $disqusurl := printf "%s://%s%s" $canonurl.Scheme $canonurl.Host $canonurl.EscapedPath }}
+    {{- $disqus_url_auto := printf "%s://%s%s" $relcanonical.Scheme $relcanonical.Host $relcanonical.EscapedPath -}}
+
+    {{- $disqusjsvars := dict "DisqusShortName" .Site.DisqusShortname "disqus_identifier_fm" $disqus_identifier_fm "disqus_title_fm" $disqus_title_fm "disqus_url_fm" $disqus_url_fm "disqus_identifier_auto" $disqus_identifier_auto "disqus_title_auto" $disqus_title_auto "disqus_url_auto" $disqus_url_auto }}
+    {{- $disqusjspath := split ( path.Dir $permalink.Path ) "/" -}}
+    {{- $disqusjspath = index ( after 2 $disqusjspath ) -}}
+    {{- $disqusjspath = printf "%s/disqus.js" ( path.Join $disqusjspath ) -}}
+    {{- $disqusjs := resources.Get "js/disqus.js" -}}
+    {{- $disqusjs = $disqusjs | js.Build ( dict "targetPath" $disqusjspath "params" $disqusjsvars ) | minify -}}
 
     <div id="disqus_thread"></div>
-    <script type="application/javascript">
-      window.disqus_config = function () {
-        {{/* {{ with or (.Params.disqus_identifier) ($url.Path) }}this.page.identifier = '{{ . | urlize }}';{{ end }} */}}
-        {{ with or (.Params.disqus_identifier) ($disqusid) }}this.page.identifier = '{{ . }}';{{ end }}
-        {{ with or (.Params.disqus_title) (.Title ) }}this.page.title = '{{ . }}';{{ end }}
-        {{ with or (.Params.disqus_url) ($disqusurl) }}this.page.url = '{{ . | html }}';{{ end }}
-      };
-      (function() {
-        var d = document, s = d.createElement('script');
-        s.async = true;
-        s.src = 'https://' + {{ .Site.DisqusShortname }} + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-      })();
-    </script>
+    <script src="{{ $disqusjs.RelPermalink }}" crossorigin="anonymous" async="async"></script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   {{ else if .Site.IsServer }}
