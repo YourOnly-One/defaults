@@ -22,11 +22,12 @@
 {{- $msftclarityjs = $msftclarityjs | js.Build ( dict "params" ( dict "msftclarityid" $msftclarityid ) ) -}}
 
 {{- with .Site.Params.jquerycdn }}
+	<link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" />
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
 {{ end -}}
 {{- with .Params.math }}
-	<script src="https://polyfill.io/v3/polyfill.min.js?features=es2022" integrity="sha512-k9jJn8XEk1zjlilocFacpT31WGAV9jEugq631jQrNVQi4FS1eOkXzlvyMJoJ1nr0Qcbp1YMRECv3fggDEIf+qg==" crossorigin="anonymous"></script>
-	<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" integrity="sha512-ehyCwiYKL3B7bx/X+X0rs1JKF9ANzwjOeOvB69YoPOZnpBhC9GRSu2ry9vAuv4Z460WI7Yt4iq0dEPPeCElnXA==" crossorigin="anonymous" async="async"></script>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es2022" integrity="sha512-k9jJn8XEk1zjlilocFacpT31WGAV9jEugq631jQrNVQi4FS1eOkXzlvyMJoJ1nr0Qcbp1YMRECv3fggDEIf+qg==" crossorigin="anonymous" defer="defer"></script>
+	<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" integrity="sha512-ehyCwiYKL3B7bx/X+X0rs1JKF9ANzwjOeOvB69YoPOZnpBhC9GRSu2ry9vAuv4Z460WI7Yt4iq0dEPPeCElnXA==" crossorigin="anonymous" defer="defer"></script>
 {{ end -}}
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontawesome5pro@5.14.0/css/all.min.css" integrity="sha512-lapRU23YyAdbHOZLhCSITpHY8XGBFSldLZxKm1+syxp7VnX5qKDbaixFj7VRnPR4ciR/AeosNhaRlEnyD13muQ==" crossorigin="anonymous" media="all" type="text/css" />
@@ -48,20 +49,39 @@
 {{- end }}
 
 {{/* BGN: analytics */}}
-	{{ with $beampipeioid }}<script src="https://beampipe.io/js/tracker.js" data-beampipe-domain="{{ . }}" async="async" defer="defer"></script>{{ end }}
-	{{ with $counterdevid }}<script src="{{ $counterdevjs.RelPermalink }}" crossorigin="anonymous" async="async" defer="defer"></script>{{ end }}
-	{{ with $insightsioid }}
-		<script src="https://getinsights.io/js/insights.js" async="async" defer="defer"></script>
-		<script src="{{ $insightsiojs.RelPermalink }}" crossorigin="anonymous" async="async" defer="defer"></script>
+	{{ with $beampipeioid }}
+		<link rel="preload" as="script" href="https://beampipe.io/js/tracker.js" />
+		<script src="https://beampipe.io/js/tracker.js" data-beampipe-domain="{{ . }}" async="async"></script>
 	{{ end }}
-	{{ with $microanalyticsioid }}<script src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true" id="{{ . }}" async="async" defer="defer"></script>{{ end }}
+	{{ with $cfwebanalyticsid }}
+		<link rel="preload" as="script" href="https://static.cloudflareinsights.com/beacon.min.js" crossorigin="anonymous" />
+		<script src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}' crossorigin="anonymous" async="async"></script>
+	{{ end }}
+	{{ with $counterdevid }}
+		<link rel="preload" as="script" href="{{ $counterdevjs.RelPermalink }}" crossorigin="anonymous" />
+		<script src="{{ $counterdevjs.RelPermalink }}" crossorigin="anonymous" async="async"></script>
+	{{ end }}
+	{{ with $insightsioid }}
+		<link rel="preload" as="script" href="https://getinsights.io/js/insights.js" />
+		<script src="https://getinsights.io/js/insights.js" defer="defer"></script>
+		<link rel="preload" as="script" href="{{ $insightsiojs.RelPermalink }}" crossorigin="anonymous" />
+		<script src="{{ $insightsiojs.RelPermalink }}" crossorigin="anonymous" defer="defer"></script>
+	{{ end }}
+	{{ with $microanalyticsioid }}
+		<link rel="preload" as="script" href="https://microanalytics.io/js/script.js" />
+		<script src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true" id="{{ . }}" async="async"></script>
+	{{ end }}
 	{{ with $swetrixid }}
-		<script src="https://swetrix.org/swetrix.js" async="async" defer="defer"></script>
-		<script src="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" async="async" defer="defer"></script>
+		<link rel="preload" as="script" href="https://swetrix.org/swetrix.js" />
+		<script src="https://swetrix.org/swetrix.js" defer="defer"></script>
+		<link rel="preload" as="script" href="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" />
+		<script src="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" defer="defer"></script>
 		<noscript><img src="https://api.swetrix.com/log/noscript?pid={{ . }}" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
 	{{ end }}
-	{{ with $cfwebanalyticsid }}<script src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}' crossorigin="anonymous" async="async" defer="defer"></script>{{ end }}
-	{{ with $msftclarityid }}<script src="{{ $msftclarityjs.RelPermalink }}" crossorigin="anonymous" async="async" defer="defer"></script>{{ end }}
+	{{ with $msftclarityid }}
+		<link rel="preload" as="script" href="{{ $msftclarityjs.RelPermalink }}" crossorigin="anonymous" />
+		<script src="{{ $msftclarityjs.RelPermalink }}" crossorigin="anonymous" async="async"></script>
+	{{ end }}
 {{/* END: analytics */}}
 
 {{/* BGN: favicon */}}
@@ -91,5 +111,5 @@
 {{- end }}
 
 {{- with .Site.Params.googleadsense }}
-	<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous" async="async"></script>
+	<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous" defer="defer"></script>
 {{- end -}}

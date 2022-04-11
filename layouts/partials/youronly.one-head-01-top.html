@@ -84,10 +84,10 @@
 <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+<link rel="preconnect" href="https://unpkg.com" crossorigin="anonymous" />
+<link rel="dns-prefetch" href="https://unpkg.com" crossorigin="anonymous" />
 
 {{- /* NOTE: Disabled, currently not needed
-  <link rel="preconnect" href="https://unpkg.com" crossorigin="anonymous" />
-  <link rel="dns-prefetch" href="https://unpkg.com" crossorigin="anonymous" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous" />
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" crossorigin="anonymous" />
   <link rel="preconnect" href="https://ajax.cloudflare.com" crossorigin="anonymous" />
@@ -102,7 +102,9 @@
   NOTE:
   - due to CSP, we can not use the media="print" onload="this.media='all'" hack in rel="stylesheet"
 */ -}}
+{{- /* NOTE: cache the styles */ -}}
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" crossorigin="anonymous" />
+{{- /* NOTE: execute the styles */ -}}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" media="all" crossorigin="anonymous" />
 {{- /* NOTE: We do not need this since the print hack is disabled
   <noscript>
