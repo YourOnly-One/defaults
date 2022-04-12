@@ -6,6 +6,7 @@ knowslanguage = ["en-PH", "tl", "fil", "tl-Tglg", "fil-Tglg", "en"]
 nationality = "Philippines"
 #taxid = ""
 #vatid = ""
+#isni = ""
 description = "Yuki loves writing, from content to world building. He is also in web development and is managing his own websites."
 mainentityofpage = "https://iam.youronly.one/"
 name = "JC John Sese Cuneta"
@@ -24,7 +25,9 @@ sameas = [
 	"https://twitter.com/YourOnlyONEofcl",
 	"https://facebook.com/YourOnly.ONE.ofcl",
 	"https://libre.fm/user/Laibcoms",
-	"https://last.fm/user/Laibcoms"
+	"https://last.fm/user/Laibcoms",
+	"https://vero.co/youronlyone",
+	"https://ask.fm/YourOnlyONEofcl"
 ]
 	#"https://diasp.org/u/jcsesecuneta",
 	#"https://peertube.social/video-channels/youronlyone",
@@ -196,21 +199,21 @@ url = "https://iam.youronly.one/"
 		message = ""
 		type = "tip jar"
 	[[author.gift]]
-	  name = "Liberapay"
-	  code = ""
-	  url = "https://liberapay.com/youronlyone"
-	  linktitle = "@youronlyone"
-	  tag = ""
-	  message = ""
-	  type = "tip jar"
+		name = "Liberapay"
+		code = ""
+		url = "https://liberapay.com/youronlyone"
+		linktitle = "@youronlyone"
+		tag = ""
+		message = ""
+		type = "tip jar"
 	[[author.gift]]
-	  name = "Patreon"
-	  code = ""
-	  url = "https://www.patreon.com/YourOnlyOne"
-	  linktitle = "@youronlyone"
-	  tag = ""
-	  message = ""
-	  type = "tip jar"
+		name = "Patreon"
+		code = ""
+		url = "https://www.patreon.com/YourOnlyOne"
+		linktitle = "@youronlyone"
+		tag = ""
+		message = ""
+		type = "tip jar"
 	#[[author.gift]]
 	#  name = "GCash"
 	#  code = ""
