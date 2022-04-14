@@ -103,7 +103,7 @@ draft = true
 #[[authors]]
 #  person = "yuki"
 #  #id = ""
-#  #name = "Way of Believers / 信者の道 / 테크 마구스"
+#  #name = "One Way Faith / 一方向の信仰 / 편도 신앙"
 #  url = "https://im.youronly.one/way/"
 #  avatar = "https://img.youronly.one/works/FlagMenorah-Proto-(CC0).webp"
 #  #rel = "noopener"
