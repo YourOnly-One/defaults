@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 {{- /*
   NOTE:
   - All non-visible dates/times are in UTC for uniformity.
@@ -5,7 +6,7 @@
   - do not re-arrange
 */ -}}
 {{- $iso8601 := "2006-01-02T15:04:05Z07:00" -}}
-<meta charset="utf-8">
+
 <link rel="canonical" href="{{ with .Params.relcanonical }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 {{/* BGN: Translations */}}
