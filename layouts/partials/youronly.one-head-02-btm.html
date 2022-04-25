@@ -7,15 +7,15 @@
 {{- $localcss := resources.Get "css/youronly.one-head-05-local.css" | minify -}}
 {{- $beampipeioid := .Site.Params.analytics.beampipeio -}}
 {{- $counterdevid := .Site.Params.analytics.counterdev -}}
-{{- $insightsioid := .Site.Params.analytics.insightsio -}}
+{{- /* $insightsioid := .Site.Params.analytics.insightsio */ -}}
 {{- $microanalyticsioid := .Site.Params.analytics.microanalyticsio -}}
 {{- $swetrixid := .Site.Params.analytics.swetrix -}}
 {{- $cfwebanalyticsid := .Site.Params.analytics.cfwebanalytics -}}
 {{- $msftclarityid := .Site.Params.analytics.microsoftclarity -}}
 {{- $counterdevjs := resources.Get "js/analytics-counterdev.js" | minify -}}
 {{- $counterdevjs = $counterdevjs | js.Build ( dict "params" ( dict "counterdevid" $counterdevid ) ) -}}
-{{- $insightsiojs := resources.Get "js/analytics-insightsio.js" | minify -}}
-{{- $insightsiojs = $insightsiojs | js.Build ( dict "params" ( dict "insightsioid" $insightsioid ) ) -}}
+{{- /* $insightsiojs := resources.Get "js/analytics-insightsio.js" | minify */ -}}
+{{- /* $insightsiojs = $insightsiojs | js.Build ( dict "params" ( dict "insightsioid" $insightsioid ) ) */ -}}
 {{- $swetrixjs := resources.Get "js/analytics-swetrix.js" | minify -}}
 {{- $swetrixjs = $swetrixjs | js.Build ( dict "params" ( dict "swetrixid" $swetrixid ) ) -}}
 {{- $msftclarityjs := resources.Get "js/analytics-msftclarity.js" | minify -}}
@@ -61,12 +61,14 @@
 		<link rel="preload" as="script" href="{{ $counterdevjs.RelPermalink }}" crossorigin="anonymous" />
 		<script src="{{ $counterdevjs.RelPermalink }}" crossorigin="anonymous" async="async"></script>
 	{{ end }}
+	{{- /*
 	{{ with $insightsioid }}
 		<link rel="preload" as="script" href="https://getinsights.io/js/insights.js" />
 		<script src="https://getinsights.io/js/insights.js" defer="defer"></script>
 		<link rel="preload" as="script" href="{{ $insightsiojs.RelPermalink }}" crossorigin="anonymous" />
 		<script src="{{ $insightsiojs.RelPermalink }}" crossorigin="anonymous" defer="defer"></script>
 	{{ end }}
+	*/ -}}
 	{{ with $microanalyticsioid }}
 		<link rel="preload" as="script" href="https://microanalytics.io/js/script.js" />
 		<script src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true" id="{{ . }}" async="async"></script>
