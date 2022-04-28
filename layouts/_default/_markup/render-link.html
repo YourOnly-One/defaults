@@ -1,5 +1,15 @@
 {{- $url := .Destination -}}
-{{- $external := ne (urls.Parse $url).Host (urls.Parse site.BaseURL).Host -}}
+{{- $destination := (urls.Parse $url).Host -}}
+{{- $destination = strings.HasSuffix $destination "youronly.one" -}}
+{{- $baseurl := (urls.Parse site.BaseURL).Host -}}
+{{- if and (strings.HasPrefix $baseurl "192.168") site.IsServer -}}
+  {{- $baseurl = strings.HasPrefix $baseurl "192.168" -}}
+{{- else if and "localhost:1313" site.IsServer -}}
+  {{- $baseurl = strings.HasSuffix $baseurl "localhost:1313" -}}
+{{- else -}}
+  {{- $baseurl = strings.HasSuffix $baseurl "youronly.one" -}}
+{{- end -}}
+{{- $external := ne $destination $baseurl -}}
 
 {{- $chat := or (strings.HasPrefix $url "irc") (strings.HasPrefix $url "xmpp") -}}
 {{- $ftp := strings.HasPrefix $url "ftp" -}}
