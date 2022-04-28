@@ -1,0 +1,62 @@
+{{- $url := .Destination -}}
+{{- $destination := urls.Parse $url -}}
+{{- $chat := or (strings.HasPrefix $url "irc") (strings.HasPrefix $url "xmpp") -}}
+{{- $ftp := strings.HasPrefix $url "ftp" -}}
+{{- $mail := strings.HasPrefix $url "mailto" -}}
+{{- $magnet := strings.HasPrefix $url "magnet" -}}
+{{- $remote := or (strings.HasPrefix $url "telnet") (strings.HasPrefix $url "ssh") (strings.HasPrefix $url "sftp") (strings.HasPrefix $url "git") (strings.HasPrefix $url "svn") -}}
+{{- $tel := strings.HasPrefix $url "tel" -}}
+{{- $external := eq (strings.HasSuffix $destination.Host "youronly.one") false -}}
+{{- $docs := or (strings.HasSuffix $url ".pdf") (strings.HasSuffix $url ".txt") -}}
+{{- $books := or (strings.HasSuffix $url ".epub") (strings.HasSuffix $url ".mobi") -}}
+{{- $zip := or (strings.HasSuffix $url ".zip") (strings.HasSuffix $url ".7z") (strings.HasSuffix $url ".7zip") (strings.HasSuffix $url ".rar") (strings.HasSuffix $url ".tar") (strings.HasSuffix $url ".gz") (strings.HasSuffix $url ".gzip") -}}
+<a href="{{ $url | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if $external }} rel="noopener external"{{ end }}>{{ .Text | safeHTML }}</a>
+
+{{- if $chat }}
+<small class="emoji">💬</small>
+{{ else if $ftp }}
+<small class="emoji">⏬</small>
+{{ else if $mail }}
+<small class="emoji">📧</small>
+{{ else if $magnet }}
+<small class="emoji">🧲</small>
+{{ else if $remote }}
+<small class="emoji">💻</small>
+{{ else if $tel }}
+<small class="emoji">☎️</small>
+{{ else if $books }}
+<small class="emoji">📖</small>
+{{ else if $docs }}
+<small class="emoji">📄</small>
+{{ else if $zip }}
+<small class="emoji">🗜️</small>
+{{ else if $external }}
+<small class="emoji">🔗</small>
+{{ end -}}
+
+{{- /* TEST
+  - [irc](irc://example.com)
+  - [xmpp](xmpp://example.com)
+  - [ftp](ftp://example.com)
+  - [mail](mailto://example.com)
+  - [magnet](magnet://example.com)
+  - [telnet](telnet://example.com)
+  - [ssh](ssh://example.com)
+  - [sftp](sftp://example.com)
+  - [git](git://example.com)
+  - [svn](svn://example.com)
+  - [tel](tel://example.com)
+  - [pdf](https://example.com/file.pdf)
+  - [txt](https://example.com/file.txt)
+  - [epub](https://example.com/file.epub)
+  - [mobi](https://example.com/file.mobi)
+  - [zip](https://example.com/file.zip)
+  - [7z](https://example.com/file.7z)
+  - [7zip](https://example.com/file.7zip)
+  - [rar](https://example.com/file.rar)
+  - [tar](https://example.com/file.tar)
+  - [gz](https://example.com/file.gz)
+  - [gz](https://example.com/file.tar.gz)
+  - [gzip](https://example.com/file.gzip)
+  - [gzip](https://example.com/file.tar.gzip)
+*/ -}}
