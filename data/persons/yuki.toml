@@ -15,7 +15,9 @@ sameas = [
 	"https://keybase.io/yukino/",
 	"https://im.youronly.one/",
 	"https://youronly.one/",
+	"https://c.im/@youronlyone",
 	"https://mastodon.social/@youronlyone",
+	"https://mastodon.online/@youronlyone",
 	"https://pixelfed.social/youronlyone",
 	"https://eyeem.com/u/youronlyone",
 	"https://linkedin.com/in/youronlyone/",
@@ -24,11 +26,15 @@ sameas = [
 	"https://youtube.com/YourOnlyONEofcl",
 	"https://twitter.com/YourOnlyONEofcl",
 	"https://facebook.com/YourOnly.ONE.ofcl",
+	"https://www.pinterest.com/YourOnlyONEofcl",
 	"https://libre.fm/user/Laibcoms",
 	"https://last.fm/user/Laibcoms",
-	"https://vero.co/youronlyone",
+	"https://ask.fm/YourOnlyONEofcl",
 	"https://plurk.com/Laibcoms",
-	"https://ask.fm/YourOnlyONEofcl"
+	"https://vero.co/youronlyone",
+	"https://ecency.com/@youronlyone",
+	"https://hive.blog/@youronlyone",
+	"https://steemit.com/@youronlyone"
 ]
 	#"https://diasp.org/u/jcsesecuneta",
 	#"https://peertube.social/video-channels/youronlyone",
