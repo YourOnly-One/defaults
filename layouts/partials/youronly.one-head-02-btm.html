@@ -16,6 +16,8 @@
 {{- $swetrixjs = $swetrixjs | js.Build ( dict "params" ( dict "swetrixid" $swetrixid ) ) -}}
 {{- $msftclarityjs := resources.Get "js/analytics-msftclarity.js" | minify -}}
 {{- $msftclarityjs = $msftclarityjs | js.Build ( dict "params" ( dict "msftclarityid" $msftclarityid ) ) -}}
+{{- $webmentionjs := resources.Get "js/webmention.js" | minify -}}
+{{- $webmentioncss := resources.Get "css/webmention.css" | minify -}}
 
 {{- with .Site.Params.jquerycdn }}
 	<link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" />
@@ -37,6 +39,7 @@
 
 <link rel="stylesheet" href="{{ $semwebcss.RelPermalink }}" crossorigin="anonymous" media="all" type="text/css" />
 <link rel="stylesheet" href="{{ $globalcss.RelPermalink }}" crossorigin="anonymous" media="all" type="text/css" />
+<link rel="stylesheet" href="{{ $webmentioncss.RelPermalink }}" crossorigin="anonymous" media="all" type="text/css" />
 {{- if templates.Exists "partials/youronly.one-head-04-local.html" -}}
 	{{ partial "youronly.one-head-04-local.html" . }}
 {{- end }}
@@ -95,6 +98,20 @@
 {{- if templates.Exists "partials/relme.html" -}}
 	{{ partial "relme.html" . }}
 {{- end }}
+
+{{- /*
+  NOTE: see https://github.com/PlaidWeb/webmention.js
+		- page-url -- use this reference URL instead of the current browser location
+		- add-urls -- additional URLs to include, separated by a |
+		- id -- use this container ID instead of "webmentions"
+		- wordcount -- truncate the reply to this many words (adding an ellipsis to the end of the last word)
+		- max-webmentions -- the maximum webmentions to retrieve and render (defaults to 30)
+		- prevent-spoofing -- set this to use the incoming mention source URL instead of the declared URL; setting this will disable one form of identity spoofing but will make mentions from webmention bridges (such as brid.gy or Telegraph) significantly uglier
+		- sort-by -- what to sort the responses by; defaults to published time (see the webmention API for possible values)
+		- sort-dir -- what order to sort the responses by; defaults to 'up' (ascending).
+		- comments-are-reactions -- if set to 'true', displays comment-type responses (replies/mentions/etc.) as being part of the reactions (favorites/bookmarks/etc.) instead of in a separate comment list. Defaults to "false".
+*/ -}}
+<script src="{{ $webmentionjs.RelPermalink }}" data-page-url="{{ .Permalink }}"{{ with or .Params.disqus.url .Params.relcanonical }} data-add-urls="{{ . }}"{{ end }} data-max-webmentions="130" crossorigin="anonymous" defer="defer"></script>
 
 {{- with .Site.Params.googleadsense }}
 	<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous" defer="defer"></script>
