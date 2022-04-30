@@ -1,0 +1,11 @@
+{{- /*
+  NOTE:
+    Add this snippet where your theme's comments is:
+    {{ template "_internal/webmention.html" . }}
+
+  NOTE: for accepted arguments
+    - see: https://github.com/PlaidWeb/webmention.js
+    - or: webmentions.js
+*/ -}}
+{{- $webmentionjs := resources.Get "js/webmention.js" | minify -}}
+<script src="{{ $webmentionjs.RelPermalink }}" data-page-url="{{ .Permalink }}"{{ with or .Params.disqus.url .Params.relcanonical }} data-add-urls="{{ . }}{{ if $.IsTranslated }}{{ range $.Translations }}|{{ .Permalink }}{{ end }}{{ end }}"{{ end }} data-wordcount="120" data-max-webmentions="130" crossorigin="anonymous" defer="defer"></script>

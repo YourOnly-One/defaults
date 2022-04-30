@@ -32,7 +32,7 @@
 <meta name="robots" content="{{ if .Params.metarobots }}{{ .Params.metarobots }}{{ else }}index{{ end }}, follow" />
 {{ with .Params.redirectto }}<meta http-equiv="refresh" content="0; url='{{ . }}'" />{{ end }}
 <meta name="author" content="{{ $.Param "author.name" }}" />
-{{ with (.Param "description") }}<meta name="description" content="{{ . | plainify }}" />{{ end }}
+{{ with (.Param "description") }}<meta name="description" content="{{ . | plainify }}" class="p-summary" />{{ end }}
 <meta name="keywords" content="{{ with or ($.Param "keywords") ($.Param "tags") }}{{ delimit . ", " }}{{ end }}" />
 <meta name="modified" content="{{ .Lastmod.UTC.Format $iso8601 }}">
 <meta name="created" content="{{ .Date.UTC.Format $iso8601 }}">
@@ -40,6 +40,10 @@
 {{ range .Params.categories }}
   <meta property="article:section" content="{{ . }}" />
 {{ end }}
+
+<link rel="authorization_endpoint" href="https://indieauth.com/auth" />
+<link rel="webmention" href="https://webmention.io/im.youronly.one/webmention" />
+<link rel="pingback" href="https://webmention.io/im.youronly.one/xmlrpc" />
 
 {{- /* NOTE: No longer needed since we have SemWeb support; for reference
   {{ template "_internal/schema.html" . }}
@@ -59,10 +63,6 @@
 {{ end }}
 
 {{/* NOTE: above was ordered intentionally */}}
-
-<link rel="authorization_endpoint" href="https://indieauth.com/auth" />
-<link rel="webmention" href="https://webmention.io/im.youronly.one/webmention" />
-<link rel="pingback" href="https://webmention.io/im.youronly.one/xmlrpc" />
 
 {{ with .Site.Params.verify.flattr }}<meta name="flattr:id" content="{{ . }}" />{{ end }}
 {{ with .Site.Params.verify.naver }}<meta name="naver-site-verification" content="{{ . }}" />{{ end }}
