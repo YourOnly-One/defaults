@@ -323,7 +323,7 @@ A more detailed example:
           linktext = extractComment(c);
         }
 
-        const type = `<span class="${linkclass}">${linktext}</span>`;
+        const type = `<p class="${linkclass}">${linktext}</p>`;
 
         return `<li>${image} ${link} ${type}</li>`;
       })
