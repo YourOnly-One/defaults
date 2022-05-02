@@ -2,6 +2,10 @@
   margin: 0;
 }
 
+#webmentions a {
+  border-bottom: none;
+}
+
 /*
 #webmentions .comments {
 }
@@ -9,7 +13,7 @@
 
 #webmentions h2 {
   font-size: medium;
-  margin-top: 0;
+  /* margin-top: 0; */
   padding: 2px;
 }
 
@@ -35,7 +39,25 @@
 
 #webmentions a.reaction img {
   border-radius: 25%;
-  max-height: 1.3em;
+  text-decoration: none;
+}
+
+#webmentions .reacts a.reaction img {
+  max-height: 2.0em;
+}
+
+#webmentions .comments a.reaction img {
+  max-height: 3.0em;
+}
+
+#webmentions .reacts a.reaction .emoji {
+  font-size: 1.1em;
+  margin-left: -5px;
+  vertical-align: bottom;
+}
+
+#webmentions .comments a.reaction .emoji {
+  font-size: 1.3em;
 }
 
 #webmentions a.reaction sub {
@@ -50,5 +72,43 @@
 #webmentions .comments li .name,
 #webmentions .comments li .text {
   text-indent: -1.2em;
-  padding-left: 3em;
+  /* padding-left: 3em; */
 }
+
+/*****************************************************
+** BGN: Speech bubble style-01                      **
+**                                                  **
+**    by https://codepen.io/rikschennink/pen/mjywQb **
+*****************************************************/
+  #webmentions .comments li .text {
+    /* layout */
+    position: relative;
+    max-width: 90%;
+    margin-left: 5%;
+
+    /* looks */
+    /* background-color: #fff; */
+    padding: 1.125em 2.5em;
+    border-radius: 1rem;
+    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+  }
+
+  #webmentions .comments li .text::before {
+    /* layout */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 100%;
+    left: 2.4em; /* offset should move with padding of parent */
+    border: .75rem solid transparent;
+    border-top: none;
+
+    /* looks */
+    /* border-bottom-color: #fff; */
+    -webkit-filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+            filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+  }
+/*****************************************************
+** END: Speech bubble style-01                      **
+*****************************************************/
