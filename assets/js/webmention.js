@@ -152,14 +152,27 @@ A more detailed example:
    *
    * @type {Record<MentionType, string>}
    */
+  /**
+    const reactEmoji = {
+      "in-reply-to": "<span class='emoji'>💬</span>",
+      "in-reply-to": "<span class='emoji'>&#x1F4AC;</span>",
+      "like-of": "<span class='emoji'>❤️</span>",
+      "repost-of": "<span class='emoji'>🔄</span>",
+      "bookmark-of": "<span class='emoji'>⭐️</span>",
+      "mention-of": "<span class='emoji'>💬</span>",
+      "mention-of": "<span class='emoji'>&#x1F4AC;</span>",
+      "rsvp": "<span class='emoji'>📅</span>",
+      "follow-of": "<span class='emoji'>🐜</span>"
+    };
+   */
   const reactEmoji = {
-    "in-reply-to": "💬",
-    "like-of": "❤️",
-    "repost-of": "🔄",
-    "bookmark-of": "⭐️",
-    "mention-of": "💬",
-    "rsvp": "📅",
-    "follow-of": "🐜"
+    "in-reply-to": " ",
+    "like-of": "<span class='emoji'>&#x1F90E;</span>",
+    "repost-of": "<span class='emoji'>&#x1F504;</span>",
+    "bookmark-of": "<span class='emoji'>&#x2B50;</span>",
+    "mention-of": " ",
+    "rsvp": "<span class='emoji'>&#x1F4C5;</span>",
+    "follow-of": "<span class='emoji'>&#x1F41C;</span>"
   };
 
   /**
@@ -172,11 +185,19 @@ A more detailed example:
    *
    * @type {Record<RSVPEmoji, string>}
    */
+  /**
+    const rsvpEmoji = {
+      "yes": "<span class='emoji'>✅</span>",
+      "no": "<span class='emoji'>❌</span>",
+      "interested": "<span class='emoji'>💡</span>",
+      "maybe": "<span class='emoji'>💭</span>"
+    };
+   */
   const rsvpEmoji = {
-    "yes": "✅",
-    "no": "❌",
-    "interested": "💡",
-    "maybe": "💭"
+    "yes": "<span class='emoji'>&#x2705;</span>",
+    "no": "<span class='emoji'>&#x274C;</span>",
+    "interested": "<span class='emoji'>&#x1F4A1;</span>",
+    "maybe": "<span class='emoji'>&#x1F4AD;</span>"
   };
 
   /**
@@ -448,6 +469,6 @@ A more detailed example:
       reactions = formatReactions(dedupe(collects));
     }
 
-    container.innerHTML = `${formattedComments}${reactions}`;
+    container.innerHTML = `${reactions}${formattedComments}`;
   });
 }());
