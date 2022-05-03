@@ -197,3 +197,10 @@
   [whatsapp]
     other = "WhatsApp"
 # END: Social services
+
+# BGN: IndieWeb
+  [syndicated.article]
+    other = "이 기사는"
+  [syndicated.to]
+    other = "배포되었습니다."
+# END: IndieWeb

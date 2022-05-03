@@ -1,0 +1,20 @@
+{{- $lang := or site.LanguageCode site.Language.Lang -}}
+{{- $syndications := . -}}
+<div id="syndications">
+  {{ if or (eq $lang "ja") (eq $lang "ko") }}
+    {{- i18n "syndicated.article" }}
+    {{ range $i, $url := $syndications -}}
+      {{- $urlparsed := urls.Parse $url -}}
+      {{- if $i -}}{{ if eq $lang "ja" }}、{{ else }}, {{ end }}{{ end -}}
+      <a href="{{ $url }}" class="u-syndication" rel="syndication">{{ $urlparsed.Host }}</a>
+    {{- end }}
+    {{ i18n "syndicated.to" -}}
+  {{ else }}
+    {{- i18n "syndicated.article" }} {{ i18n "syndicated.to" }}
+    {{ range $i, $url := $syndications -}}
+      {{- $urlparsed := urls.Parse $url -}}
+      {{- if $i -}}, {{ end -}}
+      <a href="{{ $url }}" class="u-syndication" rel="syndication">{{ $urlparsed.Host }}</a>
+    {{- end -}}
+  {{ end }}
+</div>

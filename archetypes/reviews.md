@@ -12,6 +12,8 @@ relCanonical = "https://im.youronly.one/{BLOG-NAME}/{LANG}/{POST-TITLE}-{DATE}/"
 #disqus_url = ""                                                    # no use case in sites by Yelosan Publishing (YourOnly.One)
 #disqus_identifier = ""                                             # set if slug date of this content is different from main translation (en-PH)
 
+#syndications = [""]
+
 channels = [""]
 #categories = [""]
 #keywords = [""]

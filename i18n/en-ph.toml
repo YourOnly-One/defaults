@@ -253,3 +253,10 @@
   [whatsapp]
     other = "WhatsApp"
 # END: Social services
+
+# BGN: IndieWeb
+  [syndicated.article]
+    other = "This article"
+  [syndicated.to]
+    other = "has been syndicated to:"
+# END: IndieWeb
