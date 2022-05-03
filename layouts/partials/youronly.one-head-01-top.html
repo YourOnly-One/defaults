@@ -21,10 +21,8 @@
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ .Permalink | safeURL }}" />
 {{- end }}
 <link rel="self" href="{{ .Permalink }}" />
-{{- if .IsHome -}}
-  {{ range .Site.Params.websubhubs }}
+{{ range .Site.Params.websubhubs }}
   <link rel="hub" href="{{ . }}" />
-  {{- end }}
 {{- end }}
 {{- /* NOTE: for reference, if we need it again
   <meta name="robots" content="{{ if or (eq .Kind "taxonomy") (eq .Kind "term") }}noindex{{ else if .Params.metarobots }}{{ .Params.metarobots }}{{ else }}index{{ end }}, follow" />
