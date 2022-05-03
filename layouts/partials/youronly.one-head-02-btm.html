@@ -22,16 +22,16 @@
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
 {{ end -}}
 {{- with .Params.math }}
-	<script src="https://polyfill.io/v3/polyfill.min.js?features=es2022" integrity="sha512-k9jJn8XEk1zjlilocFacpT31WGAV9jEugq631jQrNVQi4FS1eOkXzlvyMJoJ1nr0Qcbp1YMRECv3fggDEIf+qg==" crossorigin="anonymous" defer="defer"></script>
-	<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" integrity="sha512-ehyCwiYKL3B7bx/X+X0rs1JKF9ANzwjOeOvB69YoPOZnpBhC9GRSu2ry9vAuv4Z460WI7Yt4iq0dEPPeCElnXA==" crossorigin="anonymous" defer="defer"></script>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es2022" integrity="sha512-k9jJn8XEk1zjlilocFacpT31WGAV9jEugq631jQrNVQi4FS1eOkXzlvyMJoJ1nr0Qcbp1YMRECv3fggDEIf+qg==" crossorigin="anonymous" async></script>
+	<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" integrity="sha512-ehyCwiYKL3B7bx/X+X0rs1JKF9ANzwjOeOvB69YoPOZnpBhC9GRSu2ry9vAuv4Z460WI7Yt4iq0dEPPeCElnXA==" crossorigin="anonymous" async></script>
 {{ end -}}
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontawesome5pro@5.14.0/css/all.min.css" integrity="sha512-lapRU23YyAdbHOZLhCSITpHY8XGBFSldLZxKm1+syxp7VnX5qKDbaixFj7VRnPR4ciR/AeosNhaRlEnyD13muQ==" crossorigin="anonymous" media="all" type="text/css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" media="all" type="text/css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha512-aupidr80M36SeyviA/hZ2uEPnvt2dTJfyjm9y6z1MgaV13TgzmDiFdsH3cvSNG27mRIj7gJ2gNeg1HeySJyE3Q==" crossorigin="anonymous" media="all" type="text/css" />
 <link rel="stylesheet" href="https://rsc.youronly.one/css/paninap-fonts.min.css" crossorigin="anonymous" media="all" type="text/css" />
-<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" integrity="sha512-LK/JJPwWWzXIbw4noGosPmzUQo4Wq+gcwt5vF5ytytrbdzB8FNcHPyGygZue6fq6pxyPaFspIsJ26titsKcUrg==" crossorigin="anonymous" defer="defer"></script>
-<script src="https://rsc.youronly.one/js/twemoji-settings.js" crossorigin="anonymous" defer="defer"></script>
+<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" integrity="sha512-LK/JJPwWWzXIbw4noGosPmzUQo4Wq+gcwt5vF5ytytrbdzB8FNcHPyGygZue6fq6pxyPaFspIsJ26titsKcUrg==" crossorigin="anonymous" defer></script>
+<script src="https://rsc.youronly.one/js/twemoji-settings.js" crossorigin="anonymous" defer></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.min.css" integrity="sha512-K/9D60UQF+wLPWxI61jBWA9aNVmEfmsi7gBxiLi/e+hlhjT/QhJxM18aQjBIkRYH9qnz+wfog9a5opdsh4BdtA==" crossorigin="anonymous" media="all" type="text/css" />
 <link rel="stylesheet" href="https://rsc.youronly.one/css/yuki-style.min.css" crossorigin="anonymous" media="all" type="text/css" />
 
@@ -49,26 +49,26 @@
 {{/* BGN: analytics */}}
 	{{ with $cfwebanalyticsid }}
 		<link rel="preload" as="script" href="https://static.cloudflareinsights.com/beacon.min.js" crossorigin="anonymous" />
-		<script src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}' crossorigin="anonymous" async="async"></script>
+		<script src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}' crossorigin="anonymous" async></script>
 	{{ end }}
 	{{ with $counterdevid }}
 		<link rel="preload" as="script" href="{{ $counterdevjs.RelPermalink }}" crossorigin="anonymous" />
-		<script src="{{ $counterdevjs.RelPermalink }}" crossorigin="anonymous" async="async"></script>
+		<script src="{{ $counterdevjs.RelPermalink }}" crossorigin="anonymous" async></script>
 	{{ end }}
 	{{ with $microanalyticsioid }}
 		<link rel="preload" as="script" href="https://microanalytics.io/js/script.js" />
-		<script src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true" id="{{ . }}" async="async"></script>
+		<script src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true" id="{{ . }}" async></script>
 	{{ end }}
 	{{ with $swetrixid }}
 		<link rel="preload" as="script" href="https://swetrix.org/swetrix.js" />
-		<script src="https://swetrix.org/swetrix.js" defer="defer"></script>
+		<script src="https://swetrix.org/swetrix.js" async></script>
 		<link rel="preload" as="script" href="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" />
-		<script src="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" defer="defer"></script>
+		<script src="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" async></script>
 		<noscript><img src="https://api.swetrix.com/log/noscript?pid={{ . }}" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
 	{{ end }}
 	{{ with $msftclarityid }}
 		<link rel="preload" as="script" href="{{ $msftclarityjs.RelPermalink }}" crossorigin="anonymous" />
-		<script src="{{ $msftclarityjs.RelPermalink }}" crossorigin="anonymous" async="async"></script>
+		<script src="{{ $msftclarityjs.RelPermalink }}" crossorigin="anonymous" async></script>
 	{{ end }}
 {{/* END: analytics */}}
 
@@ -99,5 +99,5 @@
 {{- end }}
 
 {{- with .Site.Params.googleadsense }}
-	<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous" defer="defer"></script>
+	<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous" defer></script>
 {{- end -}}
