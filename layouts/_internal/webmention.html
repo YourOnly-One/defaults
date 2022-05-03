@@ -8,5 +8,5 @@
     - or: webmentions.js
 */ -}}
 {{- $webmentionjs := resources.Get "js/webmention.js" | minify -}}
-{{- $url := or .Params.disqus.url .Params.relcanonical .Permalink -}}
+{{- $url := or .Params.disqus.url .Params.relcanonical .Permalink | urlize -}}
 <script src="{{ $webmentionjs.RelPermalink }}" data-page-url="{{ with $url }}{{ . }}{{ end }}"{{ if or (ne $url .Permalink) $.IsTranslated }} data-add-urls="{{ if ne $url .Permalink }}{{ .Permalink }}{{ end }}{{ if $.IsTranslated }}|{{ range $i, $translations := $.Translations }}{{ if $i }}|{{ end }}{{ .Permalink }}{{ end }}{{ end }}"{{ end }} data-wordcount="120" data-max-webmentions="130" crossorigin="anonymous" async="async"></script>
