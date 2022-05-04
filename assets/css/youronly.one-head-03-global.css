@@ -16,3 +16,33 @@ sup[id^="fnref"] > a.footnote-ref {
   font-size: 0.7rem;
   vertical-align: super;
 }
+
+/****************
+** BGN: Badges **
+****************/
+html body ul[class^="badges-"][class^="badges-"] {
+  display: list-item;
+  list-style: none;
+  list-style-position: inside;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+}
+html body ul[class^="badges-"][class^="badges-"] li {
+  margin: 0;
+  padding: 0;
+}
+
+html body ul.badges-content.badges-content li {
+  display: inline-block;
+  margin-left: 0.1rem;
+  margin-right: 0.2rem;
+}
+html body ul.badges-footer.badges-footer li {
+  display: inline-block;
+  margin-left: 0.1rem;
+  margin-right: 0.2rem;
+}
+/****************
+** END: Badges **
+****************/
