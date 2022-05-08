@@ -1,91 +1,109 @@
-{{- /*
-  NOTE:
-	- do not re-arrange
-*/ -}}
-{{- $semwebcss := resources.Get "css/semweb-style.css" | minify -}}
-{{- $globalcss := resources.Get "css/youronly.one-head-03-global.css" | minify -}}
-{{- $localcss := resources.Get "css/youronly.one-head-05-local.css" | minify -}}
-{{- $counterdevid := .Site.Params.analytics.counterdev -}}
-{{- $microanalyticsioid := .Site.Params.analytics.microanalyticsio -}}
-{{- $swetrixid := .Site.Params.analytics.swetrix -}}
+{{- $cciconscss := resources.Get "css/cc-icons.css" -}} {{/* src: https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css */}}
+{{- $yooiconscss := slice $cciconscss | resources.Concat "css/yooicons.css" -}}
+{{- $yooiconscss = $yooiconscss | minify | resources.Fingerprint "sha384" -}}
+
+{{- $yukiscss := resources.Get "scss/yuki-style.scss" -}}
+{{- $globalscss := resources.Get "scss/youronly.one-head-03-global.scss" -}}
+{{- $semwebcss := resources.Get "css/semweb-style.css" -}}
+{{- $quotecss := resources.Get "css/quote.css" -}}
+{{- $localcss := resources.Get "css/youronly.one-head-04-local.css" -}}
+{{- $yookiscss := slice $yukiscss $globalscss | resources.Concat "scss/yooki.scss" -}}
+{{- $yookicss := $yookiscss | resources.ExecuteAsTemplate "css/yooki.css" . | resources.ToCSS -}}
+{{- $yookicss = slice $yookicss $semwebcss $quotecss $localcss | resources.Concat "css/yooki.css" -}}
+{{- $yookicss = $yookicss | minify | resources.Fingerprint "sha384" -}}
+
 {{- $cfwebanalyticsid := .Site.Params.analytics.cfwebanalytics -}}
+{{- $microanalyticsioid := .Site.Params.analytics.microanalyticsio -}}
+{{- $counterdevid := .Site.Params.analytics.counterdev -}}
+{{- $swetrixid := .Site.Params.analytics.swetrix -}}
 {{- $msftclarityid := .Site.Params.analytics.microsoftclarity -}}
-{{- $counterdevjs := resources.Get "js/analytics-counterdev.js" | minify -}}
-{{- $counterdevjs = $counterdevjs | js.Build ( dict "params" ( dict "counterdevid" $counterdevid ) ) -}}
-{{- $swetrixjs := resources.Get "js/analytics-swetrix.js" | minify -}}
-{{- $swetrixjs = $swetrixjs | js.Build ( dict "params" ( dict "swetrixid" $swetrixid ) ) -}}
-{{- $msftclarityjs := resources.Get "js/analytics-msftclarity.js" | minify -}}
-{{- $msftclarityjs = $msftclarityjs | js.Build ( dict "params" ( dict "msftclarityid" $msftclarityid ) ) -}}
+
+{{- $counterdevjs := resources.Get "js/analytics-counterdev.js" | js.Build ( dict "params" ( dict "counterdevid" $counterdevid ) ) -}}
+{{- $swetrixjs := resources.Get "js/analytics-swetrix.js" | js.Build ( dict "params" ( dict "swetrixid" $swetrixid ) ) -}}
+{{- $msftclarityjs := resources.Get "js/analytics-msftclarity.js" | js.Build ( dict "params" ( dict "msftclarityid" $msftclarityid ) ) -}}
+{{- $analyticsjs := slice $counterdevjs $swetrixjs $msftclarityjs | resources.Concat "js/analytics.js" -}}
+{{- $analyticsjs = $analyticsjs | minify | resources.Fingerprint "sha384" -}}
+
+{{- $twemojijs := resources.Get "js/twemoji.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.js */}}
+{{- $twemojisettingsjs := resources.Get "js/twemoji-settings.js" -}}
+{{- $twemojialljs := slice $twemojijs $twemojisettingsjs | resources.Concat "js/twemoji-all.js" -}}
+{{- $twemojialljs = $twemojialljs | minify | resources.Fingerprint "sha384" -}}
+
+{{- $appletouchiconpng := resources.Get "favicon/apple-touch-icon.png" | resources.Fingerprint "sha384" -}}
+{{- /* $faviconsvg := resources.Get "favicon/favicon.svg" | resources.Fingerprint "sha384" */ -}}
+{{- $favicon32png := resources.Get "favicon/favicon-32x32.png" | resources.Fingerprint "sha384" -}}
+{{- $androidchrome192png := resources.Get "favicon/android-chrome-192x192.png" | resources.Fingerprint "sha384" -}}
+{{- $favicon16png := resources.Get "favicon/favicon-16x16.png" | resources.Fingerprint "sha384" -}}
+{{- $safaripinnedtabsvg := resources.Get "favicon/safari-pinned-tab.svg" | resources.Fingerprint "sha384" -}}
+{{- $faviconico := resources.Get "favicon/favicon.ico" | resources.Fingerprint "sha384" -}}
+{{- $browserconfigxml := resources.Get "favicon/browserconfig.xml" | resources.ExecuteAsTemplate "favicon/browserconfig.xml" . | resources.Fingerprint "sha384" -}}
+{{- $browserconfigxmlurl := (printf "%s%s" .Site.BaseURL $browserconfigxml.RelPermalink) | replaceRE "(.*)//(.*)" "$1/$2" -}}
 
 {{- with .Site.Params.jquerycdn }}
-	<link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" />
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+  {{- $jqueryjs := resources.Get "js/jquery.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.js */}}
+  {{- $jqueryjs = $jqueryjs | minify | resources.Fingerprint "sha384" -}}
+  <link href="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
+  <script src="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
 {{ end -}}
 {{- with .Params.math }}
-	<script src="https://polyfill.io/v3/polyfill.min.js?features=es2022" integrity="sha512-k9jJn8XEk1zjlilocFacpT31WGAV9jEugq631jQrNVQi4FS1eOkXzlvyMJoJ1nr0Qcbp1YMRECv3fggDEIf+qg==" crossorigin="anonymous" async></script>
-	<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" integrity="sha512-ehyCwiYKL3B7bx/X+X0rs1JKF9ANzwjOeOvB69YoPOZnpBhC9GRSu2ry9vAuv4Z460WI7Yt4iq0dEPPeCElnXA==" crossorigin="anonymous" async></script>
+  {{- $polyfilljs := resources.Get "js/polyfill.js" -}} {{/* src: https://polyfill.io/v3/polyfill.js?version=3.111.0&features=es2022 */}}
+  {{- $mmljs := resources.Get "js/tex-mml-chtml.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js */}}
+  {{- $mathjaxjs := slice $polyfilljs $mmljs | resources.Concat "js/mathjax.js" -}}
+  {{- $mathjaxjs = $mathjaxjs | minify | resources.Fingerprint "sha384" -}}
+  <link href="{{ $mathjaxjs.RelPermalink }}" integrity="{{ $mathjaxjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
+  <script src="{{ $mathjaxjs.RelPermalink }}" integrity="{{ $mathjaxjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
 {{ end -}}
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontawesome5pro@5.14.0/css/all.min.css" integrity="sha512-lapRU23YyAdbHOZLhCSITpHY8XGBFSldLZxKm1+syxp7VnX5qKDbaixFj7VRnPR4ciR/AeosNhaRlEnyD13muQ==" crossorigin="anonymous" media="all" type="text/css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" media="all" type="text/css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha512-aupidr80M36SeyviA/hZ2uEPnvt2dTJfyjm9y6z1MgaV13TgzmDiFdsH3cvSNG27mRIj7gJ2gNeg1HeySJyE3Q==" crossorigin="anonymous" media="all" type="text/css" />
-<link rel="stylesheet" href="https://rsc.youronly.one/css/paninap-fonts.min.css" crossorigin="anonymous" media="all" type="text/css" />
-<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" integrity="sha512-LK/JJPwWWzXIbw4noGosPmzUQo4Wq+gcwt5vF5ytytrbdzB8FNcHPyGygZue6fq6pxyPaFspIsJ26titsKcUrg==" crossorigin="anonymous" defer></script>
-<script src="https://rsc.youronly.one/js/twemoji-settings.js" crossorigin="anonymous" defer></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.min.css" integrity="sha512-K/9D60UQF+wLPWxI61jBWA9aNVmEfmsi7gBxiLi/e+hlhjT/QhJxM18aQjBIkRYH9qnz+wfog9a5opdsh4BdtA==" crossorigin="anonymous" media="all" type="text/css" />
-<link rel="stylesheet" href="https://rsc.youronly.one/css/yuki-style.min.css" crossorigin="anonymous" media="all" type="text/css" />
+{{- /*
+  NOTE:
+    - some themes use fontawesome5pro
+    - some themes use fontawesome-free
+    - icons missing from fontawesome are in fork-awesome
+*/ -}}
+<link href="https://cdn.jsdelivr.net/npm/fontawesome5pro@5.14.0/css/all.min.css" integrity="sha384-VhBcF/php0Z/P5ZxlxaEx1GwqTQVIBu4G4giRWxTKOCjTxsPFETUDdVL5B6vYvOt" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha384-Ux/4YAAMlStTOIqhvtkrLXf3Qlb10beD6Hr9GAFxGGc8zsIulJZBqA1+/naXWvVZ" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
 
-<link rel="stylesheet" href="{{ $semwebcss.RelPermalink }}" crossorigin="anonymous" media="all" type="text/css" />
-<link rel="stylesheet" href="{{ $globalcss.RelPermalink }}" crossorigin="anonymous" media="all" type="text/css" />
-{{- $webmentioncss := resources.Get "css/webmention.css" | minify -}}
-<link rel="stylesheet" href="{{ $webmentioncss.RelPermalink }}" crossorigin="anonymous" media="all" type="text/css" />
-{{- if templates.Exists "partials/youronly.one-head-04-local.html" -}}
-	{{ partial "youronly.one-head-04-local.html" . }}
-{{- end }}
-{{- if fileExists "assets/css/youronly.one-head-05-local.css" -}}
-	<link rel="stylesheet" href="{{ $localcss.RelPermalink }}" crossorigin="anonymous" media="all" type="text/css" />
-{{- end }}
+{{- /* TODO: migrate to our Hugo /defaults/ */ -}}
+<link href="https://rsc.youronly.one/css/paninap-fonts.min.css" integrity="sha384-UlmFJ50TRRCzmBS/DoU+/8c8qcnUcDjjAjIM/UHvHPeKZ0CthL9iwm6fKi3xTHMm" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+
+<script src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
+<link href="{{ $yooiconscss.RelPermalink }}" integrity="{{ $yooiconscss.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+<link href="{{ $yookicss.RelPermalink }}" integrity="{{ $yookicss.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
 
 {{/* BGN: analytics */}}
-	{{ with $cfwebanalyticsid }}
-		<link rel="preload" as="script" href="https://static.cloudflareinsights.com/beacon.min.js" crossorigin="anonymous" />
-		<script src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}' crossorigin="anonymous" async></script>
-	{{ end }}
-	{{ with $counterdevid }}
-		<link rel="preload" as="script" href="{{ $counterdevjs.RelPermalink }}" crossorigin="anonymous" />
-		<script src="{{ $counterdevjs.RelPermalink }}" crossorigin="anonymous" async></script>
-	{{ end }}
-	{{ with $microanalyticsioid }}
-		<link rel="preload" as="script" href="https://microanalytics.io/js/script.js" />
-		<script src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true" id="{{ . }}" async></script>
-	{{ end }}
-	{{ with $swetrixid }}
-		<link rel="preload" as="script" href="https://swetrix.org/swetrix.js" />
-		<script src="https://swetrix.org/swetrix.js" async></script>
-		<link rel="preload" as="script" href="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" />
-		<script src="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" async></script>
-		<noscript><img src="https://api.swetrix.com/log/noscript?pid={{ . }}" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
-	{{ end }}
-	{{ with $msftclarityid }}
-		<link rel="preload" as="script" href="{{ $msftclarityjs.RelPermalink }}" crossorigin="anonymous" />
-		<script src="{{ $msftclarityjs.RelPermalink }}" crossorigin="anonymous" async></script>
-	{{ end }}
+  {{- with $cfwebanalyticsid }}
+    <link href="https://static.cloudflareinsights.com/beacon.min.js" crossorigin="anonymous" rel="preload" as="script" />
+    <script src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}' crossorigin="anonymous" async ></script>
+  {{ end }}
+  {{- with $microanalyticsioid }}
+    <link href="https://microanalytics.io/js/script.js" rel="preload" as="script" />
+    <script src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true" id="{{ . }}" async ></script>
+  {{ end }}
+  {{- with or $counterdevjs $swetrixjs $msftclarityjs }}
+    {{- with $swetrixid }}
+      <link href="https://swetrix.org/swetrix.js" rel="preload" as="script" />
+      <script src="https://swetrix.org/swetrix.js" async ></script>
+      {{/* <noscript><img src="https://api.swetrix.com/log/noscript?pid={{ . }}" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript> */}}
+    {{ end }}
+    <link href="{{ $analyticsjs.RelPermalink }}" integrity="{{ $analyticsjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
+    <script src="{{ $analyticsjs.RelPermalink }}" integrity="{{ $analyticsjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
+  {{ end }}
 {{/* END: analytics */}}
 
 {{/* BGN: favicon */}}
-	<link rel="apple-touch-icon" sizes="180x180" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/apple-touch-icon.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
-	{{- /* NOTE: disabled temporarily until we upload this file in each blog
-		<link rel="icon" type="image/svg+xml" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon.svg?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
-	*/ -}}
-	<link rel="icon" type="image/png" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
-	<link rel="icon" type="image/png" sizes="32x32" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon-32x32.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
-	<link rel="icon" type="image/png" sizes="192x192" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/android-chrome-192x192.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
-	<link rel="icon" type="image/png" sizes="16x16" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon-16x16.png?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
-	<link rel="mask-icon" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/safari-pinned-tab.svg?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" color="#5bbad5" crossorigin="anonymous" />
-	<link rel="shortcut icon" href="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/favicon.ico?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" crossorigin="anonymous" />
-	<meta name="msapplication-TileColor" content="#603cba" />
-	<meta name="msapplication-config" content="https://rsc.youronly.one/favicon/{{ $.Site.Params.subdir }}/browserconfig.xml?{{ $.Site.Params.faviconcache }}={{ $.Site.Params.faviconbuster }}" />
-	<meta name="theme-color" content="{{ .Site.Params.themeColor | default "#ffffff" }}" />
+  <link href="{{ $appletouchiconpng.RelPermalink }}" integrity="{{ $appletouchiconpng.Data.Integrity }}" crossorigin="anonymous" type="image/png" sizes="180x180" rel="apple-touch-icon" />
+  {{- /* NOTE: disabled temporarily until we upload this file in each blog
+    <link href="{{ $faviconsvg.RelPermalink }}" integrity="{{ $faviconsvg.Data.Integrity }}" crossorigin="anonymous" type="image/svg+xml" rel="icon" />
+  */ -}}
+  <link href="{{ $favicon32png.RelPermalink }}" integrity="{{ $favicon32png.Data.Integrity }}" crossorigin="anonymous" type="image/png" sizes="32x32" rel="icon" />
+  <link href="{{ $androidchrome192png.RelPermalink }}" integrity="{{ $androidchrome192png.Data.Integrity }}" crossorigin="anonymous" type="image/png" sizes="192x192" rel="icon" />
+  <link href="{{ $favicon16png.RelPermalink }}" integrity="{{ $favicon16png.Data.Integrity }}" crossorigin="anonymous" type="image/png" sizes="16x16" rel="icon" />
+  <link href="{{ $safaripinnedtabsvg.RelPermalink }}" integrity="{{ $safaripinnedtabsvg.Data.Integrity }}" crossorigin="anonymous" color="#5bbad5" type="image/svg+xml" rel="mask-icon" />
+  <link href="{{ $faviconico.RelPermalink }}" integrity="{{ $faviconico.Data.Integrity }}" crossorigin="anonymous" rel="shortcut icon" />
+  <meta name="msapplication-TileColor" content="#603cba" />
+  <meta name="msapplication-config" content="{{ $browserconfigxmlurl }}" integrity="{{ $browserconfigxml.Data.Integrity }}" crossorigin="anonymous" />
+  <meta name="theme-color" content="{{ .Site.Params.themeColor | default "#ffffff" }}" />
 {{/* END: favicon */}}
 
 <meta name="DC.title" content="IM YourOnly.One 🔏" />
@@ -95,9 +113,9 @@
 <meta name="ICBM" content="14.599781, 120.973935" />
 
 {{- if templates.Exists "partials/relme.html" -}}
-	{{ partial "relme.html" . }}
+  {{ partial "relme.html" . }}
 {{- end }}
 
 {{- with .Site.Params.googleadsense }}
-	<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous" defer></script>
+  <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous" defer ></script>
 {{- end -}}

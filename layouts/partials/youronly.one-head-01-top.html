@@ -1,4 +1,5 @@
 <meta charset="utf-8">
+<link href="{{ with .Params.relcanonical }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}" rel="canonical" />
 {{- /*
   NOTE:
   - All non-visible dates/times are in UTC for uniformity.
@@ -6,23 +7,21 @@
   - do not re-arrange
 */ -}}
 {{- $iso8601 := "2006-01-02T15:04:05Z07:00" -}}
-
-<link rel="canonical" href="{{ with .Params.relcanonical }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 {{/* BGN: Translations */}}
   {{- if .IsTranslated }}
   {{ range .AllTranslations -}}
-  <link rel="alternate" hreflang="{{ or (.Site.LanguageCode) (.Site.Language.Lang) }}" href="{{ .Permalink }}" />
+  <link href="{{ .Permalink }}" hreflang="{{ or (.Site.LanguageCode) (.Site.Language.Lang) }}" rel="alternate" />
   {{ end -}}
-  {{ range first 1 .AllTranslations }}<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />{{ end }}
+  {{ range first 1 .AllTranslations }}<link href="{{ .Permalink }}" hreflang="x-default" rel="alternate" />{{ end }}
   {{- end -}}
 {{/* END: Translations */}}
 {{ range .AlternativeOutputFormats }}
-  <link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ .Permalink | safeURL }}" />
+  <link href="{{ .Permalink | safeURL }}" type="{{ .MediaType.Type | html }}" rel="{{ .Rel }}" />
 {{- end }}
-<link rel="self" href="{{ .Permalink }}" />
+<link href="{{ .Permalink }}" rel="self" />
 {{ range .Site.Params.websubhubs }}
-  <link rel="hub" href="{{ . }}" />
+  <link href="{{ . }}" rel="hub" />
 {{- end }}
 {{- /* NOTE: for reference, if we need it again
   <meta name="robots" content="{{ if or (eq .Kind "taxonomy") (eq .Kind "term") }}noindex{{ else if .Params.metarobots }}{{ .Params.metarobots }}{{ else }}index{{ end }}, follow" />
@@ -50,7 +49,8 @@
 {{ partial "schemas/semweb.html" . }}
 {{ partial "schemas/schema_Global.html" . }}
 
-<link rel="manifest" href="{{ .Site.BaseURL }}site.webmanifest" />
+{{- $sitewebmanifest := resources.Get "site.webmanifest" | resources.ExecuteAsTemplate "site.webmanifest" . | resources.Fingerprint "sha384" -}}
+<link href="{{ $sitewebmanifest.RelPermalink }}" integrity="{{ $sitewebmanifest.Data.Integrity }}" crossorigin="anonymous" rel="manifest" />
 {{ if site.IsServer }}
   <meta http-equiv="cache-control" content="no-cache">
 {{ end }}
@@ -75,20 +75,20 @@
 */ -}}
 
 {{/* RESEARCH: https://developer.mozilla.org/en-US/docs/Web/Performance/dns-prefetch */}}
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
-<link rel="dns-prefetch" href="https://fonts.googleapis.com" crossorigin="anonymous" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-<link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
-<link rel="dns-prefetch" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
-<link rel="preconnect" href="https://unpkg.com" crossorigin="anonymous" />
-<link rel="dns-prefetch" href="https://unpkg.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com" crossorigin="anonymous" rel="preconnect" />
+<link href="https://fonts.googleapis.com" crossorigin="anonymous" rel="dns-prefetch" />
+<link href="https://fonts.gstatic.com" crossorigin="anonymous" rel="preconnect" />
+<link href="https://fonts.gstatic.com" crossorigin="anonymous" rel="dns-prefetch" />
+<link href="https://cdn.jsdelivr.net" crossorigin="anonymous" rel="preconnect" />
+<link href="https://cdn.jsdelivr.net" crossorigin="anonymous" rel="dns-prefetch" />
+<link href="https://unpkg.com" crossorigin="anonymous" rel="preconnect" />
+<link href="https://unpkg.com" crossorigin="anonymous" rel="dns-prefetch" />
 
-{{- /* NOTE: Disabled, currently not needed
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous" />
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" crossorigin="anonymous" />
-  <link rel="preconnect" href="https://ajax.cloudflare.com" crossorigin="anonymous" />
-  <link rel="dns-prefetch" href="https://ajax.cloudflare.com" crossorigin="anonymous" />
+{{- /* NOTE: Disabled, currently not needed, we are hosted on Cloudflare Pages
+  <link href="https://cdnjs.cloudflare.com" crossorigin="anonymous" rel="preconnect" />
+  <link href="https://cdnjs.cloudflare.com" crossorigin="anonymous" rel="dns-prefetch" />
+  <link href="https://ajax.cloudflare.com" crossorigin="anonymous" rel="preconnect" />
+  <link href="https://ajax.cloudflare.com" crossorigin="anonymous" rel="dns-prefetch" />
 */ -}}
 
 {{- /*
@@ -100,11 +100,11 @@
   - due to CSP, we can not use the media="print" onload="this.media='all'" hack in rel="stylesheet"
 */ -}}
 {{- /* NOTE: cache the styles */ -}}
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" crossorigin="anonymous" rel="preload" as="style" />
 {{- /* NOTE: execute the styles */ -}}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" media="all" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" media="all" crossorigin="anonymous" rel="stylesheet" />
 {{- /* NOTE: We do not need this since the print hack is disabled
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2??family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2??family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" crossorigin="anonymous" rel="stylesheet" />
   </noscript>
 */ -}}
