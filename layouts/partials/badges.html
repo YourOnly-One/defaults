@@ -1,6 +1,6 @@
 {{- $id := (urls.Parse (or .Params.relcanonical .Permalink)).Path | replaceRE "/(.*?)/(.*?)/" "$1-$2" -}}
-<ul class="badges-content">
-  <li><a href="https://mastodon.social/@youronlyone" title="@youronlyone@mastodon.social"><img alt="Mastodon Follow" src="https://img.shields.io/mastodon/follow/1148958?color=blue&domain=https%3A%2F%2Fmastodon.social&logo=mastodon&style=plastic" /></a></li>{{- /* */ -}}
-  <li><a href="https://twitter.com/YourOnlyONEofcl" title="@YourOnlyONEofcl@twitter.com"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/YourOnlyONEofcl?color=blue&logo=twitter&style=plastic" /></a></li>{{- /* */ -}}
-  <li><img src="https://visitor-badge-reloaded.herokuapp.com/badge?page_id=youronly.one-{{ $id }}&text=Readers&style=plastic" alt="Readers" /></li>
-</ul>
+<div class="badges-content">
+  <span><a href="https://mastodon.social/@youronlyone" title="@youronlyone@mastodon.social"><img alt="Mastodon Follow" src="https://img.shields.io/mastodon/follow/1148958?color=blue&domain=https%3A%2F%2Fmastodon.social&logo=mastodon&style=plastic" /></a></span>{{- /* */ -}}
+  <span><a href="https://twitter.com/YourOnlyONEofcl" title="@YourOnlyONEofcl@twitter.com"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/YourOnlyONEofcl?color=blue&logo=twitter&style=plastic" /></a></span>{{- /* */ -}}
+  <span><img src="https://visitor-badge-reloaded.herokuapp.com/badge?page_id=youronly.one-{{ $id }}&text=Readers&style=plastic" alt="Readers" /></span>
+</div>

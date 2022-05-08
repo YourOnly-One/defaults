@@ -4,12 +4,12 @@
         <div class="best_viewed txt_center">
 
           {{/* BGN: Badges */}}
-          <ul class="badges-footer">
-            <li><a href="https://keybase.io/yukino" title="@yukino@keybase.io"><img alt="Keybase PGP" src="https://img.shields.io/keybase/pgp/yukino?style=plastic&message=F2F9BE4C3D8E4F53" /></a></li>{{- /* */ -}}
-            <li><img src="https://visitor-badge-reloaded.herokuapp.com/badge?page_id=youronly.one-{{ (urls.Parse .Permalink).Path | replaceRE "/(.*?)/(.*)" "$1" }}&text=Visitors&style=plastic" alt="Visitors" /></li>{{- /* */ -}}
-            {{- /* <li><a href="https://creativecommons.org/licenses/by-sa/4.0/" title="Content License: CC-BY-SA 4.0 International" rel="content license external"><img src="https://badgen.net/badge/license/CC-BY-SA%204.0?label=content&style=plastic" /></a></li> */ -}}
-            {{- /* <li><a href="https://gitlab.com/youronlyone/site.snoworld/-/blob/main/LICENSE" title="Code License: Mozilla Public License 2.0" rel="code license external"><img src="https://badgen.net/badge/license/MPL%202.0?label=code&style=plastic" /></a></li> */ -}}
-          </ul>
+          <div class="badges-footer">
+            <span><a href="https://keybase.io/yukino" title="@yukino@keybase.io"><img alt="Keybase PGP" src="https://img.shields.io/keybase/pgp/yukino?style=plastic&message=F2F9BE4C3D8E4F53" /></a></span>{{- /* */ -}}
+            <span><img src="https://visitor-badge-reloaded.herokuapp.com/badge?page_id=youronly.one-{{ (urls.Parse .Permalink).Path | replaceRE "/(.*?)/(.*)" "$1" }}&text=Visitors&style=plastic" alt="Visitors" /></span>{{- /* */ -}}
+            {{- /* <span><a href="https://creativecommons.org/licenses/by-sa/4.0/" title="Content License: CC-BY-SA 4.0 International" rel="content license external"><img src="https://badgen.net/badge/license/CC-BY-SA%204.0?label=content&style=plastic" /></a></span> */ -}}
+            {{- /* <span><a href="https://gitlab.com/youronlyone/site.snoworld/-/blob/main/LICENSE" title="Code License: Mozilla Public License 2.0" rel="code license external"><img src="https://badgen.net/badge/license/MPL%202.0?label=code&style=plastic" /></a></span> */ -}}
+          </div>
           {{/* END: Badges */}}
 
           {{- /*
