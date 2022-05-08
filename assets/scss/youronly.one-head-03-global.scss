@@ -1,0 +1,30 @@
+/* This file is for styles exclusive for Hugo sites. */
+
+/*
+sup[id^="fnref"] > a.footnote-ref {
+  background-color: #c0ffee;
+  border-radius: 10px;
+  padding: 1px 5px;
+  font-size: 0.6rem;
+}
+*/
+sup[id^="fnref"] > a.footnote-ref {
+  &::before {
+    content: "[";
+  }
+  &::after {
+    content: "]";
+  }
+  font-size: 0.7rem;
+  vertical-align: super;
+}
+
+/**********************
+** BGN: Custom Lists **
+**********************/
+  aside.partofseries ul > li::marker {
+    content: "\1F449\1F3FD\20"; /* 👉🏽 */
+  }
+/**********************
+** END: Custom Lists **
+**********************/
