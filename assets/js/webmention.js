@@ -164,7 +164,7 @@ A more detailed example:
       "rsvp": "<span class='emoji'>📅</span>",
       "follow-of": "<span class='emoji'>🐜</span>"
     };
-   */
+  */
   const reactEmoji = {
     "in-reply-to": " ",
     "like-of": "<span class='emoji'>&#x1F90E;</span>",
@@ -192,7 +192,7 @@ A more detailed example:
       "interested": "<span class='emoji'>💡</span>",
       "maybe": "<span class='emoji'>💭</span>"
     };
-   */
+  */
   const rsvpEmoji = {
     "yes": "<span class='emoji'>&#x2705;</span>",
     "no": "<span class='emoji'>&#x274C;</span>",
