@@ -37,7 +37,6 @@
 {{- $safaripinnedtabsvg := resources.Get "favicon/safari-pinned-tab.svg" | resources.Fingerprint "sha384" -}}
 {{- $faviconico := resources.Get "favicon/favicon.ico" | resources.Fingerprint "sha384" -}}
 {{- $browserconfigxml := resources.Get "favicon/browserconfig.xml" | resources.ExecuteAsTemplate "favicon/browserconfig.xml" . | resources.Fingerprint "sha384" -}}
-{{- $browserconfigxmlurl := (printf "%s%s" .Site.BaseURL $browserconfigxml.RelPermalink) | replaceRE "(.*)//(.*)" "$1/$2" -}}
 
 {{- with .Site.Params.jquerycdn }}
   {{- $jqueryjs := resources.Get "js/jquery.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.js */}}
@@ -74,21 +73,21 @@
 {{/* BGN: analytics */}}
   {{- with $cfwebanalyticsid }}
     <link href="https://static.cloudflareinsights.com/beacon.min.js" crossorigin="anonymous" rel="preload" as="script" />
-    <script src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}' crossorigin="anonymous" async ></script>
+    <script src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}' crossorigin="anonymous" type="text/javascript"></script>
   {{ end }}
   {{- with $microanalyticsioid }}
     <link href="https://microanalytics.io/js/script.js" rel="preload" as="script" />
-    <script src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true" id="{{ . }}" async ></script>
+    <script src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true" id="{{ . }}" type="text/javascript"></script>
   {{ end }}
   {{- with or $counterdevjs $msftclarityjs }}
     <link href="{{ $analyticsjs.RelPermalink }}" integrity="{{ $analyticsjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
-    <script src="{{ $analyticsjs.RelPermalink }}" integrity="{{ $analyticsjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
+    <script src="{{ $analyticsjs.RelPermalink }}" integrity="{{ $analyticsjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript"></script>
   {{ end }}
 	{{ with $swetrixid }}
 		<link href="https://swetrix.org/swetrix.js" rel="preload" as="script" />
 		<script src="https://swetrix.org/swetrix.js" type="text/javascript"></script>
 		<link href="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" rel="preload" as="script" />
-		<script src="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" type="text/javascript" async ></script>
+		<script src="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" type="text/javascript"></script>
     {{/* <noscript><img src="https://api.swetrix.com/log/noscript?pid={{ . }}" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript> */}}
   {{ end }}
 {{/* END: analytics */}}
@@ -104,7 +103,7 @@
   <link href="{{ $safaripinnedtabsvg.RelPermalink }}" integrity="{{ $safaripinnedtabsvg.Data.Integrity }}" crossorigin="anonymous" color="#5bbad5" type="image/svg+xml" rel="mask-icon" />
   <link href="{{ $faviconico.RelPermalink }}" integrity="{{ $faviconico.Data.Integrity }}" crossorigin="anonymous" rel="shortcut icon" />
   <meta name="msapplication-TileColor" content="#603cba" />
-  <meta name="msapplication-config" content="{{ $browserconfigxmlurl }}" integrity="{{ $browserconfigxml.Data.Integrity }}" crossorigin="anonymous" />
+  <meta name="msapplication-config" content="{{ $browserconfigxml.Permalink }}" integrity="{{ $browserconfigxml.Data.Integrity }}" crossorigin="anonymous" />
   <meta name="theme-color" content="{{ .Site.Params.themeColor | default "#ffffff" }}" />
 {{/* END: favicon */}}
 
