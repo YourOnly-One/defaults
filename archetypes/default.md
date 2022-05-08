@@ -153,6 +153,8 @@ content
 
 ## Header
 
+{{% quote type="quote_name|quote_title|quote_work" lang="" %}}content{{% /quote %}}
+
 Test here.[^a]
 
 [^a]: Florabase: [Allamanda L.](https://florabase.dpaw.wa.gov.au/browse/profile/21926); [Fair Use](https://florabase.dpaw.wa.gov.au/help/copyright)
