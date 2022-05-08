@@ -39,9 +39,6 @@
 {{- $browserconfigxml := resources.Get "favicon/browserconfig.xml" | resources.ExecuteAsTemplate "favicon/browserconfig.xml" . | resources.Fingerprint "sha384" -}}
 {{- $browserconfigxmlurl := (printf "%s%s" .Site.BaseURL $browserconfigxml.RelPermalink) | replaceRE "(.*)//(.*)" "$1/$2" -}}
 
-{{- $lastfmcss := resources.Get "css/lastfm-nowplaying.css" | minify | resources.Fingerprint "sha384" -}}
-{{- $lastfmjs := resources.Get "js/lastfm-nowplaying.js" | minify | resources.Fingerprint "sha384" -}}
-
 {{- with .Site.Params.jquerycdn }}
   {{- $jqueryjs := resources.Get "js/jquery.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.js */}}
   {{- $jqueryjs = $jqueryjs | minify | resources.Fingerprint "sha384" -}}
@@ -51,11 +48,10 @@
 
 {{- with .Params.math }}
   {{- $polyfilljs := resources.Get "js/polyfill.js" -}} {{/* src: https://polyfill.io/v3/polyfill.js?version=3.111.0&features=es2022 */}}
-  {{- $mmljs := resources.Get "js/tex-mml-chtml.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js */}}
-  {{- $mathjaxjs := slice $polyfilljs $mmljs | resources.Concat "js/mathjax.js" -}}
-  {{- $mathjaxjs = $mathjaxjs | minify | resources.Fingerprint "sha384" -}}
-  <link href="{{ $mathjaxjs.RelPermalink }}" integrity="{{ $mathjaxjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
-  <script src="{{ $mathjaxjs.RelPermalink }}" integrity="{{ $mathjaxjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
+  {{- $polyfilljs = $polyfilljs | minify | resources.Fingerprint "sha384" -}}
+  <link href="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
+  <script src="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" integrity="sha384-+BSz3oj3ILMYvOBr16U9i0H4RZRmGyQQ+1q9eqr8T3skmAFrJk8GmgwgqlCZdNSo" crossorigin="anonymous" type="text/javascript" async ></script>
 {{ end -}}
 
 {{- /*
@@ -122,8 +118,13 @@
   {{ partial "relme.html" . }}
 {{- end }}
 
-<link href="{{ $lastfmcss.RelPermalink }}" integrity="{{ $lastfmcss.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
-<script src="{{ $lastfmjs.RelPermalink }}" integrity="{{ $lastfmjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" defer ></script>
+{{- $sitepath := (urls.Parse .Site.BaseURL).Path -}}
+{{ if or (eq $sitepath "/love/") (eq $sitepath "/snoworld/") (eq $sitepath "/techmagus/") (eq $sitepath "/yuki/") }}
+  {{- $lastfmcss := resources.Get "css/lastfm-nowplaying.css" | minify | resources.Fingerprint "sha384" -}}
+  {{- $lastfmjs := resources.Get "js/lastfm-nowplaying.js" | minify | resources.Fingerprint "sha384" -}}
+  <link href="{{ $lastfmcss.RelPermalink }}" integrity="{{ $lastfmcss.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+  <script src="{{ $lastfmjs.RelPermalink }}" integrity="{{ $lastfmjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" defer ></script>
+{{ end }}
 
 {{- with .Site.Params.googleadsense }}
   <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous" defer ></script>
