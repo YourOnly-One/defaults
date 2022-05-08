@@ -21,7 +21,7 @@
 {{- $counterdevjs := resources.Get "js/analytics-counterdev.js" | js.Build ( dict "params" ( dict "counterdevid" $counterdevid ) ) -}}
 {{- $swetrixjs := resources.Get "js/analytics-swetrix.js" | js.Build ( dict "params" ( dict "swetrixid" $swetrixid ) ) -}}
 {{- $msftclarityjs := resources.Get "js/analytics-msftclarity.js" | js.Build ( dict "params" ( dict "msftclarityid" $msftclarityid ) ) -}}
-{{- $analyticsjs := slice $counterdevjs $swetrixjs $msftclarityjs | resources.Concat "js/analytics.js" -}}
+{{- $analyticsjs := slice $counterdevjs $msftclarityjs | resources.Concat "js/analytics.js" -}}
 {{- $analyticsjs = $analyticsjs | minify | resources.Fingerprint "sha384" -}}
 
 {{- $twemojijs := resources.Get "js/twemoji.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.js */}}
@@ -39,12 +39,16 @@
 {{- $browserconfigxml := resources.Get "favicon/browserconfig.xml" | resources.ExecuteAsTemplate "favicon/browserconfig.xml" . | resources.Fingerprint "sha384" -}}
 {{- $browserconfigxmlurl := (printf "%s%s" .Site.BaseURL $browserconfigxml.RelPermalink) | replaceRE "(.*)//(.*)" "$1/$2" -}}
 
+{{- $lastfmcss := resources.Get "css/lastfm-nowplaying.css" | minify | resources.Fingerprint "sha384" -}}
+{{- $lastfmjs := resources.Get "js/lastfm-nowplaying.js" | minify | resources.Fingerprint "sha384" -}}
+
 {{- with .Site.Params.jquerycdn }}
   {{- $jqueryjs := resources.Get "js/jquery.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.js */}}
   {{- $jqueryjs = $jqueryjs | minify | resources.Fingerprint "sha384" -}}
   <link href="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
-  <script src="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
+  <script src="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript"></script>
 {{ end -}}
+
 {{- with .Params.math }}
   {{- $polyfilljs := resources.Get "js/polyfill.js" -}} {{/* src: https://polyfill.io/v3/polyfill.js?version=3.111.0&features=es2022 */}}
   {{- $mmljs := resources.Get "js/tex-mml-chtml.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js */}}
@@ -64,7 +68,7 @@
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha384-Ux/4YAAMlStTOIqhvtkrLXf3Qlb10beD6Hr9GAFxGGc8zsIulJZBqA1+/naXWvVZ" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
 
-{{- /* TODO: migrate to our Hugo /defaults/ */ -}}
+{{/* TODO: migrate to our Hugo /defaults/ */}}
 <link href="https://rsc.youronly.one/css/paninap-fonts.min.css" integrity="sha384-UlmFJ50TRRCzmBS/DoU+/8c8qcnUcDjjAjIM/UHvHPeKZ0CthL9iwm6fKi3xTHMm" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
 
 <script src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
@@ -80,14 +84,16 @@
     <link href="https://microanalytics.io/js/script.js" rel="preload" as="script" />
     <script src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true" id="{{ . }}" async ></script>
   {{ end }}
-  {{- with or $counterdevjs $swetrixjs $msftclarityjs }}
-    {{- with $swetrixid }}
-      <link href="https://swetrix.org/swetrix.js" rel="preload" as="script" />
-      <script src="https://swetrix.org/swetrix.js" async ></script>
-      {{/* <noscript><img src="https://api.swetrix.com/log/noscript?pid={{ . }}" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript> */}}
-    {{ end }}
+  {{- with or $counterdevjs $msftclarityjs }}
     <link href="{{ $analyticsjs.RelPermalink }}" integrity="{{ $analyticsjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
     <script src="{{ $analyticsjs.RelPermalink }}" integrity="{{ $analyticsjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
+  {{ end }}
+	{{ with $swetrixid }}
+		<link href="https://swetrix.org/swetrix.js" rel="preload" as="script" />
+		<script src="https://swetrix.org/swetrix.js" type="text/javascript"></script>
+		<link href="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" rel="preload" as="script" />
+		<script src="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" type="text/javascript" async ></script>
+    {{/* <noscript><img src="https://api.swetrix.com/log/noscript?pid={{ . }}" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript> */}}
   {{ end }}
 {{/* END: analytics */}}
 
@@ -115,6 +121,9 @@
 {{- if templates.Exists "partials/relme.html" -}}
   {{ partial "relme.html" . }}
 {{- end }}
+
+<link href="{{ $lastfmcss.RelPermalink }}" integrity="{{ $lastfmcss.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+<script src="{{ $lastfmjs.RelPermalink }}" integrity="{{ $lastfmjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" defer ></script>
 
 {{- with .Site.Params.googleadsense }}
   <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous" defer ></script>
