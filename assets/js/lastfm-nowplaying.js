@@ -22,7 +22,6 @@ var lastfmData = {
   additional: "&format=json&limit=1"
 };
 
-
 /** SAMPLE
   *
     {
@@ -135,7 +134,7 @@ var getSetLastFM = function() {
         .attr("referrerpolicy", "strict-origin-when-cross-origin");
     },
     error: function(resp) {
-      $("img#trackart").attr("src", "img/Yuki_flag-square-300x.webp");
+      $("img#trackart").attr("src", "img/y/Yuki_flag-square-300x.webp");
 
       $("a#tracktitle")
         .html("Now Playing Widget")
