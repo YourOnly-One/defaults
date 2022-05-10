@@ -49,7 +49,7 @@
 {{ partial "schemas/semweb.html" . }}
 {{ partial "schemas/schema_Global.html" . }}
 
-{{- $sitewebmanifest := resources.Get "site.webmanifest" | resources.ExecuteAsTemplate "site.webmanifest" . | resources.Fingerprint "sha384" -}}
+{{- $sitewebmanifest := resources.Get "site.webmanifest" | resources.ExecuteAsTemplate "site.webmanifest" . | resources.Fingerprint "sha512" -}}
 <link href="{{ $sitewebmanifest.RelPermalink }}" integrity="{{ $sitewebmanifest.Data.Integrity }}" crossorigin="anonymous" rel="manifest" />
 {{ if site.IsServer }}
   <meta http-equiv="cache-control" content="no-cache">
