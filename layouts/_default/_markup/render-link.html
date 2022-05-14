@@ -1,25 +1,20 @@
-{{- $url := .Destination -}}
-{{- $destination := (urls.Parse $url).Host -}}
-{{- $destination = strings.HasSuffix $destination "youronly.one" -}}
-{{- $baseurl := (urls.Parse site.BaseURL).Host -}}
-{{- if and (strings.HasPrefix $baseurl "192.168") site.IsServer -}}
-  {{- $baseurl = strings.HasPrefix $baseurl "192.168" -}}
-{{- else if and "localhost:1313" site.IsServer -}}
-  {{- $baseurl = strings.HasSuffix $baseurl "localhost:1313" -}}
-{{- else -}}
-  {{- $baseurl = strings.HasSuffix $baseurl "youronly.one" -}}
-{{- end -}}
-{{- $external := ne $destination $baseurl -}}
+{{- $url := (urls.Parse .Destination) -}}
+{{- $link := strings.HasSuffix $url.Host "youronly.one" -}}
+{{- $internal := site.GetPage .Destination -}}
 
-{{- $chat := or (strings.HasPrefix $url "irc") (strings.HasPrefix $url "xmpp") -}}
-{{- $ftp := strings.HasPrefix $url "ftp" -}}
-{{- $mail := strings.HasPrefix $url "mailto" -}}
-{{- $magnet := strings.HasPrefix $url "magnet" -}}
-{{- $remote := or (strings.HasPrefix $url "telnet") (strings.HasPrefix $url "ssh") (strings.HasPrefix $url "sftp") (strings.HasPrefix $url "git") (strings.HasPrefix $url "svn") -}}
-{{- $tel := strings.HasPrefix $url "tel" -}}
-{{- $books := or (strings.HasSuffix $url ".epub") (strings.HasSuffix $url ".mobi") -}}
-{{- $docs := or (strings.HasSuffix $url ".pdf") (strings.HasSuffix $url ".txt") -}}
-{{- $zip := or (strings.HasSuffix $url ".zip") (strings.HasSuffix $url ".7z") (strings.HasSuffix $url ".7zip") (strings.HasSuffix $url ".rar") (strings.HasSuffix $url ".tar") (strings.HasSuffix $url ".gz") (strings.HasSuffix $url ".gzip") -}}
+{{- $fragment := $url.Fragment -}}
+{{- with $fragment -}}{{ $fragment = printf "#%s" $fragment }}{{- end -}}
+{{- $destination := printf "%s%s" (or $internal.RelPermalink .Destination) $fragment -}}
+
+{{- $chat := or (strings.HasPrefix .Destination "irc") (strings.HasPrefix .Destination "xmpp") -}}
+{{- $ftp := strings.HasPrefix .Destination "ftp" -}}
+{{- $mail := strings.HasPrefix .Destination "mailto" -}}
+{{- $magnet := strings.HasPrefix .Destination "magnet" -}}
+{{- $remote := or (strings.HasPrefix .Destination "telnet") (strings.HasPrefix .Destination "ssh") (strings.HasPrefix .Destination "sftp") (strings.HasPrefix .Destination "git") (strings.HasPrefix .Destination "svn") -}}
+{{- $tel := strings.HasPrefix .Destination "tel" -}}
+{{- $books := or (strings.HasSuffix .Destination ".epub") (strings.HasSuffix .Destination ".mobi") -}}
+{{- $docs := or (strings.HasSuffix .Destination ".pdf") (strings.HasSuffix .Destination ".txt") -}}
+{{- $zip := or (strings.HasSuffix .Destination ".zip") (strings.HasSuffix .Destination ".7z") (strings.HasSuffix .Destination ".7zip") (strings.HasSuffix .Destination ".rar") (strings.HasSuffix .Destination ".tar") (strings.HasSuffix .Destination ".gz") (strings.HasSuffix .Destination ".gzip") -}}
 
 {{- $icon := "" -}}
 {{- if $chat -}}{{ $icon = "chat" }}
@@ -31,11 +26,32 @@
   {{- else if $books -}}{{ $icon = "books" }}
   {{- else if $docs -}}{{ $icon = "docs" }}
   {{- else if $zip -}}{{ $icon = "zip" }}
-  {{- else if $external -}}{{ $icon = "external" }}
+  {{- else -}}{{ $icon = "external" }}
 {{- end -}}
-<a href="{{ $url | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ with $icon }} class="icon_{{ . }}"{{ end }}{{ if $external }} rel="noopener external"{{ end }}>{{ .Text | safeHTML }}</a>
+
+{{- if $internal -}}
+  <a href="{{ $destination | safeURL }}" title="{{ with or .Title $internal.LinkTitle }}{{ . }}{{ end }}">{{ or .Text .Title $internal.LinkTitle | safeHTML }}</a>
+{{- else -}}
+  <a href="{{ $destination | safeURL }}"{{ with or .Title .Text }} title="{{ . }}"{{ end }}{{ with $icon }} class="icon_{{ . }}"{{ end }} rel="noopener external">{{ or .Text .Title | safeHTML }}</a>
+{{- end -}}
 
 {{- /* TEST
+  - [](filename.md)
+  - [](/filename.md)
+  - [](filename)
+  - [](/filename)
+  - [](filename.md "Title")
+  - [](/filename.md "Title")
+  - [](filename "Title")
+  - [](/filename "Title")
+  - [Text](filename.md)
+  - [Text](/filename.md)
+  - [Text](filename)
+  - [Text](/filename)
+  - [Text](filename.md "Title")
+  - [Text](/filename.md "Title")
+  - [Text](filename "Title")
+  - [Text](/filename "Title")
   - [external](https://example.com)
   - [irc](irc://example.com)
   - [xmpp](xmpp://example.com)
