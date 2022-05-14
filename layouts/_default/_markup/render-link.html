@@ -1,5 +1,4 @@
 {{- $url := (urls.Parse .Destination) -}}
-{{- $link := strings.HasSuffix $url.Host "youronly.one" -}}
 {{- $internal := site.GetPage .Destination -}}
 
 {{- $fragment := $url.Fragment -}}
@@ -26,14 +25,10 @@
   {{- else if $books -}}{{ $icon = "books" }}
   {{- else if $docs -}}{{ $icon = "docs" }}
   {{- else if $zip -}}{{ $icon = "zip" }}
-  {{- else -}}{{ $icon = "external" }}
+  {{- else if not $internal -}}{{ $icon = "external" }}
 {{- end -}}
 
-{{- if $internal -}}
-  <a href="{{ $destination | safeURL }}" title="{{ with or .Title $internal.LinkTitle }}{{ . }}{{ end }}">{{ or .Text .Title $internal.LinkTitle | safeHTML }}</a>
-{{- else -}}
-  <a href="{{ $destination | safeURL }}"{{ with or .Title .Text }} title="{{ . }}"{{ end }}{{ with $icon }} class="icon_{{ . }}"{{ end }} rel="noopener external">{{ or .Text .Title | safeHTML }}</a>
-{{- end -}}
+<a href="{{ $destination | safeURL }}"{{ with or .Title $internal.LinkTitle .Text }} title="{{ . }}"{{ end }}{{ with $icon }} class="icon_{{ . }}"{{ end }}{{ if not $internal }} rel="noopener external"{{ end }}>{{ or .Text .Title $internal.LinkTitle | safeHTML }}</a>
 
 {{- /* TEST
   - [](filename.md)
