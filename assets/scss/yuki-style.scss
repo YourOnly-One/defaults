@@ -1517,36 +1517,16 @@
     text-decoration: none;
     white-space: pre-wrap;
   }
-  .icon_external::after {
-    content: "\20\1F517" /* 🔗 */
-  }
-  .icon_chat::after {
-    content: "\20\1F4AC" /* 💬 */
-  }
-  .icon_ftp::after {
-    content: "\20\23EC" /* ⏬ */
-  }
-  .icon_mail::after {
-    content: "\20\1F4E7" /* 📧 */
-  }
-  .icon_magnet::after {
-    content: "\20\1F9F2" /* 🧲 */
-  }
-  .icon_remote::after {
-    content: "\20\1F4BB" /* 💻 */
-  }
-  .icon_tel::after {
-    content: "\20\260E\FE0F" /* ☎️ */
-  }
-  .icon_books::after {
-    content: "\20\1F4D6" /* 📖 */
-  }
-  .icon_docs::after {
-    content: "\20\1F4C4" /* 📄 */
-  }
-  .icon_zip::after {
-    content: "\20\1F5DC\FE0F" /* 🗜️ */
-  }
+  .icon_external::after   { content: "\20\1F517"      /* 🔗 */ }
+  .icon_chat::after       { content: "\20\1F4AC"      /* 💬 */ }
+  .icon_ftp::after        { content: "\20\23EC"       /* ⏬ */ }
+  .icon_mail::after       { content: "\20\1F4E7"      /* 📧 */ }
+  .icon_magnet::after     { content: "\20\1F9F2"      /* 🧲 */ }
+  .icon_remote::after     { content: "\20\1F4BB"      /* 💻 */ }
+  .icon_tel::after        { content: "\20\260E\FE0F"  /* ☎️ */ }
+  .icon_books::after      { content: "\20\1F4D6"      /* 📖 */ }
+  .icon_docs::after       { content: "\20\1F4C4"      /* 📄 */ }
+  .icon_compressed::after { content: "\20\1F5DC\FE0F" /* 🗜️ */ }
 /********************
 ** END: Link icons **
 ********************/
