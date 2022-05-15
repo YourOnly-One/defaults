@@ -3,17 +3,24 @@
 
 {{- $fragment := $url.Fragment -}}
 {{- with $fragment -}}{{ $fragment = printf "#%s" $fragment }}{{- end -}}
-{{- $destination := printf "%s%s" (or $internal.RelPermalink .Destination) $fragment -}}
+{{- $destination := "" -}}
+{{- if $internal -}}
+  {{- $destination = printf "%s%s" (or $internal.RelPermalink .Destination) $fragment -}}
+{{- else -}}
+  {{- $destination = .Destination -}}
+{{- end -}}
 
-{{- $chat := or (strings.HasPrefix .Destination "irc") (strings.HasPrefix .Destination "xmpp") -}}
-{{- $ftp := strings.HasPrefix .Destination "ftp" -}}
-{{- $mail := strings.HasPrefix .Destination "mailto" -}}
-{{- $magnet := strings.HasPrefix .Destination "magnet" -}}
-{{- $remote := or (strings.HasPrefix .Destination "telnet") (strings.HasPrefix .Destination "ssh") (strings.HasPrefix .Destination "sftp") (strings.HasPrefix .Destination "git") (strings.HasPrefix .Destination "svn") -}}
-{{- $tel := strings.HasPrefix .Destination "tel" -}}
+{{/* RESEARCH: https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml */}}
+{{- $chat := or (strings.HasPrefix .Destination "irc://") (strings.HasPrefix .Destination "ircs://") (strings.HasPrefix .Destination "irc6://") (strings.HasPrefix .Destination "jabber://") (strings.HasPrefix .Destination "xmpp://") (strings.HasPrefix .Destination "discord://") (strings.HasPrefix .Destination "skype://") -}}
+{{- $ftp := or (strings.HasPrefix .Destination "ftp://") (strings.HasPrefix .Destination "aftp://") -}}
+{{- $mail := strings.HasPrefix .Destination "mailto://" -}}
+{{- $magnet := strings.HasPrefix .Destination "magnet://" -}}
+{{- $remote := or (strings.HasPrefix .Destination "telnet://") (strings.HasPrefix .Destination "ssh://") (strings.HasPrefix .Destination "sftp://") (strings.HasPrefix .Destination "git://") (strings.HasPrefix .Destination "svn://") (strings.HasPrefix .Destination "bzr://") -}}
+{{- $tel := strings.HasPrefix .Destination "tel://" -}}
+
 {{- $books := or (strings.HasSuffix .Destination ".epub") (strings.HasSuffix .Destination ".mobi") -}}
-{{- $docs := or (strings.HasSuffix .Destination ".pdf") (strings.HasSuffix .Destination ".txt") -}}
-{{- $zip := or (strings.HasSuffix .Destination ".zip") (strings.HasSuffix .Destination ".7z") (strings.HasSuffix .Destination ".7zip") (strings.HasSuffix .Destination ".rar") (strings.HasSuffix .Destination ".tar") (strings.HasSuffix .Destination ".gz") (strings.HasSuffix .Destination ".gzip") -}}
+{{- $docs := or (strings.HasSuffix .Destination ".pdf") (strings.HasSuffix .Destination ".txt") (strings.HasPrefix .Destination "doi://") -}}
+{{- $compressed := or (strings.HasSuffix .Destination ".zip") (strings.HasSuffix .Destination ".7z") (strings.HasSuffix .Destination ".7zip") (strings.HasSuffix .Destination ".rar") (strings.HasSuffix .Destination ".tar") (strings.HasSuffix .Destination ".gz") (strings.HasSuffix .Destination ".gzip") -}}
 
 {{- $icon := "" -}}
 {{- if $chat -}}{{ $icon = "chat" }}
@@ -24,11 +31,11 @@
   {{- else if $tel -}}{{ $icon = "tel" }}
   {{- else if $books -}}{{ $icon = "books" }}
   {{- else if $docs -}}{{ $icon = "docs" }}
-  {{- else if $zip -}}{{ $icon = "zip" }}
+  {{- else if $compressed -}}{{ $icon = "compressed" }}
   {{- else if not $internal -}}{{ $icon = "external" }}
 {{- end -}}
 
-<a href="{{ $destination | safeURL }}"{{ with or .Title $internal.LinkTitle .Text }} title="{{ . }}"{{ end }}{{ with $icon }} class="icon_{{ . }}"{{ end }}{{ if not $internal }} rel="noopener external"{{ end }}>{{ or .Text .Title $internal.LinkTitle | safeHTML }}</a>
+<a href="{{ $destination | safeURL }}"{{ with or .Title $internal.LinkTitle .Text }} title="{{ . }}"{{ end }}{{ with $icon }} class="icon_{{ . }}"{{ end }}{{ if not $internal }} rel="noopener external"{{ end }}>{{ or .Text .Title $internal.Title | safeHTML }}</a>
 
 {{- /* TEST
   - [](filename.md)
@@ -48,28 +55,13 @@
   - [Text](filename "Title")
   - [Text](/filename "Title")
   - [external](https://example.com)
-  - [irc](irc://example.com)
-  - [xmpp](xmpp://example.com)
-  - [ftp](ftp://example.com)
+  - [irc](irc://example.com) | [ircs](ircs://example.com) | [irc6](irc6://example.com) | [jabber](jabber://example.com) | [xmpp](xmpp://example.com) | [discord](discord://example.com) | [skype](skype://example.com)
+  - [ftp](ftp://example.com) | [aftp](aftp://example.com)
   - [mail](mailto://example.com)
   - [magnet](magnet://example.com)
-  - [telnet](telnet://example.com)
-  - [ssh](ssh://example.com)
-  - [sftp](sftp://example.com)
-  - [git](git://example.com)
-  - [svn](svn://example.com)
+  - [telnet](telnet://example.com) | [ssh](ssh://example.com) | [sftp](sftp://example.com) | [git](git://example.com) | [svn](svn://example.com) | [bzr](bzr://example.com)
   - [tel](tel://example.com)
-  - [pdf](https://example.com/file.pdf)
-  - [txt](https://example.com/file.txt)
-  - [epub](https://example.com/file.epub)
-  - [mobi](https://example.com/file.mobi)
-  - [zip](https://example.com/file.zip)
-  - [7z](https://example.com/file.7z)
-  - [7zip](https://example.com/file.7zip)
-  - [rar](https://example.com/file.rar)
-  - [tar](https://example.com/file.tar)
-  - [gz](https://example.com/file.gz)
-  - [tar.gz](https://example.com/file.tar.gz)
-  - [gzip](https://example.com/file.gzip)
-  - [tar.gzip](https://example.com/file.tar.gzip)
-  */ -}}
+  - [pdf](https://example.com/file.pdf) | [txt](https://example.com/file.txt) | [doi](doi://example.com)
+  - [epub](https://example.com/file.epub) | [mobi](https://example.com/file.mobi)
+  - [zip](https://example.com/file.zip) | [7z](https://example.com/file.7z) | [7zip](https://example.com/file.7zip) | [rar](https://example.com/file.rar) | [tar](https://example.com/file.tar) | [gz](https://example.com/file.gz) | [tar.gz](https://example.com/file.tar.gz) | [gzip](https://example.com/file.gzip) | [tar.gzip](https://example.com/file.tar.gzip)
+*/ -}}
