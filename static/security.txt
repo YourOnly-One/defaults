@@ -1,0 +1,33 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+# Contact: e2ee by default (in order of preference)
+Contact: https://keybase.io/yukino
+Contact: https://matrix.to/#/@youronlyone:matrix.org
+
+# Contact: non-e2ee (in order of preference)
+Contact: https://im.youronly.one/p/contact-us/
+Contact: https://twitter.com/messages/compose?recipient_id=701940572227923968
+Contact: https://mastodon.social/@YourOnlyOne
+
+# Expiration
+Expires: 2025-12-31T23:59:59.000Z
+
+# Encryption
+Encryption: https://im.youronly.one/0xF2F9BE4C3D8E4F53.pub.asc
+Encryption: https://keybase.io/yukino
+Encryption: https://keyoxide.org/989EB937BDF4A5CD65470204F2F9BE4C3D8E4F53
+
+# Languages
+Preferred-Languages: en, fil, tl
+
+# Canonical
+Canonical: https://im.youronly.one/.well-known/security.txt
+Canonical: https://im.yourony.one/security.txt
+-----BEGIN PGP SIGNATURE-----
+
+iI4EARYKADYWIQT8KuNEQVQt8pzwXZA2XpOKztuK1QUCYoFhdxgYaGtwczovL2tl
+eXMub3BlbnBncC5vcmcACgkQNl6Tis7bitXNIgEA0oOP8Swf3FgNs25ewWZ5Lf3h
+1GOzBwZ6A24Bbf/oIlEBAIOetfc3kgYFruIBNVQmsUZm3QGquxxUcBa9N392VqgK
+=p5eP
+-----END PGP SIGNATURE-----
