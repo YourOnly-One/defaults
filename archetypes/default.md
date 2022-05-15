@@ -141,6 +141,15 @@ SUMMARY
 
 > ***TAGLINE***
 
+- channel names, TV network name, brand/company names, author names, band names, singer names
+  - {{% quote type="name" lang="" %}}content{{% /quote %}}
+
+- movies, televisions, radio shows, books, periodicals, databases, websites
+  - {{% quote type="title" lang="" %}}content{{% /quote %}}
+
+- episode, articles, essays, chapters, poems, songs, speeches, mottos
+  - {{% quote type="work" lang="" %}}content{{% /quote %}}
+
 <!-- markdownlint-disable-next-line -->
 {{% sembox boxstyle="qbs_generic" qmarkstyle="qbm_doublequotationmark" boxcolour="qbc_blue" attribalign="txt_right" srctitle="" srclink="" srcrel="noopener external" attribto="" attriblink="" attribrel="noopener external" %}}
 content
