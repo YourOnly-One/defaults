@@ -150,19 +150,17 @@ SUMMARY
 - episode, articles, essays, chapters, poems, songs, speeches, mottos
   - {{% quote type="work" lang="" %}}content{{% /quote %}}
 
-<!-- markdownlint-disable-next-line -->
 {{% sembox boxstyle="qbs_generic" qmarkstyle="qbm_doublequotationmark" boxcolour="qbc_blue" attribalign="txt_right" srctitle="" srclink="" srcrel="noopener external" attribto="" attriblink="" attribrel="noopener external" %}}
 content
 {{% /sembox %}}
 
-<!-- markdownlint-disable-next-line -->
 {{% quotebox boxstyle="qbs_generic" qmarkstyle="qbm_doublequotationmark" boxcolour="qbc_blue" attribalign="txt_right" srctitle="" srclink="" srcrel="noopener external" attribto="" attriblink="" attribrel="noopener external" %}}
 content
 {{% /quotebox %}}
 
 ## Header
 
-{{% quote type="quote_name|quote_title|quote_work" lang="" %}}content{{% /quote %}}
+{{% quote type="name|title|work" lang="" %}}content{{% /quote %}}
 
 Test here.[^a]
 
@@ -170,7 +168,6 @@ Test here.[^a]
 
 ## Image code
 
-<!-- markdownlint-disable -->
 {{< image
   height=""
   width=""
@@ -217,7 +214,6 @@ Test here.[^a]
   contentlocrel="noopener external"
   contentreferencetime=""
 >}}
-<!-- markdownlint-enable -->
 
 ## Other markdown codes
 
@@ -225,7 +221,6 @@ Test here.[^a]
 
 ## Official trailer / 公式予告編 / 공식 예고편
 
-<!-- markdownlint-disable -->
 {{< video
   height=""
   width=""
@@ -276,11 +271,9 @@ Test here.[^a]
   contentlocrel="noopener external"
   contentreferencetime=""
 >}}
-<!-- markdownlint-enable -->
 
 ## OST
 
-<!-- markdownlint-disable-next-line -->
 {{< music src="https://open.spotify.com/embed/playlist/CHANGE_THIS" >}}
 
 ## Attribution, Usage, &amp; Leave your links
@@ -289,7 +282,6 @@ Simply follow the attribution shown underneath each photo, or whichever is accep
 
 ---
 
-<!-- markdownlint-disable -->
 {{< image
   type="imagecoverattrib"
 
@@ -321,9 +313,17 @@ Simply follow the attribution shown underneath each photo, or whichever is accep
   cc0countrycode=""
   cc0countryurl=""
 >}}
-<!-- markdownlint-enable -->
 
 ---
 
 注意：Google 翻訳
 고시 : Google 번역
+
+---
+
+Only use the following if needed
+
+<!-- markdownlint-disable-next-line -->
+
+<!-- markdownlint-disable -->
+<!-- markdownlint-enable -->
