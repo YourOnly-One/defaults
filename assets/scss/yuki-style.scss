@@ -569,7 +569,7 @@
 ** BGN: ACCORDION **
 *******************/
   /* Usually used for FAQ and spoilers; show/hide */
-  details {
+  details.style01 {
     border: 1px solid;
     border-radius: 7px;
     box-shadow: 1px 1px 1px;
@@ -1431,6 +1431,7 @@
 
     .reacts {
       img {
+        display: inline-block;
         margin: 3px -1ex 1px 0;
       }
 
@@ -1442,7 +1443,7 @@
         .emoji {
           font-size: 1.1em;
           margin-left: -5px;
-          vertical-align: bottom;
+          vertical-align: text-bottom;
         }
       }
     }
