@@ -28,7 +28,7 @@
   <meta property="article:tag" content="{{ .LinkTitle }}" />
 {{ end }}{{ end }}
 {{ range .AllTranslations -}}
-  <meta property="{{ if eq .Lang $.Site.Language.Lang }}og:locale{{ else }}og:locale:alternate{{ end }}" content="{{ or .Site.LanguageCode .Site.Language.Lang }}" />
+  <meta property="{{ if eq .Lang $.Site.Language.Lang }}og:locale{{ else }}og:locale:alternate{{ end }}" content="{{ or .Site.LanguageCode .Site.Language.Lang | replaceRE "-" "_" }}" />
 {{ end }}
 <meta property="og:site_name" content="{{ .Site.Title }}" />
 
