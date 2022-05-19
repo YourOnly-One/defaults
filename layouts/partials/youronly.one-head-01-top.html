@@ -7,6 +7,37 @@
   - do not re-arrange
 */ -}}
 {{- $iso8601 := "2006-01-02T15:04:05Z07:00" -}}
+
+{{- $authors := "" -}}
+{{- $datapersons := .Site.Data.persons -}}
+{{- $semwebpersons := .Site.Params.semweb.persons -}}
+{{- $frontmatterpersons := .Params.authors }}
+{{- if $frontmatterpersons -}}
+  {{/* NOTE: if [[authors]] is set in frontmatter, use this to display a list of persons with fallback to /data/persons/ if present */}}
+  {{- range $i, $frontmatterperson := index $frontmatterpersons -}}
+    {{ $dataperson := index $datapersons $frontmatterperson.person }}{{ if $i }}, {{ end }}
+    {{ $authors = or $frontmatterperson.name $dataperson.name }}
+  {{- end -}}
+{{- else if $semwebpersons -}}
+  {{/* NOTE: else if [[semweb.persons]] is set in config file, use it to display a list of persons with fallback to /data/persons/ if present */}}
+  {{- range $i, $semwebperson := index $semwebpersons -}}
+    {{ $dataperson := index $datapersons $semwebperson.person }}{{ if $i }}, {{ end }}
+    {{ $authors = or $semwebperson.name $dataperson.name }}
+  {{ end }}
+{{- else if .Param "author" -}}
+  {{/* NOTE: else if default Hugo 'author' param is used in frontmatter or config, display generic */}}
+  {{ $authors = .Param "author" }}
+{{- end -}}
+
+{{- $keywords := "" -}}
+{{- if .Params.keywords -}}
+  {{ $keywords = delimit .Params.keywords ", " }}
+{{- else if or .Params.tags .Params.categories -}}
+  {{ $keywords = delimit (apply (union .Params.tags .Params.categories) "chomp" ".") ", " }}
+{{- else -}}
+  {{ $keywords = delimit .Site.Params.keywords ", " }}
+{{- end -}}
+
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 {{/* BGN: Translations */}}
   {{- if .IsTranslated }}
@@ -28,15 +59,11 @@
 */ -}}
 <meta name="robots" content="{{ if .Params.metarobots }}{{ .Params.metarobots }}{{ else }}index{{ end }}, follow" />
 {{ with .Params.redirectto }}<meta http-equiv="refresh" content="0; url='{{ . }}'" />{{ end }}
-<meta name="author" content="{{ $.Param "author.name" }}" />
+<meta name="author" content="{{ $authors }}" />
 {{ with (.Param "description") }}<meta name="description" content="{{ . | plainify }}" class="p-summary" />{{ end }}
-<meta name="keywords" content="{{ with or ($.Param "keywords") ($.Param "tags") }}{{ delimit . ", " }}{{ end }}" />
+<meta name="keywords" content="{{ $keywords }}" />
 <meta name="modified" content="{{ .Lastmod.UTC.Format $iso8601 }}">
 <meta name="created" content="{{ .Date.UTC.Format $iso8601 }}">
-<meta property="article:published_time" content="{{ .Date.UTC.Format $iso8601 }}" />
-{{ range .Params.categories }}
-  <meta property="article:section" content="{{ . }}" />
-{{ end }}
 
 <link href="https://indieauth.com/auth" rel="indieauth-metadata authorization_endpoint" />
 <link href="https://webmention.io/im.youronly.one/webmention" rel="webmention" />
