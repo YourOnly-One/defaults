@@ -2,19 +2,21 @@
 title = ""
 description = ""
 
-date = "{{ .Date }}"                           # manually adjust to local timezone
-#lastmod = "2022-04-07T17:53:01+08:00"                        # manually adjust to local timezone
+date = "{{ .Date }}"                    # first created; manually adjust to local timezone
+publishdate = "{{ .Date }}"             # first publication; manually adjust to local timezone
+#expirydate = "2022-04-07T17:53:01+08:00"              # expiry; manually adjust to local timezone
+#lastmod = "2022-04-07T17:53:01+08:00"                 # last update; manually adjust to local timezone
 
-#aliases = [""]
-#url = ""                            # to override .Permalink
+#aliases = [""]                                        # "/post"
+#url = ""                                              # override .Permalink
 slug = ""
 translationKey = "{SLUG}-{DATE}"
 relCanonical = "https://im.youronly.one/{BLOG-NAME}/{LANG}/{POST-TITLE}-{DATE}/"
-#disqus_url = ""                     # not used in sites by Yelosan Publishing
-#disquq_identifier = ""              # set if date of this content is different from main translation
+#disqus_url = ""                                       # not used in sites by Yelosan Publishing
+#disquq_identifier = ""                                # set if date of this content is different from main translation
 
-#redirecto = ""                      # Yelosan Publishing: used in _index.md
-#metarobots = "noindex"              # Yelosan Publishing: used in _index.md
+#redirectto = ""                                       # Yelosan Publishing: used in _index.md
+#metarobots = "noindex"                                # Yelosan Publishing: used in _index.md
 
 #syndications = [""]
 
@@ -31,15 +33,15 @@ comments = true
 #math = true
 toc = true
 
-#audio = [""]                        # used for og:audio, etc.
-#images = ["https://img.youronly.one/{LETTER}/{FILENAME}.webp"]                       # used for og:images, etc.; first image is cover image
-#videos = ["https://www.youtube.com/watch?v="]                       # used for og:video, etc.
+#audio = [""]
+#images = ["https://img.youronly.one/{LETTER}/{FILENAME}.webp"]
+#videos = ["https://www.youtube.com/watch?v="]
 
-type = ""                           # article, sitepage, review
+type = ""                                             # article, sitepage, review
 
 draft = true
 
-#license = ""                        # only set if the post license is not the same as the site license
+#license = ""                                          # only set if the post license is not the same as the site license
 
 # For /yuki/ choose one and remove everything else
 #[[authors]]
