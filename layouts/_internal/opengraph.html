@@ -19,8 +19,8 @@
 {{ with .Params.videos }}{{ range . }}<meta property="og:video" content="{{ . | absURL }}" />{{ end }}{{ end }}
 {{ with .Site.Social.facebook_authorid }}<meta property="article:author" content="https://facebook.com/{{ . }}" />{{ end }}
 {{ with .Site.Social.facebook_pageid }}<meta property="article:publisher" content="https://facebook.com/{{ . }}" />{{ end }}
-{{ with .PublishDate }}<meta property="article:published_time" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />{{ end }}
-{{ with .Lastmod }}<meta property="article:modified_time" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />{{ end }}
+{{ with or .PublishDate .Date .Lastmod }}<meta property="article:published_time" {{ .UTC.Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />{{ end }}
+{{ with or .Lastmod .PublishDate .Date }}<meta property="article:modified_time" {{ .UTC.Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />{{ end }}
 {{ with (.GetTerms "categories") }}{{ range . -}}
   <meta property="article:section" content="{{ .LinkTitle }}" />
 {{ end }}{{ end -}}

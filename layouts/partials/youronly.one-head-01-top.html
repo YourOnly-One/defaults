@@ -61,9 +61,9 @@
 {{ with .Params.redirectto }}<meta http-equiv="refresh" content="0; url='{{ . }}'" />{{ end }}
 <meta name="author" content="{{ $authors }}" />
 {{ with (.Param "description") }}<meta name="description" content="{{ . | plainify }}" class="p-summary" />{{ end }}
-<meta name="keywords" content="{{ $keywords }}" />
-<meta name="modified" content="{{ .Lastmod.UTC.Format $iso8601 }}">
-<meta name="created" content="{{ .Date.UTC.Format $iso8601 }}">
+{{ with $keywords }}<meta name="keywords" content="{{ . }}" />{{ end }}
+{{ with or .Lastmod .PublishDate .Date }}<meta name="modified" content="{{ .UTC.Format $iso8601 | safeHTML }}" />{{ end }}
+{{ with or .PublishDate .Date .Lastmod }}<meta name="created" content="{{ .UTC.Format $iso8601 | safeHTML }}" />{{ end }}
 
 <link href="https://indieauth.com/auth" rel="indieauth-metadata authorization_endpoint" />
 <link href="https://webmention.io/im.youronly.one/webmention" rel="webmention" />
