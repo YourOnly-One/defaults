@@ -17,83 +17,97 @@
   *       - tested on Chromium v89.0.4389.9
   *       - tested on Firefox v86.0b3
   * 2021-01-30: Switched to Emoji instead of icon files
+  * 2022-05-23:
+  *   - Switched to grid layout
+  *   - Switched to ::marker
 ***/
 html body .nowplayingcard {
   --box-shadow-color: rgba(20, 255, 0, 1);
-  min-width: 16rem;
-  max-width: 18rem;
-  margin: 0 auto;
-  margin-top: 5%;
   font-family: "Noto Sans", "Source Sans Pro", sans-serif;
-  font-size: 13px;
+  margin: 0;
+  margin: 0 auto;
+  max-width: 18rem;
+  min-width: 16rem;
+  padding: 0;
+}
+
+html body .nowplayingcard a {
+  text-decoration: none;
+}
+
+html body .nowplayingcard div {
+  margin: 0;
+  padding: 0;
 }
 
 html body .nowplayingcard .nowplayingcontainer-inner {
-  width: 100%;
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+  border-radius: 4px;
   box-shadow: 0 0 7px 0 var(--box-shadow-color);
+  display: grid;
+  grid-template-columns: 31% 69%;
+  overflow: hidden;
   transition: 0.3s;
-  display: inline-block;
-  border-radius: 3px;
 }
-
 html body .nowplayingcard .nowplayingcontainer-inner:hover {
-  /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
   box-shadow: 0 0 14px 0 var(--box-shadow-color);
 }
 
 html body .nowplayingcard .nowplayingcontainer-inner img#trackart {
-  max-width: 30%;
-  float: left;
-  left: 0;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  max-width: 100%;
+  width: 100%;
 }
 
 html body .nowplayingcard .nowplayingcontainer-inner .trackInfo {
-  float: left;
-  text-align: left;
-  text-decoration: none;
+  align-self: center;
+  display: grid;
+  font-size: 0.88em;
+  grid-template-rows: 33.33333333%;
+  grid-template-rows: calc(100% / 3);
   white-space: nowrap;
-  line-height: 1.6rem;
-  margin: 0 auto;
-  padding-left: 0.12rem;
-  width: 70%;
 }
 
-html body .nowplayingcard .nowplayingcontainer-inner .trackInfo .emoji {
-  font-size: 15px;
-  font-weight: bold;
-  vertical-align: middle;
+html body .nowplayingcard .nowplayingcontainer-inner .trackInfo div {
+  height: 100%;
+  min-width: 0;
+  line-height: 2.05em;
 }
-
-html body .nowplayingcard .nowplayingcontainer-inner .trackInfo #tracktitle,
-html body .nowplayingcard .nowplayingcontainer-inner .trackInfo #trackalbum,
-html body .nowplayingcard .nowplayingcontainer-inner .trackInfo #trackartist {
-  display: inline-block;
+/*
+html body .nowplayingcard .nowplayingcontainer-inner .trackInfo div:nth-child(2) {
+  border-top: dotted 0.5px;
+  border-bottom: dotted 0.5px;
+}
+*/
+html body .nowplayingcard .nowplayingcontainer-inner .trackInfo div a {
+  border: 0;
+  display: list-item;
+  list-style-position: inside;
   overflow: hidden;
+  max-width: 96%;
+  padding-left: 0.3em;
   text-overflow: ellipsis;
-  vertical-align: middle;
-  width: 87%;
-  padding-left: 3%;
+  width: 96%;
 }
 html body .nowplayingcard .nowplayingcontainer-inner .trackInfo #tracktitle {
-  font-size: 15px;
   font-weight: bold;
-}
-html body .nowplayingcard .nowplayingcontainer-inner .trackInfo #trackalbum {
-  font-size: 11px;
 }
 html body .nowplayingcard .nowplayingcontainer-inner .trackInfo #trackartist {
-  font-size: 13px;
   font-weight: bold;
+}
+html body .nowplayingcard .nowplayingcontainer-inner .trackInfo #tracktitle::marker {
+  content: "\1F3A7\20"; /* 🎧 */
+}
+html body .nowplayingcard .nowplayingcontainer-inner .trackInfo #trackalbum::marker {
+  content: "\1F4C0\20"; /* 📀 */
+}
+html body .nowplayingcard .nowplayingcontainer-inner .trackInfo #trackartist::marker {
+  content: "\1F3A4\20"; /* 🎤 */
 }
 
 /*
 html body .nowplayingcard .nowplayingcontainer-inner .trackInfo a img {
-  width: 15px;
   height: 15px;
-  vertical-align: middle;
   margin: -2% 3px 0 0;
+  vertical-align: middle;
+  width: 15px;
 }
 */

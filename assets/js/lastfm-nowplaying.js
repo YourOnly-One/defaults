@@ -11,6 +11,9 @@
   *   - Added link to Artist name
   *   - Added Album info with link
   * 2021-01-30: Switched to Emoji instead of icon files
+  * 2022-05-23:
+  *   - Switched to grid layout
+  *   - Switched to ::marker
 ***/
 var lastfmData = {
   baseURL:
@@ -115,7 +118,7 @@ var getSetLastFM = function() {
       $("a#tracktitle")
         .html(recentTrack.name)
         .attr("href", recentTrack.url)
-        .attr("title", recentTrack.name + " by " + recentTrack.artist["#text"])
+        .attr("title", "Title: " + recentTrack.name)
         .attr("rel", "noopener external nofollow")
         .attr("referrerpolicy", "strict-origin-when-cross-origin");
 
