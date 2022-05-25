@@ -1,7 +1,7 @@
 {{- $pc := .Site.Config.Privacy.Disqus -}}
 {{- if not $pc.Disable -}}
   {{- /* if (.Site.DisqusShortname) */ -}}
-  {{ if and (.Site.DisqusShortname) (not .Site.IsServer) }}
+  {{ if and (.Site.DisqusShortname) (hugo.IsProduction) }}
     {{- $relcanonical := urls.Parse .Params.relcanonical -}}
     {{- $permalink := urls.Parse .Permalink -}}
 
@@ -35,7 +35,7 @@
     <script src="{{ $disqusjs.RelPermalink }}" crossorigin="anonymous" async></script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-  {{ else if .Site.IsServer }}
+  {{ else }}
     <p id="hugoserver_disqus">Disqus is not available when using hugo server.</p>
   {{ end }}
 {{- end -}}
