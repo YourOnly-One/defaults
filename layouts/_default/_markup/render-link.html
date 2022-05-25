@@ -1,4 +1,5 @@
-{{- $url := (urls.Parse .Destination) -}}
+{{- $baseurl := urls.Parse site.BaseURL -}}
+{{- $url := urls.Parse .Destination -}}
 {{- $internal := site.GetPage .Destination -}}
 
 {{- $fragment := $url.Fragment -}}
@@ -66,7 +67,7 @@
   {{- else if $diskimage -}}{{ $icon = "diskimage" }}
   {{- else if $imagediting -}}{{ $icon = "imagediting" }}
 
-  {{- else if not $internal -}}{{ $icon = "external" }}
+  {{- else if and (not $internal) (ne $url.Host $baseurl.Host) -}}{{ $icon = "external" }}
 {{- end -}}
 <a href="{{ $destination | safeURL }}"{{ with or .Title $internal.LinkTitle .Text }} title="{{ . }}"{{ end }}{{ with $icon }} class="icon_{{ . }}"{{ end }}{{ if not $internal }} rel="noopener external"{{ end }}>{{ or .Text .Title $internal.Title | safeHTML }}</a>
 
