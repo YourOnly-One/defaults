@@ -143,6 +143,12 @@
             hyphens: none; /* Browser hyphenation algorithm is incorrect. Turn-off globally. */
     word-wrap: break-word; /* But keep word-wrap "on" to allow wrapping of very long words. */
   }
+  article, section,
+  header, footer,
+  details, summary {
+    content-visibility: auto;
+    contain-intrinsic-size: auto;
+  }
 /*************************
 ** END: Global Settings **
 *************************/
@@ -520,6 +526,8 @@
    * <div class="responsive_embedframe"><iframe src="https://www.youtube-nocookie.com/embed/" sandbox="allow-same-origin allow-scripts" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe></div>
    */
   .rspnsv-embedframe, .responsive_embedframe {
+    content-visibility: auto;
+    contain-intrinsic-size: auto;
     position: relative;
     padding-bottom: 56.25%; /* YouTube, Vimeo, Dailymotion, Google Maps, Generic */
     height: 0;
@@ -707,10 +715,15 @@
     ****************************************************************************
   **/
   html body {
+    .quote_box, .figure_box {
+      content-visibility: auto;
+      contain-intrinsic-size: auto;
+    }
+
     /* BGN: Remove browser and theme styles */
       figure.quote_box.quote_box.quote_box, aside.quote_box.quote_box.quote_box, div.quote_box.quote_box.quote_box,
       aside.figure_box, div.figure_box,
-      .attribution_name > p, .attribution_caption > p, .attribution_copyright > p,
+      .attribution_name > p, .attribution_copyright > p,
       .caption_txt > p {
         margin: 0;
         padding: 0;
@@ -757,7 +770,8 @@
       content: "\2015"; /* horizontal bar; quotation dash as per https://unicode.org/charts/PDF/U2000.pdf */
     }
 
-    .attribution_caption, .attribution_copyright, .caption_txt {
+    .attribution_copyright, .caption_txt {
+      color: unset;
       line-height: normal;
       margin-bottom: 23px;
 
@@ -1393,6 +1407,11 @@
 /********************
 ** BGN: webmention **
 ********************/
+  #webmentions {
+    content-visibility: auto;
+    contain-intrinsic-size: auto;
+  }
+
   #webmentions {
     margin: 0;
 
