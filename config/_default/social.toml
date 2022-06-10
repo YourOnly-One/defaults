@@ -25,7 +25,6 @@ steemit = "@youronlyone"                                            #
 strava = "faithfulathlete"                                             # URL-name or userID number
 #telegram = ""                                           # username
 twitter = "YourOnlyONEofcl"                                            # username; do not include @-at
-twitter_domain = "YourOnly.One"                                     # this domain shows in twitter cards as "View on `twitter_domain`"
 twitter_creator = "@YourOnlyONEofcl"                                    # @username
 twitter_site = "@YourOnlyONEofcl"                                       # @username
 #vero = "youronlyone"                                               #
