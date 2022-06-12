@@ -1,16 +1,20 @@
-{{- $cciconscss := resources.Get "css/cc-icons.css" -}} {{/* src: https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css */}}
-{{- $alliconscss := slice $cciconscss | resources.Concat "css/allicons.css" -}}
-{{- $alliconscss = $alliconscss | minify | resources.Fingerprint "sha512" -}}
+{{- /* $paninapfonts := resources.GetRemote "https://rsc.youronly.one/css/paninap-fonts.css" | minify | fingerprint "sha512" */ -}}
 
 {{- $yukiscss := resources.Get "scss/yuki-style.scss" -}}
 {{- $globalscss := resources.Get "scss/youronly.one-head-03-global.scss" -}}
 {{- $semwebcss := resources.Get "css/semweb-style.css" -}}
 {{- $quotecss := resources.Get "css/quote.css" -}}
 {{- $localcss := resources.Get "css/youronly.one-head-04-local.css" -}}
+
 {{- $yookiscss := slice $yukiscss $globalscss | resources.Concat "scss/yooki.scss" -}}
-{{- $yookicss := $yookiscss | resources.ExecuteAsTemplate "css/yooki.css" . | resources.ToCSS -}}
+{{- $yookicss := $yookiscss | resources.ExecuteAsTemplate "css/yooki.css" . | toCSS -}}
 {{- $yookicss = slice $yookicss $semwebcss $quotecss $localcss | resources.Concat "css/yooki.css" -}}
-{{- $yookicss = $yookicss | minify | resources.Fingerprint "sha512" -}}
+{{- $yookicss = $yookicss | minify | fingerprint "sha512" -}}
+
+{{- $cciconscss := resources.Get "css/cc-icons.css" -}} {{/* src: https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css */}}
+{{- $alliconscss := slice $cciconscss | resources.Concat "css/allicons.css" -}}
+{{- $alliconscss = $alliconscss | minify | fingerprint "sha512" -}}
+
 
 {{- $cfwebanalyticsid := .Site.Params.analytics.cfwebanalytics -}}
 {{- $microanalyticsioid := .Site.Params.analytics.microanalyticsio -}}
@@ -22,32 +26,32 @@
 {{- $swetrixjs := resources.Get "js/analytics-swetrix.js" | js.Build ( dict "params" ( dict "swetrixid" $swetrixid ) ) -}}
 {{- $msftclarityjs := resources.Get "js/analytics-msftclarity.js" | js.Build ( dict "params" ( dict "msftclarityid" $msftclarityid ) ) -}}
 {{- $analyticsjs := slice $counterdevjs $msftclarityjs | resources.Concat "js/analytics.js" -}}
-{{- $analyticsjs = $analyticsjs | minify | resources.Fingerprint "sha512" -}}
+{{- $analyticsjs = $analyticsjs | minify | fingerprint "sha512" -}}
 
 {{- $twemojijs := resources.Get "js/twemoji.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.js */}}
 {{- $twemojisettingsjs := resources.Get "js/twemoji-settings.js" -}}
 {{- $twemojialljs := slice $twemojijs $twemojisettingsjs | resources.Concat "js/twemoji-all.js" -}}
-{{- $twemojialljs = $twemojialljs | minify | resources.Fingerprint "sha512" -}}
+{{- $twemojialljs = $twemojialljs | minify | fingerprint "sha512" -}}
 
-{{- $appletouchiconpng := resources.Get "favicon/apple-touch-icon.png" | resources.Fingerprint "sha512" -}}
-{{- /* $faviconsvg := resources.Get "favicon/favicon.svg" | resources.Fingerprint "sha512" */ -}}
-{{- $favicon32png := resources.Get "favicon/favicon-32x32.png" | resources.Fingerprint "sha512" -}}
-{{- $androidchrome192png := resources.Get "favicon/android-chrome-192x192.png" | resources.Fingerprint "sha512" -}}
-{{- $favicon16png := resources.Get "favicon/favicon-16x16.png" | resources.Fingerprint "sha512" -}}
-{{- $safaripinnedtabsvg := resources.Get "favicon/safari-pinned-tab.svg" | resources.Fingerprint "sha512" -}}
-{{- $faviconico := resources.Get "favicon/favicon.ico" | resources.Fingerprint "sha512" -}}
-{{- $browserconfigxml := resources.Get "favicon/browserconfig.xml" | resources.ExecuteAsTemplate "favicon/browserconfig.xml" . | resources.Fingerprint "sha512" -}}
+{{- $appletouchiconpng := resources.Get "favicon/apple-touch-icon.png" | fingerprint "sha512" -}}
+{{- /* $faviconsvg := resources.Get "favicon/favicon.svg" | fingerprint "sha512" */ -}}
+{{- $favicon32png := resources.Get "favicon/favicon-32x32.png" | fingerprint "sha512" -}}
+{{- $androidchrome192png := resources.Get "favicon/android-chrome-192x192.png" | fingerprint "sha512" -}}
+{{- $favicon16png := resources.Get "favicon/favicon-16x16.png" | fingerprint "sha512" -}}
+{{- $safaripinnedtabsvg := resources.Get "favicon/safari-pinned-tab.svg" | fingerprint "sha512" -}}
+{{- $faviconico := resources.Get "favicon/favicon.ico" | fingerprint "sha512" -}}
+{{- $browserconfigxml := resources.Get "favicon/browserconfig.xml" | resources.ExecuteAsTemplate "favicon/browserconfig.xml" . | fingerprint "sha512" -}}
 
 {{- with .Site.Params.jquerycdn }}
   {{- $jqueryjs := resources.Get "js/jquery.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.js */}}
-  {{- $jqueryjs = $jqueryjs | minify | resources.Fingerprint "sha512" -}}
+  {{- $jqueryjs = $jqueryjs | minify | fingerprint "sha512" -}}
   <link href="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
   <script src="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript"></script>
 {{ end -}}
 
 {{- with .Params.math }}
   {{- $polyfilljs := resources.Get "js/polyfill.js" -}} {{/* src: https://polyfill.io/v3/polyfill.js?version=3.111.0&features=es2022 */}}
-  {{- $polyfilljs = $polyfilljs | minify | resources.Fingerprint "sha512" -}}
+  {{- $polyfilljs = $polyfilljs | minify | fingerprint "sha512" -}}
   <link href="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
   <script src="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
 	<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" integrity="sha512-ehyCwiYKL3B7bx/X+X0rs1JKF9ANzwjOeOvB69YoPOZnpBhC9GRSu2ry9vAuv4Z460WI7Yt4iq0dEPPeCElnXA==" crossorigin="anonymous" type="text/javascript" async ></script>
@@ -64,7 +68,10 @@
 <link href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha512-aupidr80M36SeyviA/hZ2uEPnvt2dTJfyjm9y6z1MgaV13TgzmDiFdsH3cvSNG27mRIj7gJ2gNeg1HeySJyE3Q==" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
 
 {{/* TODO: migrate to our Hugo /defaults/ */}}
-<link href="https://rsc.youronly.one/css/paninap-fonts.min.css" integrity="sha512-r9OxhQF0MXR1v8QSsq8w+vGxZxH/L/ebfLK7EgwY5DVccJ4nH3inBJNPlLLl4BTYmfc/yLGo/xLGzZtj0UbQ9g==" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+<link href="https://rsc.youronly.one/css/paninap-fonts.min.css" integrity="sha512-oIh9LQZsgdzTYVgqyvhX73Gc9uKugYI3AR/Ms+vfN7PyY72LhXieDLYqxWgbt4lEhKEBMRywyrAb2VdSwopUHA==" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+{{- /*
+  <link href="{{ $paninapfonts.RelPermalink }}" integrity="{{ $paninapfonts.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+*/ -}}
 
 <script src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
 <link href="{{ $alliconscss.RelPermalink }}" integrity="{{ $alliconscss.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
@@ -119,8 +126,8 @@
 
 {{- $sitepath := (urls.Parse .Site.BaseURL).Path -}}
 {{ if or (eq $sitepath "/love/") (eq $sitepath "/snoworld/") (eq $sitepath "/techmagus/") (eq $sitepath "/yuki/") }}
-  {{- $lastfmcss := resources.Get "css/lastfm-nowplaying.css" | minify | resources.Fingerprint "sha512" -}}
-  {{- $lastfmjs := resources.Get "js/lastfm-nowplaying.js" | minify | resources.Fingerprint "sha512" -}}
+  {{- $lastfmcss := resources.Get "css/lastfm-nowplaying.css" | minify | fingerprint "sha512" -}}
+  {{- $lastfmjs := resources.Get "js/lastfm-nowplaying.js" | minify | fingerprint "sha512" -}}
   <link href="{{ $lastfmcss.RelPermalink }}" integrity="{{ $lastfmcss.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
   <script src="{{ $lastfmjs.RelPermalink }}" integrity="{{ $lastfmjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" defer ></script>
 {{ end }}
