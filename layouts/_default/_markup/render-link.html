@@ -10,7 +10,8 @@
 {{- if $internal -}}
   {{- if (strings.HasPrefix $url.Path "./") -}}
     {{/* NOTE: for links starting with ./ */}}
-    {{- $destination = printf "%s%s%s" $baseurl.Host $url $fragment | replaceRE "\\.(.*)" "$1" -}}
+    {{- $urltrimmed := strings.TrimPrefix "./" $url -}}
+    {{- $destination = printf "%s://%s/%s%s" $baseurl.Scheme $baseurl.Host $urltrimmed $fragment -}}
   {{- else -}}
     {{/* NOTE: for internal links */}}
     {{- $destination = printf "%s%s" $getpage.RelPermalink $fragment -}}
@@ -83,7 +84,9 @@
   <ul>
     <li>$destination: {{ $destination }}</li>
     <li>$baseurl: {{ $baseurl }}</li>
+    <li>$baseurl.Scheme: {{ $baseurl.Scheme }}</li>
     <li>$baseurl.Host: {{ $baseurl.Host }}</li>
+    <li>$baseurl.Path: {{ $baseurl.Path }}</li>
     <li>$url: {{ $url }}</li>
     <li>$url.Host: {{ $url.Host }}</li>
     <li>$url.Path: {{ $url.Path }}</li>
