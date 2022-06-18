@@ -1,0 +1,29 @@
+### See:
+# 1. https://journallist.net/reference-document-for-trust-txt-specifications
+###
+
+controlledby=https://yelosan.youronly.one/
+contact=https://im.youronly.one/p/contact-us/
+
+# Social: YourOnly.One
+social=https://mastodon.social/@youronlyone
+social=https://pixelfed.social/youronlyone
+social=https://www.youtube.com/YourOnlyONEofcl
+social=https://www.facebook.com/YourOnly.ONE.ofcl
+social=https://twitter.com/YourOnlyONEofcl
+social=https://www.instagram.com/YourOnly.One
+
+# Social: Snoworld
+social=https://www.facebook.com/snoworld
+
+# Social: techmagus
+social=https://www.facebook.com/techmagus
+
+# Social: One Way Faith
+social=https://www.facebook.com/youronly.ONE.WAY
+
+# Social: Love and Relationships
+social=https://www.facebook.com/YourOnlyOne7
+
+# Social: gameshogun
+social=https://www.facebook.com/gameshogun
