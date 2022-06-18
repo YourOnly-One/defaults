@@ -1,6 +1,12 @@
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA512
 
+### See:
+# 1. https://www.rfc-editor.org/rfc/rfc9116.html
+# 2. https://securitytxt.org
+# 3. https://en.wikipedia.org/wiki/Security.txt
+###
+
 # Contact: e2ee by default (in order of preference)
 Contact: https://keybase.io/yukino
 Contact: https://matrix.to/#/@youronlyone:matrix.org
@@ -23,11 +29,10 @@ Preferred-Languages: en, fil, tl
 
 # Canonical
 Canonical: https://im.youronly.one/.well-known/security.txt
-Canonical: https://im.yourony.one/security.txt
 -----BEGIN PGP SIGNATURE-----
 
-iI4EARYKADYWIQT8KuNEQVQt8pzwXZA2XpOKztuK1QUCYoFhdxgYaGtwczovL2tl
-eXMub3BlbnBncC5vcmcACgkQNl6Tis7bitXNIgEA0oOP8Swf3FgNs25ewWZ5Lf3h
-1GOzBwZ6A24Bbf/oIlEBAIOetfc3kgYFruIBNVQmsUZm3QGquxxUcBa9N392VqgK
-=p5eP
+iI4EARYKADYWIQT8KuNEQVQt8pzwXZA2XpOKztuK1QUCYq4LBhgYaGtwczovL2tl
+eXMub3BlbnBncC5vcmcACgkQNl6Tis7bitWewAEAjpmIg/n2mie3excR1XH7Uog3
+mKk09Bi+rT20Pp/mzVoBAMemdtgq867iJhjNvC+2cn8xsFNu2QDtWOAed0TpXZsH
+=Vr4h
 -----END PGP SIGNATURE-----
