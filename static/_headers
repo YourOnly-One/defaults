@@ -10,7 +10,7 @@ https://:project.pages.dev/*
   X-Frame-Options: DENY
   Referrer-Policy: no-referrer,strict-origin-when-cross-origin
   Access-Control-Allow-Origin: *
-  #Content-Encoding: gzip, deflate
+  # Content-Encoding: gzip, deflate
   Vary: Upgrade-Insecure-Requests, Origin, Accept-Encoding
 
   ##############################################################################
@@ -25,7 +25,7 @@ https://:project.pages.dev/*
   ###   - default                                                            ###
   ##############################################################################
   Cross-Origin-Opener-Policy: same-origin-allow-popups; report-to="default"
-  #Cross-Origin-Opener-Policy: same-origin; report-to="default"
+  # Cross-Origin-Opener-Policy: same-origin; report-to="default"
 
   ##############################################################################
   ###                      Cross-Origin-Resource-Policy                      ###
@@ -57,7 +57,7 @@ https://:project.pages.dev/*
   ###   - default                                                            ###
   ###   - some third-party resources not yet CORP/CORS enabled               ###
   ##############################################################################
-  #Cross-Origin-Embedder-Policy: unsafe-none; report-to="default"
+  # Cross-Origin-Embedder-Policy: unsafe-none; report-to="default"
   Cross-Origin-Embedder-Policy: require-coop; report-to="default"
 
   ### removed: require-trusted-types-for 'script'; ###
