@@ -172,7 +172,6 @@ BODY
 
 ---
 
-<!-- markdownlint-disable -->
 {{< image
   type="imagecoverattrib"
 
@@ -204,9 +203,17 @@ BODY
   cc0countrycode=""
   cc0countryurl=""
 >}}
-<!-- markdownlint-enable -->
 
 ---
 
 注意：Google翻訳
 고시 : Google 번역
+
+---
+
+Only use the following if needed
+
+<!-- markdownlint-disable-next-line -->
+
+<!-- markdownlint-disable -->
+<!-- markdownlint-enable -->

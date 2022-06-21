@@ -84,13 +84,11 @@ contenttypes = ["CriticReview"]                                                 
 #  name = "Episode"
 #  datepublished = ""
 
-# Duplicate for more Actor entries
+# Duplicate as necessary
 [[semweb.actor]]
   name = ""
   #alternatenames = [""]
   sameas = [""]
-
-# Duplicate for more Character entries
 [[semweb.character]]
   name = ""
   #alternatenames = [""]
@@ -98,6 +96,12 @@ contenttypes = ["CriticReview"]                                                 
 
 # Duplicate for more Director entries
 [[semweb.director]]
+  name = ""
+  #alternatenames = [""]
+  sameas = [""]
+
+# Duplicate for more Writer entries
+[[semweb.writer]]
   name = ""
   #alternatenames = [""]
   sameas = [""]
@@ -233,25 +237,18 @@ SUMMARY
 
 ## Performance / 演技 / 공연
 
-## Image code
-
 ## Music / 音楽 / 음악
 
 ## Production / 製作 / 제작
 
 ## Verdict / 評決 / 평결
 
-## Other markdown codes
-
 ## Official trailer / 公式予告編 / 공식 예고편
 
 ## OST
 
-## Attribution, Usage, &amp; Leave your links
-
 ---
 
-<!-- markdownlint-disable -->
 {{< image
   type="imagecoverattrib"
 
@@ -283,9 +280,17 @@ SUMMARY
   cc0countrycode=""
   cc0countryurl=""
 >}}
-<!-- markdownlint-enable -->
 
 ---
 
 注意：Google翻訳
 고시 : Google 번역
+
+---
+
+Only use the following if needed
+
+<!-- markdownlint-disable-next-line -->
+
+<!-- markdownlint-disable -->
+<!-- markdownlint-enable -->
