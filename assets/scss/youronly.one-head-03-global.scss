@@ -1,23 +1,28 @@
-/* This file is for styles exclusive for Hugo sites. */
+/**
+  * This file is for styles exclusive for Hugo sites.
+***/
 
-/*
-sup[id^="fnref"] > a.footnote-ref {
-  background-color: #c0ffee;
-  border-radius: 10px;
-  padding: 1px 5px;
-  font-size: 0.6rem;
-}
-*/
-sup[id^="fnref"] > a.footnote-ref {
-  &::before {
-    content: "[";
+/**************************
+** BGN: Translation menu **
+**************************/
+  .lang-separator {
+    font-size: 1.3em;
   }
-  &::after {
-    content: "]";
+  .lang-flag-large {
+    display: inline-block;
+    font-size: 1.3em;
+    height: 1em;
+    width: 1em;
   }
-  font-size: 0.7rem;
-  vertical-align: super;
-}
+  /* .translation-active {} */
+  /* .translation-alt {} */
+  .translation-none {
+    cursor: not-allowed;
+    opacity:  .30;
+  }
+/**************************
+** END: Translation menu **
+**************************/
 
 /**********************
 ** BGN: Custom Lists **
@@ -28,3 +33,28 @@ sup[id^="fnref"] > a.footnote-ref {
 /**********************
 ** END: Custom Lists **
 **********************/
+
+/*******************
+** BGN: Footnotes **
+********************/
+  /*
+  sup[id^="fnref"] > a.footnote-ref {
+    background-color: #c0ffee;
+    border-radius: 10px;
+    padding: 1px 5px;
+    font-size: 0.6rem;
+  }
+  */
+  sup[id^="fnref"] > a.footnote-ref {
+    &::before {
+      content: "[";
+    }
+    &::after {
+      content: "]";
+    }
+    font-size: 0.7rem;
+    vertical-align: super;
+  }
+/*******************
+** END: Footnotes **
+********************/
