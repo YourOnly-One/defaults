@@ -71,6 +71,33 @@
 <link href="https://im.youronly.one/" rel="openid.delegate" />
 <link href="https://openid.indieauth.com/openid" rel="openid.server" />
 
+{{- $images := "" -}}
+{{- $image := "" -}}
+{{- $imageremote := "" -}}
+{{- $imagelocal := "" -}}
+{{- with .Params.images -}}
+  {{- range first 1 . -}}
+    {{- if (urls.Parse .).Scheme -}}
+      {{/* remote */}}
+      {{- $imageremote = resources.GetRemote . -}}
+    {{- else -}}
+      {{- with resources.Get . -}}
+        {{/* /assets/ */}}
+        {{- $imagelocal = . -}}
+      {{- else -}}
+        {{/* bundle */}}
+        {{- $imagelocal = resources.GetMatch . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if $imageremote -}}
+    {{- $image = $imageremote.RelPermalink -}}
+  {{- else if $imagelocal -}}
+    {{- $image = $imagelocal.RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+
+
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
 {{ partial "schemas/semweb.html" . }}
