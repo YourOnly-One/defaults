@@ -1,0 +1,70 @@
+{{- /*
+  1. https://pkg.go.dev/net/url
+  2. https://gohugo.io/functions/urls.parse/
+
+  [scheme:][//[userinfo@]host][/]path[?query][#fragment]
+*/ -}}
+{{- $url := or (.Get 0) (.Get "url") -}}
+{{- $urlparse := urls.Parse $url -}}
+{{ with $urlparse }}
+  <ul>
+    <li>.Scheme: {{ .Scheme }}</li>
+    <li>.Opaque: {{ .Opaque }}</li>
+    <li>.User: {{ .User }}</li>
+    <li>.Host: {{ .Host }}</li>
+    <li>.Path: {{ .Path }}</li>
+    <li>.RawPath: {{ .RawPath }}</li>
+    <li>.EscapedPath: {{ .EscapedPath }}</li>
+    <li>.RawPath: {{ .RawPath }}</li>
+    <li>.ForceQuery: {{ .ForceQuery }}</li>
+    <li>.RawQuery: {{ .RawQuery }}</li>
+    <li>.Fragment: {{ .Fragment }}</li>
+    <li>.RawFragment: {{ .RawFragment }}</li>
+    <li>.EscapedFragment: {{ .EscapedFragment }}</li>
+  </ul>
+{{ end }}
+
+
+
+{{- $imagesrc := or (.Get 0) (.Get "url") -}}
+{{- $image := "" -}}
+{{ if (urls.Parse $url).Scheme }}
+  {{/* remote */}}
+  {{ $image = resources.GetRemote $imagesrc }}
+{{ else }}
+  {{ with resources.Get $imagesrc }}
+    {{/* /assets/ */}}
+    {{ $image = . }}
+  {{ else }}
+    {{/* bundle */}}
+    {{ $image = resources.GetMatch $imagesrc }}
+  {{ end }}
+{{ end }}
+
+{{- /*
+{{- $image1280w := $image.Resize "1280x" -}}
+{{- $image1280wwebp := $image.Resize "1280x webp" -}}
+
+{{- $image1024w := $image.Resize "1024x" -}}
+{{- $image1024wwebp := $image.Resize "1024x webp" -}}
+
+{{- $image800w := $image.Resize "800x" -}}
+{{- $image800wwebp := $image.Resize "800x webp" -}}
+*/ -}}
+
+{{- $imageavif := "" -}}
+{{- $imagewebp := "" -}}
+{{- $imagejpg := "" -}}
+{{- $imagepng := "" -}}
+{{- /* NOTE: unused {{- $imagetype := "" -}} */ -}}
+{{ with $image }}
+  {{- $imageavif = .Resize (printf "%dx%d avif" .Width .Height) -}}
+  {{- $imagewebp = .Resize (printf "%dx%d webp" .Width .Height) -}}
+  {{- $imagepng = .Resize (printf "%dx%d png" .Width .Height) -}}
+  {{- $imagejpg = .Resize (printf "%dx%d jpg" .Width .Height) -}}
+  <picture>
+    {{- /* NOTE: no Hugo support yet <source srcset="{{ $imageavif.RelPermalink }}" type="image/avif" /> */ -}}
+    <source srcset="{{ $imagewebp.RelPermalink }}" type="image/webp" />
+    <img src="{{ if or (eq (path.Ext $image) ".avif") (eq (path.Ext $image) ".webp") }}{{ $imagepng.RelPermalink }}{{ else }}{{ $image.RelPermalink }}{{ end }}" alt="" width="{{ .Width }}" height="{{ .Height }}" loading="lazy" decoding="async" />
+  </picture>
+{{ end }}
