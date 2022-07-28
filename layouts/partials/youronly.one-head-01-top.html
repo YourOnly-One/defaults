@@ -78,24 +78,24 @@
     - Ideally in "single.html" or an "image.html" template (for reuse).
     - Also add "$imagewebp" and "$imagepng" for cover image.
 */ -}}
-{{- $image := "" -}}
+{{- $savecoverimage := "" -}}
 {{- with .Params.images -}}
   {{- range first 1 . -}}
     {{- if (urls.Parse .).Scheme -}}
       {{/* remote */}}
       {{- /* NOTE: localise the remote image for processing */ -}}
-      {{- $image = resources.GetRemote . -}}
+      {{- $savecoverimage = resources.GetRemote . -}}
     {{- else -}}
       {{- with resources.Get . -}}
         {{/* /assets/ */}}
-        {{- $image = . -}}
+        {{- $savecoverimage = . -}}
       {{- else -}}
         {{/* bundle */}}
-        {{- $image = resources.GetMatch . -}}
+        {{- $savecoverimage = resources.GetMatch . -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}
-  {{- $image = $image.Permalink -}}
+  {{- $savecoverimage = $savecoverimage.RelPermalink -}}
 {{- end -}}
 
 {{ template "_internal/opengraph.html" . }}
