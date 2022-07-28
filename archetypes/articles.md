@@ -187,7 +187,7 @@ BODY
 
   isrepresentativeofpage=true
 
-  link="images/{LETTER}/{FILENAME}.webp"
+  link="images/{LETTER}/{FILENAME}.png"
   linkrel="noopener"
   thumbnailurl=""
 
@@ -216,8 +216,8 @@ BODY
 
 ---
 
-注意：Google翻訳
-고시 : Google 번역
+注意:ネイバーPapago神経翻訳
+주의사항 : 네이버 파파고 신경번역
 
 ---
 

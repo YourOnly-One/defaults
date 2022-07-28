@@ -1,5 +1,5 @@
 +++
-title = "《》 review/批評/비평"
+title = "《》 review/復習する/검토"
 description = ""
 
 lastmod = "{{ .Date }}"                 # last update; manually adjust to local timezone
@@ -241,19 +241,19 @@ SUMMARY
 
 <!--more-->
 
-## Synopsis / 筋書き / 개요
+## Synopsis / あらすじ / 개요
 
-## Story / 物語 / 이야기
+## Story / ストーリー / 이야기
 
-## Performance / 演技 / 공연
+## Performance / 出来栄え / 성능
 
 ## Music / 音楽 / 음악
 
-## Production / 製作 / 제작
+## Production / 生産 / 생산
 
-## Verdict / 評決 / 평결
+## Verdict / 評決 / 평결을 내리다
 
-## Official trailer / 公式予告編 / 공식 예고편
+## Official trailer / 公式トレーラー / 공식 트레일러
 
 ## OST
 
@@ -264,7 +264,7 @@ SUMMARY
 
   isrepresentativeofpage=true
 
-  link="images/{LETTER}/{FILENAME}.webp"
+  link="images/{LETTER}/{FILENAME}.png"
   linkrel="noopener"
   thumbnailurl=""
 
@@ -293,8 +293,8 @@ SUMMARY
 
 ---
 
-注意：Google翻訳
-고시 : Google 번역
+注意:ネイバーPapago神経翻訳
+주의사항 : 네이버 파파고 신경번역
 
 ---
 

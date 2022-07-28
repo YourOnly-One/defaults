@@ -215,8 +215,8 @@ Test here.[^a]
 
   isrepresentativeofpage=false
 
-  src=""
-  link=""
+  src="images/{LETTER}/{FILENAME}.png"
+  link="images/{LETTER}/{FILENAME}.png"
   linkrel="noopener"
   thumbnailurl=""
 
@@ -240,8 +240,8 @@ Test here.[^a]
   copyrightnotice=""
   credittext=""
 
-  attribto=""
-  attriburl=""
+  attribto="I'M YourOnly.One"
+  attriburl="https://im.youronly.one/"
   attribrel="noopener"
 
   cc0country=""
@@ -326,7 +326,7 @@ Simply follow the attribution shown underneath each photo, or whichever is accep
 
   isrepresentativeofpage=true
 
-  link="images/{LETTER}/{FILENAME}.webp/"
+  link="images/{LETTER}/{FILENAME}.png"
   linkrel="noopener"
   thumbnailurl=""
 
@@ -355,8 +355,8 @@ Simply follow the attribution shown underneath each photo, or whichever is accep
 
 ---
 
-注意：Google 翻訳
-고시 : Google 번역
+注意:ネイバーPapago神経翻訳
+주의사항 : 네이버 파파고 신경번역
 
 ---
 
