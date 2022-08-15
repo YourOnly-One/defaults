@@ -25,7 +25,7 @@
       {{- with .Params.images -}}
       {{ range . }}
       <image:image>
-        <image:loc>{{ . }}</image:loc>
+        <image:loc>{{ . | absURL }}</image:loc>
         {{- /*  TODO: add optional information
                 NOTE: may have to refactor the whole image block
         <image:caption></image:caption>
