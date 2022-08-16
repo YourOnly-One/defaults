@@ -270,7 +270,7 @@
       "name": "{{ .Params.semweb.product.name }}",
       {{ with .Params.semweb.product.alternatenames }}"alternateName": [ {{ range $n, $v := . }}{{ if $n }}, {{ end }}"{{ $v }}"{{ end }} ],{{ end }}
       "sameAs": [ {{ range $n, $v := .Params.semweb.product.sameas }}{{ if $n }}, {{ end }}"{{ $v }}"{{ end }} ],
-      "image": [ {{ range $n, $v := $.Params.images }}{{ if $n }}, {{ end }}"{{ $v }}"{{ end }} ],
+      "image": [ {{ range $n, $v := $.Params.images }}{{ if $n }}, {{ end }}"{{ $v | absURL}}"{{ end }} ],
       "countryOfOrigin": "{{ .Params.semweb.product.countryoforigin }}",
       "description": "{{ .Params.semweb.product.description }}",
       {{- if .Params.semweb.actor }}
