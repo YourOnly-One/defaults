@@ -33,6 +33,9 @@ comments = true
 #math = true
 toc = true
 
+translation = false
+translationby = ""
+
 #audio = [""]
 #images = ["images/{LETTER}/{FILENAME}.webp"]
 #videos = ["https://www.youtube.com/watch?v="]
