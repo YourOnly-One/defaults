@@ -81,19 +81,7 @@
 {{- $savecoverimage := "" -}}
 {{- with .Params.images -}}
   {{- range first 1 . -}}
-    {{- if (urls.Parse .).Scheme -}}
-      {{/* remote */}}
-      {{- /* NOTE: localise the remote image for processing */ -}}
-      {{- $savecoverimage = resources.GetRemote . -}}
-    {{- else -}}
-      {{- with resources.Get . -}}
-        {{/* /assets/ */}}
-        {{- $savecoverimage = . -}}
-      {{- else -}}
-        {{/* bundle */}}
-        {{- $savecoverimage = resources.GetMatch . -}}
-      {{- end -}}
-    {{- end -}}
+    {{- $savecoverimage = partial "getresource.html" . -}}
   {{- end -}}
   {{- $savecoverimage = $savecoverimage.RelPermalink -}}
 {{- end -}}
