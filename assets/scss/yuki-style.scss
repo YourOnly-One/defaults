@@ -626,6 +626,57 @@
     }
   }
 
+  /* Interviews; show/hide */
+  details.style02 {
+    border: 1px solid;
+    border-radius: 7px;
+    box-shadow: 1px 1px 1px;
+    margin: 10px 0;
+    padding: 0.5em 0;
+
+    &[open] > summary {}
+
+    > {
+      summary {
+        display: list-item;
+        font-weight: bold;
+        list-style-position: inside;
+        cursor: pointer;
+        margin: 0;
+        padding: 0 0.5em;
+
+        &.faq::marker {
+          color: hsla(0deg, 100%, 50%, 1);
+          color: hwb(0deg 0% 0% / 100%);
+          content: "Q: ";
+          font-weight: bold;
+        }
+      }
+
+      div {
+        display: inline-block;
+        margin: 0.7em 0 0 0;
+        padding: 0 1.7em;
+
+        &.faq {
+          width: 100%;
+
+          > p:first-of-type {
+            display: list-item;
+            list-style-position: inside;
+
+            &::marker {
+              color: hsla(240deg, 100%, 50%, 1);
+              color: hwb(240deg 0% 0% / 100%);
+              content: "A: ";
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+
   :lang(ja) details > {
     summary.faq::marker {
       color: hsla(0deg, 100%, 50%, 1);
@@ -792,6 +843,7 @@
           * qbs_generic
           * qbs_stanza
           * qbs_verse01
+          * qbs_interview
       *
       * .quote_box Quotation Marks
           * qbm_doublequotationmark
@@ -866,6 +918,18 @@
           position: relative;
           quotes: '\201C' '\201D' '\2018' '\2019';
           width: 80%;
+        }
+        html body .quote_box.qbs_interview,
+        html body .figure_box.qbs_interview {
+          border-radius: 10px;
+          border-style: double;
+          border-width: 4px;
+          margin: 1rem auto;
+          padding-left: 2.44rem;
+          padding-right: 2.44rem;
+          position: relative;
+          quotes: '\201C' '\201D' '\2018' '\2019';
+          width: 100%;
         }
       /* END: set our own style */
     /* END: .quote_box Styles */
