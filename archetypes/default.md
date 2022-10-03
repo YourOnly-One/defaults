@@ -183,14 +183,28 @@ SUMMARY
 
 > ***TAGLINE***
 
-- channel names, TV network name, brand/company names, author names, band names, singer names
-  - {{% quote type="name" lang="" %}}content{{% /quote %}}
+{{% quote type="name|title|work" lang="" %}}content{{% /quote %}}
 
-- movies, televisions, radio shows, books, periodicals, databases, websites
-  - {{% quote type="title" lang="" %}}content{{% /quote %}}
+Capitalized
 
-- episode, articles, essays, chapters, poems, songs, speeches, mottos
-  - {{% quote type="work" lang="" %}}content{{% /quote %}}
+- channel names, TV network name, brand/company names, author names, band names, singer names, actor names, character names
+- use: {{% quote type="name" lang="" %}}content{{% /quote %}}
+
+Italicized (in old print: underline)
+
+- albums, movies, televisions, radio shows, books, periodicals, databases, websites
+- use: {{% quote type="title" lang="" %}}content{{% /quote %}}
+
+- English: « … ‹ … › … »
+- Asian: 《 … 〈 … 〉 … 》 -- guillemets
+
+Quotation marks
+
+- episode, articles, essays, chapters, poems, songs, speeches, mottos, and ordinary quotation marks
+- use: {{% quote type="work" lang="" %}}content{{% /quote %}}
+- English: " … ' … ' … "
+- Asian: 「 … 『 … 』 … 」
+- South Korean (usually for vertical only): 「…『…』…」
 
 {{% sembox boxstyle="qbs_generic" qmarkstyle="qbm_doublequotationmark" boxcolour="qbc_blue" attribalign="txt_right" srctitle="" srclink="" srcrel="noopener external" attribto="" attriblink="" attribrel="noopener external" %}}
 content
