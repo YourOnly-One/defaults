@@ -1,5 +1,5 @@
 +++
-title = "《》 review/復習する/검토"
+title = "《«»》 review/復習する/검토"
 description = ""
 
 lastmod = "{{ .Date }}"                 # last update; manually adjust to local timezone
