@@ -526,7 +526,7 @@
    *   Changed to .responsive_embedframe
    *   Old: .rspnsv-embedframe
    *
-   * <div class="responsive_embedframe"><iframe src="https://www.youtube-nocookie.com/embed/" sandbox="allow-same-origin allow-scripts" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe></div>
+   * <div class="responsive_embedframe"><iframe anonymous src="https://www.youtube-nocookie.com/embed/" sandbox="allow-same-origin allow-scripts" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe></div>
    */
   .rspnsv-embedframe, .responsive_embedframe {
     content-visibility: auto;
