@@ -15,21 +15,6 @@
 {{- $alliconscss := slice $cciconscss | resources.Concat "css/allicons.css" -}}
 {{- $alliconscss = $alliconscss | minify | fingerprint "sha512" -}}
 
-
-{{- $cfwebanalyticsid := .Site.Params.analytics.cfwebanalytics -}}
-{{- $microanalyticsioid := .Site.Params.analytics.microanalyticsio -}}
-{{- $naveranalyticsid := .Site.Params.analytics.naver -}}
-{{- $counterdevid := .Site.Params.analytics.counterdev -}}
-{{- $swetrixid := .Site.Params.analytics.swetrix -}}
-{{- $msftclarityid := .Site.Params.analytics.microsoftclarity -}}
-
-{{- $naverjs := resources.Get "js/analytics-naver.js" | js.Build ( dict "params" ( dict "naveranalyticsid" $naveranalyticsid ) ) -}}
-{{- $counterdevjs := resources.Get "js/analytics-counterdev.js" | js.Build ( dict "params" ( dict "counterdevid" $counterdevid ) ) -}}
-{{- $swetrixjs := resources.Get "js/analytics-swetrix.js" | js.Build ( dict "params" ( dict "swetrixid" $swetrixid ) ) -}}
-{{- $msftclarityjs := resources.Get "js/analytics-msftclarity.js" | js.Build ( dict "params" ( dict "msftclarityid" $msftclarityid ) ) -}}
-{{- $analyticsjs := slice $counterdevjs $msftclarityjs | resources.Concat "js/analytics.js" -}}
-{{- $analyticsjs = $analyticsjs | minify | fingerprint "sha512" -}}
-
 {{- $twemojijs := resources.Get "js/twemoji.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.js */}}
 {{- $twemojisettingsjs := resources.Get "js/twemoji-settings.js" -}}
 {{- $twemojialljs := slice $twemojijs $twemojisettingsjs | resources.Concat "js/twemoji-all.js" -}}
@@ -79,34 +64,6 @@
 <link href="{{ $alliconscss.RelPermalink }}" integrity="{{ $alliconscss.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
 <link href="{{ $yookicss.RelPermalink }}" integrity="{{ $yookicss.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
 
-{{/* BGN: analytics */}}
-  {{- with $cfwebanalyticsid }}
-    <link href="https://static.cloudflareinsights.com/beacon.min.js" crossorigin="anonymous" rel="preload" as="script" />
-    <script src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}' crossorigin="anonymous" type="text/javascript"></script>
-  {{ end }}
-  {{- with $microanalyticsioid }}
-    <link href="https://microanalytics.io/js/script.js" rel="preload" as="script" />
-    <script src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true" id="{{ . }}" type="text/javascript"></script>
-  {{ end }}
-  {{- with $naveranalyticsid }}
-		<link href="https://wcs.naver.net/wcslog.js" rel="preload" as="script" />
-    <script src="https://wcs.naver.net/wcslog.js" type="text/javascript"></script>
-		<link href="{{ $naverjs.RelPermalink }}" crossorigin="anonymous" rel="preload" as="script" />
-    <script src="{{ $naverjs.RelPermalink }}" crossorigin="anonymous" type="text/javascript"></script>
-  {{- end -}}
-  {{- with or $counterdevjs $msftclarityjs }}
-    <link href="{{ $analyticsjs.RelPermalink }}" integrity="{{ $analyticsjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
-    <script src="{{ $analyticsjs.RelPermalink }}" integrity="{{ $analyticsjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript"></script>
-  {{ end }}
-	{{ with $swetrixid }}
-		<link href="https://swetrix.org/swetrix.js" rel="preload" as="script" />
-		<script src="https://swetrix.org/swetrix.js" type="text/javascript"></script>
-		<link href="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" rel="preload" as="script" />
-		<script src="{{ $swetrixjs.RelPermalink }}" crossorigin="anonymous" type="text/javascript"></script>
-    {{/* <noscript><img src="https://api.swetrix.com/log/noscript?pid={{ . }}" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript> */}}
-  {{ end }}
-{{/* END: analytics */}}
-
 {{/* BGN: favicon */}}
   <link href="{{ $appletouchiconpng.RelPermalink }}" integrity="{{ $appletouchiconpng.Data.Integrity }}" crossorigin="anonymous" type="image/png" sizes="180x180" rel="apple-touch-icon" />
   {{- /* NOTE: disabled temporarily until we upload this file in each blog
@@ -139,7 +96,3 @@
   <link href="{{ $lastfmcss.RelPermalink }}" integrity="{{ $lastfmcss.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
   <script src="{{ $lastfmjs.RelPermalink }}" integrity="{{ $lastfmjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" defer ></script>
 {{ end }}
-
-{{- with .Site.Params.googleadsense }}
-  <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous" defer ></script>
-{{- end -}}
