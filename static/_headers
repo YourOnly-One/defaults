@@ -8,7 +8,7 @@ https://:project.pages.dev/*
   # X-DNS-Prefetch-Control: off
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
-  Referrer-Policy: no-referrer,strict-origin-when-cross-origin
+  Referrer-Policy: no-referrer, strict-origin-when-cross-origin
   Access-Control-Allow-Origin: *
   # Content-Encoding: gzip, deflate
   Vary: Upgrade-Insecure-Requests, Origin, Accept-Encoding
@@ -19,13 +19,14 @@ https://:project.pages.dev/*
   ### - same-origin                                                          ###
   ###   - PREFERRED                                                          ###
   ###   - same as rel=noopener but larger scope                              ###
+  ### - same-origin-allow-popups-plus-coep                                   ###
+  ###   - proposal                                                           ###
   ### - same-origin-allow-popups                                             ###
   ###   - needed for OAuth like Disqus                                       ###
   ### - unsafe-none                                                          ###
   ###   - default                                                            ###
   ##############################################################################
   Cross-Origin-Opener-Policy: same-origin-allow-popups; report-to="default"
-  # Cross-Origin-Opener-Policy: same-origin; report-to="default"
 
   ##############################################################################
   ###                      Cross-Origin-Resource-Policy                      ###
@@ -51,14 +52,12 @@ https://:project.pages.dev/*
   ###   - PREFERRED                                                          ###
   ###   - if all third-party embeds are CORP/CORS enabled                    ###
   ### - credentialless                                                       ###
-  ###   - proposal                                                           ###
-  ###   - https://developer.chrome.com/blog/coep-credentialless-origin-trial ###
+  ###   - Chrome only (2022-10-04)                                           ###
   ### - unsafe-none                                                          ###
   ###   - default                                                            ###
   ###   - some third-party resources not yet CORP/CORS enabled               ###
   ##############################################################################
-  # Cross-Origin-Embedder-Policy: unsafe-none; report-to="default"
-  Cross-Origin-Embedder-Policy: require-coop; report-to="default"
+  Cross-Origin-Embedder-Policy: credentialless; report-to="default"
 
   ### removed: require-trusted-types-for 'script'; ###
   ### CSP moved to Cloudflare worker. _headers file has a 1000-character restriction per line. ###
