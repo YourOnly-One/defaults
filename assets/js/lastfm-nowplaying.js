@@ -137,7 +137,7 @@ var getSetLastFM = function() {
         .attr("referrerpolicy", "strict-origin-when-cross-origin");
     },
     error: function(resp) {
-      $("img#trackart").attr("src", "img/y/Yuki_flag-square-300x.webp");
+      $("img#trackart").attr("src", "https://rsc.youronly.one/img/y/Yuki_flag-square-300x.webp");
 
       $("a#tracktitle")
         .html("Now Playing Widget")
