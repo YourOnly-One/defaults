@@ -32,7 +32,7 @@
     {{- $disqusjs = $disqusjs | js.Build ( dict "targetPath" $disqusjspath "params" $disqusjsvars ) | minify | fingerprint "sha512" -}}
 
     <div id="disqus_thread"></div>
-    <script src="{{ $disqusjs.RelPermalink }}" integrity="{{ $disqusjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
+    <script src="{{ $disqusjs.RelPermalink }}" integrity="{{ $disqusjs.Data.Integrity }}" crossorigin="anonymous" type="{{ $disqusjs.MediaType }}" async ></script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   {{ else }}
