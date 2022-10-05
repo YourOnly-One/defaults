@@ -11,11 +11,11 @@
 {{- $yookicss = slice $yookicss $semwebcss $quotecss $localcss | resources.Concat "css/yooki.css" -}}
 {{- $yookicss = $yookicss | minify | fingerprint "sha512" -}}
 
-{{- $cciconscss := resources.Get "css/cc-icons.css" -}} {{/* src: https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css */}}
+{{- $cciconscss := resources.Get "css/cc-icons.css" -}} {{/* src: https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css or https://github.com/cc-icons/cc-icons/tree/master/css */}}
 {{- $alliconscss := slice $cciconscss | resources.Concat "css/allicons.css" -}}
 {{- $alliconscss = $alliconscss | minify | fingerprint "sha512" -}}
 
-{{- $twemojijs := resources.Get "js/twemoji.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.js */}}
+{{- $twemojijs := resources.Get "js/twemoji.js" -}} {{/* src: https://github.com/twitter/twemoji/tree/gh-pages/v */}}
 {{- $twemojisettingsjs := resources.Get "js/twemoji-settings.js" -}}
 {{- $twemojialljs := slice $twemojijs $twemojisettingsjs | resources.Concat "js/twemoji-all.js" -}}
 {{- $twemojialljs = $twemojialljs | minify | fingerprint "sha512" -}}
@@ -30,18 +30,21 @@
 {{- $browserconfigxml := resources.Get "favicon/browserconfig.xml" | resources.ExecuteAsTemplate "favicon/browserconfig.xml" . | fingerprint "sha512" -}}
 
 {{- with .Site.Params.jquerycdn }}
-  {{- $jqueryjs := resources.Get "js/jquery.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.js */}}
+  {{/* NOTE: jQuery 3.6.1 as of 2022-10-06 */}}
+  {{- $jqueryjs := resources.Get "js/jquery.js" -}} {{/* src: https://jquery.com/download/ */}}
   {{- $jqueryjs = $jqueryjs | minify | fingerprint "sha512" -}}
   <link href="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
   <script src="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" type="{{ $jqueryjs.MediaType }}"></script>
 {{ end -}}
 
 {{- with .Params.math }}
+  {{/* NOTE: polyfill 3.111.0+es2022 as of 2022-10-06*/}}
   {{- $polyfilljs := resources.Get "js/polyfill.js" -}} {{/* src: https://polyfill.io/v3/polyfill.js?version=3.111.0&features=es2022 */}}
   {{- $polyfilljs = $polyfilljs | minify | fingerprint "sha512" -}}
   <link href="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
   <script src="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" type="{{ $polyfilljs.MediaType }}" async ></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" integrity="sha512-ehyCwiYKL3B7bx/X+X0rs1JKF9ANzwjOeOvB69YoPOZnpBhC9GRSu2ry9vAuv4Z460WI7Yt4iq0dEPPeCElnXA==" crossorigin="anonymous" type="text/javascript" async ></script>
+  {{/* NOTE: mathjax 3.2.2 as of 2022-10-06 */}}
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
 {{ end -}}
 
 {{- /*
@@ -50,9 +53,16 @@
     - some themes use fontawesome-free
     - icons missing from fontawesome are in fork-awesome
 */ -}}
-<link href="https://cdn.jsdelivr.net/npm/fontawesome5pro@5.14.0/css/all.min.css" integrity="sha512-lapRU23YyAdbHOZLhCSITpHY8XGBFSldLZxKm1+syxp7VnX5qKDbaixFj7VRnPR4ciR/AeosNhaRlEnyD13muQ==" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha512-aupidr80M36SeyviA/hZ2uEPnvt2dTJfyjm9y6z1MgaV13TgzmDiFdsH3cvSNG27mRIj7gJ2gNeg1HeySJyE3Q==" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+{{- /* NOTE:
+  - fontawesome5pro 5.14.0 as of 2022-10-06
+  - fontawesome-free 6.2.0 as of 2022-10-06
+  - fontawesome-svg-core 6.2.0 as of 2022-10-06
+  - fork-awesome 1.2.0 as of 2022-10-06
+*/ -}}
+<link href="https://cdn.jsdelivr.net/npm/fontawesome5pro@5.14.0/css/all.min.css" integrity="sha256-5947S0kIn4zdgmftplLzWAbLK3D3xc7ANR9tEpJj5Ss=" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+{{- /* <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-svg-core@6.2.0/styles.css" integrity="sha256-jV0um2PJP27znK1fgW1q7JQl4wqywhvcTrwEHNw+B8w=" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" /> */ -}}
+<link href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
 
 {{/* TODO: migrate to our Hugo /defaults/ */}}
 <link href="https://rsc.youronly.one/css/paninap-fonts.min.css" integrity="sha512-oIh9LQZsgdzTYVgqyvhX73Gc9uKugYI3AR/Ms+vfN7PyY72LhXieDLYqxWgbt4lEhKEBMRywyrAb2VdSwopUHA==" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
@@ -60,6 +70,10 @@
   <link href="{{ $paninapfonts.RelPermalink }}" integrity="{{ $paninapfonts.Data.Integrity }}" crossorigin="anonymous" type="{{ $paninapfonts.MediaType }}" media="all" rel="stylesheet" />
 */ -}}
 
+{{- /* NOTE:
+  - twemoji 14.0.2 as of 2022-10-06
+  - cc-icons 1.2.1 as of 2022-10-06
+*/ -}}
 <script src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}" crossorigin="anonymous" type="{{ $twemojialljs.MediaType }}" async ></script>
 <link href="{{ $alliconscss.RelPermalink }}" integrity="{{ $alliconscss.Data.Integrity }}" crossorigin="anonymous" type="{{ $alliconscss.MediaType }}" media="all" rel="stylesheet" />
 <link href="{{ $yookicss.RelPermalink }}" integrity="{{ $yookicss.Data.Integrity }}" crossorigin="anonymous" type="{{ $yookicss.MediaType }}" media="all" rel="stylesheet" />
