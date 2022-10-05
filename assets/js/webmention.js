@@ -155,22 +155,20 @@ A more detailed example:
   /**
     const reactEmoji = {
       "in-reply-to": "<span class='emoji'>💬</span>",
-      "in-reply-to": "<span class='emoji'>&#x1F4AC;</span>",
       "like-of": "<span class='emoji'>❤️</span>",
       "repost-of": "<span class='emoji'>🔄</span>",
       "bookmark-of": "<span class='emoji'>⭐️</span>",
       "mention-of": "<span class='emoji'>💬</span>",
-      "mention-of": "<span class='emoji'>&#x1F4AC;</span>",
       "rsvp": "<span class='emoji'>📅</span>",
       "follow-of": "<span class='emoji'>🐜</span>"
     };
   */
   const reactEmoji = {
-    "in-reply-to": " ",
+    "in-reply-to": "<span class='emoji'>&#x1F4AC;</span>",
     "like-of": "<span class='emoji'>&#x1F90E;</span>",
     "repost-of": "<span class='emoji'>&#x1F504;</span>",
     "bookmark-of": "<span class='emoji'>&#x2B50;</span>",
-    "mention-of": " ",
+    "mention-of": "<span class='emoji'>&#x1F4AC;</span>",
     "rsvp": "<span class='emoji'>&#x1F4C5;</span>",
     "follow-of": "<span class='emoji'>&#x1F41C;</span>"
   };
@@ -248,7 +246,7 @@ A more detailed example:
     }
 
     return`
-      <a
+      <li><a
         class="reaction"
         rel="nofollow ugc"
         title="${who} ${response}"
@@ -257,7 +255,7 @@ A more detailed example:
         ${authorPhoto}
         ${(reactEmoji[r['wm-property']] || '💥')}
         ${rsvp}
-      </a>
+      </a></li>
     `;
   }
 
