@@ -44,7 +44,7 @@
   <link href="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
   <script src="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" type="{{ $polyfilljs.MediaType }}" async ></script>
   {{/* NOTE: mathjax 3.2.2 as of 2022-10-06 */}}
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous" type="text/javascript"></script>
 {{ end -}}
 
 {{- /*
