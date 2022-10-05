@@ -33,14 +33,14 @@
   {{- $jqueryjs := resources.Get "js/jquery.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.js */}}
   {{- $jqueryjs = $jqueryjs | minify | fingerprint "sha512" -}}
   <link href="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
-  <script src="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript"></script>
+  <script src="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" type="{{ $jqueryjs.MediaType }}"></script>
 {{ end -}}
 
 {{- with .Params.math }}
   {{- $polyfilljs := resources.Get "js/polyfill.js" -}} {{/* src: https://polyfill.io/v3/polyfill.js?version=3.111.0&features=es2022 */}}
   {{- $polyfilljs = $polyfilljs | minify | fingerprint "sha512" -}}
   <link href="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
-  <script src="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
+  <script src="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" type="{{ $polyfilljs.MediaType }}" async ></script>
 	<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" integrity="sha512-ehyCwiYKL3B7bx/X+X0rs1JKF9ANzwjOeOvB69YoPOZnpBhC9GRSu2ry9vAuv4Z460WI7Yt4iq0dEPPeCElnXA==" crossorigin="anonymous" type="text/javascript" async ></script>
 {{ end -}}
 
@@ -57,23 +57,23 @@
 {{/* TODO: migrate to our Hugo /defaults/ */}}
 <link href="https://rsc.youronly.one/css/paninap-fonts.min.css" integrity="sha512-oIh9LQZsgdzTYVgqyvhX73Gc9uKugYI3AR/Ms+vfN7PyY72LhXieDLYqxWgbt4lEhKEBMRywyrAb2VdSwopUHA==" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
 {{- /*
-  <link href="{{ $paninapfonts.RelPermalink }}" integrity="{{ $paninapfonts.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+  <link href="{{ $paninapfonts.RelPermalink }}" integrity="{{ $paninapfonts.Data.Integrity }}" crossorigin="anonymous" type="{{ $paninapfonts.MediaType }}" media="all" rel="stylesheet" />
 */ -}}
 
-<script src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" async ></script>
-<link href="{{ $alliconscss.RelPermalink }}" integrity="{{ $alliconscss.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
-<link href="{{ $yookicss.RelPermalink }}" integrity="{{ $yookicss.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
+<script src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}" crossorigin="anonymous" type="{{ $twemojialljs.MediaType }}" async ></script>
+<link href="{{ $alliconscss.RelPermalink }}" integrity="{{ $alliconscss.Data.Integrity }}" crossorigin="anonymous" type="{{ $alliconscss.MediaType }}" media="all" rel="stylesheet" />
+<link href="{{ $yookicss.RelPermalink }}" integrity="{{ $yookicss.Data.Integrity }}" crossorigin="anonymous" type="{{ $yookicss.MediaType }}" media="all" rel="stylesheet" />
 
 {{/* BGN: favicon */}}
-  <link href="{{ $appletouchiconpng.RelPermalink }}" integrity="{{ $appletouchiconpng.Data.Integrity }}" crossorigin="anonymous" type="image/png" sizes="180x180" rel="apple-touch-icon" />
+  <link href="{{ $appletouchiconpng.RelPermalink }}" integrity="{{ $appletouchiconpng.Data.Integrity }}" crossorigin="anonymous" type="{{ $appletouchiconpng.MediaType }}" sizes="180x180" rel="apple-touch-icon" />
   {{- /* NOTE: disabled temporarily until we upload this file in each blog
-    <link href="{{ $faviconsvg.RelPermalink }}" integrity="{{ $faviconsvg.Data.Integrity }}" crossorigin="anonymous" type="image/svg+xml" rel="icon" />
+    <link href="{{ $faviconsvg.RelPermalink }}" integrity="{{ $faviconsvg.Data.Integrity }}" crossorigin="anonymous" type="{{ $faviconsvg.MediaType }}" rel="icon" />
   */ -}}
-  <link href="{{ $favicon32png.RelPermalink }}" integrity="{{ $favicon32png.Data.Integrity }}" crossorigin="anonymous" type="image/png" sizes="32x32" rel="icon" />
-  <link href="{{ $androidchrome192png.RelPermalink }}" integrity="{{ $androidchrome192png.Data.Integrity }}" crossorigin="anonymous" type="image/png" sizes="192x192" rel="icon" />
-  <link href="{{ $favicon16png.RelPermalink }}" integrity="{{ $favicon16png.Data.Integrity }}" crossorigin="anonymous" type="image/png" sizes="16x16" rel="icon" />
-  <link href="{{ $safaripinnedtabsvg.RelPermalink }}" integrity="{{ $safaripinnedtabsvg.Data.Integrity }}" crossorigin="anonymous" color="#5bbad5" type="image/svg+xml" rel="mask-icon" />
-  <link href="{{ $faviconico.RelPermalink }}" integrity="{{ $faviconico.Data.Integrity }}" crossorigin="anonymous" rel="shortcut icon" />
+  <link href="{{ $favicon32png.RelPermalink }}" integrity="{{ $favicon32png.Data.Integrity }}" crossorigin="anonymous" type="{{ $favicon32png.MediaType }}" sizes="32x32" rel="icon" />
+  <link href="{{ $androidchrome192png.RelPermalink }}" integrity="{{ $androidchrome192png.Data.Integrity }}" crossorigin="anonymous" type="{{ $androidchrome192png.MediaType }}" sizes="192x192" rel="icon" />
+  <link href="{{ $favicon16png.RelPermalink }}" integrity="{{ $favicon16png.Data.Integrity }}" crossorigin="anonymous" type="{{ $favicon16png.MediaType }}" sizes="16x16" rel="icon" />
+  <link href="{{ $safaripinnedtabsvg.RelPermalink }}" integrity="{{ $safaripinnedtabsvg.Data.Integrity }}" crossorigin="anonymous" color="#5bbad5" type="{{ $safaripinnedtabsvg.MediaType }}" rel="mask-icon" />
+  <link href="{{ $faviconico.RelPermalink }}" integrity="{{ $faviconico.Data.Integrity }}" crossorigin="anonymous" type="{{ $faviconico.MediaType }}" rel="shortcut icon" />
   <meta name="msapplication-TileColor" content="#603cba" />
   <meta name="msapplication-config" content="{{ $browserconfigxml.Permalink }}" integrity="{{ $browserconfigxml.Data.Integrity }}" crossorigin="anonymous" />
   <meta name="theme-color" content="{{ .Site.Params.themeColor | default "#ffffff" }}" />
@@ -93,6 +93,6 @@
 {{ if or (eq $sitepath "/love/") (eq $sitepath "/snoworld/") (eq $sitepath "/techmagus/") (eq $sitepath "/yuki/") }}
   {{- $lastfmcss := resources.Get "css/lastfm-nowplaying.css" | minify | fingerprint "sha512" -}}
   {{- $lastfmjs := resources.Get "js/lastfm-nowplaying.js" | minify | fingerprint "sha512" -}}
-  <link href="{{ $lastfmcss.RelPermalink }}" integrity="{{ $lastfmcss.Data.Integrity }}" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
-  <script src="{{ $lastfmjs.RelPermalink }}" integrity="{{ $lastfmjs.Data.Integrity }}" crossorigin="anonymous" type="text/javascript" defer ></script>
+  <link href="{{ $lastfmcss.RelPermalink }}" integrity="{{ $lastfmcss.Data.Integrity }}" crossorigin="anonymous" type="{{ $lastfmcss.MediaType }}" media="all" rel="stylesheet" />
+  <script src="{{ $lastfmjs.RelPermalink }}" integrity="{{ $lastfmjs.Data.Integrity }}" crossorigin="anonymous" type="{{ $lastfmjs.MediaType }}" defer ></script>
 {{ end }}

@@ -7,8 +7,8 @@
     - see: https://github.com/PlaidWeb/webmention.js
     - or: webmentions.js
 */ -}}
-{{- $webmentionjs := resources.Get "js/webmention.js" | minify -}}
+{{- $webmentionjs := resources.Get "js/webmention.js" | minify | fingerprint "sha512" -}}
 {{- $url := or .Params.disqus.url .Params.relcanonical .Permalink -}}
 {{- $urlparsed := urls.Parse $url -}}
 {{- $permalinkparsed := urls.Parse .Permalink -}}
-<script src="{{ $webmentionjs.RelPermalink }}" data-page-url="{{ with $url }}{{ . }}{{ end }}"{{ if or (ne $urlparsed.Path $permalinkparsed.Path) $.IsTranslated }} data-add-urls="{{ if ne $urlparsed.Path $permalinkparsed.Path }}{{ .Permalink }}{{ end }}{{ if $.IsTranslated }}|{{ range $i, $translations := $.Translations }}{{ if $i }}|{{ end }}{{ .Permalink }}{{ end }}{{ end }}"{{ end }} data-wordcount="120" data-max-webmentions="130" crossorigin="anonymous" async></script>
+<script src="{{ $webmentionjs.RelPermalink }}" data-page-url="{{ with $url }}{{ . }}{{ end }}"{{ if or (ne $urlparsed.Path $permalinkparsed.Path) $.IsTranslated }} data-add-urls="{{ if ne $urlparsed.Path $permalinkparsed.Path }}{{ .Permalink }}{{ end }}{{ if $.IsTranslated }}|{{ range $i, $translations := $.Translations }}{{ if $i }}|{{ end }}{{ .Permalink }}{{ end }}{{ end }}"{{ end }} data-wordcount="120" data-max-webmentions="130" integrity="{{ $webmentionjs.Data.Integrity }}" crossorigin="anonymous" type="{{ $webmentionjs.MediaType }}" async ></script>
