@@ -41,7 +41,7 @@
   {{- $polyfilljs = $polyfilljs | minify | fingerprint "sha512" -}}
   <link href="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
   <script src="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" type="{{ $polyfilljs.MediaType }}" async ></script>
-	<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" integrity="sha512-ehyCwiYKL3B7bx/X+X0rs1JKF9ANzwjOeOvB69YoPOZnpBhC9GRSu2ry9vAuv4Z460WI7Yt4iq0dEPPeCElnXA==" crossorigin="anonymous" type="text/javascript" async ></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js" integrity="sha512-ehyCwiYKL3B7bx/X+X0rs1JKF9ANzwjOeOvB69YoPOZnpBhC9GRSu2ry9vAuv4Z460WI7Yt4iq0dEPPeCElnXA==" crossorigin="anonymous" type="text/javascript" async ></script>
 {{ end -}}
 
 {{- /*
