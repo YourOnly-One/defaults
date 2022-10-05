@@ -17,7 +17,6 @@ https://:project.pages.dev/*
   ###                       Cross-Origin-Opener-Policy                       ###
   ###                                                                        ###
   ### - same-origin                                                          ###
-  ###   - PREFERRED                                                          ###
   ###   - same as rel=noopener but larger scope                              ###
   ### - same-origin-allow-popups-plus-coep                                   ###
   ###   - proposal                                                           ###
@@ -26,17 +25,16 @@ https://:project.pages.dev/*
   ### - unsafe-none                                                          ###
   ###   - default                                                            ###
   ##############################################################################
+  #Cross-Origin-Opener-Policy: same-origin-allow-popups-plus-coep; report-to="default"
   Cross-Origin-Opener-Policy: same-origin-allow-popups; report-to="default"
 
   ##############################################################################
   ###                      Cross-Origin-Resource-Policy                      ###
   ###                                                                        ###
   ### - same-origin                                                          ###
-  ###   - too strict                                                         ###
   ###   - will block if not exactly the same URL                             ###
   ### - same-site                                                            ###
-  ###   - USE THIS                                                           ###
-  ###   - block hotlinking                                                   ###
+  ###   - blocks hotlinking                                                  ###
   ###   - if using relative URLs                                             ###
   ### - cross-origin                                                         ###
   ###   - make images visible in search engine image search                  ###
@@ -49,7 +47,6 @@ https://:project.pages.dev/*
   ###                      Cross-Origin-Embedder-Policy                      ###
   ###                                                                        ###
   ### - require-coop                                                         ###
-  ###   - PREFERRED                                                          ###
   ###   - if all third-party embeds are CORP/CORS enabled                    ###
   ### - credentialless                                                       ###
   ###   - Chrome only (2022-10-04)                                           ###
@@ -57,7 +54,8 @@ https://:project.pages.dev/*
   ###   - default                                                            ###
   ###   - some third-party resources not yet CORP/CORS enabled               ###
   ##############################################################################
-  Cross-Origin-Embedder-Policy: credentialless; report-to="default"
+  #Cross-Origin-Embedder-Policy: credentialless; report-to="default"
+  Cross-Origin-Embedder-Policy: unsafe-none; report-to="default"
 
   ### removed: require-trusted-types-for 'script'; ###
   ### CSP moved to Cloudflare worker. _headers file has a 1000-character restriction per line. ###
@@ -65,9 +63,6 @@ https://:project.pages.dev/*
   Report-To: {"group":"default","max_age":31536000,"endpoints":[{"url":"https://yelosan.report-uri.com/a/d/g"}],"include_subdomains":true}
   NEL: {"report_to":"default","max_age":31536000,"include_subdomains":true}
   #X-Powered-By: Hugo
-
-  ### Yelosan Publishing: default Cloudflare setting is enough ###
-  # Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
 
   ### YourOnly.One: We do not use cookies. Only here for reference ###
   # Set-Cookie: __Host-sess=123; path=/; Secure; HttpOnly; SameSite
