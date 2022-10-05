@@ -1,0 +1,9 @@
+_merge = "deep"
+
+# Temporary override, text/javascript is the new universal MIME type as of May 2022
+[js]
+  mediaType = "text/javascript"
+[jsm]
+  mediaType = "text/javascript"
+[mjs]
+  mediaType = "text/javascript"
