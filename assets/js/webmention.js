@@ -246,7 +246,7 @@ A more detailed example:
     }
 
     return`
-      <li><a
+      <li class="reaction_mention"><a
         class="reaction"
         rel="nofollow ugc"
         title="${who} ${response}"
@@ -330,10 +330,11 @@ A more detailed example:
         if (c.author && c.author.name) {
           source = entities(c.author.name);
         }
-        const link = `<a class="source" rel="nofollow ugc" href="${c[mentionSource]}">${source}</a>`;
+        const link = `<li class="reaction_mention"><a class="source" rel="nofollow ugc" href="${c[mentionSource]}">${source}</a></li>`;
 
         let linkclass = "name";
-        let linktext = `(${t("mention")})`;
+        //let linktext = `(${t("mention")})`;
+        let linktext = `${t(" ")}`;
         if (c.name) {
           linkclass = "name";
           linktext = c.name;
@@ -342,7 +343,7 @@ A more detailed example:
           linktext = extractComment(c);
         }
 
-        const type = `<p class="${linkclass}">${linktext}</p>`;
+        const type = `<li><p class="${linkclass}">${linktext}</p></li>`;
 
         return `<li>${image} ${link} ${type}</li>`;
       })
