@@ -1,7 +1,0 @@
-[mediaTypes]
-  [mediaTypes."image/avif"]
-    suffixes = ["avif"]
-  [mediaTypes."image/webp"]
-    suffixes = ["webp", "awebp"]
-  [mediaTypes."image/apng"]
-    suffixes = ["apng"]
