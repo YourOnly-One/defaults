@@ -106,8 +106,9 @@
 {{- end }}
 
 {{/* BGN: OneSignal Push Notification */}}
+  {{/* NOTE: Do not add crossorigina=anonymous */}}
   {{- with $onesignal }}
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" crossorigin="anonymous" type="text/javascript" async ></script>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" type="text/javascript" async ></script>
     <script>
       window.OneSignal = window.OneSignal || [];
       OneSignal.push(function () {
