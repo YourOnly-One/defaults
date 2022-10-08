@@ -1,5 +1,7 @@
 {{- /* $paninapfonts := resources.GetRemote "https://rsc.youronly.one/css/paninap-fonts.css" | minify | fingerprint "sha512" */ -}}
 
+{{- $onesignal := .Site.Params.tools.onesignal -}}
+
 {{- $yukiscss := resources.Get "scss/yuki-style.scss" -}}
 {{- $globalscss := resources.Get "scss/youronly.one-head-03-global.scss" -}}
 {{- $semwebcss := resources.Get "css/semweb-style.css" -}}
@@ -102,6 +104,20 @@
 {{- if templates.Exists "partials/relme.html" -}}
   {{ partial "relme.html" . }}
 {{- end }}
+
+{{/* BGN: OneSignal Push Notification */}}
+  {{- with $onesignal }}
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" crossorigin="anonymous" type="text/javascript" async ></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function () {
+        OneSignal.init({
+          appId: "{{ $onesignal }}",
+        });
+      });
+    </script>
+  {{- end -}}
+{{/* END: OneSignal Push Notification */}}
 
 {{- $sitepath := (urls.Parse .Site.BaseURL).Path -}}
 {{ if or (eq $sitepath "/love/") (eq $sitepath "/snoworld/") (eq $sitepath "/techmagus/") (eq $sitepath "/yuki/") }}
