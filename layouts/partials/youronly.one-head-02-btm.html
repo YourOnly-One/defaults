@@ -4,11 +4,12 @@
 
 {{- $yukiscss := resources.Get "scss/yuki-style.scss" -}}
 {{- $globalscss := resources.Get "scss/youronly.one-head-03-global.scss" -}}
+{{- $layoutscss := resources.Get "scss/layouts.scss" -}}
 {{- $semwebcss := resources.Get "css/semweb-style.css" -}}
 {{- $quotecss := resources.Get "css/quote.css" -}}
 {{- $localcss := resources.Get "css/youronly.one-head-04-local.css" -}}
 
-{{- $yookiscss := slice $yukiscss $globalscss | resources.Concat "scss/yooki.scss" -}}
+{{- $yookiscss := slice $yukiscss $globalscss $layoutscss | resources.Concat "scss/yooki.scss" -}}
 {{- $yookicss := $yookiscss | resources.ExecuteAsTemplate "css/yooki.css" . | toCSS -}}
 {{- $yookicss = slice $yookicss $semwebcss $quotecss $localcss | resources.Concat "css/yooki.css" -}}
 {{- $yookicss = $yookicss | minify | fingerprint "sha512" -}}
@@ -90,7 +91,9 @@
   <link href="{{ $favicon16png.RelPermalink }}" integrity="{{ $favicon16png.Data.Integrity }}" crossorigin="anonymous" type="{{ $favicon16png.MediaType }}" sizes="16x16" rel="icon" />
   <link href="{{ $safaripinnedtabsvg.RelPermalink }}" integrity="{{ $safaripinnedtabsvg.Data.Integrity }}" crossorigin="anonymous" color="#5bbad5" type="{{ $safaripinnedtabsvg.MediaType }}" rel="mask-icon" />
   <link href="{{ $faviconico.RelPermalink }}" integrity="{{ $faviconico.Data.Integrity }}" crossorigin="anonymous" type="{{ $faviconico.MediaType }}" rel="shortcut icon" />
-  <meta name="msapplication-TileColor" content="#603cba" />
+  <meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}">
+  <meta name="application-name" content="{{ .Site.Title }}">
+  {{ with .Site.Params.favicon_mstilecolor }}<meta name="msapplication-TileColor" content="{{ . }}" />{{ end }}
   <meta name="msapplication-config" content="{{ $browserconfigxml.Permalink }}" integrity="{{ $browserconfigxml.Data.Integrity }}" crossorigin="anonymous" />
   <meta name="theme-color" content="{{ .Site.Params.themeColor | default "#ffffff" }}" />
 {{/* END: favicon */}}
