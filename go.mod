@@ -1,3 +1,3 @@
-module gitlab.com/youronlyone/defaults
+module codeberg.org/youronlyone/defaults
 
 go 1.19
