@@ -1,4 +1,5 @@
-#bitbucket = ""                                          #
+#bitbucket = "techmagus"                                          #
+codeberg = "techmagus"                                           #
 #deviantart = "laibcoms"                                         # URL-name
 ecency = "@youronlyone"                                             #
 #email = "contact@youronly.one"                                              # email address; leave empty
@@ -14,7 +15,8 @@ instagram = "YourOnly.One"                                          # username
 keybase = "yukino"                                            # username
 #linkedin = "youronlyone"                                           # URL-name
 #linkedin_company = ""                                   # URL-name
-mastodon = "c.im/@youronlyone"                                           # example.com/@username
+#mastodon = "c.im/@youronlyone"                                           # example.com/@username
+mastodon = "mastodon.social/@youronlyone"                                           # example.com/@username
 #medium = ""                                             #
 pinterest = "YourOnlyONEofcl"                                          # username
 #quora = ""                                              # username

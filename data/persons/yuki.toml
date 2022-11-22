@@ -13,6 +13,8 @@ name = "JC John Sese Cuneta"
 sameas = [
   "https://iam.youronly.one/",
   "https://keybase.io/yukino/",
+  "https://keyoxide.org/wkd/contact@im.youronly.one",
+  "https://keyoxide.org/989eb937bdf4a5cd65470204f2f9be4c3d8e4f53",
   "https://im.youronly.one/",
   "https://youronly.one/",
   "https://c.im/@youronlyone",
@@ -35,28 +37,27 @@ sameas = [
   "https://ecency.com/@youronlyone",
   "https://hive.blog/@youronlyone",
   "https://steemit.com/@youronlyone",
+  "https://codeberg.org/techmagus",
   "https://gitlab.com/techmagus",
-  "https://github.com/techmagus"
+  "https://github.com/techmagus",
+  "https://launchpad.net/~techmagus",
+  "https://diasp.org/u/jcsesecuneta",
+  "https://mydramalist.com/profile/Shael",
+  "https://myanimelist.net/profile/YourOnlyOne",
+  "https://wattpad.com/user/yugenbard",
+  "https://fictionpress.com/~yugenbard",
+  "https://fanfiction.net/~yugenbard",
+  "https://open.spotify.com/user/jcsesecuneta",
 ]
-  #"https://diasp.org/u/jcsesecuneta",
   #"https://peertube.social/video-channels/youronlyone",
   #"https://trakt.tv/users/youronlyone",
-  #"https://mydramalist.com/profile/Shael",
-  #"https://myanimelist.net/profile/YourOnlyOne",
-  #"https://wattpad.com/user/yugenbard",
-  #"https://fictionpress.com/~yugenbard",
-  #"https://fanfiction.net/~yugenbard",
   #"https://www.deviantart.com/laibcoms",
   #"https://steamcommunity.com/id/gameshogun",
-  #"https://open.spotify.com/user/jcsesecuneta",
   #"https://facebook.com/jcsesecuneta",
   #"https://facebook.com/jcjohnsesecuneta",
   #"https://gravatar.com/jcjohnsesecuneta",
-  #"https://gitlab.com/techmagus",
   #"https://framagit.org/techmagus",
   #"https://bitbucket.org/techmagus/",
-  #"https://launchpad.net/~techmagus",
-  #"https://github.com/techmagus"
 url = "https://iam.youronly.one/"
 
 # BGN: Other params
