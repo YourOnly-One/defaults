@@ -10,12 +10,11 @@ nationality = "Philippines"
 description = "Yuki loves writing, from content to world building. He is also in web development and is managing his own websites."
 mainentityofpage = "https://iam.youronly.one/"
 name = "JC John Sese Cuneta"
-#  "https://keyoxide.org/wkd/contact@im.youronly.one",
-
 sameas = [
   "https://iam.youronly.one",
   "https://im.youronly.one/",
   "https://youronly.one/",
+  "https://keyoxide.org/wkd/contact@im.youronly.one",
   "https://keyoxide.org/989eb937bdf4a5cd65470204f2f9be4c3d8e4f53",
   "https://keybase.io/yukino",
   "https://keybase.pub/yukino",
