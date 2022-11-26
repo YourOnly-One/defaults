@@ -79,11 +79,24 @@
     - Also add "$imagewebp" and "$imagepng" for cover image.
 */ -}}
 {{- $savecoverimage := "" -}}
+{{- $savecoverimageremote := "" -}}
+{{- $savecoverimagelocal := "" -}}
 {{- with .Params.images -}}
   {{- range first 1 . -}}
-    {{- $savecoverimage = partial "getresource.html" . -}}
+    {{- if (urls.Parse .).Scheme -}}
+      {{/* remote */}}
+      {{- $savecoverimageremote = . -}}
+    {{- else -}}
+      {{- $savecoverimagelocal = partial "getresource.html" . -}}
+    {{- end -}}
   {{- end -}}
-  {{- $savecoverimage = $savecoverimage.RelPermalink -}}
+
+  {{/* Pass correct image URL */}}
+  {{- if $savecoverimageremote -}}
+    {{- $savecoverimage = $savecoverimageremote -}}
+  {{- else if $savecoverimagelocal -}}
+    {{- $savecoverimage =$savecoverimagelocal.RelPermalink -}}
+  {{- end -}}
 {{- end -}}
 
 {{ template "_internal/opengraph.html" . }}
