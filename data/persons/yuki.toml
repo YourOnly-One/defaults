@@ -37,6 +37,8 @@ sameas = [
   "https://aleph.land/@yahananxie",
   "https://qoto.org/@youronlyone",
   "https://mstdn.social/@welfareness",
+  "https://social.vivaldi.net/@youronlyone",
+  "https://social.vivaldi.net/@yahananxie",
   "https://mastodon.online/@youronlyone",
   "https://mastodon.social/@youronlyone",
   "https://www.tumblr.com/youronlyoneofcl",
@@ -152,7 +154,7 @@ url = "https://iam.youronly.one/"
 [[brands]]
   id = "https://im.youronly.one/"
   logo = "https://rsc.youronly.one/img/y/Yuki_flag-square-888x.webp"
-  name = "I'M YourOnly.One 🔏"
+  name = "♾️ 🐬 I'M YourOnly.One 🔏"
   url = "https://im.youronly.one/"
   iswebsite = true
 
