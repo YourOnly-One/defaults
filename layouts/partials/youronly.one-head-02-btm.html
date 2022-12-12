@@ -14,7 +14,7 @@
 {{- $yookicss = slice $yookicss $semwebcss $quotecss $localcss | resources.Concat "css/yooki.css" -}}
 {{- $yookicss = $yookicss | minify | fingerprint "sha512" -}}
 
-{{- $cciconscss := resources.Get "css/cc-icons.css" -}} {{/* src: https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css or https://github.com/cc-icons/cc-icons/tree/master/css */}}
+{{- $cciconscss := resources.Get "css/cc-icons.css" -}} {{/* src: https://github.com/techmagus/cc-icons or https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css */}}
 {{- $alliconscss := slice $cciconscss | resources.Concat "css/allicons.css" -}}
 {{- $alliconscss = $alliconscss | minify | fingerprint "sha512" -}}
 
@@ -32,8 +32,11 @@
 {{- $faviconico := resources.Get "favicon/favicon.ico" | fingerprint "sha512" -}}
 {{- $browserconfigxml := resources.Get "favicon/browserconfig.xml" | resources.ExecuteAsTemplate "favicon/browserconfig.xml" . | fingerprint "sha512" -}}
 
+<link href="https://polyfill.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated" crossorigin="anonymous" rel="preload" as="script" />
+<script src="https://polyfill.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated" crossorigin="anonymous" type="text/javascript"></script>
+
 {{- with .Site.Params.jquerycdn }}
-  {{/* NOTE: jQuery 3.6.1 as of 2022-10-06 */}}
+  {{/* NOTE: jQuery 3.6.1 as of 2022-12-13 */}}
   {{- $jqueryjs := resources.Get "js/jquery.js" -}} {{/* src: https://jquery.com/download/ */}}
   {{- $jqueryjs = $jqueryjs | minify | fingerprint "sha512" -}}
   <link href="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
@@ -41,13 +44,9 @@
 {{ end -}}
 
 {{- with .Params.math }}
-  {{/* NOTE: polyfill 3.111.0+es2022 as of 2022-10-06*/}}
-  {{- $polyfilljs := resources.Get "js/polyfill.js" -}} {{/* src: https://polyfill.io/v3/polyfill.js?version=3.111.0&features=es2022 */}}
-  {{- $polyfilljs = $polyfilljs | minify | fingerprint "sha512" -}}
-  <link href="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
-  <script src="{{ $polyfilljs.RelPermalink }}" integrity="{{ $polyfilljs.Data.Integrity }}" crossorigin="anonymous" type="{{ $polyfilljs.MediaType }}" async ></script>
-  {{/* NOTE: mathjax 3.2.2 as of 2022-10-06 */}}
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous" type="text/javascript"></script>
+  {{/* NOTE: mathjax 3.2.2 as of 2022-12-13 */}}
+  {{- /* <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> */ -}}
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous" type="text/javascript" id="MathJax-script" async ></script>
 {{ end -}}
 
 {{- /*
@@ -75,8 +74,8 @@
 */ -}}
 
 {{- /* NOTE:
-  - twemoji 14.0.2 as of 2022-10-06
-  - cc-icons 1.2.1 as of 2022-10-06
+  - twemoji 14.0.2 as of 2022-12-13
+  - cc-icons 1.2.1 as of 2022-12-13
 */ -}}
 <script src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}" crossorigin="anonymous" type="{{ $twemojialljs.MediaType }}" async ></script>
 <link href="{{ $alliconscss.RelPermalink }}" integrity="{{ $alliconscss.Data.Integrity }}" crossorigin="anonymous" type="{{ $alliconscss.MediaType }}" media="all" rel="stylesheet" />
@@ -110,7 +109,7 @@
 {{- end }}
 
 {{/* BGN: OneSignal Push Notification */}}
-  {{/* NOTE: Do not add crossorigina=anonymous */}}
+  {{/* NOTE: Do not add crossorigin=anonymous */}}
   {{- with $onesignal }}
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" type="text/javascript" async ></script>
     <script>
