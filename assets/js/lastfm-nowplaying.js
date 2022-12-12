@@ -150,7 +150,7 @@ var getSetLastFM = function() {
       $("a#trackartist")
         .html("Mod by ᜌᜓᜃᜒ (Yuki・雪亮)")
         .attr("href", "https://YourOnly.One")
-        .attr("title", "Mod by ᜌᜓᜃᜒ (Yuki・雪亮)");
+        .attr("title", "Mod by YourOnly.One");
     }
   });
 };
