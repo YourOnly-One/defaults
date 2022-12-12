@@ -3,7 +3,7 @@
   + https://prashant.me
 */
 /***
-  * Modified by ᜌᜓᜃᜒ (Yuki・雪亮) 🇵🇭
+  * Modified by YourOnly.One
   *   - https://YourOnly.One
   *
   * 2021-02-01: Updated "error" information
@@ -148,7 +148,7 @@ var getSetLastFM = function() {
 
       var artistFormatted = "Prashant Shrestha";
       $("a#trackartist")
-        .html("Mod by ᜌᜓᜃᜒ (Yuki・雪亮)")
+        .html("Mod by YourOnly.One")
         .attr("href", "https://YourOnly.One")
         .attr("title", "Mod by YourOnly.One");
     }
