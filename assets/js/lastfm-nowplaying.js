@@ -16,8 +16,7 @@
   *   - Switched to ::marker
 ***/
 var lastfmData = {
-  baseURL:
-    "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
+  baseURL: "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
   /* Your Last.fm Username */
   user: "Laibcoms",
   /* Your API key -- USE YOUR OWN API KEY thank you */
@@ -94,7 +93,6 @@ var lastfmData = {
         ]
       }
     }
-
   *
 **/
 
