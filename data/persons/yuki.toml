@@ -14,6 +14,7 @@ sameas = [
   "https://iam.youronly.one",
   "https://im.youronly.one/",
   "https://youronly.one/",
+  "https://youronly.one/?verify=keyoxide",
   "https://keyoxide.org/wkd/contact@im.youronly.one",
   "https://keyoxide.org/989eb937bdf4a5cd65470204f2f9be4c3d8e4f53",
   "https://keybase.io/yukino",

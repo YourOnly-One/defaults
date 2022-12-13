@@ -11,9 +11,9 @@ name = "Yelosan Publishing"
 sameas = [
   "https://facebook.com/101597304949708/",
   "https://facebook.com/yelosanpub/",
-  "https://codeberg.org/youronlyone",
-  "https://gitlab.com/youronlyone",
-  "https://github.com/youronly-one"
+  "https://codeberg.org/yelosan",
+  "https://gitlab.com/yelosan",
+  "https://github.com/yelosan"
 ]
 url = "https://yelosan.youronly.one/"
 
