@@ -202,9 +202,9 @@ Quotation marks
 
 - episode, articles, essays, chapters, poems, songs, speeches, mottos, and ordinary quotation marks
 - use: {{% quote type="work" lang="" %}}content{{% /quote %}}
-- English: " … ' … ' … "
+- English: “ … ‘ … ’ … ”
 - Asian: 「 … 『 … 』 … 」
-- South Korean (usually for vertical only): 「…『…』…」
+- South Korean (usually for vertical only): 「 … 『 … 』 … 」
 
 {{% sembox boxstyle="qbs_generic" qmarkstyle="qbm_doublequotationmark" boxcolour="qbc_blue" attribalign="txt_right" srctitle="" srclink="" srcrel="noopener external" attribto="" attriblink="" attribrel="noopener external" %}}
 content
