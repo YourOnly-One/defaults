@@ -1278,8 +1278,8 @@
       color: hsla(240deg, 100%, 50%, 1);
       color: hwb(240deg 0% 0% / 100%);
     }
-    ul.custom_liststyle.list-aqua::before > li::before,
-    ul.custom_liststyle.list-cyan::before > li::before {
+    ul.custom_liststyle.list-aqua > li::before,
+    ul.custom_liststyle.list-cyan > li::before {
       color: hsla(180deg, 100%, 50%, 1);
       color: hwb(180deg 0% 0% / 100%);
     }
@@ -1315,27 +1315,27 @@
   /* END: Generic colours */
 
   /* BGN: Brand colours */
-    ul.custom_liststyle.list-facebook::before > li::before {
+    ul.custom_liststyle.list-facebook > li::before {
       color: hsla(220deg, 46%, 48%, 1);
       color: hwb(220deg 26% 30% / 100%);
     }
-    ul.custom_liststyle.list-twitter::before > li::before {
+    ul.custom_liststyle.list-twitter > li::before {
       color: hsla(203deg, 78%, 49%, 1);
       color: hwb(203deg 11% 12% / 100%);
     }
-    ul.custom_liststyle.list-googleplus::before > li::before {
+    ul.custom_liststyle.list-googleplus > li::before {
       color: hsla(5deg, 69%, 54%, 1);
       color: hwb(5deg 22% 14% / 100%);
     }
-    ul.custom_liststyle.list-ubuntu::before > li::before {
+    ul.custom_liststyle.list-ubuntu > li::before {
       color: hsla(16deg, 82%, 52%, 1);
       color: hwb(16deg 13% 9% / 100%);
     }
-    ul.custom_liststyle.list-mastodon::before > li::before {
+    ul.custom_liststyle.list-mastodon > li::before {
       color: hsla(205deg, 70%, 51%, 1);
       color: hwb(205deg 17% 15% / 100%);
     }
-    ul.custom_liststyle.list-hubzilla::before > li::before {
+    ul.custom_liststyle.list-hubzilla > li::before {
       color: hsla(236deg, 35%, 40%, 1);
       color: hwb(236deg 26% 46% / 100%);
     }
