@@ -147,7 +147,7 @@
   header, footer,
   details, summary {
     content-visibility: auto;
-    contain-intrinsic-size: auto;
+    /* contain-intrinsic-size: auto; */
   }
   abbr {
     cursor: help;
@@ -480,6 +480,9 @@
   .rtc_intercharacter {
     ruby-position: inter-character;
   }
+  .rtc_alternate {
+    ruby-position: alternate;
+  }
   .rtc_left {
     ruby-position: left;
   }
@@ -530,7 +533,7 @@
    */
   .rspnsv-embedframe, .responsive_embedframe {
     content-visibility: auto;
-    contain-intrinsic-size: auto;
+    /* contain-intrinsic-size: auto; */
     position: relative;
     padding-bottom: 56.25%; /* YouTube, Vimeo, Dailymotion, Google Maps, Generic */
     height: 0;
@@ -771,7 +774,7 @@
   html body {
     .quote_box, .figure_box {
       content-visibility: auto;
-      contain-intrinsic-size: auto;
+      /* contain-intrinsic-size: auto; */
     }
 
     /* BGN: Remove browser and theme styles */
@@ -1478,7 +1481,7 @@
 ********************/
   #webmentions {
     content-visibility: auto;
-    contain-intrinsic-size: auto;
+    /* contain-intrinsic-size: auto; */
   }
 
   #webmentions {
