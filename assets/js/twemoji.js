@@ -1,7 +1,7 @@
 /*jslint indent: 2, browser: true, bitwise: true, plusplus: true */
 var twemoji = (function (
   /*! Copyright Twitter Inc. and other contributors. Licensed under MIT *//*
-    https://github.com/twitter/twemoji/blob/gh-pages/LICENSE
+    https://github.com/jdecked/twemoji/blob/gh-pages/LICENSE
   */
 
   // WARNING:   this file is generated automatically via
@@ -19,11 +19,12 @@ var twemoji = (function (
     twemoji = {
 
 
-    /////////////////////////
-    //      properties     //
-    /////////////////////////
+      /////////////////////////
+      //      properties     //
+      /////////////////////////
 
-      // default assets url, by default will be Twitter Inc. CDN
+      // default assets url, by default will be jsDelivr CDN
+      //base: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.0/assets/',
       base: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji/assets/',
 
       // default assets file extensions, by default '.png'
@@ -74,9 +75,9 @@ var twemoji = (function (
       },
 
 
-    /////////////////////////
-    //       methods       //
-    /////////////////////////
+      /////////////////////////
+      //       methods       //
+      /////////////////////////
 
       /**
        * User first: used to remove missing images
@@ -304,7 +305,7 @@ var twemoji = (function (
       // ignore all nodes that are not type 1, that are svg, or that
       // should not be parsed as script, style, and others
       else if (nodeType === 1 && !('ownerSVGElement' in subnode) &&
-          !shouldntBeParsed.test(subnode.nodeName.toLowerCase())) {
+        !shouldntBeParsed.test(subnode.nodeName.toLowerCase())) {
         grabAllTextNodes(subnode, allText);
       }
     }
@@ -505,7 +506,7 @@ var twemoji = (function (
 
   function fromCodePoint(codepoint) {
     var code = typeof codepoint === 'string' ?
-          parseInt(codepoint, 16) : codepoint;
+      parseInt(codepoint, 16) : codepoint;
     if (code < 0x10000) {
       return fromCharCode(code);
     }
@@ -518,18 +519,18 @@ var twemoji = (function (
 
   function parse(what, how) {
     if (!how || typeof how === 'function') {
-      how = {callback: how};
+      how = { callback: how };
     }
     // if first argument is string, inject html <img> tags
     // otherwise use the DOM tree and parse text nodes only
     return (typeof what === 'string' ? parseString : parseNode)(what, {
-      callback:   how.callback || defaultImageSrcGenerator,
+      callback: how.callback || defaultImageSrcGenerator,
       attributes: typeof how.attributes === 'function' ? how.attributes : returnNull,
-      base:       typeof how.base === 'string' ? how.base : twemoji.base,
-      ext:        how.ext || twemoji.ext,
-      size:       how.folder || toSizeSquaredAsset(how.size || twemoji.size),
-      className:  how.className || twemoji.className,
-      onerror:    how.onerror || twemoji.onerror
+      base: typeof how.base === 'string' ? how.base : twemoji.base,
+      ext: how.ext || twemoji.ext,
+      size: how.folder || toSizeSquaredAsset(how.size || twemoji.size),
+      className: how.className || twemoji.className,
+      onerror: how.onerror || twemoji.onerror
     });
   }
 
