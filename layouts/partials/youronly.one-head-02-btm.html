@@ -1,5 +1,3 @@
-{{- /* $paninapfonts := resources.GetRemote "https://rsc.youronly.one/css/paninap-fonts.css" | minify | fingerprint "sha512" */ -}}
-
 {{- $onesignal := .Site.Params.tools.onesignal -}}
 
 {{- $yukiscss := resources.Get "scss/yuki-style.scss" -}}
@@ -14,14 +12,18 @@
 {{- $yookicss = slice $yookicss $semwebcss $quotecss $localcss | resources.Concat "css/yooki.css" -}}
 {{- $yookicss = $yookicss | minify | fingerprint "sha512" -}}
 
-{{- $cciconscss := resources.Get "css/cc-icons.css" -}} {{/* src: https://github.com/techmagus/cc-icons or https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css */}}
-{{- $alliconscss := slice $cciconscss | resources.Concat "css/allicons.css" -}}
-{{- $alliconscss = $alliconscss | minify | fingerprint "sha512" -}}
-
 {{- $twemojijs := resources.Get "js/twemoji.js" -}} {{/* src: https://github.com/twitter/twemoji/tree/gh-pages/v */}}
 {{- $twemojisettingsjs := resources.Get "js/twemoji-settings.js" -}}
 {{- $twemojialljs := slice $twemojijs $twemojisettingsjs | resources.Concat "js/twemoji-all.js" -}}
 {{- $twemojialljs = $twemojialljs | minify | fingerprint "sha512" -}}
+
+{{- $yelosanfontscss := resources.Get "css/yelosan-fonts.css" -}}
+{{- $pilipinofontscss := resources.Get "css/pilipino-fonts.css" -}}
+{{- $hebrewfontscss := resources.Get "css/hebrew-fonts.css" -}}
+{{- $twemojicss := resources.Get "css/twemoji.css" -}}
+{{- $cciconscss := resources.Get "css/cc-icons.css" -}} {{/* src: https://github.com/techmagus/cc-icons or https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css */}}
+{{- $yelosanfontscss = slice $yelosanfontscss $pilipinofontscss $hebrewfontscss $twemojicss $cciconscss | resources.Concat "css/yelosan-fonts.css" -}}
+{{- $yelosanfontscss = $yelosanfontscss | minify | fingerprint "sha512" -}}
 
 {{- $appletouchiconpng := resources.Get "favicon/apple-touch-icon.png" | fingerprint "sha512" -}}
 {{- /* $faviconsvg := resources.Get "favicon/favicon.svg" | fingerprint "sha512" */ -}}
@@ -66,19 +68,12 @@
 {{- /* <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-svg-core@6.2.0/styles.css" integrity="sha256-jV0um2PJP27znK1fgW1q7JQl4wqywhvcTrwEHNw+B8w=" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" /> */ -}}
 <link href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
 
-{{/* TODO: migrate to our Hugo /defaults/ */}}
-{{/* Tool: https://report-uri.com/home/tools */}}
-<link href="https://rsc.youronly.one/css/paninap-fonts.min.css" integrity="sha512-Xyj6j1bkvUJULbyPbGkPJWs7ohQXOQIAgrDfyFvfL4u+udSO+Ppqld0wJzvZdaeG+5Snwh2cs6HxJ8ffGBacSA==" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
-{{- /*
-<link href="{{ $paninapfonts.RelPermalink }}" integrity="{{ $paninapfonts.Data.Integrity }}" crossorigin="anonymous" type="{{ $paninapfonts.MediaType }}" media="all" rel="stylesheet" />
-*/ -}}
-
 {{- /* NOTE:
   - twemoji 14.0.2 as of 2022-12-13
   - cc-icons 1.2.1 as of 2022-12-13
 */ -}}
 <script src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}" crossorigin="anonymous" type="{{ $twemojialljs.MediaType }}" async ></script>
-<link href="{{ $alliconscss.RelPermalink }}" integrity="{{ $alliconscss.Data.Integrity }}" crossorigin="anonymous" type="{{ $alliconscss.MediaType }}" media="all" rel="stylesheet" />
+<link href="{{ $yelosanfontscss.RelPermalink }}" integrity="{{ $yelosanfontscss.Data.Integrity }}" crossorigin="anonymous" type="{{ $yelosanfontscss.MediaType }}" media="all" rel="stylesheet" />
 <link href="{{ $yookicss.RelPermalink }}" integrity="{{ $yookicss.Data.Integrity }}" crossorigin="anonymous" type="{{ $yookicss.MediaType }}" media="all" rel="stylesheet" />
 
 {{/* BGN: favicon */}}

@@ -1,8 +1,8 @@
 /* Polyfill service v3.111.0
  * For detailed credits and licence information see https://github.com/financial-times/polyfill-service.
- * 
+ *
  * Features requested: Intl,default,es2015,es2016,es2017,es2018,es2019,es2020,es2021,es2022,es5,es6,es7
- * 
+ *
  * - _ESAbstract.ArrayCreate, License: CC0 (required by "Array.prototype.flatMap", "_ESAbstract.ArraySpeciesCreate", "es2019")
  * - _ESAbstract.Call, License: CC0 (required by "Object.fromEntries", "_ESAbstract.ToPropertyKey", "_ESAbstract.ToPrimitive", "_ESAbstract.OrdinaryToPrimitive", "es2019")
  * - _ESAbstract.Get, License: CC0 (required by "Object.fromEntries", "_ESAbstract.ToPropertyKey", "_ESAbstract.ToPrimitive", "_ESAbstract.OrdinaryToPrimitive", "es2019")
@@ -25702,7 +25702,7 @@ if (!("Intl"in self&&"DateTimeFormat"in self.Intl&&"formatRangeToParts"in self.I
 )) {
 
 // Intl.DateTimeFormat.~locale.en
-/* @generated */	
+/* @generated */
 
   // prettier-ignore
   if (Intl.DateTimeFormat && typeof Intl.DateTimeFormat.__addLocaleData === 'function') {
