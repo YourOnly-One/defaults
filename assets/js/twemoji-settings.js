@@ -8,7 +8,8 @@ function onReady(insertTwemoji) {
   }, 10);
 }
 onReady(function() {
-  twemoji.parse( document.body, {
+  twemoji.parse(document.body, {
+    base: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji/assets/',
     ext: '.svg',
     folder: 'svg',
     callback: function(icon, options) {
