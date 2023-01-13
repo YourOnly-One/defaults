@@ -1,0 +1,250 @@
+/***
+  * Webfonts CSS
+  *
+  * Websites:
+  *   * Profile: https://iam.youronly.one
+  *   * YourOnly.One™: https://youronly.one
+  *   * Yelosan Publishing: https://yelosan.youronly.one
+  *
+  * Contact:
+  *   * Fediverse: https://c.im/@youronlyone | @youronlyone@c.im
+  *   * Facebook: https://fb.me/YourOnly.ONE.ofcl | https://m.me/YourOnly.ONE.ofcl
+***/
+
+/***
+  * yelosan-fonts.css Copyright © 2003-2023 JC John Sese Cuneta; Yelosan Publishing
+  *
+  * Licenses: [1] MIT/Expat License; [2] MPL v2.0; [3] LGPLv3
+  *
+  * LICENSE: MIT License / Expat License
+  *   Permission is hereby granted, free of charge, to any person obtaining a copy
+  *   of this software and associated documentation files (the "Software"), to deal
+  *   in the Software without restriction, including without limitation the rights
+  *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  *   copies of the Software, and to permit persons to whom the Software is
+  *   furnished to do so, subject to the following conditions:
+  *
+  *   The above copyright notice and this permission notice shall be included in all
+  *   copies or substantial portions of the Software.
+  *
+  *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  *   SOFTWARE.
+  *
+  * LICENSE: Mozilla Public License Version 2.0 ("MPL 2.0")
+  *   This Source Code Form is subject to the terms of the Mozilla Public
+  *   License, v. 2.0. If a copy of the MPL was not distributed with this
+  *   file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  *
+  * LICENSE: GNU LESSER GENERAL PUBLIC LICENSE Version 3 ("LGPLv3")
+  *   This program is free software: you can redistribute it and/or modify
+  *   it under the terms of the Lesser GNU General Public License as published by
+  *   the Free Software Foundation, either version 3 of the License, or
+  *   (at your option) any later version.
+  *
+  *   This program is distributed in the hope that it will be useful,
+  *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  *   Lesser GNU General Public License for more details.
+  *
+  *   You should have received a copy of the Lesser GNU General Public License
+  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+***/
+
+/***
+  * Baybayin Unicode Fonts License:
+  *   Paul Morrow, All Rights Reserved: http://www.mts.net/~pmorrow/fonts.htm
+  *   Norman de los Santos ("Nordenx"), All Rights Reserved: http://nordenx.blogspot.com and http://nordenx.deviantart.com
+  *   Permission granted for use in my sites only.
+  *   font-face version based on: fontsquirrel.com which was based on the work of Paul Irish.
+***/
+
+/***
+  * Other Attributions
+  *
+  * Barabara: https://itsmorefuninthephilippines.com
+***/
+
+/* BGN: MOST USED */
+  /* BGN: [Custom] Baybayin-Tagalog-ModernClub-Nordenx */
+    @font-face {
+      font-family: "Baybayin-Tagalog-ModernClub-Nordenx";
+      src:  local("Baybayin Modern Club Regular"), /* full font name */
+            local("Baybayin Modern Club"), /* full font name */
+            local("BaybayinModernClub"), /* Postscript name */
+            url("../fonts/baybayintagalogmodernclub-webfont.woff2") format("woff2"),
+            url("../fonts/baybayintagalogmodernclub-webfont.woff") format("woff"),
+            url("../fonts/baybayintagalogmodernclub-webfont.ttf") format("opentype");
+      font-display: swap;
+      font-language-override: "PIL";
+      font-style: normal;
+      unicode-range: U+1700-171F, U+1734-1736, U+20B1;
+    }
+  /* END: [Custom] Baybayin-Tagalog-ModernClub-Nordenx */
+/* END: MOST USED */
+
+/* BGN: RARELY USED */
+  /* BGN: [Custom] Baybayin-MangyanHanunoo-Hanubrush-Nordenx */
+    @font-face {
+      font-family: "Baybayin-MangyanHanunoo-Hanubrush-Nordenx";
+      src:  local("Baybayin Mangyan Hanubrush Regular"), /* full font name */
+            local("Baybayin Mangyan Hanubrush"), /* full font name */
+            local("BaybayinMangyanHanubrush"), /* Postscript name */
+            url("../fonts/baybayinmangyanhanubrush-webfont.woff2") format("woff2"),
+            url("../fonts/baybayinmangyanhanubrush-webfont.woff") format("woff"),
+            url("../fonts/baybayinmangyanhanubrush-webfont.ttf") format("opentype");
+      font-display: swap;
+      font-language-override: "PIL";
+      font-style: normal;
+      unicode-range: U+1720-173F, U+1714, U+20B1;
+    }
+  /* END: [Custom] Baybayin-MangyanHanunoo-Hanubrush-Nordenx */
+
+  /* BGN: [Custom] Baybayin-MangyanBuhid-Nordenx */
+    @font-face {
+      font-family: "Baybayin-MangyanBuhid-Nordenx";
+      src:  local("Baybayin Mangyan Buhid Regular"), /* full font name */
+            local("Baybayin Mangyan Buhid"), /* full font name */
+            local("BaybayinMangyanBuhid"), /* Postscript name */
+            url("../fonts/baybayinmangyanbuhid-webfont.woff2") format("woff2"),
+            url("../fonts/baybayinmangyanbuhid-webfont.woff") format("woff"),
+            url("../fonts/baybayinmangyanbuhid-webfont.ttf") format("opentype");
+      font-display: swap;
+      font-language-override: "PIL";
+      font-style: normal;
+      unicode-range: U+1740-175F, U+1714, U+1734-1736, U+20B1;
+    }
+  /* END: [Custom] Baybayin-MangyanBuhid-Nordenx */
+
+  /* BGN: [Custom] Baybayin-Tagbanwa-paninap */
+    /*
+    @font-face {
+      font-family: "Baybayin-Tagbanwa-paninap";
+      src:  local(""), /* full font name
+            local(""), /* Postscript name
+            url("../fonts/-webfont.woff2") format("woff2"),
+            url("../fonts/-webfont.woff") format("woff"),
+            url("../fonts/-webfont.ttf") format("opentype");
+      font-display: swap;
+      -webkit-font-language-override: "PIL";
+              font-language-override: "PIL";
+      font-style: normal;
+      unicode-range: U+1760-177F, U+1714, U+1734-1736, U+20B1;
+    }
+    */
+  /* END: [Custom] Baybayin-Tagbanwa-paninap */
+
+  /* BGN: [Custom] Barabara-Unicode-paninap */
+    @font-face {
+      font-family: "Barabara-Unicode-paninap";
+      src:  local("BARABARA Regular"), /* full font name */
+            local("BARABARA"), /* full font name */
+            local("BARABARARegular"), /* Postscript name */
+            url("../fonts/barabara-unicode-webfont.woff2") format("woff2"),
+            url("../fonts/barabara-unicode-webfont.woff") format("woff"),
+            url("../fonts/barabara-unicode-webfont.ttf") format("opentype");
+      font-display: swap;
+    }
+  /* END: [Custom] Barabara-Unicode-paninap */
+/* END: RARELY USED */
+
+/* BGN: LANG */
+  /***
+    * Have to specifically define direction and select font descriptors
+    * Some themes and browsers are not displaying the fonts correctly
+  ***/
+
+  /***
+    * BGN: Special font-family override
+    *
+    * Unfortunately we have to do this because browsers can not auto-detect the appropriate :lang of a script.
+    *
+    * This shows us that it is a bad idea to add font-family in the :lang() level as it will override the font selection
+    *   if there are languages without an explicit lang="" attribute.
+    *
+    * Since there are sections that we can not add an explicit lang="" attribute without major changes in the code,
+    *   like in post titles, this is the most effective way to ensure the scripts are showing correctly.
+    *
+    * We also have to be very careful in only using script fonts made for web-font usage, meaning, there are no extra
+    *   glyphs in the font beyond the range of what it was supposed to cover. Otherwise, it will affect the other scripts,
+    *   especially Latin scripts.
+    *
+    * Also, do not include CJK fonts below. Unicode-compliant CJK fonts, like Noto Sans, share a lot of glyph points
+    *   but with different strokes.
+  ***/
+
+  /***
+    * Important note: Do not use font-family in :lang() as it applies to every element when the lang="" attribute is
+    *   declared in <html> element. Otherwise we have to be very specific in CSS overrides like in MathJax case.
+    *
+    * Best way to include our choice of fonts is to manually override all font-family declarations of each theme, per site.
+  ***/
+
+  /* BGN: Catch all PH (original) scripts */
+    :lang(phi), :lang(fil),
+    :lang(tbw), :lang(bku), :lang(hnn), :lang(tl) {
+      direction: ltr;
+      font-language-override: "PIL";
+      /* font-family: var(--notosans-font), var(--notosans-baybayin-font), var(--notosans-hebrew-font); */ /* Force override */
+      font-synthesis: initial;
+    }
+    :lang(tbw-Tagb), :lang(bku-Buhd), :lang(hnn-Hano), :lang(tl-Tglg)
+    /* :lang(*-Tagb), :lang(*-Buhd), :lang(*-Hano), :lang(*-Tglg) */
+    {
+      font-variant-east-asian: proportional-width;
+      font-style: normal;
+      font-synthesis: weight;
+    }
+  /* END: Catch all PH (original) scripts */
+/* END: LANG */
+
+/**
+  * Font classes for override, and in rare cases, to force the font to an element.
+  *   Examples:
+  *     1. Templates with explicit font-face for selected elements
+  *     2. Header elements (<h1,2,3,4,5>) -- could be theme-based also
+  *
+  * Baybayin: Baybayin Modern club > Noto Sans Tagalog
+  * Paleo Hebrew: Paleo Hebrew > Ancient Hebrew > Noto Sans Phoenician
+  * Modern Hebrew: Modern Hebrew = Noto Sans Hebrew
+  *
+  * "direction" has to be added to cover all styling practices
+**/
+/* BGN: NotoSans */
+  .font-Baybayin-Tagbanwa-NotoSans, /* backwards compatibility */
+  .font-Baybayin-MangyanBuhid-NotoSans, /* backwards compatibility */
+  .font-Baybayin-MangyanHanunoo-NotoSans, /* backwards compatibility */
+  .font-Baybayin-Tagalog-NotoSans, /* backwards compatibility */
+  .font-baybayin-notosans {
+    direction: ltr;
+    font-family: var(--notosans-baybayin-font);
+  }
+/* END: NotoSans */
+
+/* BGN: Custom + fallback_NotoSans */
+  .font-Baybayin-Tagbanwa-paninap {
+    direction: ltr;
+    font-family: "Baybayin-Tagbanwa-paninap", var(--notosans-baybayin-font);
+  }
+  .font-Baybayin-MangyanBuhid-Nordenx {
+    direction: ltr;
+    font-family: "Baybayin-MangyanBuhid-Nordenx", var(--notosans-baybayin-font);
+  }
+  .font-Baybayin-MangyanHanunoo-Habubrush-Nordenx {
+    direction: ltr;
+    font-family: "Baybayin-MangyanHanunoo-Hanubrush-Nordenx", var(--notosans-baybayin-font);
+  }
+  .font-Baybayin-Tagalog-ModernClub-Nordenx {
+    direction: ltr;
+    font-family: "Baybayin-Tagalog-ModernClub-Nordenx", var(--notosans-baybayin-font);
+  }
+/* END: Custom + fallback_NotoSans */
+
+.font-Barabara-Unicode-paninap {
+  direction: ltr;
+  font-family: "Barabara-Unicode-paninap", fantasy;
+}

@@ -1,0 +1,180 @@
+/***
+  * Webfonts CSS
+  *
+  * Websites:
+  *   * Profile: https://iam.youronly.one
+  *   * YourOnly.One™: https://youronly.one
+  *   * Yelosan Publishing: https://yelosan.youronly.one
+  *
+  * Contact:
+  *   * Fediverse: https://c.im/@youronlyone | @youronlyone@c.im
+  *   * Facebook: https://fb.me/YourOnly.ONE.ofcl | https://m.me/YourOnly.ONE.ofcl
+***/
+
+/***
+  * yelosan-fonts.css Copyright © 2003-2023 JC John Sese Cuneta; Yelosan Publishing
+  *
+  * Licenses: [1] MIT/Expat License; [2] MPL v2.0; [3] LGPLv3
+  *
+  * LICENSE: MIT License / Expat License
+  *   Permission is hereby granted, free of charge, to any person obtaining a copy
+  *   of this software and associated documentation files (the "Software"), to deal
+  *   in the Software without restriction, including without limitation the rights
+  *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  *   copies of the Software, and to permit persons to whom the Software is
+  *   furnished to do so, subject to the following conditions:
+  *
+  *   The above copyright notice and this permission notice shall be included in all
+  *   copies or substantial portions of the Software.
+  *
+  *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  *   SOFTWARE.
+  *
+  * LICENSE: Mozilla Public License Version 2.0 ("MPL 2.0")
+  *   This Source Code Form is subject to the terms of the Mozilla Public
+  *   License, v. 2.0. If a copy of the MPL was not distributed with this
+  *   file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  *
+  * LICENSE: GNU LESSER GENERAL PUBLIC LICENSE Version 3 ("LGPLv3")
+  *   This program is free software: you can redistribute it and/or modify
+  *   it under the terms of the Lesser GNU General Public License as published by
+  *   the Free Software Foundation, either version 3 of the License, or
+  *   (at your option) any later version.
+  *
+  *   This program is distributed in the hope that it will be useful,
+  *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  *   Lesser GNU General Public License for more details.
+  *
+  *   You should have received a copy of the Lesser GNU General Public License
+  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+***/
+
+/* BGN: REGULARLY USED */
+  /* BGN: [Custom] Hebrew-Paleo-Gezer-Unicode */
+    @font-face {
+      font-family: "Hebrew-Paleo-Gezer-Unicode";
+      src:  local("Hebrew Paleo Gezer Medium"), /* full font name */
+            local("Hebrew Paleo Gezer"), /* full font name */
+            local("Hebrew-Paleo-Gezer"), /* Postscript name */
+            url("../fonts/hebrew-paleo-gezer-pure-unicode-webfont.woff2") format("woff2"),
+            url("../fonts/hebrew-paleo-gezer-pure-unicode-webfont.woff") format("woff"),
+            url("../fonts/hebrew-paleo-gezer-pure-unicode-webfont.ttf") format("opentype");
+      font-display: swap;
+      font-language-override: "IWR";
+      font-style: normal;
+      unicode-range: U+10900-1091F;
+    }
+  /* END: [Custom] Hebrew-Paleo-Gezer-Unicode */
+/* END: REGULARLY USED */
+
+/* BGN: RARELY USED */
+  /* BGN: [Custom] Hebrew-Proto-Canaanite-Unicode */
+    @font-face {
+      font-family: "Hebrew-Proto-Canaanite-Unicode";
+      src:  local("Proto Canaanite Medium"), /* full font name */
+            local("Proto Canaanite"), /* full font name */
+            local("Proto-Canaanite"), /* Postscript name */
+            url("../fonts/proto-canaanite-pure-unicode-webfont.woff2") format("woff2"),
+            url("../fonts/proto-canaanite-pure-unicode-webfont.woff") format("woff"),
+            url("../fonts/proto-canaanite-pure-unicode-webfont.ttf") format("opentype");
+      font-display: swap;
+      font-language-override: "IWR";
+      font-style: normal;
+      unicode-range: U+10900-1091F;
+    }
+  /* END: [Custom] Hebrew-Proto-Canaanite-Unicode */
+/* END: RARELY USED */
+
+/* BGN: LANG */
+  /***
+    * Have to specifically define direction and select font descriptors
+    * Some themes and browsers are not displaying the fonts correctly
+  ***/
+
+  /***
+    * BGN: Special font-family override
+    *
+    * Unfortunately we have to do this because browsers can not auto-detect the appropriate :lang of a script.
+    *
+    * This shows us that it is a bad idea to add font-family in the :lang() level as it will override the font selection
+    *   if there are languages without an explicit lang="" attribute.
+    *
+    * Since there are sections that we can not add an explicit lang="" attribute without major changes in the code,
+    *   like in post titles, this is the most effective way to ensure the scripts are showing correctly.
+    *
+    * We also have to be very careful in only using script fonts made for web-font usage, meaning, there are no extra
+    *   glyphs in the font beyond the range of what it was supposed to cover. Otherwise, it will affect the other scripts,
+    *   especially Latin scripts.
+    *
+    * Also, do not include CJK fonts below. Unicode-compliant CJK fonts, like Noto Sans, share a lot of glyph points
+    *   but with different strokes.
+  ***/
+
+  /***
+    * Important note: Do not use font-family in :lang() as it applies to every element when the lang="" attribute is
+    *   declared in <html> element. Otherwise we have to be very specific in CSS overrides like in MathJax case.
+    *
+    * Best way to include our choice of fonts is to manually override all font-family declarations of each theme, per site.
+  ***/
+
+  /* BGN: Catch all Hebrew langs and scripts */
+    :lang(he), :lang(heb),
+    :lang(hbo), :lang(hbo-Hebr) {
+      direction: rtl;
+      /* font-family: var(--notosans-font), var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
+      font-style: normal;
+      font-synthesis: weight;
+    }
+    :lang(he), :lang(heb) {
+      font-language-override: "IWR";
+    }
+    :lang(he-Latn), :lang(heb-Latn),
+    :lang(hbo-Latn) {
+      direction: ltr;
+      /* font-family: var(--notosans-font), var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
+      font-synthesis: initial;
+    }
+  /* END: Catch all Hebrew langs and scripts */
+/* END: LANG */
+
+/**
+  * Font classes for override, and in rare cases, to force the font to an element.
+  *   Examples:
+  *     1. Templates with explicit font-face for selected elements
+  *     2. Header elements (<h1,2,3,4,5>) -- could be theme-based also
+  *
+  * Baybayin: Baybayin Modern club > Noto Sans Tagalog
+  * Paleo Hebrew: Paleo Hebrew > Ancient Hebrew > Noto Sans Phoenician
+  * Modern Hebrew: Modern Hebrew = Noto Sans Hebrew
+  *
+  * "direction" has to be added to cover all styling practices
+**/
+/* BGN: NotoSans */
+  .font-Hebrew-Modern-NotoSans, /* backwards compatibility */
+  .font-Hebrew-Phoenician-NotoSans, /* backwards compatibility */
+  .font-hebrew-notosans {
+    direction: rtl;
+    font-family: var(--notosans-hebrew-font); /* Force override */
+  }
+  .font-hebrew-notoserif { /* there is no Serif for Noto Sans Phoenician */
+    direction: rtl;
+    font-family: var(--notoserif-hebrew-font); /* Force override */
+  }
+/* END: NotoSans */
+
+/* BGN: Custom + fallback_NotoSans */
+  .font-Hebrew-Paleo-Gezer-Unicode {
+    direction: rtl;
+    font-family: "Hebrew-Paleo-Gezer-Unicode", var(--notosans-hebrew-font);
+  }
+  .font-Hebrew-Proto-Canaanite-Unicode {
+    direction: rtl;
+    font-family: "Hebrew-Proto-Canaanite-Unicode", "Hebrew-Paleo-Gezer-Unicode", var(--notosans-hebrew-font);
+  }
+/* END: Custom + fallback_NotoSans */
