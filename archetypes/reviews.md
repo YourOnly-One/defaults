@@ -84,7 +84,7 @@ contenttypes = ["CriticReview"]                                                 
 # For TVSeries and if reviewing an episode
 #[semweb.product.season.episode]
 #  epnumber = ""
-#  name = "Episode"
+#  name = "Episode / エピソード / 에피소드"
 #  datepublished = ""
 
 # Duplicate as necessary
