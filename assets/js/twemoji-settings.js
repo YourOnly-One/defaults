@@ -11,7 +11,7 @@ onReady(function() {
   twemoji.parse(document.body, {
     base: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji/assets/',
     ext: '.png',
-    folder: 'png',
+    folder: '72x72',
     callback: function(icon, options) {
       return ''.concat(
         options.base,
