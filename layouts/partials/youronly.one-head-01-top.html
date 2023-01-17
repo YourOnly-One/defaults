@@ -57,7 +57,7 @@
 {{- /* NOTE: for reference, if we need it again
   <meta name="robots" content="{{ if or (eq .Kind "taxonomy") (eq .Kind "term") }}noindex{{ else if .Params.metarobots }}{{ .Params.metarobots }}{{ else }}index{{ end }}, follow" />
 */ -}}
-<meta name="robots" content="{{ if .Params.metarobots }}{{ .Params.metarobots }}{{ else }}index{{ end }}, follow" />
+<meta name="robots" content="{{ if .Params.metarobots }}{{ .Params.metarobots }}{{ else }}all, index{{ end }}, follow" />
 {{ with .Params.redirectto }}<meta http-equiv="refresh" content="0; url='{{ . }}'" />{{ end }}
 <meta name="author" content="{{ $authors }}" />
 {{ with (.Param "description") }}<meta name="description" content="{{ . | plainify }}" class="p-summary" />{{ end }}
