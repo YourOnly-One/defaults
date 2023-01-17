@@ -10,8 +10,8 @@ function onReady(insertTwemoji) {
 onReady(function() {
   twemoji.parse(document.body, {
     base: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji/assets/',
-    ext: '.svg',
-    folder: 'svg',
+    ext: '.png',
+    folder: 'png',
     callback: function(icon, options) {
       return ''.concat(
         options.base,
