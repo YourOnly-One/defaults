@@ -152,23 +152,16 @@
   abbr {
     cursor: help;
   }
+  address {
+    display: inline-block;
+    font-style: normal;
+  }
 /*************************
 ** END: Global Settings **
 *************************/
 
 /******************************************************************************/
 /******************************************************************************/
-
-/*******************
-** BGN: OVERRIDES **
-*******************/
-  address {
-    display: inline-block;
-    font-style: normal;
-  }
-/*******************
-** END: OVERRIDES **
-*******************/
 
 /************************
 ** BGN: COMMON CLASSES **
@@ -241,6 +234,13 @@
       }
     }
   /*** END: Alignments ***/
+
+  /*** BGN: Diacritics ***/
+    .diacritics {
+      font-family: var(--filipino-diacritics); /* Currently, DejaVu Sans has the highest accuracy in diacritical mark positioning. */
+      font-weight: bold;
+    }
+  /*** END: Diacritics ***/
 
   /*** BGN: Yuki footer ***/
     .global_footer {

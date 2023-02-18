@@ -18,11 +18,12 @@
 {{- $twemojialljs = $twemojialljs | minify | fingerprint "sha512" -}}
 
 {{- $yelosanfontscss := resources.Get "css/yelosan-fonts.css" -}}
+{{- $notofontscss := resources.Get "css/noto-fonts.css" -}}
 {{- $pilipinofontscss := resources.Get "css/pilipino-fonts.css" -}}
 {{- $hebrewfontscss := resources.Get "css/hebrew-fonts.css" -}}
 {{- $twemojicss := resources.Get "css/twemoji.css" -}}
 {{- $cciconscss := resources.Get "css/cc-icons.css" -}} {{/* src: https://github.com/techmagus/cc-icons or https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css */}}
-{{- $yelosanfontscss = slice $yelosanfontscss $pilipinofontscss $hebrewfontscss $twemojicss $cciconscss | resources.Concat "css/yelosan-fonts.css" -}}
+{{- $yelosanfontscss = slice $yelosanfontscss $notofontscss $pilipinofontscss $hebrewfontscss $twemojicss $cciconscss | resources.Concat "css/yelosan-fonts.css" -}}
 {{- $yelosanfontscss = $yelosanfontscss | minify | fingerprint "sha512" -}}
 
 {{- $appletouchiconpng := resources.Get "favicon/apple-touch-icon.png" | fingerprint "sha512" -}}

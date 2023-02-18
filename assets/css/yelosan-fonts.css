@@ -19,9 +19,9 @@
 /***
   * yelosan-fonts.css Copyright © 2003-2023 JC John Sese Cuneta; Yelosan Publishing
   *
-  * Licenses: [1] MIT/Expat License; [2] MPL v2.0; [3] LGPLv3
+  * License: MIT License (MIT)
   *
-  * LICENSE: MIT License / Expat License
+  * LICENSE: MIT License
   *   Permission is hereby granted, free of charge, to any person obtaining a copy
   *   of this software and associated documentation files (the "Software"), to deal
   *   in the Software without restriction, including without limitation the rights
@@ -39,25 +39,6 @@
   *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   *   SOFTWARE.
-  *
-  * LICENSE: Mozilla Public License Version 2.0 ("MPL 2.0")
-  *   This Source Code Form is subject to the terms of the Mozilla Public
-  *   License, v. 2.0. If a copy of the MPL was not distributed with this
-  *   file, You can obtain one at http://mozilla.org/MPL/2.0/.
-  *
-  * LICENSE: GNU LESSER GENERAL PUBLIC LICENSE Version 3 ("LGPLv3")
-  *   This program is free software: you can redistribute it and/or modify
-  *   it under the terms of the Lesser GNU General Public License as published by
-  *   the Free Software Foundation, either version 3 of the License, or
-  *   (at your option) any later version.
-  *
-  *   This program is distributed in the hope that it will be useful,
-  *   but WITHOUT ANY WARRANTY; without even the implied warranty of
-  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  *   Lesser GNU General Public License for more details.
-  *
-  *   You should have received a copy of the Lesser GNU General Public License
-  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
 /***
@@ -97,13 +78,15 @@
     --base-math-font: math;
     --base-fangsong-font: fangsong;
 
-    --notosans-font: "Noto Sans Display", "Noto Sans";
+    --notosans-font: "noto-sans-partial", "Noto Sans Display", "Noto Sans";
     --notosans-symbols-font: "Noto Sans Symbols", "Noto Sans Symbols 2";
     --notosans-baybayin-font: "Noto Sans Tagalog", "Noto Sans Hanunoo", "Noto Sans Buhid", "Noto Sans Tagbanwa";
     --notosans-hebrew-font: "Noto Sans Phoenician", "Noto Sans Hebrew";
 
-    --notoserif-font: "Noto Serif Display", "Noto Serif";
+    --notoserif-font: "noto-serif-partial", "Noto Serif Display", "Noto Serif";
     --notoserif-hebrew-font: "Noto Sans Phoenician", "Noto Serif Hebrew";	/* There is no Serif for Phoenician */
+
+    --filipino-diacritics: "dejavu-sans-filipino-diacritics", "DejaVu Sans"; /* Currently, DejaVu Sans has the highest accuracy in diacritical mark positioning. */
 
     font-variant-ligatures: normal;
     font-variant-numeric: oldstyle-nums tabular-nums slashed-zero; /* Set font-variant-numeric to how it should be. */
@@ -271,6 +254,7 @@
         font-style: normal;
         font-weight: normal;
         unicode-range: U+20B1; /* Peso currency
+        unicode-range: U+0025-00FF, U+4??; /* sample
       }
       */
     /* END: Special Characters */
