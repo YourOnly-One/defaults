@@ -40,15 +40,12 @@
   /* BGN: [Custom] Hebrew-Paleo-Gezer-Unicode */
     @font-face {
       font-family: "Hebrew-Paleo-Gezer-Unicode";
-      src:  local("Hebrew Paleo Gezer Medium"), /* full font name */
-            local("Hebrew Paleo Gezer"), /* full font name */
+      src:  local("Hebrew Paleo Gezer"), /* full font name */
             local("Hebrew-Paleo-Gezer"), /* Postscript name */
             url("../fonts/hebrew-paleo-gezer-pure-unicode-webfont.woff2") format("woff2"),
             url("../fonts/hebrew-paleo-gezer-pure-unicode-webfont.woff") format("woff"),
             url("../fonts/hebrew-paleo-gezer-pure-unicode-webfont.ttf") format("opentype");
       font-display: swap;
-      font-language-override: "IWR";
-      font-style: normal;
       unicode-range: U+10900-1091F;
     }
   /* END: [Custom] Hebrew-Paleo-Gezer-Unicode */
@@ -58,15 +55,12 @@
   /* BGN: [Custom] Hebrew-Proto-Canaanite-Unicode */
     @font-face {
       font-family: "Hebrew-Proto-Canaanite-Unicode";
-      src:  local("Proto Canaanite Medium"), /* full font name */
-            local("Proto Canaanite"), /* full font name */
+      src:  local("Proto Canaanite"), /* full font name */
             local("Proto-Canaanite"), /* Postscript name */
             url("../fonts/proto-canaanite-pure-unicode-webfont.woff2") format("woff2"),
             url("../fonts/proto-canaanite-pure-unicode-webfont.woff") format("woff"),
             url("../fonts/proto-canaanite-pure-unicode-webfont.ttf") format("opentype");
       font-display: swap;
-      font-language-override: "IWR";
-      font-style: normal;
       unicode-range: U+10900-1091F;
     }
   /* END: [Custom] Hebrew-Proto-Canaanite-Unicode */
@@ -74,41 +68,17 @@
 
 /* BGN: LANG */
   /***
-    * Have to specifically define direction and select font descriptors
-    * Some themes and browsers are not displaying the fonts correctly
-  ***/
-
-  /***
     * BGN: Special font-family override
     *
-    * Unfortunately we have to do this because browsers can not auto-detect the appropriate :lang of a script.
-    *
-    * This shows us that it is a bad idea to add font-family in the :lang() level as it will override the font selection
-    *   if there are languages without an explicit lang="" attribute.
-    *
-    * Since there are sections that we can not add an explicit lang="" attribute without major changes in the code,
-    *   like in post titles, this is the most effective way to ensure the scripts are showing correctly.
-    *
-    * We also have to be very careful in only using script fonts made for web-font usage, meaning, there are no extra
-    *   glyphs in the font beyond the range of what it was supposed to cover. Otherwise, it will affect the other scripts,
-    *   especially Latin scripts.
-    *
-    * Also, do not include CJK fonts below. Unicode-compliant CJK fonts, like Noto Sans, share a lot of glyph points
-    *   but with different strokes.
-  ***/
-
-  /***
-    * Important note: Do not use font-family in :lang() as it applies to every element when the lang="" attribute is
-    *   declared in <html> element. Otherwise we have to be very specific in CSS overrides like in MathJax case.
-    *
-    * Best way to include our choice of fonts is to manually override all font-family declarations of each theme, per site.
+    *   - Do not add font-familiy in :lang(). It will mess a multi-script / multi-language page.
+    *   - Subset fonts
+    *   - Pure Unicode-compliant fonts only
   ***/
 
   /* BGN: Catch all Hebrew langs and scripts */
     :lang(he), :lang(heb),
     :lang(hbo), :lang(hbo-Hebr) {
       direction: rtl;
-      /* font-family: var(--notosans-font), var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
       font-style: normal;
       font-synthesis: weight;
     }
@@ -118,7 +88,6 @@
     :lang(he-Latn), :lang(heb-Latn),
     :lang(hbo-Latn) {
       direction: ltr;
-      /* font-family: var(--notosans-font), var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
       font-synthesis: initial;
     }
   /* END: Catch all Hebrew langs and scripts */
@@ -136,26 +105,22 @@
   *
   * "direction" has to be added to cover all styling practices
 **/
-/* BGN: NotoSans */
-  .font-Hebrew-Modern-NotoSans, /* backwards compatibility */
-  .font-Hebrew-Phoenician-NotoSans, /* backwards compatibility */
-  .font-hebrew-notosans {
-    direction: rtl;
-    font-family: var(--notosans-hebrew-font); /* Force override */
-  }
-  .font-hebrew-notoserif { /* there is no Serif for Noto Sans Phoenician */
-    direction: rtl;
-    font-family: var(--notoserif-hebrew-font); /* Force override */
-  }
-/* END: NotoSans */
+.font-noto-sans-hebrew {
+  direction: rtl;
+  font-family: var(--font-yelosan-hebrew); /* Force override */
+}
+.font-noto-serif-hebrew { /* there is no Serif for Noto Sans Phoenician */
+  direction: rtl;
+  font-family: var(--font-yelosan-hebrew); /* Force override */
+}
 
 /* BGN: Custom + fallback_NotoSans */
   .font-Hebrew-Paleo-Gezer-Unicode {
     direction: rtl;
-    font-family: "Hebrew-Paleo-Gezer-Unicode", var(--notosans-hebrew-font);
+    font-family: var(--font-hebrew-sans-paleo-gezer), var(--font-yelosan-hebrew);
   }
   .font-Hebrew-Proto-Canaanite-Unicode {
     direction: rtl;
-    font-family: "Hebrew-Proto-Canaanite-Unicode", "Hebrew-Paleo-Gezer-Unicode", var(--notosans-hebrew-font);
+    font-family: var(--font-hebrew-sans-proto-canaanite), var(--font-hebrew-sans-paleo-gezer), var(--font-yelosan-hebrew);
   }
 /* END: Custom + fallback_NotoSans */

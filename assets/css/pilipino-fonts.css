@@ -50,119 +50,100 @@
   * Barabara: https://itsmorefuninthephilippines.com
 ***/
 
-/* BGN: MOST USED */
-  /* BGN: [Custom] Baybayin-Tagalog-ModernClub-Nordenx */
-    @font-face {
-      font-family: "Baybayin-Tagalog-ModernClub-Nordenx";
-      src:  local("Baybayin Modern Club Regular"), /* full font name */
-            local("Baybayin Modern Club"), /* full font name */
-            local("BaybayinModernClub"), /* Postscript name */
-            url("../fonts/baybayintagalogmodernclub-webfont.woff2") format("woff2"),
-            url("../fonts/baybayintagalogmodernclub-webfont.woff") format("woff"),
-            url("../fonts/baybayintagalogmodernclub-webfont.ttf") format("opentype");
-      font-display: swap;
-      font-language-override: "PIL";
-      font-style: normal;
-      unicode-range: U+1700-171F, U+1734-1736, U+20B1;
-    }
-  /* END: [Custom] Baybayin-Tagalog-ModernClub-Nordenx */
-/* END: MOST USED */
+/** BGN: Noto Baybayin **/
+  @font-face {
+    font-family: "noto-baybayin";
+    src:  local("Noto Sans Buhid"),
+          url("../fonts/NotoSansBuhid-Regular.otf") format("opentype"),
+          url("../fonts/NotoSansBuhid-Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "noto-baybayin";
+    src:  local("Noto Sans Hanunoo"),
+          url("../fonts/NotoSansHanunoo-Regular.otf") format("opentype"),
+          url("../fonts/NotoSansHanunoo-Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "noto-baybayin";
+    src:  local("Noto Sans Tagalog"),
+          url("../fonts/NotoSansTagalog-Regular.otf") format("opentype"),
+          url("../fonts/NotoSansTagalog-Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "noto-baybayin";
+    src:  local("Noto Sans Tagbanwa"),
+          url("../fonts/NotoSansTagbanwa-Regular.otf") format("opentype"),
+          url("../fonts/NotoSansTagbanwa-Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+/** END: Noto Baybayin **/
 
-/* BGN: RARELY USED */
-  /* BGN: [Custom] Baybayin-MangyanHanunoo-Hanubrush-Nordenx */
-    @font-face {
-      font-family: "Baybayin-MangyanHanunoo-Hanubrush-Nordenx";
-      src:  local("Baybayin Mangyan Hanubrush Regular"), /* full font name */
-            local("Baybayin Mangyan Hanubrush"), /* full font name */
-            local("BaybayinMangyanHanubrush"), /* Postscript name */
-            url("../fonts/baybayinmangyanhanubrush-webfont.woff2") format("woff2"),
-            url("../fonts/baybayinmangyanhanubrush-webfont.woff") format("woff"),
-            url("../fonts/baybayinmangyanhanubrush-webfont.ttf") format("opentype");
-      font-display: swap;
-      font-language-override: "PIL";
-      font-style: normal;
-      unicode-range: U+1720-173F, U+1714, U+20B1;
-    }
-  /* END: [Custom] Baybayin-MangyanHanunoo-Hanubrush-Nordenx */
+/* BGN: Nordenx Baybayin */
+  @font-face {
+    font-family: "nordenx-baybayin";
+    src:  local("Baybayin Mangyan Buhid"), /* full font name */
+          local("BaybayinMangyanBuhid"), /* Postscript name */
+          url("../fonts/baybayinmangyanbuhid-webfont.woff2") format("woff2"),
+          url("../fonts/baybayinmangyanbuhid-webfont.woff") format("woff"),
+          url("../fonts/baybayinmangyanbuhid-webfont.ttf") format("opentype");
+    font-display: swap;
+    unicode-range: U+1740-175F, U+1714, U+1734-1736, U+20B1;
+  }
+  @font-face {
+    font-family: "nordenx-baybayin";
+    src:  local("Baybayin Mangyan Hanubrush"), /* full font name */
+          local("BaybayinMangyanHanubrush"), /* Postscript name */
+          url("../fonts/baybayinmangyanhanubrush-webfont.woff2") format("woff2"),
+          url("../fonts/baybayinmangyanhanubrush-webfont.woff") format("woff"),
+          url("../fonts/baybayinmangyanhanubrush-webfont.ttf") format("opentype");
+    font-display: swap;
+    unicode-range: U+1720-173F, U+1714, U+20B1;
+  }
+  @font-face {
+    font-family: "nordenx-baybayin";
+    src:  local("Baybayin Modern Club"), /* full font name */
+          local("BaybayinModernClub"), /* Postscript name */
+          url("../fonts/baybayintagalogmodernclub-webfont.woff2") format("woff2"),
+          url("../fonts/baybayintagalogmodernclub-webfont.woff") format("woff"),
+          url("../fonts/baybayintagalogmodernclub-webfont.ttf") format("opentype");
+    font-display: swap;
+    unicode-range: U+1700-171F, U+1734-1736, U+20B1;
+  }
+  /*
+  @font-face {
+    font-family: "nordenx-baybayin";
+    src:  local(""), /* full font name
+          local(""), /* Postscript name
+          url("../fonts/-webfont.woff2") format("woff2"),
+          url("../fonts/-webfont.woff") format("woff"),
+          url("../fonts/-webfont.ttf") format("opentype");
+    font-display: swap;
+    unicode-range: U+1760-177F, U+1714, U+1734-1736, U+20B1;
+  }
+  */
+/* END: Nordenx Baybayin */
 
-  /* BGN: [Custom] Baybayin-MangyanBuhid-Nordenx */
-    @font-face {
-      font-family: "Baybayin-MangyanBuhid-Nordenx";
-      src:  local("Baybayin Mangyan Buhid Regular"), /* full font name */
-            local("Baybayin Mangyan Buhid"), /* full font name */
-            local("BaybayinMangyanBuhid"), /* Postscript name */
-            url("../fonts/baybayinmangyanbuhid-webfont.woff2") format("woff2"),
-            url("../fonts/baybayinmangyanbuhid-webfont.woff") format("woff"),
-            url("../fonts/baybayinmangyanbuhid-webfont.ttf") format("opentype");
-      font-display: swap;
-      font-language-override: "PIL";
-      font-style: normal;
-      unicode-range: U+1740-175F, U+1714, U+1734-1736, U+20B1;
-    }
-  /* END: [Custom] Baybayin-MangyanBuhid-Nordenx */
-
-  /* BGN: [Custom] Baybayin-Tagbanwa-paninap */
-    /*
-    @font-face {
-      font-family: "Baybayin-Tagbanwa-paninap";
-      src:  local(""), /* full font name
-            local(""), /* Postscript name
-            url("../fonts/-webfont.woff2") format("woff2"),
-            url("../fonts/-webfont.woff") format("woff"),
-            url("../fonts/-webfont.ttf") format("opentype");
-      font-display: swap;
-      -webkit-font-language-override: "PIL";
-              font-language-override: "PIL";
-      font-style: normal;
-      unicode-range: U+1760-177F, U+1714, U+1734-1736, U+20B1;
-    }
-    */
-  /* END: [Custom] Baybayin-Tagbanwa-paninap */
-
-  /* BGN: [Custom] Barabara-Unicode-paninap */
-    @font-face {
-      font-family: "Barabara-Unicode-paninap";
-      src:  local("BARABARA Regular"), /* full font name */
-            local("BARABARA"), /* full font name */
-            local("BARABARARegular"), /* Postscript name */
-            url("../fonts/barabara-unicode-webfont.woff2") format("woff2"),
-            url("../fonts/barabara-unicode-webfont.woff") format("woff"),
-            url("../fonts/barabara-unicode-webfont.ttf") format("opentype");
-      font-display: swap;
-    }
-  /* END: [Custom] Barabara-Unicode-paninap */
-/* END: RARELY USED */
+  /* BGN: Barabara */
+  @font-face {
+    font-family: "barabara";
+    src:  local("BARABARA"), /* full font name */
+          url("../fonts/barabara-unicode-webfont.woff2") format("woff2"),
+          url("../fonts/barabara-unicode-webfont.woff") format("woff"),
+          url("../fonts/barabara-unicode-webfont.ttf") format("opentype");
+    font-display: swap;
+  }
+/* END: Barabara */
 
 /* BGN: LANG */
   /***
-    * Have to specifically define direction and select font descriptors
-    * Some themes and browsers are not displaying the fonts correctly
-  ***/
-
-  /***
     * BGN: Special font-family override
     *
-    * Unfortunately we have to do this because browsers can not auto-detect the appropriate :lang of a script.
-    *
-    * This shows us that it is a bad idea to add font-family in the :lang() level as it will override the font selection
-    *   if there are languages without an explicit lang="" attribute.
-    *
-    * Since there are sections that we can not add an explicit lang="" attribute without major changes in the code,
-    *   like in post titles, this is the most effective way to ensure the scripts are showing correctly.
-    *
-    * We also have to be very careful in only using script fonts made for web-font usage, meaning, there are no extra
-    *   glyphs in the font beyond the range of what it was supposed to cover. Otherwise, it will affect the other scripts,
-    *   especially Latin scripts.
-    *
-    * Also, do not include CJK fonts below. Unicode-compliant CJK fonts, like Noto Sans, share a lot of glyph points
-    *   but with different strokes.
-  ***/
-
-  /***
-    * Important note: Do not use font-family in :lang() as it applies to every element when the lang="" attribute is
-    *   declared in <html> element. Otherwise we have to be very specific in CSS overrides like in MathJax case.
-    *
-    * Best way to include our choice of fonts is to manually override all font-family declarations of each theme, per site.
+    *   - Do not add font-familiy in :lang(). It will mess a multi-script / multi-language page.
+    *   - Subset fonts
+    *   - Pure Unicode-compliant fonts only
   ***/
 
   /* BGN: Catch all PH (original) scripts */
@@ -170,7 +151,6 @@
     :lang(tbw), :lang(bku), :lang(hnn), :lang(tl) {
       direction: ltr;
       font-language-override: "PIL";
-      /* font-family: var(--notosans-font), var(--notosans-baybayin-font), var(--notosans-hebrew-font); */ /* Force override */
       font-synthesis: initial;
     }
     :lang(tbw-Tagb), :lang(bku-Buhd), :lang(hnn-Hano), :lang(tl-Tglg)
@@ -195,37 +175,17 @@
   *
   * "direction" has to be added to cover all styling practices
 **/
-/* BGN: NotoSans */
-  .font-Baybayin-Tagbanwa-NotoSans, /* backwards compatibility */
-  .font-Baybayin-MangyanBuhid-NotoSans, /* backwards compatibility */
-  .font-Baybayin-MangyanHanunoo-NotoSans, /* backwards compatibility */
-  .font-Baybayin-Tagalog-NotoSans, /* backwards compatibility */
-  .font-baybayin-notosans {
-    direction: ltr;
-    font-family: var(--notosans-baybayin-font);
-  }
-/* END: NotoSans */
-
-/* BGN: Custom + fallback_NotoSans */
-  .font-Baybayin-Tagbanwa-paninap {
-    direction: ltr;
-    font-family: "Baybayin-Tagbanwa-paninap", var(--notosans-baybayin-font);
-  }
-  .font-Baybayin-MangyanBuhid-Nordenx {
-    direction: ltr;
-    font-family: "Baybayin-MangyanBuhid-Nordenx", var(--notosans-baybayin-font);
-  }
-  .font-Baybayin-MangyanHanunoo-Habubrush-Nordenx {
-    direction: ltr;
-    font-family: "Baybayin-MangyanHanunoo-Hanubrush-Nordenx", var(--notosans-baybayin-font);
-  }
-  .font-Baybayin-Tagalog-ModernClub-Nordenx {
-    direction: ltr;
-    font-family: "Baybayin-Tagalog-ModernClub-Nordenx", var(--notosans-baybayin-font);
-  }
-/* END: Custom + fallback_NotoSans */
-
-.font-Barabara-Unicode-paninap {
+.font-noto-baybayin {
   direction: ltr;
-  font-family: "Barabara-Unicode-paninap", fantasy;
+  font-family: var(--font-yelosan-baybayin);
+}
+
+.font-nordenx-baybayin {
+  direction: ltr;
+  font-family: var(--font-nordenx-baybayin);
+}
+
+.font-barabara-fantasy {
+  direction: ltr;
+  font-family: var(--font-barabara-fantasy), fantasy;
 }

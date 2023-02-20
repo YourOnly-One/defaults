@@ -95,7 +95,7 @@
   *   * CSS Custom Properties for Cascading Variables Module Level 1
   *      * CR, 2015-12-03
   *      * https://www.w3.org/TR/css-variables/
-  *      * See: --base-sans-font and --base-serif-font, and var()
+  *      * See: --font-sans-yelosan and --font-serif-yelosan, and var()
   *
   *   * Selectors Level 4
   *      * WD, 2018-11-21
@@ -235,13 +235,6 @@
     }
   /*** END: Alignments ***/
 
-  /*** BGN: Diacritics ***/
-    .diacritics {
-      font-family: var(--filipino-diacritics); /* Currently, DejaVu Sans has the highest accuracy in diacritical mark positioning. */
-      font-weight: bold;
-    }
-  /*** END: Diacritics ***/
-
   /*** BGN: Yuki footer ***/
     .global_footer {
       align-items: end;
@@ -357,6 +350,8 @@
 /*************************
 ** BGN: Ruby Annotation **
 *************************/
+  /** TODO: Needs a major overhaul Specs were updated. **/
+
   /**
     * Sample:
     *
@@ -944,7 +939,7 @@
           color: hsla(0deg, 0%, 48%, 1);
           color: hwb(0deg 48% 52% / 100%);
         */
-        font-family: 'Noto Serif', serif;
+        font-family: var(--font-serif-yelosan);
         font-size: 3rem;
         position: absolute;
       }

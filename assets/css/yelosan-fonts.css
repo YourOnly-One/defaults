@@ -68,47 +68,56 @@
     *   font-family: var(--yelosan-font-family);
   ***/
   :root, html, body {
-    --base-sans-font: ui-sans-serif, sans-serif;
-    --base-serif-font: ui-serif, serif;
-    --base-cursive-font: cursive;
-    --base-fantasy-font: fantasy;
-    --base-monospace-font: ui-monospace, monospace;
-    --base-systemui-font: ui-rounded, ui-monospace, ui-sans-serif, ui-serif, system-ui;
-    --base-emoji-font: emoji;
-    --base-math-font: math;
-    --base-fangsong-font: fangsong;
+    /*
+     * 1. Yelosan: default is Noto family
+     * 2. Variants should be separate
+    */
+    /* BGN: standard set */
+      --font-sans-yelosan: "noto-sans", "Noto Sans"; /* sans-serif */
+      --font-serif-yelosan: "noto-serif", "Noto Serif"; /* serif */
+      --font-mono-yelosan: "noto-sans-mono", "Noto Sans Mono", "Noto Mono"; /* monospace */
+      --font-cursive-yelosan: cursive; /* cursive */
+      --font-fantasy-yelosan: fantasy; /* fantasy */
+      --font-emoji-yelosan: "twemoji-color", "Twitter Color Emoji", "EmojiOne Mozilla", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", "Emoji Two", "Emoji One", "Twitter Emoji", "Twemoji", "Noto Emoji", "Android Emoji", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols"; /* emoji */
+      --font-math-yelosan: "noto-sans-math", "Noto Sans Math", "Noto Math", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols"; /* math */
+      --font-fangsong-yelosan-rotated: "Noto Fangsong KSS Rotated"; /* fangsong */
+      --font-fangsong-yelosan-vertical: "Noto Fangsong KSS Vertical"; /* fangsong */
+    /* END: standard set */
 
-    --notosans-font: "noto-sans-partial", "Noto Sans Display", "Noto Sans";
-    --notosans-symbols-font: "Noto Sans Symbols", "Noto Sans Symbols 2";
-    --notosans-baybayin-font: "Noto Sans Tagalog", "Noto Sans Hanunoo", "Noto Sans Buhid", "Noto Sans Tagbanwa";
-    --notosans-hebrew-font: "Noto Sans Phoenician", "Noto Sans Hebrew";
+    /* BGN: LANG set */
+      --font-zhs-yelosan: "Noto Sans CJK SC", "Noto Sans SC"; /* Simplififed */
+      --font-zht-yelosan: "Noto Sans CJK TC", "Noto Sans TC"; /* Traditional */
+      --font-ja-yelosan: "Noto Sans CJK JP", "Noto Sans JP"; /* Nihongo */
+      --font-ko-yelosan: "Noto Sans CJK KR", "Noto Sans KR"; /* Hangugeo */
+      --font-baybayin-yelosan: "noto-baybayin", "Noto Sans Buhid", "Noto Sans Hanunoo", "Noto Sans Tagalog", "Noto Sans Tagbanwa"; /* Different Unicode blocks. */
+      --font-baybayin-nordenx: "nordenx-baybayin";
+      --font-hebrew-sans-yelosan: "Noto Sans Phoenician", "Noto Sans Hebrew"; /* Different Unicode blocks. */
+      --font-hebrew-sans-paleo-gezer: "Hebrew-Paleo-Gezer-Unicode", "Noto Sans Hebrew"; /* Different Unicode blocks */
+      --font-hebrew-sans-proto-canaanite: "Hebrew-Proto-Canaanite-Unicode", "Noto Sans Hebrew"; /* Different Unicode blocks */
+      --font-hebrew-serif-yelosan: "Noto Sans Phoenician", "Noto Serif Hebrew"; /* Different Unicode blocks. There is no Serif for Phoenician */
+    /* END: LANG set */
 
-    --notoserif-font: "noto-serif-partial", "Noto Serif Display", "Noto Serif";
-    --notoserif-hebrew-font: "Noto Sans Phoenician", "Noto Serif Hebrew";	/* There is no Serif for Phoenician */
+    /* BGN: others */
+      --font-music-yelosan: "noto-music", "Noto Music", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols";
+      --font-barabara-fantasy: "barabara", "BARABARA";
+      --icons-creativecommons: "cc-icons", "creative_commons";
+      --fix-combining-diacritics: "dejavu-sans-filipino-diacritics", "DejaVu Sans"; /* highest accuracy in diacritical mark positioning. */
+    /* END: others */
 
-    --filipino-diacritics: "dejavu-sans-filipino-diacritics", "DejaVu Sans"; /* Currently, DejaVu Sans has the highest accuracy in diacritical mark positioning. */
-
-    font-variant-ligatures: normal;
-    font-variant-numeric: oldstyle-nums tabular-nums slashed-zero; /* Set font-variant-numeric to how it should be. */
-    /* font-variant-alternates: historical-forms; */ /* hist */
-    font-variant: normal oldstyle-nums tabular-nums slashed-zero; /* Set in case some browsers does not recognise the above specific settings. */
-    font-variant-emoji: unicode;
     -webkit-font-kerning: normal;
             font-kerning: normal;
 
-    font-optical-sizing: auto;
-    text-rendering: geometricPrecision;
+    /* font-synthesis: */ /* only set per class/font/:lang() */
+    /* font-variant-alternates: */ /* only set per class/font/:lang() */
+    /* font-variant-caps: */ /* only set per class/font/:lang() */
+    /* font-variant-east-asian: */ /* only set per class/font/:lang() */
+    font-variant-emoji: unicode;
+    /* font-variant-ligatures: */ /* only set per class/font/:lang() */
+    font-variant-numeric: slashed-zero tabular-nums oldstyle-nums;
+    /* font-variant-position: */ /* only set per class/font/:lang() */
 
-    /* Better to do it on a per :lang() and .class basis. If enabled, make sure all fonts used have bold and italic support.
-    font-synthesis: none;
-    */
-
-    /* guide
-    font-synthesis-weight: auto;
-    font-synthesis-style: auto;
-    font-synthesis-small-caps: auto;
-    font-synthesis: auto auto auto;
-    */
+    text-rendering: optimizeLegibility; /* for browsers that does not support geometricPrecision */
+    text-rendering: geometricPrecision; /* only major browsers support this */
   }
 /***************************
 ** END: :root, html, body **
@@ -140,32 +149,22 @@
     font-family: "Source Sans Pro", sans-serif;
   }
   [class$="-serif" i] {
-    font-family: var(--notoserif-font), var(--base-serif-font);
+    font-family: var(--font-serif-yelosan), serif;
   }
   [class$="-sans" i] {
-    font-family: var(--notosans-font), var(--base-sans-font);
+    font-family: var(--font-sans-yelosan), sans-serif;
   }
   [class$="-mono" i] {
-    font-family: "Noto Sans Mono", var(--base-monospace-font);
+    font-family: var(--font-mono-yelosan), monospace;
   }
   */
 
-  /* OpenType Stacked-Fractions (afrc) */
-    [class~="nums-fractions" i] {
-      /* font-family: "none-found-yet"; */ /* OpenType fonts with Fractions support */
-      font-variant-numeric: oldstyle-nums tabular-nums stacked-fractions slashed-zero;
-    }
-  /* OpenType Ordinal (ordn) */
-    [class~="nums-ordinal" i] {
-      font-family: "Calibri"; /* OpenType fonts with Ordinal support */
-      font-variant-numeric: oldstyle-nums tabular-nums ordinal slashed-zero;
-    }
   /* OpenType Superscript (sups) */
-    .superscript {
+    sup, .superscript {
       font-variant-position: super;
     }
   /* OpenType Subscript (subs) */
-    .subscript {
+    sub, .subscript {
       font-variant-position: sub;
     }
   /* OpenType small-caps (smcp) */
@@ -173,7 +172,7 @@
       font-variant-caps: small-caps;
     }
   /* OpenType all-small-caps (c2sc) */
-    .all-small-caps {
+    .small-caps-all {
       font-variant-caps: all-small-caps;
     }
   /* OpenType petite-caps (pcap) */
@@ -181,7 +180,7 @@
       font-variant-caps: petite-caps;
     }
   /* OpenType all-petite-caps (c2pc, pcap) */
-    .all-petite-caps {
+    .petite-caps-all {
       font-variant-caps: all-petite-caps;
     }
   /* OpenType unicase (unic) */
@@ -192,6 +191,14 @@
     .titling-caps {
       font-variant-caps: titling-caps;
     }
+
+  /*** BGN: Diacritics ***/
+    .diacritics {
+      font-family: var(--fix-combining-diacritics); /* Currently, DejaVu Sans has the highest accuracy in diacritical mark positioning. */
+      font-weight: bold;
+    }
+  /*** END: Diacritics ***/
+
 /************************
 ** END: Default styles **
 ************************/
@@ -213,32 +220,7 @@
     * https://rsc.youronly.one/css/paninap-style.css
   ***/
 
-  /***
-    * List of font families
-    *
-    * Baybayin-Tagbanwa-NotoSans
-    * Baybayin-MangyanBuhid-NotoSans
-    * Baybayin-MangyanHanunoo-NotoSans
-    * Baybayin-Tagalog-NotoSans
-    * Hebrew-Modern-NotoSans
-    * Hebrew-Phoenician-NotoSans
-    *
-    * Baybayin-Tagbanwa-paninap
-    * Baybayin-MangyanBuhid-Nordenx
-    * Baybayin-MangyanHanunoo-Hanubrush-Nordenx
-    * Baybayin-Tagalog-ModernClub-Nordenx
-    * Hebrew-Paleo-Gezer-Unicode
-    * Hebrew-Proto-Canaanite-Unicode
-    *
-    * Barabara-Unicode-paninap
-    * Emoji-Twemoji-Color-SVGinOT
-  ***/
-
   /* BGN: MOST USED */
-    /* BGN: [Custom] Baybayin-Tagalog-ModernClub-Nordenx */
-      /* SEE: filipino-fonts.css */
-    /* END: [Custom] Baybayin-Tagalog-ModernClub-Nordenx */
-
     /* BGN: Special Characters */
       /* &-sign / ampersand */
       /*
@@ -258,86 +240,20 @@
       }
       */
     /* END: Special Characters */
-
-    /* BGN: cc-icons Unicode */
-      /* SEE: cc-icons.css */
-    /* END: cc-icons Unicode */
   /* END: MOST USED */
-
-  /* BGN: REGULARLY USED */
-    /* BGN: [Custom] Hebrew-Paleo-Gezer-Unicode */
-      /* SEE: hebrew-fonts.css */
-    /* END: [Custom] Hebrew-Paleo-Gezer-Unicode */
-
-    /* BGN: [Custom] Emoji-Twemoji-Color-SVGinOT */
-      /* SEE: twemoji.css */
-    /* END: [Custom] Emoji-Twemoji-Color-SVGinOT */
-  /* END: REGULARLY USED */
-
-  /* BGN: RARELY USED */
-    /* BGN: [Custom] Hebrew-Proto-Canaanite-Unicode */
-      /* SEE: hebrew-fonts.css */
-    /* END: [Custom] Hebrew-Proto-Canaanite-Unicode */
-
-    /* BGN: [Custom] Baybayin-MangyanHanunoo-Hanubrush-Nordenx */
-      /* SEE: filipino-fonts.css */
-    /* END: [Custom] Baybayin-MangyanHanunoo-Hanubrush-Nordenx */
-
-    /* BGN: [Custom] Baybayin-MangyanBuhid-Nordenx */
-      /* SEE: filipino-fonts.css */
-    /* END: [Custom] Baybayin-MangyanBuhid-Nordenx */
-
-    /* BGN: [Custom] Baybayin-Tagbanwa-paninap */
-      /* SEE: filipino-fonts.css */
-    /* END: [Custom] Baybayin-Tagbanwa-paninap */
-
-    /* BGN: [Custom] Barabara-Unicode-paninap */
-      /* SEE: filipino-fonts.css */
-    /* END: [Custom] Barabara-Unicode-paninap */
-  /* END: RARELY USED */
-
-
-  /* BGN: Fallback Fonts */
-    /* We are using Noto font as fallback as of 2021-09-16 */
-  /* END: Fallback Fonts */
-
 
   /* BGN: LANG */
     /***
-      * Have to specifically define direction and select font descriptors
-      * Some themes and browsers are not displaying the fonts correctly
-    ***/
-
-    /***
       * BGN: Special font-family override
       *
-      * Unfortunately we have to do this because browsers can not auto-detect the appropriate :lang of a script.
-      *
-      * This shows us that it is a bad idea to add font-family in the :lang() level as it will override the font selection
-      *   if there are languages without an explicit lang="" attribute.
-      *
-      * Since there are sections that we can not add an explicit lang="" attribute without major changes in the code,
-      *   like in post titles, this is the most effective way to ensure the scripts are showing correctly.
-      *
-      * We also have to be very careful in only using script fonts made for web-font usage, meaning, there are no extra
-      *   glyphs in the font beyond the range of what it was supposed to cover. Otherwise, it will affect the other scripts,
-      *   especially Latin scripts.
-      *
-      * Also, do not include CJK fonts below. Unicode-compliant CJK fonts, like Noto Sans, share a lot of glyph points
-      *   but with different strokes.
-    ***/
-
-    /***
-      * Important note: Do not use font-family in :lang() as it applies to every element when the lang="" attribute is
-      *   declared in <html> element. Otherwise we have to be very specific in CSS overrides like in MathJax case.
-      *
-      * Best way to include our choice of fonts is to manually override all font-family declarations of each theme, per site.
+      *   - Do not add font-familiy in :lang(). It will mess a multi-script / multi-language page.
+      *   - Subset fonts
+      *   - Pure Unicode-compliant fonts only
     ***/
     :lang(en), :lang(en-oxendict),
     :lang(en-PH), :lang(en-PH-oxendict) {
       direction: ltr;
       font-language-override: "ENG";
-      /* font-family: var(--notosans-font), var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
       font-synthesis: initial;
     }
 
@@ -347,7 +263,6 @@
         direction: ltr;
         font-variant-east-asian: simplified proportional-width;
         font-language-override: "ZHS";
-        /* font-family: var(--notosans-font), "Noto Sans CJK SC", "Noto Sans SC", var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
         font-style: normal;
         font-synthesis: weight;
       }
@@ -356,7 +271,6 @@
         direction: ltr;
         font-variant-east-asian: traditional proportional-width;
         font-language-override: "ZHT";
-        /* font-family: var(--notosans-font), "Noto Sans CJK TC", "Noto Sans TC", var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
         font-style: normal;
         font-synthesis: weight;
       }
@@ -364,7 +278,6 @@
         direction: ltr;
         font-variant-east-asian: simplified proportional-width;
         font-language-override: "ZHS";
-        /* font-family: var(--notosans-font), "Noto Sans HK", var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
         font-style: normal;
         font-synthesis: weight;
       }
@@ -372,7 +285,6 @@
         direction: ltr;
         font-variant-east-asian: traditional proportional-width;
         font-language-override: "ZHH";
-        /* font-family: var(--notosans-font), "Noto Sans HK", var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
         font-style: normal;
         font-synthesis: weight;
       }
@@ -382,7 +294,6 @@
       :lang(zh-Latn-wadegile) {
         direction: ltr;
         font-language-override: "ZHP";
-        /* font-family: var(--notosans-font), var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
         font-synthesis: initial;
       }
     /* END: Catch all Chinese lang */
@@ -393,7 +304,6 @@
         direction: ltr;
         font-variant-east-asian: jis04 proportional-width;
         font-language-override: "JAN";
-        /* font-family: var(--notosans-font), "Noto Sans CJK JP", "Noto Sans JP", var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
         font-style: normal;
         font-synthesis: weight;
       }
@@ -401,7 +311,6 @@
       :lang(ja-Latn-hepburn-heploc), :lang(ja-Latn-heploc),
       :lang(ja-Latn-hepburn-alalc97), :lang(ja-Latn-alalc97) {
         direction: ltr;
-        /* font-family: var(--notosans-font), var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
         font-synthesis: initial;
       }
     /* END: Catch all Japanese lang */
@@ -412,20 +321,14 @@
         direction: ltr;
         font-variant-east-asian: proportional-width;
         font-language-override: "KOR";
-        /* font-family: var(--notosans-font), "Noto Sans CJK KR", "Noto Sans KR", var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
         font-style: normal;
         font-synthesis: weight;
       }
       :lang(ko-Latn) {
         direction: ltr;
-        /* font-family: var(--notosans-font), var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
         font-synthesis: initial;
       }
     /* END: Catch all Korean lang */
-
-    /* BGN: Catch all PH (original) scripts */
-      /* SEE: pilipino-fonts.css */
-    /* END: Catch all PH (original) scripts */
 
     /* BGN: Catch all Greek langs and scripts */
       :lang(el), :lang(gre), :lang(ell), /* Modern Greek */
@@ -433,7 +336,6 @@
       :lang(grc), /* Ancient Greek */
       :lang(grc-Latn) {
         direction: ltr;
-        /* font-family: var(--notosans-font), var(--notosans-hebrew-font), var(--notosans-baybayin-font); */ /* Force override */
       }
       :lang(el), :lang(gre), :lang(ell) /* Modern Greek */ {
         font-language-override: "ELL";
@@ -451,10 +353,6 @@
         font-synthesis: initial;
       }
     /* END: Catch all Greek langs and scripts */
-
-    /* BGN: Catch all Hebrew langs and scripts */
-      /* SEE: hebrew-fonts.css */
-    /* END: Catch all Hebrew langs and scripts */
 
     .reset-1_25em { /* e.g. use for -Tglg and -Hebr scripts when there are Latin-scripts within the same element */
       font-size: 0.8em;
@@ -474,34 +372,15 @@
    * "direction" has to be added to cover all styling practices
   **/
   /* BGN: NotoSans */
-    .font-NotoSans, /* backwards compatibility because HTML selectors are case-sensitive */
-    .font-notosans {
-      font-family: var(--notosans-font);
-    }
-    .font-notoserif {
-      font-family: var(--notoserif-font);
-    }
-    /* SEE: pilipino-fonts.css */
-    .font-Greek-Modern-NotoSans, /* backwards compatibility */
-    .font-Greek-Ancient-NotoSans, /* backwards compatibility */
-    .font-greek-notosans {
+    .font-greek-sans-noto {
       direction: ltr;
-      font-family: var(--notosans-font); /* Force override */
+      font-family: var(--font-sans-yelosan); /* Force override */
     }
-    .font-greek-notoserif {
+    .font-greek-serif-noto {
       direction: ltr;
-      font-family: var(--notoserif-font); /* Force override */
+      font-family: var(--font-serif-yelosan); /* Force override */
     }
-    /* SEE: hebrew-fonts.css */
   /* END: NotoSans */
-
-  /* BGN: Custom + fallback_NotoSans */
-    /* SEE: pilipino-fonts.css */
-    /* SEE: hebrew-fonts.css */
-  /* END: Custom + fallback_NotoSans */
-
-  /* SEE: pilipino-fonts.css */
-  /* SEE: cc-icons.css */
 
   .large {
     font-size: large;
@@ -515,8 +394,6 @@
   .larger {
     font-size: larger;
   }
-
-  /* SEE: twemoji.css */
 /***************
 ** END: FONTS **
 ***************/
