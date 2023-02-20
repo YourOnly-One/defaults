@@ -175,17 +175,40 @@
   *
   * "direction" has to be added to cover all styling practices
 **/
-.font-noto-baybayin {
+.font-baybayin-noto {
   direction: ltr;
-  font-family: var(--font-yelosan-baybayin);
+  font-family: var(font-baybayin-yelosan), sans-serif;
 }
 
-.font-nordenx-baybayin {
+.font-baybayin-nordenx {
   direction: ltr;
-  font-family: var(--font-nordenx-baybayin);
+  font-family: var(--font-baybayin-nordenx), sans-serif;
 }
 
 .font-barabara-fantasy {
   direction: ltr;
   font-family: var(--font-barabara-fantasy), fantasy;
+}
+
+
+  @font-face {
+    font-family: "mangyan-buhid";
+    src:  local("Noto Sans Buhid"),
+          url("../fonts/NotoSansBuhid-Regular.otf") format("opentype"),
+          url("../fonts/NotoSansBuhid-Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "mangyan-hanunoo";
+    src:  local("Noto Sans Hanunoo"),
+          url("../fonts/NotoSansHanunoo-Regular.otf") format("opentype"),
+          url("../fonts/NotoSansHanunoo-Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+
+.font-mangyan-buhid {
+  font-family: "mangyan-buhid";
+}
+.font-mangyan-hanunoo {
+  font-family: "mangyan-hanunoo";
 }

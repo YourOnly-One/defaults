@@ -65,7 +65,9 @@
 ***************************/
   /***
     * Format:
-    *   font-family: var(--yelosan-font-family);
+    *   font-family: var(--CATEGORY-LANG/SCRIPT-VERSION-MOD);
+    *   font-family: var(--font-baybayin-yelosan);
+    *   font-family: var(--icon-creativecommons);
   ***/
   :root, html, body {
     /*
@@ -92,15 +94,15 @@
       --font-baybayin-yelosan: "noto-baybayin", "Noto Sans Buhid", "Noto Sans Hanunoo", "Noto Sans Tagalog", "Noto Sans Tagbanwa"; /* Different Unicode blocks. */
       --font-baybayin-nordenx: "nordenx-baybayin";
       --font-hebrew-sans-yelosan: "Noto Sans Phoenician", "Noto Sans Hebrew"; /* Different Unicode blocks. */
-      --font-hebrew-sans-paleo-gezer: "Hebrew-Paleo-Gezer-Unicode", "Noto Sans Hebrew"; /* Different Unicode blocks */
-      --font-hebrew-sans-proto-canaanite: "Hebrew-Proto-Canaanite-Unicode", "Noto Sans Hebrew"; /* Different Unicode blocks */
+      --font-hebrew-sans-paleo-gezer: "hebrew-sans-paleo-gezer", "Noto Sans Hebrew"; /* Different Unicode blocks */
+      --font-hebrew-sans-proto-canaanite: "hebrew-sans-proto-canaanite", "Noto Sans Hebrew"; /* Different Unicode blocks */
       --font-hebrew-serif-yelosan: "Noto Sans Phoenician", "Noto Serif Hebrew"; /* Different Unicode blocks. There is no Serif for Phoenician */
     /* END: LANG set */
 
     /* BGN: others */
       --font-music-yelosan: "noto-music", "Noto Music", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols";
       --font-barabara-fantasy: "barabara", "BARABARA";
-      --icons-creativecommons: "cc-icons", "creative_commons";
+      --icon-creativecommons: "cc-icons", "creative_commons";
       --fix-combining-diacritics: "dejavu-sans-filipino-diacritics", "DejaVu Sans"; /* highest accuracy in diacritical mark positioning. */
     /* END: others */
 

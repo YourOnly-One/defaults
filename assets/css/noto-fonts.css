@@ -235,8 +235,8 @@
   * "direction" has to be added to cover all styling practices
 **/
   .font-sans-noto {
-    font-family: var(--font-sans-yelosan);
+    font-family: var(--font-sans-yelosan), sans-serif;
   }
   .font-serif-noto {
-    font-family: var(--font-serif-yelosan);
+    font-family: var(--font-serif-yelosan), serif;
   }

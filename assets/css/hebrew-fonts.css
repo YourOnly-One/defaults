@@ -39,7 +39,7 @@
 /* BGN: REGULARLY USED */
   /* BGN: [Custom] Hebrew-Paleo-Gezer-Unicode */
     @font-face {
-      font-family: "Hebrew-Paleo-Gezer-Unicode";
+      font-family: "hebrew-sans-paleo-gezer";
       src:  local("Hebrew Paleo Gezer"), /* full font name */
             local("Hebrew-Paleo-Gezer"), /* Postscript name */
             url("../fonts/hebrew-paleo-gezer-pure-unicode-webfont.woff2") format("woff2"),
@@ -54,7 +54,7 @@
 /* BGN: RARELY USED */
   /* BGN: [Custom] Hebrew-Proto-Canaanite-Unicode */
     @font-face {
-      font-family: "Hebrew-Proto-Canaanite-Unicode";
+      font-family: "hebrew-sans-proto-canaanite";
       src:  local("Proto Canaanite"), /* full font name */
             local("Proto-Canaanite"), /* Postscript name */
             url("../fonts/proto-canaanite-pure-unicode-webfont.woff2") format("woff2"),
@@ -107,20 +107,20 @@
 **/
 .font-noto-sans-hebrew {
   direction: rtl;
-  font-family: var(--font-yelosan-hebrew); /* Force override */
+  font-family: var(--font-yelosan-hebrew), sans-serif; /* Force override */
 }
 .font-noto-serif-hebrew { /* there is no Serif for Noto Sans Phoenician */
   direction: rtl;
-  font-family: var(--font-yelosan-hebrew); /* Force override */
+  font-family: var(--font-yelosan-hebrew), serif; /* Force override */
 }
 
 /* BGN: Custom + fallback_NotoSans */
-  .font-Hebrew-Paleo-Gezer-Unicode {
+  .font-hebrew-sans-paleo-gezer {
     direction: rtl;
-    font-family: var(--font-hebrew-sans-paleo-gezer), var(--font-yelosan-hebrew);
+    font-family: var(--font-hebrew-sans-paleo-gezer), sans-serif;
   }
-  .font-Hebrew-Proto-Canaanite-Unicode {
+  .font-hebrew-sans-proto-canaanite {
     direction: rtl;
-    font-family: var(--font-hebrew-sans-proto-canaanite), var(--font-hebrew-sans-paleo-gezer), var(--font-yelosan-hebrew);
+    font-family: var(--font-hebrew-sans-proto-canaanite), var(--font-hebrew-sans-paleo-gezer), sans-serif;
   }
 /* END: Custom + fallback_NotoSans */
