@@ -350,141 +350,94 @@
 /*************************
 ** BGN: Ruby Annotation **
 *************************/
-  /** TODO: Needs a major overhaul Specs were updated. **/
-
   /**
-    * Sample:
+    * As of 2023-02-21.
     *
-    * <ruby>
-    *   <rbc>
-    *     <rb lang="hbo-Latn">Yahuhanan</rb>
-    *     <rb lang="ja-Latn">Yukia</rb>
-    *     <rb lang="fil">Sese</rb>
-    *     <rb lang="fil">Cuneta</rb>
-    *   </rbc>
-    *   <rtc class="reading rtc_over">
-    *     <rp>(</rp><rt lang="he">יהוחנן</rt><rp>)</rp>
-    *     <rp>(</rp><rt lang="ja">雪亮</rt><rp>)</rp>
-    *     <rp>(</rp><rt lang="zh">謝</rt><rp>)</rp>
-    *   </rtc>
-    *   <rtc class="reading rtc_over">
-    *     <rt></rt>
-    *     <rp>(</rp><rt lang="ja">ゆきあ</rt><rp>)</rp>
-    *   </rtc>
-    *   <rtc class="rtc_under">
-    *     <rt></rt>
-    *     <rp>(</rp><rt lang="zh-Latn">Xuěliàng</rt><rp>)</rp>
-    *     <rp>(</rp><rt lang="zh-Latn">Xie</rt><rp>)</rp>
-    *   </rtc>
-    * </ruby>
-    *
-  **/
-
-  /**
-    * Sample #2: As of 2021-02-08 we have to use this format to ensure Ruby will render correctly in Chromium-based browsers (lack of support)
-    *
-    * NOTE: If more than one annotation (or ruby nesting), remove all whitespace after the closing </ruby>.
-    *
-    * <ruby>
-    *   <rbc>
-    *     <rb>Yahuhanan</rb>
-    *   </rbc>
-    *   <rp>(</rp><rt xml:lang="he" lang="he">יהוחנן</rt><rp>)</rp>
-    * </ruby>
-    * <ruby>
-    *   <ruby>
-    *     <ruby>
-    *       <rbc>
-    *         <rb xml:lang="ja-Latn" lang="ja-Latn">Yukia</rb>
-    *       </rbc>
-    *       <rp>(</rp><rt xml:lang="ja-Hani" lang="ja-Hani">雪亮</rt><rp>)</rp>
-    *     </ruby><rp>(</rp><rt xml:lang="ja-Hira" lang="ja-Hira">ゆきあ</rt><rp>)</rp>
-    *   </ruby><!-- <rp>(</rp><rt xml:lang="zh-Latn" lang="zh-Latn">Xuěliàng</rt><rp>)</rp> --> <!-- This should be rtc_under but the serious bug in Chromium-based browsers is blocking us from doing this correctly. -->
-    * </ruby>
-    * <ruby>
-    *   <ruby>
-    *     <rbc>
-    *       <rb xml:lang="fil" lang="fil">Sese</rb>
-    *     </rbc>
-    *     <rp>(</rp><rt xml:lang="zh" lang="zh">謝</rt><rp>)</rp>
-    *   </ruby><rp>(</rp><rt xml:lang="zh-Latn" lang="zh-Latn">Xie</rt><rp>)</rp>
-    * </ruby>
-    * <ruby>
-    *   <rbc>
-    *     <rb>Cuneta</rb>
-    *   </rbc>
-    *   <rp>(</rp><rt xml:lang="tl-Tglg" lang="tl-Tglg">ᜃᜓᜈᜒᜆ</rt><rp>)</rp>
-    * </ruby>
-  **/
-
-  /**
-    * We are declaring most of these due to lack of support in other browsers.
+    * We are declaring most of these due to lack of support in browsers.
     * Once CSS Ruby is fully supported, we can remove these base declarations.
+    *
+    * See:
+    *   1. https://www.w3.org/TR/css-ruby-1/
+    *   2. https://www.w3.org/TR/html-ruby-extensions/
   **/
   ruby {
-    display: ruby; /* generate a ruby container box */
+    display: ruby;
+    ruby-merge: separate;
+    ruby-overhang: auto;
   }
-  rbc {
-    display: ruby-base-container; /* generate a ruby base container box */
+  rbc { /* in W3C Working Draft but not in major browsers. */
+    display: ruby-base-container;
   }
-  rb {
-    display: ruby-base; /* generate a ruby base box */
+  rb { /* Supposedly deprecated according to MDN, but there are W3C Working Drafts for it in CSS and HTML. */
+    display: ruby-base;
+    white-space: nowrap;
   }
-
-  /*
-    * There is a serious bug in Blink (used by Chromium-based browsers) related to the <rt> element.
-    *   - If an <rt> element has a parent other than <ruby>, Blink is failing to style it even with !important
+  /* NOTE:
+   *   1. Supposedly deprecated according to MDN, but there are W3C Working Drafts for it in CSS and HTML.
+   *   2. Does not work in Chromium-based browsers.
   */
   rtc {
-    display: ruby-text-container; /* generate a ruby annotation container box */
+    display: ruby-text-container;
   }
-  rt {
-    display: ruby-text; /* generate a ruby annotation box */
+  rp { /* For fallback parentheses only. */
+    display: none;
   }
-  ruby, rbc, rb, rtc, rt {
+  rt { /* Annotation */
+    display: ruby-text;
+  }
+
+  ruby,
+  rbc, rb,
+  rtc, rt {
+    unicode-bidi: -webkit-isolate;
+    unicode-bidi: -moz-isolate;
+    unicode-bidi: isolate;
+  }
+  rtc, rt {
     font-variant-east-asian: ruby;
+    line-height: 1;
+    text-align: center; /* for Chromium-based browsers that does not understand ruby-align */
+    ruby-align: center; /* better presentation */
     -webkit-text-emphasis: none;
             text-emphasis: none;
-    white-space: nowrap;
-    line-height: 1;
     text-transform: full-size-kana;
-    ruby-align: center; /* better presentation */
+    white-space: nowrap;
+  }
+  rtc, :not(rtc) > rt {
+    font-size: 67%;
+  }
+  rtc:lang(zh-TW), :not(rtc) > rt:lang(zh-TW),
+  rtc:lang(zh-Hanb), :not(rtc) > rt:lang(zh-Hanb) {
+    font-size: 30%;
   }
 
-  /* ruby-align only applies to <rbc>, <rb>, <rtc>, and <rt> */
-  .ruby_spacearound { /* initial value, declared in case we need override */
-    ruby-align: space-around;
-  }
-  .ruby_center { /* our default for better presentation */
-    ruby-align: center;
-  }
-  .ruby_spacebetween {
-    ruby-align: space-between;
-  }
-  .ruby_start {
-    ruby-align: start;
-  }
-
-  /* ruby-position only applies to <rtc> */
-  .rtc_over {
-    ruby-position: over;
-  }
-  .rtc_under {
-    ruby-position: under;
-  }
-  .rtc_intercharacter {
-    ruby-position: inter-character;
-  }
-  .rtc_alternate {
+  /* applies in <ruby> */
+  .ruby-alternate { /* initial value */
     ruby-position: alternate;
   }
-  .rtc_left {
-    ruby-position: left;
+  .ruby-over { /* default setting in major browsers */
+    ruby-position: over;
   }
-  .rtc_right {
-    ruby-position: right;
+  .ruby-under {
+    ruby-position: under;
+  }
+  .ruby-intercharacter {
+    ruby-position: inter-character;
   }
 
+  /* applies in <rbc>, <rb>, <rtc>, and <rt> */
+  .ruby-spacearound { /* initial value, declared in case we need override */
+    ruby-align: space-around;
+  }
+  .ruby-center { /* our default for better presentation */
+    ruby-align: center;
+  }
+  .ruby-spacebetween {
+    ruby-align: space-between;
+  }
+  .ruby-start {
+    ruby-align: start;
+  }
 /*************************
 ** END: Ruby Annotation **
 *************************/

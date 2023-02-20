@@ -38,36 +38,35 @@
       </div>
       <div class="copyleft txt_center">
         {{ i18n "ContentOnBGN" }} <span xmlns:dct="https://purl.org/dc/terms/" property="dct:title"><b>{{ .Site.Title }}</b></span>&#x2122; {{ i18n "copyleft" }} &#x1F12F; {{ if eq now.Year .Site.Params.siteStartYear }}{{ now.Year }}{{ else }}{{ .Site.Params.siteStartYear }}–{{ now.Year }}{{ end }} <a xmlns:cc="https://creativecommons.org/ns#" href="https://im.youronly.one" property="cc:attributionName" rel="cc:attributionURL me noopener external">
-          <ruby>
-            <rbc>
-              <rb>Yahuhanan</rb>
-            </rbc>
-            <rp>(</rp><rt xml:lang="he" lang="he">יהוחנן</rt><rp>)</rp>
-          </ruby>
-          <ruby>
+          <!-- BGN: my name -->
+            <ruby>
+              <rb lang="he-Latn">Yahuhanan</rb>
+              <rp>(</rp><rt xml:lang="he" lang="he">יהוחנן</rt><rp>)</rp>
+            </ruby>
             <ruby>
               <ruby>
-                <rbc>
-                  <rb xml:lang="ja-Latn" lang="ja-Latn">Yukia</rb>
-                </rbc>
-                <rp>(</rp><rt xml:lang="ja-Hani" lang="ja-Hani">雪亮</rt><rp>)</rp>
-              </ruby><rp>(</rp><rt xml:lang="ja-Hira" lang="ja-Hira">ゆきあ</rt><rp>)</rp>
-            </ruby><!-- <rp>(</rp><rt xml:lang="zh-Latn" lang="zh-Latn">Xuěliàng</rt><rp>)</rp> --> <!-- This should be rtc_under but the serious bug in Chromium-based browsers is blocking us from doing this correctly. -->
-          </ruby>
-          <ruby>
+                <ruby class="ruby-under">
+                  <rb lang="ja-Latn">Yukia</rb>
+                  <rp>(</rp><rt lang="zh-Latn">Xuěliàng</rt><rp>)</rp>
+                </ruby>
+                <rp>(</rp><rt lang="ja-Hani">雪亮</rt><rp>)</rp>
+              </ruby>
+              <rp>(</rp><rt lang="ja-Hira">ゆきあ</rt><rp>)</rp>
+            </ruby>
             <ruby>
-              <rbc>
-                <rb xml:lang="fil" lang="fil">Sese</rb>
-              </rbc>
-              <rp>(</rp><rt xml:lang="zh" lang="zh">謝</rt><rp>)</rp>
-            </ruby><rp>(</rp><rt xml:lang="zh-Latn" lang="zh-Latn">Xie</rt><rp>)</rp>
-          </ruby>
-          <ruby>
-            <rbc>
-              <rb>Cuneta</rb>
-            </rbc>
-            <rp>(</rp><rt xml:lang="tl-Tglg" lang="tl-Tglg">ᜃᜓᜈᜒᜆ</rt><rp>)</rp>
-          </ruby>
+              <ruby>
+                <ruby class="ruby-under">
+                  <rb lang="fil">Sese</rb>
+                  <rp>(</rp><rt xml:lang="zh-Latn" lang="zh-Latn">Xie</rt><rp>)</rp>
+                </ruby>
+                <rp>(</rp><rt xml:lang="zh" lang="zh">謝</rt><rp>)</rp>
+              </ruby>
+            </ruby>
+            <ruby>
+              <rb lang="fil">Cuneta</rb>
+              <rp>(</rp><rt xml:lang="tl-Tglg" lang="tl-Tglg">ᜃᜓᜈᜒᜆ</rt><rp>)</rp>
+            </ruby>
+          <!-- END: my name -->
         </a> {{ i18n "ContentOnEND" }}
         <br/>
         {{ i18n "PermissionsBeyondScope" }} <a xmlns:cc="https://creativecommons.org/ns#" href="https://im.youronly.one/p/legal-notice/" rel="cc:morePermissions me noopener">https://im.youronly.one/p/legal-notice/</a>.
