@@ -103,7 +103,9 @@
       --font-music-yelosan: "noto-music", "Noto Music", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols";
       --font-barabara-fantasy: "barabara", "BARABARA";
       --icon-creativecommons: "cc-icons", "creative_commons";
-      --fix-combining-diacritics: "dejavu-sans-filipino-diacritics", "DejaVu Sans"; /* highest accuracy in diacritical mark positioning. */
+      --fix-diacritics-sans-dejavu: "fix-diacritics-sans-dejavu", "DejaVu Sans"; /* highest accuracy in diacritical mark positioning. */
+      --fix-diacritics-serif-dejavu: "fix-diacritics-serif-dejavu", "DejaVu Serif"; /* highest accuracy in diacritical mark positioning. */
+      --fix-diacritics-mono-dejavu: "fix-diacritics-mono-dejavu", "DejaVu Sans Mono"; /* highest accuracy in diacritical mark positioning. */
     /* END: others */
 
     -webkit-font-kerning: normal;
@@ -193,14 +195,6 @@
     .titling-caps {
       font-variant-caps: titling-caps;
     }
-
-  /*** BGN: Diacritics ***/
-    .diacritics {
-      font-family: var(--fix-combining-diacritics); /* Currently, DejaVu Sans has the highest accuracy in diacritical mark positioning. */
-      font-weight: bold;
-    }
-  /*** END: Diacritics ***/
-
 /************************
 ** END: Default styles **
 ************************/
