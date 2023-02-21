@@ -105,13 +105,13 @@
   *
   * "direction" has to be added to cover all styling practices
 **/
-.font-noto-sans-hebrew {
+.font-hebrew-sans-noto {
   direction: rtl;
-  font-family: var(--font-yelosan-hebrew), sans-serif; /* Force override */
+  font-family: var(--font-hebrew-sans-yelosan), sans-serif; /* Force override */
 }
-.font-noto-serif-hebrew { /* there is no Serif for Noto Sans Phoenician */
+.font-hebrew-serif-noto { /* there is no Serif for Noto Sans Phoenician */
   direction: rtl;
-  font-family: var(--font-yelosan-hebrew), serif; /* Force override */
+  font-family: var(--font-hebrew-serif-yelosan), serif; /* Force override */
 }
 
 /* BGN: Custom + fallback_NotoSans */
