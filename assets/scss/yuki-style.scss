@@ -1122,6 +1122,11 @@
 /**********************
 ** BGN: Custom Lists **
 **********************/
+  /* remove list style */
+  .list-style-type-none {
+    list-style-type: none;
+  }
+
   .note {
     display: list-item;
     list-style-position: inside;
@@ -1417,6 +1422,11 @@
     .text-cm, .text-gm, .text-cgm {
       color: hsla(210deg, 100%, 50%, 1);
       color: hwb(210deg 0% 0% / 100%);
+      font-weight: bold;
+    }
+    .text-guide {
+      color: hsla(0deg, 100%, 50%, 1);
+      color: hwb(0deg 0% 0% / 100%);
       font-weight: bold;
     }
   /* END: Special custom colours */
