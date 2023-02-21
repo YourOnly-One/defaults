@@ -156,7 +156,7 @@
     :lang(tbw-Tagb), :lang(bku-Buhd), :lang(hnn-Hano), :lang(tl-Tglg)
     /* :lang(*-Tagb), :lang(*-Buhd), :lang(*-Hano), :lang(*-Tglg) */
     {
-      font-variant-east-asian: proportional-width;
+      /* font-variant-east-asian: proportional-width; */
       font-style: normal;
       font-synthesis: weight;
     }
@@ -188,27 +188,4 @@
 .font-barabara-fantasy {
   direction: ltr;
   font-family: var(--font-barabara-fantasy), fantasy;
-}
-
-
-  @font-face {
-    font-family: "mangyan-buhid";
-    src:  local("Noto Sans Buhid"),
-          url("../fonts/NotoSansBuhid-Regular.otf") format("opentype"),
-          url("../fonts/NotoSansBuhid-Regular.ttf") format("truetype");
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "mangyan-hanunoo";
-    src:  local("Noto Sans Hanunoo"),
-          url("../fonts/NotoSansHanunoo-Regular.otf") format("opentype"),
-          url("../fonts/NotoSansHanunoo-Regular.ttf") format("truetype");
-    font-display: swap;
-  }
-
-.font-mangyan-buhid {
-  font-family: "mangyan-buhid";
-}
-.font-mangyan-hanunoo {
-  font-family: "mangyan-hanunoo";
 }
