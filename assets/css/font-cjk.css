@@ -1,0 +1,144 @@
+/***
+  * Webfonts CSS
+  *
+  * Websites:
+  *   * Profile: https://iam.youronly.one
+  *   * YourOnly.One™: https://youronly.one
+  *   * Yelosan Publishing: https://yelosan.youronly.one
+  *
+  * Contact:
+  *   * Fediverse: https://c.im/@youronlyone | @youronlyone@c.im
+  *   * Facebook: https://fb.me/YourOnly.ONE.ofcl | https://m.me/YourOnly.ONE.ofcl
+***/
+
+/***
+  * yelosan-fonts.css Copyright © 2023 JC John Sese Cuneta; Yelosan Publishing
+  *
+  * License: MIT License (MIT)
+  *
+  * LICENSE: MIT License
+  *   Permission is hereby granted, free of charge, to any person obtaining a copy
+  *   of this software and associated documentation files (the "Software"), to deal
+  *   in the Software without restriction, including without limitation the rights
+  *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  *   copies of the Software, and to permit persons to whom the Software is
+  *   furnished to do so, subject to the following conditions:
+  *
+  *   The above copyright notice and this permission notice shall be included in all
+  *   copies or substantial portions of the Software.
+  *
+  *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  *   SOFTWARE.
+***/
+
+/** BGN: Noto Sans **/
+  /*
+  @font-face {
+    font-family: "noto-sans";
+    src:  local("Noto Sans"),
+          url("../fonts/NotoSans-Regular.otf") format("opentype"),
+          url("../fonts/NotoSans-Regular.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: normal;
+  }
+  */
+/** END: Noto Sans **/
+
+/** BGN: root and classes **/
+  :root {
+    /* BGN: standard set */
+      --font-fangsong-zhs-sans-noto-rotated: "Noto Fangsong KSS Rotated"; /* fangsong */
+      --font-fangsong-zhs-sans-noto-vertical: "Noto Fangsong KSS Vertical"; /* fangsong */
+    /* END: standard set */
+
+    /* BGN: LANG set */
+      --font-zhs-sans-noto: "Noto Sans CJK SC", "Noto Sans SC";
+      --font-zht-sans-noto: "Noto Sans CJK TC", "Noto Sans TC";
+      --font-ja-sans-noto: "Noto Sans CJK JP", "Noto Sans JP"; /* Nihongo */
+      --font-ko-sans-noto: "Noto Sans CJK KR", "Noto Sans KR"; /* Hangugeo */
+    /* END: LANG set */
+  }
+  .font-fangsong-zhs-sans-noto-rotated {
+    font-family: var(--font-fangsong-zhs-sans-noto-rotated);
+  }
+  .font-fangsong-zhs-sans-noto-vertical {
+    font-family: var(--font-fangsong-zhs-sans-noto-vertical);
+  }
+  .font-zht-sans-noto {
+    font-family: var(--font-zht-sans-noto);
+  }
+  .font-zhs-sans-noto {
+    font-family: var(--font-zhs-sans-noto);
+  }
+  .font-ja-sans-noto {
+    font-family: var(--font-ja-sans-noto);
+  }
+  .font-ko-sans-noto {
+    font-family: var(--font-ko-sans-noto);
+  }
+/** END: :root and classes **/
+
+/* BGN: Catch all Chinese lang */
+  /* :lang("zh-*"), */
+  :lang(zh) {
+    direction: ltr;
+    font-variant-east-asian: traditional proportional-width;
+    font-language-override: "ZHT";
+    font-style: normal;
+    font-synthesis: weight;
+  }
+  :lang(zh-Hans) {
+    direction: ltr;
+    font-variant-east-asian: simplified proportional-width;
+    font-language-override: "ZHS";
+    font-style: normal;
+    font-synthesis: weight;
+  }
+  :lang(zh-Hant-HK) {
+    direction: ltr;
+    font-variant-east-asian: traditional proportional-width;
+    font-language-override: "ZHH";
+    font-style: normal;
+    font-synthesis: weight;
+  }
+  :lang(zh-Hans-HK) {
+    direction: ltr;
+    font-variant-east-asian: simplified proportional-width;
+    font-language-override: "ZHS";
+    font-style: normal;
+    font-synthesis: weight;
+  }
+  :lang(zh-Latn),
+  :lang(zh-Latn-pinyin), :lang(zh-Latn-tongyong), :lang(zh-Latn-wadegile),
+  :lang(yue-jyutping), :lang(zh-yue-jyutping) {
+    font-language-override: "ZHP";
+  }
+/* END: Catch all Chinese lang */
+
+/* BGN: Catch all Japanese lang */
+  /* :lang("ja-*"), */
+  :lang(ja) {
+    direction: ltr;
+    font-variant-east-asian: jis04 proportional-width;
+    font-language-override: "JAN";
+    font-style: normal;
+    font-synthesis: weight;
+  }
+/* END: Catch all Japanese lang */
+
+/* BGN: Catch all Korean lang */
+  /* :lang("ko-*"), */
+  :lang(ko) {
+    direction: ltr;
+    font-variant-east-asian: proportional-width;
+    font-language-override: "KOR";
+    font-style: normal;
+    font-synthesis: weight;
+  }
+/* END: Catch all Korean lang */

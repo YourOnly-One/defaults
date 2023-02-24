@@ -1,0 +1,122 @@
+/***
+  * Webfonts CSS
+  *
+  * Websites:
+  *   * Profile: https://iam.youronly.one
+  *   * YourOnly.One™: https://youronly.one
+  *   * Yelosan Publishing: https://yelosan.youronly.one
+  *
+  * Contact:
+  *   * Fediverse: https://c.im/@youronlyone | @youronlyone@c.im
+  *   * Facebook: https://fb.me/YourOnly.ONE.ofcl | https://m.me/YourOnly.ONE.ofcl
+***/
+
+/***
+  * yelosan-fonts.css Copyright © 2003-2023 JC John Sese Cuneta; Yelosan Publishing
+  *
+  * License: MIT License (MIT)
+  *
+  * LICENSE: MIT License
+  *   Permission is hereby granted, free of charge, to any person obtaining a copy
+  *   of this software and associated documentation files (the "Software"), to deal
+  *   in the Software without restriction, including without limitation the rights
+  *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  *   copies of the Software, and to permit persons to whom the Software is
+  *   furnished to do so, subject to the following conditions:
+  *
+  *   The above copyright notice and this permission notice shall be included in all
+  *   copies or substantial portions of the Software.
+  *
+  *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  *   SOFTWARE.
+***/
+
+/** BGN: @font-face **/
+  /** BGN: Noto Sans Math **/
+    /* rarely used
+    @font-face {
+      font-family: "noto-sans-math";
+      src:  local("Noto Sans Math"),
+            url("../fonts/NotoSansMath-Regular.ttf") format("opentype"),
+            url("../fonts/NotoSansMath-Regular.ttf") format("truetype");
+      font-display: swap;
+    }
+    */
+  /** END: Noto Sans Math **/
+
+  /** BGN: Noto Sans Symbols 2 **/
+    /* rarely used
+    @font-face {
+      font-family: "noto-sans-symbols2";
+      src:  local("Noto Sans Symbols 2"),
+            url("../fonts/NotoSansSymbols2-Regular.otf") format("opentype"),
+            url("../fonts/NotoSansSymbols2-Regular.ttf") format("truetype");
+      font-display: swap;
+    }
+    */
+  /** END: Noto Sans Symbols 2 **/
+
+  /** BGN: Noto Sans Symbols **/
+    /* rarely used
+    @font-face {
+      font-family: "noto-sans-symbols";
+      src:  local("Noto Sans Symbols"),
+            url("../fonts/NotoSansSymbols-Regular.otf") format("opentype"),
+            url("../fonts/NotoSansSymbols-Regular.ttf") format("truetype");
+      font-display: swap;
+      font-style: normal;
+      font-weight: normal;
+    }
+    @font-face {
+      font-family: "noto-sans-symbols";
+      src:  local("Noto Sans Symbols"),
+            url("../fonts/NotoSansSymbols-Bold.otf") format("opentype"),
+            url("../fonts/NotoSansSymbols-Bold.ttf") format("truetype");
+      font-display: swap;
+      font-style: normal;
+      font-weight: bold;
+    }
+    */
+  /** END: Noto Sans Symbols **/
+
+  /** BGN: cc-icons **/
+    @font-face {
+      font-family: "cc-icons";
+      src:  local("Creative Commons"),
+            url("../fonts/cc-icons-unicode.woff2") format("woff2"),
+            url("../fonts/cc-icons-unicode.woff") format("woff"),
+            url("../fonts/cc-icons-unicode.ttf") format("opentype");
+      font-display: swap;
+      font-style: normal; /* lock to normal */
+      font-synthesis: none; /* prevent synthesis */
+      font-weight: normal; /* lock to normal */
+      /* unicode-range: U+229C, U+1F10D-1F10F, U+1F16D-1F16F; */
+    }
+  /** END: cc-icons **/
+/** END: @font-face **/
+
+/** BGN: :root and classes **/
+  :root {
+    /*  --font-math-noto: "noto-sans-math", "Noto Sans Math", "Noto Math", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols"; */ /* math */
+        --font-math-noto: "noto-sans-math", "Noto Sans Math", "Noto Math"; /* math */
+    /*  --font-music-noto: "noto-music", "Noto Music", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols"; */
+        --font-music-noto: "noto-music", "Noto Music";
+  }
+  .font-math-noto {
+    direction: ltr;
+    font-family: var(--font-math-noto);
+  }
+  .font-music-noto {
+    direction: ltr;
+    font-family: var(--font-music-noto);
+  }
+  .ccicons {
+    direction: ltr;
+    font-family: var(--font-creativecommons);
+  }
+/** END: :root and classes **/

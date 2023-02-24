@@ -157,71 +157,29 @@
   */
 /** END: Noto Serif **/
 
-/** BGN: Noto Sans Math **/
-  /* rarely used
-  @font-face {
-    font-family: "noto-sans-math";
-    src:  local("Noto Sans Math"),
-          url("../fonts/NotoSansMath-Regular.ttf") format("opentype"),
-          url("../fonts/NotoSansMath-Regular.ttf") format("truetype");
-    font-display: swap;
+/** BGN: root and classes **/
+  :root {
+    /* BGN: standard set */
+      --font-sans-noto: "noto-sans", "Noto Sans";
+      --font-serif-noto: "noto-serif", "Noto Serif";
+      --font-mono-noto: "noto-sans-mono", "Noto Sans Mono", "Noto Mono";
+    /* END: standard set */
   }
-  */
-/** END: Noto Sans Math **/
-
-/** BGN: Noto Sans Symbols 2 **/
-  /* rarely used
-  @font-face {
-    font-family: "noto-sans-symbols2";
-    src:  local("Noto Sans Symbols 2"),
-          url("../fonts/NotoSansSymbols2-Regular.otf") format("opentype"),
-          url("../fonts/NotoSansSymbols2-Regular.ttf") format("truetype");
-    font-display: swap;
-  }
-  */
-/** END: Noto Sans Symbols 2 **/
-
-/** BGN: Noto Sans Symbols **/
-  /* rarely used
-  @font-face {
-    font-family: "noto-sans-symbols";
-    src:  local("Noto Sans Symbols"),
-          url("../fonts/NotoSansSymbols-Regular.otf") format("opentype"),
-          url("../fonts/NotoSansSymbols-Regular.ttf") format("truetype");
-    font-display: swap;
-    font-style: normal;
-    font-weight: normal;
-  }
-  @font-face {
-    font-family: "noto-sans-symbols";
-    src:  local("Noto Sans Symbols"),
-          url("../fonts/NotoSansSymbols-Bold.otf") format("opentype"),
-          url("../fonts/NotoSansSymbols-Bold.ttf") format("truetype");
-    font-display: swap;
-    font-style: normal;
-    font-weight: bold;
-  }
-  */
-/** END: Noto Sans Symbols **/
-
-/**
-  * Font classes for override, and in rare cases, to force the font to an element.
-  *   Examples:
-  *     1. Templates with explicit font-face for selected elements
-  *     2. Header elements (<h1,2,3,4,5>) -- could be theme-based also
-  *
-  * Baybayin: Baybayin Modern club > Noto Sans Tagalog
-  * Paleo Hebrew: Paleo Hebrew > Ancient Hebrew > Noto Sans Phoenician
-  * Modern Hebrew: Modern Hebrew = Noto Sans Hebrew
-  *
-  * "direction" has to be added to cover all styling practices
-**/
   .font-sans-noto {
-    font-family: var(--font-sans-yelosan), sans-serif;
+    font-family: var(--font-sans-noto, sans-serif);
   }
   .font-serif-noto {
-    font-family: var(--font-serif-yelosan), serif;
+    font-family: var(--font-serif-noto, serif);
   }
   .font-mono-noto {
-    font-family: var(--font-mono-yelosan), serif;
+    font-family: var(--font-mono-noto, serif);
   }
+/** END: :root and classes **/
+
+/* BGN: Catch all English */
+  :lang(en) {
+    direction: ltr;
+    font-language-override: "ENG";
+    font-synthesis: initial;
+  }
+/* END: Catch all English */

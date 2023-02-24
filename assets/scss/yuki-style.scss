@@ -123,21 +123,11 @@
   *     * padding-{block,inline}-{start,end}
 ***/
 
-/********************
-** BGN: root stuff **
-********************/
-  :root, html {
-    /* text-decoration-skip: objects ink edges; */
-    /* text-underline-position: under; */
-  }
-/********************
-** END: root stuff **
-********************/
-
 /*************************
 ** BGN: Global Settings **
 *************************/
-  :root, html, * {
+  :root, html, body, *,
+  :root[lang], html[lang], body[lang], *[lang] {
     -webkit-hyphens: none;
         -ms-hyphens: none;
             hyphens: none; /* Browser hyphenation algorithm is incorrect. Turn-off globally. */

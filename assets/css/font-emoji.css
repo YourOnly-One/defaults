@@ -71,12 +71,28 @@
   font-weight: normal;
 }
 
+/** BGN: :root and classes **/
+  :root {
+    --font-emoji-twemoji: "twemoji-color", "Twitter Color Emoji";
+    /*  --font-emoji-noto: "Noto Color Emoji", "Noto Emoji", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols"; */
+        --font-emoji-noto: "Noto Color Emoji";
+    /* Temporary workaround to incompliete var() implementation in Gecko and Blink engines */
+    --font-emoji: "twemoji-color", "Twitter Color Emoji", "JoyPixels", "Emoji Two", "EmojiOne Mozilla", "Emoji One", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji";
+  }
+  .font-emoji-twemoji {
+    font-family: var(--font-emoji-twemoji, emoji);
+  }
+  .font-emoji-noto {
+    font-family: var(--font-emoji-noto, emoji);
+  }
+/** END: :root and classes **/
+
 /* We may need to add !important to guarantee default third-party theme styles won't affect our emojis. */
 /*
-html body [class^="smiley-" i], html body [class$="-smiley" i],
-html body [class^="emoticon-" i], html body [class$="-emoticon" i],
-html body [class^="emoji-" i], html body [class$="-emoji" i],
-html body [class*="emoji-" i], html body [class*="-emoji" i],
+  html body [class^="smiley-" i], html body [class$="-smiley" i],
+  html body [class^="emoticon-" i], html body [class$="-emoticon" i],
+  html body [class^="emoji-" i], html body [class$="-emoji" i],
+  html body [class*="emoji-" i], html body [class*="-emoji" i],
 */
 html body [class~="smiley" i],
 html body [class~="emoticon" i],
@@ -87,15 +103,13 @@ html body [class~="emoji" i] {
   margin: 0 .05em 0 .1em; /* Twemoji suggestion */
   /* vertical-align: -0.1em; */ /* Twemoji suggestion */
   vertical-align: initial;
-  font-family: var(--font-emoji-yelosan), emoji;
-  font-variant-emoji: unicode;
+  font-variant-emoji: emoji;
   font-style: normal;
   font-synthesis: none;
   font-weight: normal;
 }
 html body .unicode_emoji { /* usage: <span class="unicode_emoji">emoji_here</span> */
-  font-family: var(--font-emoji-yelosan), emoji;
-  font-variant-emoji: unicode;
+  font-variant-emoji: emoji;
   /* font-size: larger; */
   font-style: normal;
   font-synthesis: none;

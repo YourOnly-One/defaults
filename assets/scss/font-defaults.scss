@@ -1,0 +1,209 @@
+@charset "UTF-8";
+/***
+  * My personal styles and overrides
+  *
+  * Websites:
+  *   * YourOnly.One™: https://YourOnly.One
+  *
+  * Contact:
+  *   * Fediverse: https://quey.org/@techmagus | @techmagus@quey.org
+  *   * Facebook: https://fb.me/techmagus | https://m.me/techmagus
+***/
+
+/***
+  * yuki-style.css Copyright © 2003-2023 JC John Sese Cuneta
+  *
+  * Licenses: [1] MIT/Expat License; [2] MPL v2.0; [3] LGPLv3
+  *
+  * LICENSE: MIT License / Expat License
+  *   Permission is hereby granted, free of charge, to any person obtaining a copy
+  *   of this software and associated documentation files (the "Software"), to deal
+  *   in the Software without restriction, including without limitation the rights
+  *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  *   copies of the Software, and to permit persons to whom the Software is
+  *   furnished to do so, subject to the following conditions:
+  *
+  *   The above copyright notice and this permission notice shall be included in all
+  *   copies or substantial portions of the Software.
+  *
+  *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  *   SOFTWARE.
+  *
+  * LICENSE: Mozilla Public License Version 2.0 ("MPL 2.0")
+  *   This Source Code Form is subject to the terms of the Mozilla Public
+  *   License, v. 2.0. If a copy of the MPL was not distributed with this
+  *   file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  *
+  * LICENSE: GNU LESSER GENERAL PUBLIC LICENSE Version 3 ("LGPLv3")
+  *   This program is free software: you can redistribute it and/or modify
+  *   it under the terms of the Lesser GNU General Public License as published by
+  *   the Free Software Foundation, either version 3 of the License, or
+  *   (at your option) any later version.
+  *
+  *   This program is distributed in the hope that it will be useful,
+  *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  *   Lesser GNU General Public License for more details.
+  *
+  *   You should have received a copy of the Lesser GNU General Public License
+  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+***/
+
+/***
+  * Other Attributions
+  *
+  * Embed Responsively: embedresponsively.com
+  * Fork-Awesome
+  * Twemoji
+  * Cryptocoins (webfont/svg): https://github.com/AllienWorks/cryptocoins
+***/
+
+/***
+  * Based on:
+  *
+  *   * CSS Color Module Level 4
+  *      * WD, 2016-07-05
+  *      * https://www.w3.org/TR/css-color-4/
+  *      * https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hwb
+  *      * See: hwb()
+  *   * CSS Color Module Level 3
+  *      * REC, 2018-06-19
+  *      * https://www.w3.org/TR/css-color-3/
+  *
+  *   * CSS Fonts Module Level 4
+  *      * WD, 2018-09-20
+  *      * https://www.w3.org/TR/css-fonts-4/
+  *      * See: see paninap-fonts.css
+  *   * CSS Fonts Module Level 3
+  *      * REC, 2018-09-20
+  *      * https://www.w3.org/TR/css-fonts-3/
+  *
+  *   * CSS Text Decoration Module Level 4
+  *      * WD, 2018-03-13
+  *      * https://www.w3.org/TR/css-text-decor-4/
+  *      * See: text-decoration-skip -- not using currently
+  *   * CSS Text Decoration Module Level 3
+  *      * CR, 2018-07-03
+  *      * https://www.w3.org/TR/css-text-decor-3/
+  *      * See: text-decoration property
+  *
+  *   * CSS Custom Properties for Cascading Variables Module Level 1
+  *      * CR, 2015-12-03
+  *      * https://www.w3.org/TR/css-variables/
+  *      * See: --font-sans-yelosan and --font-serif-yelosan, and var()
+  *
+  *   * Selectors Level 4
+  *      * WD, 2018-11-21
+  *      * https://www.w3.org/TR/selectors-4/
+  *      * See: :dir() and :lang("*-Latn")
+  *   * Selectors Level 3
+  *      * REC, 2018-11-06
+  *      * https://www.w3.org/TR/selectors-3/
+  *      * See: :root, :first-child, :last-child
+  *
+***/
+
+/***************
+** BGN: :root **
+***************/
+  /***
+    * Format:
+    *   font-family: var(--CATEGORY-LANG/SCRIPT-VERSION-MOD);
+    *   font-family: var(--font-baybayin-yelosan);
+    *   font-family: var(--icon-creativecommons);
+  ***/
+  :root {
+    /* Default fonts */
+    --font-sans-yelosan: var(--font-sans-noto);
+    --font-serif-yelosan: var(--font-serif-noto);
+    --font-mono-yelosan: var(--font-mono-noto);
+    --font-emoji-yelosan: var(--font-emoji, var(--font-emoji-twemoji, var(--font-emoji-noto)));
+    --font-baybayin-sans-yelosan: var(--font-baybayin-sans-noto);
+    --font-hebrew-sans-yelosan: var(--font-hebrew-sans-paleo-gezer, var(--font-hebrew-sans-noto));
+    --font-zhs-sans-yelosan: var(--font-zhs-sans-noto);
+    --font-zht-sans-yelosan: var(--font-zht-sans-noto);
+    --font-ja-sans-yelosan: var(--font-ja-sans-noto);
+    --font-ko-sans-yelosan: var(--font-ko-sans-noto);
+
+    -webkit-font-kerning: normal;
+            font-kerning: normal;
+
+    /* font-synthesis: */ /* only set per class/font/:lang() */
+    /* font-variant-alternates: */ /* only set per class/font/:lang() */
+    /* font-variant-caps: */ /* only set per class/font/:lang() */
+    /* font-variant-east-asian: */ /* only set per class/font/:lang() */
+    font-variant-emoji: unicode;
+    /* font-variant-ligatures: */ /* only set per class/font/:lang() */
+    font-variant-numeric: slashed-zero tabular-nums oldstyle-nums;
+    /* font-variant-position: */ /* only set per class/font/:lang() */
+
+    text-rendering: optimizeLegibility; /* for browsers that does not support geometricPrecision */
+    text-rendering: geometricPrecision; /* only major browsers support this */
+  }
+/***************
+** END: :root **
+***************/
+
+/**************
+** BGN: LANG **
+**************/
+  /**
+  * This is not a duplicate, this is where we customise the default fonts.
+  *
+  * vars should end in `-yelosan`
+  **/
+  :root, *, html, body,
+  :lang(en) {
+    font-family: var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, var(--font-hebrew-sans-yelosan, sans-serif)));
+  }
+
+  :lang(zh) {
+    font-family: var(--font-zht-sans-yelosan, var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, var(--font-hebrew-sans-yelosan, sans-serif))));
+  }
+  :lang(zh-Hans) {
+    font-family: var(--font-zhs-sans-yelosan, var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, var(--font-hebrew-sans-yelosan, sans-serif))));
+  }
+
+  :lang(ja) {
+    font-family: var(--font-ja-sans-yelosan, var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, var(--font-hebrew-sans-yelosan, sans-serif))));
+  }
+
+  :lang(ko) {
+    font-family: var(--font-ko-sans-yelosan, var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, var(--font-hebrew-sans-yelosan, sans-serif))));
+  }
+
+  :lang(he), :lang(heb), :lang(hbo) {
+    font-family: var(--font-hebrew-sans-yelosan, var(--font-zht-sans-yelosan, var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, sans-serif))));
+  }
+
+  :lang(tbw-Tagb), :lang(tbk-Tagb), :lang(tgt-Tagb),
+  :lang(bku-Buhd), :lang(hnn-Hano),
+  :lang(tgl-Tglg), :lang(tl-Tglg),
+  :lang(phi-Tagb), :lang(phi-Buhd), :lang(phi-Hano), :lang(phi-Tglg),
+  :lang(fil-Tagb), :lang(fil-Buhd), :lang(fil-Hano), :lang(fil-Tglg),
+  :lang(\*-Tagb), :lang(\*-Buhd), :lang(\*-Hano), :lang(\*-Tglg) /* Not yet implemented by browsers */
+  {
+    font-family: var(--font-baybayin-sans-yelosan, sans-serif);
+  }
+
+  :lang(he-Latn), :lang(heb-Latn), :lang(hbo-Latn),
+  :lang(zh-Latn),
+  :lang(zh-Latn-pinyin), :lang(zh-Latn-tongyon), :lang(zh-Latn-wadegile),
+  :lang(yue-jyutping), :lang(zh-yue-jyutping),
+  :lang(ja-Latn),
+  :lang(ja-Latn-hepburn), :lang(ja-Latn-hepburn-heploc), :lang(ja-Latn-heploc), :lang(ja-Latn-hepburn-alalc97), :lang(ja-Latn-alalc97),
+  :lang(ko-Latn),
+  :lang(\*-Latn) /* Not yet implemented by browsers */
+  {
+    direction: ltr;
+    font-family: var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, var(--font-hebrew-sans-yelosan, sans-serif)));
+    font-synthesis: initial;
+  }
+/**************
+** END: LANG **
+**************/

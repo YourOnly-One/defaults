@@ -60,87 +60,40 @@
   *
 ***/
 
-/***************************
-** BGN: :root, html, body **
-***************************/
-  /***
-    * Format:
-    *   font-family: var(--CATEGORY-LANG/SCRIPT-VERSION-MOD);
-    *   font-family: var(--font-baybayin-yelosan);
-    *   font-family: var(--icon-creativecommons);
-  ***/
-  :root, html, body {
-    /*
-     * 1. Yelosan: default is Noto family
-     * 2. Variants should be separate
-    */
-    /* BGN: standard set */
-      --font-sans-yelosan: "noto-sans", "Noto Sans"; /* sans-serif */
-      --font-serif-yelosan: "noto-serif", "Noto Serif"; /* serif */
-      --font-mono-yelosan: "noto-sans-mono", "Noto Sans Mono", "Noto Mono"; /* monospace */
-      --font-cursive-yelosan: cursive; /* cursive */
-      --font-fantasy-yelosan: fantasy; /* fantasy */
-      --font-emoji-yelosan: "twemoji-color", "Twitter Color Emoji", "EmojiOne Mozilla", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", "Emoji Two", "Emoji One", "Twitter Emoji", "Twemoji", "Noto Emoji", "Android Emoji", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols"; /* emoji */
-      --font-math-yelosan: "noto-sans-math", "Noto Sans Math", "Noto Math", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols"; /* math */
-      --font-fangsong-yelosan-rotated: "Noto Fangsong KSS Rotated"; /* fangsong */
-      --font-fangsong-yelosan-vertical: "Noto Fangsong KSS Vertical"; /* fangsong */
-    /* END: standard set */
-
-    /* BGN: LANG set */
-      --font-zhs-yelosan: "Noto Sans CJK SC", "Noto Sans SC"; /* Simplififed */
-      --font-zht-yelosan: "Noto Sans CJK TC", "Noto Sans TC"; /* Traditional */
-      --font-ja-yelosan: "Noto Sans CJK JP", "Noto Sans JP"; /* Nihongo */
-      --font-ko-yelosan: "Noto Sans CJK KR", "Noto Sans KR"; /* Hangugeo */
-      --font-baybayin-yelosan: "noto-baybayin", "Noto Sans Buhid", "Noto Sans Hanunoo", "Noto Sans Tagalog", "Noto Sans Tagbanwa"; /* Different Unicode blocks. */
-      --font-baybayin-nordenx: "nordenx-baybayin";
-      --font-hebrew-sans-yelosan: "Noto Sans Phoenician", "Noto Sans Hebrew"; /* Different Unicode blocks. */
-      --font-hebrew-sans-paleo-gezer: "hebrew-sans-paleo-gezer", "Noto Sans Hebrew"; /* Different Unicode blocks */
-      --font-hebrew-sans-proto-canaanite: "hebrew-sans-proto-canaanite", "Noto Sans Hebrew"; /* Different Unicode blocks */
-      --font-hebrew-serif-yelosan: "Noto Sans Phoenician", "Noto Serif Hebrew"; /* Different Unicode blocks. There is no Serif for Phoenician */
-    /* END: LANG set */
-
-    /* BGN: others */
-      --font-music-yelosan: "noto-music", "Noto Music", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols";
-      --font-barabara-fantasy: "barabara", "BARABARA";
-      --icon-creativecommons: "cc-icons", "creative_commons";
-      --fix-diacritics-sans-dejavu: "fix-diacritics-sans-dejavu", "DejaVu Sans"; /* highest accuracy in diacritical mark positioning. */
-      --fix-diacritics-serif-dejavu: "fix-diacritics-serif-dejavu", "DejaVu Serif"; /* highest accuracy in diacritical mark positioning. */
-      --fix-diacritics-mono-dejavu: "fix-diacritics-mono-dejavu", "DejaVu Sans Mono"; /* highest accuracy in diacritical mark positioning. */
-    /* END: others */
-
-    -webkit-font-kerning: normal;
-            font-kerning: normal;
-
-    /* font-synthesis: */ /* only set per class/font/:lang() */
-    /* font-variant-alternates: */ /* only set per class/font/:lang() */
-    /* font-variant-caps: */ /* only set per class/font/:lang() */
-    /* font-variant-east-asian: */ /* only set per class/font/:lang() */
-    font-variant-emoji: unicode;
-    /* font-variant-ligatures: */ /* only set per class/font/:lang() */
-    font-variant-numeric: slashed-zero tabular-nums oldstyle-nums;
-    /* font-variant-position: */ /* only set per class/font/:lang() */
-
-    text-rendering: optimizeLegibility; /* for browsers that does not support geometricPrecision */
-    text-rendering: geometricPrecision; /* only major browsers support this */
-  }
-/***************************
-** END: :root, html, body **
-***************************/
-
 /***************
 ** BGN: SHIMS **
 ***************/
-  /* BIDI HTML5 and CSS3 "isolate" */
-  [dir="ltr"],
-  bdo[dir="ltr"],
-  :dir(ltr) {
-    direction: ltr;
-  }
-  [dir="rtl"],
-  bdo[dir="rtl"],
-  :dir(rtl) {
-    direction: rtl;
-  }
+  /* No longer needed, leaving here in case we encounter fringe cases
+    [dir="ltr"],
+    bdo[dir="ltr"],
+    :dir(ltr) {
+      direction: ltr;
+    }
+    [dir="rtl"],
+    bdo[dir="rtl"],
+    :dir(rtl) {
+      direction: rtl;
+    }
+  */
+
+  /* No longer needed, leaving here in case we encounter fringe cases
+    [dir='ltr'] {
+      unicode-bidi: embed;
+      unicode-bidi: isolate;
+    }
+    [dir='rtl'] {
+      unicode-bidi: embed;
+      unicode-bidi: isolate;
+    }
+    bdo[dir='ltr'] {
+      unicode-bidi: bidi-override;
+      unicode-bidi: isolate-override;
+    }
+    bdo[dir='rtl'] {
+      unicode-bidi: bidi-override;
+      unicode-bidi: isolate-override;
+    }
+  */
 /***************
 ** END: SHIMS **
 ***************/
@@ -159,7 +112,7 @@
     font-family: var(--font-sans-yelosan), sans-serif;
   }
   [class$="-mono" i] {
-    font-family: var(--font-mono-yelosan), monospace;
+    font-family: var(--font-mono-yelosan, monospace);
   }
   */
 
@@ -195,6 +148,20 @@
     .titling-caps {
       font-variant-caps: titling-caps;
     }
+
+  .markdown-body code, .markdown-body kbd, .markdown-body pre, .markdown-body samp,
+  code, kbd, pre, samp {
+    font-family: var(--font-mono-yelosan, monospace);
+  }
+
+  html body [class~="smiley" i],
+  html body [class~="emoticon" i],
+  html body [class~="emoji" i] {
+    font-family: var(--font-emoji-yelosan, emoji);
+  }
+  html body .unicode_emoji { /* usage: <span class="unicode_emoji">emoji_here</span> */
+    font-family: var(--font-emoji-yelosan, emoji);
+  }
 /************************
 ** END: Default styles **
 ************************/
@@ -202,20 +169,6 @@
 /***************
 ** BGN: FONTS **
 ***************/
-  /***
-    * Unfortunately, the CSS4 font-synthesis: none; descriptor is not yet recognized by most browsers.
-    * See: https://www.w3.org/TR/css-fonts-4/
-    *
-    * Setting font-style and font-weight descriptor via class and selectors will require
-    *   that all instances of the scripts should have that class or is correctly targeted.
-    *   However, this is not guaranteed if we use a CMS not designed for multi-script purposes.
-  ***/
-
-  /***
-    * https://rsc.youronly.one/css/paninap-fonts.css
-    * https://rsc.youronly.one/css/paninap-style.css
-  ***/
-
   /* BGN: MOST USED */
     /* BGN: Special Characters */
       /* &-sign / ampersand */
@@ -242,89 +195,9 @@
     /***
       * BGN: Special font-family override
       *
-      *   - Do not add font-familiy in :lang(). It will mess a multi-script / multi-language page.
       *   - Subset fonts
       *   - Pure Unicode-compliant fonts only
     ***/
-    :lang(en), :lang(en-oxendict),
-    :lang(en-PH), :lang(en-PH-oxendict) {
-      direction: ltr;
-      font-language-override: "ENG";
-      font-synthesis: initial;
-    }
-
-    /* BGN: Catch all Chinese lang */
-      /* :lang("zh-*"), */
-      :lang(zh-Hans) {
-        direction: ltr;
-        font-variant-east-asian: simplified proportional-width;
-        font-language-override: "ZHS";
-        font-style: normal;
-        font-synthesis: weight;
-      }
-      :lang(zh),
-      :lang(zh-Hant) {
-        direction: ltr;
-        font-variant-east-asian: traditional proportional-width;
-        font-language-override: "ZHT";
-        font-style: normal;
-        font-synthesis: weight;
-      }
-      :lang(zh-Hans-HK) {
-        direction: ltr;
-        font-variant-east-asian: simplified proportional-width;
-        font-language-override: "ZHS";
-        font-style: normal;
-        font-synthesis: weight;
-      }
-      :lang(zh-Hant-HK) {
-        direction: ltr;
-        font-variant-east-asian: traditional proportional-width;
-        font-language-override: "ZHH";
-        font-style: normal;
-        font-synthesis: weight;
-      }
-      :lang(zh-Latn), :lang(zh-Latn-pinyin),
-      :lang(yue-jyutping), :lang(zh-yue-jyutping),
-      :lang(zh-Latn-tongyong),
-      :lang(zh-Latn-wadegile) {
-        direction: ltr;
-        font-language-override: "ZHP";
-        font-synthesis: initial;
-      }
-    /* END: Catch all Chinese lang */
-
-    /* BGN: Catch all Japanese lang */
-      /* :lang("ja-*"), */
-      :lang(ja) {
-        direction: ltr;
-        font-variant-east-asian: jis04 proportional-width;
-        font-language-override: "JAN";
-        font-style: normal;
-        font-synthesis: weight;
-      }
-      :lang(ja-Latn), :lang(ja-Latn-hepburn),
-      :lang(ja-Latn-hepburn-heploc), :lang(ja-Latn-heploc),
-      :lang(ja-Latn-hepburn-alalc97), :lang(ja-Latn-alalc97) {
-        direction: ltr;
-        font-synthesis: initial;
-      }
-    /* END: Catch all Japanese lang */
-
-    /* BGN: Catch all Korean lang */
-      /* :lang("ko-*"), */
-      :lang(ko) {
-        direction: ltr;
-        font-variant-east-asian: proportional-width;
-        font-language-override: "KOR";
-        font-style: normal;
-        font-synthesis: weight;
-      }
-      :lang(ko-Latn) {
-        direction: ltr;
-        font-synthesis: initial;
-      }
-    /* END: Catch all Korean lang */
 
     /* BGN: Catch all Greek langs and scripts */
       :lang(el), :lang(gre), :lang(ell), /* Modern Greek */
@@ -355,18 +228,6 @@
     }
   /* END: LANG */
 
-  /**
-   * Font classes for override, and in rare cases, to force the font to an element.
-   *   Examples:
-   *     1. Templates with explicit font-face for selected elements
-   *     2. Header elements (<h1,2,3,4,5>) -- could be theme-based also
-   *
-   * Baybayin: Baybayin Modern club > Noto Sans Tagalog
-   * Paleo Hebrew: Paleo Hebrew > Ancient Hebrew > Noto Sans Phoenician
-   * Modern Hebrew: Modern Hebrew = Noto Sans Hebrew
-   *
-   * "direction" has to be added to cover all styling practices
-  **/
   /* BGN: NotoSans */
     .font-greek-sans-noto {
       direction: ltr;

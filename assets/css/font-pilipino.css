@@ -52,28 +52,28 @@
 
 /** BGN: Noto Baybayin **/
   @font-face {
-    font-family: "noto-baybayin";
+    font-family: "baybayin-noto";
     src:  local("Noto Sans Buhid"),
           url("../fonts/NotoSansBuhid-Regular.otf") format("opentype"),
           url("../fonts/NotoSansBuhid-Regular.ttf") format("truetype");
     font-display: swap;
   }
   @font-face {
-    font-family: "noto-baybayin";
+    font-family: "baybayin-noto";
     src:  local("Noto Sans Hanunoo"),
           url("../fonts/NotoSansHanunoo-Regular.otf") format("opentype"),
           url("../fonts/NotoSansHanunoo-Regular.ttf") format("truetype");
     font-display: swap;
   }
   @font-face {
-    font-family: "noto-baybayin";
+    font-family: "baybayin-noto";
     src:  local("Noto Sans Tagalog"),
           url("../fonts/NotoSansTagalog-Regular.otf") format("opentype"),
           url("../fonts/NotoSansTagalog-Regular.ttf") format("truetype");
     font-display: swap;
   }
   @font-face {
-    font-family: "noto-baybayin";
+    font-family: "baybayin-noto";
     src:  local("Noto Sans Tagbanwa"),
           url("../fonts/NotoSansTagbanwa-Regular.otf") format("opentype"),
           url("../fonts/NotoSansTagbanwa-Regular.ttf") format("truetype");
@@ -83,7 +83,7 @@
 
 /* BGN: Nordenx Baybayin */
   @font-face {
-    font-family: "nordenx-baybayin";
+    font-family: "baybayin-nordenx";
     src:  local("Baybayin Mangyan Buhid"), /* full font name */
           local("BaybayinMangyanBuhid"), /* Postscript name */
           url("../fonts/baybayinmangyanbuhid-webfont.woff2") format("woff2"),
@@ -93,7 +93,7 @@
     unicode-range: U+1740-175F, U+1714, U+1734-1736, U+20B1;
   }
   @font-face {
-    font-family: "nordenx-baybayin";
+    font-family: "baybayin-nordenx";
     src:  local("Baybayin Mangyan Hanubrush"), /* full font name */
           local("BaybayinMangyanHanubrush"), /* Postscript name */
           url("../fonts/baybayinmangyanhanubrush-webfont.woff2") format("woff2"),
@@ -103,7 +103,7 @@
     unicode-range: U+1720-173F, U+1714, U+20B1;
   }
   @font-face {
-    font-family: "nordenx-baybayin";
+    font-family: "baybayin-nordenx";
     src:  local("Baybayin Modern Club"), /* full font name */
           local("BaybayinModernClub"), /* Postscript name */
           url("../fonts/baybayintagalogmodernclub-webfont.woff2") format("woff2"),
@@ -114,7 +114,7 @@
   }
   /*
   @font-face {
-    font-family: "nordenx-baybayin";
+    font-family: "baybayin-nordenx";
     src:  local(""), /* full font name
           local(""), /* Postscript name
           url("../fonts/-webfont.woff2") format("woff2"),
@@ -137,55 +137,87 @@
   }
 /* END: Barabara */
 
-/* BGN: LANG */
-  /***
-    * BGN: Special font-family override
-    *
-    *   - Do not add font-familiy in :lang(). It will mess a multi-script / multi-language page.
-    *   - Subset fonts
-    *   - Pure Unicode-compliant fonts only
-  ***/
+/** BGN: :root and classes **/
+:root {
+  --font-baybayin-sans-noto: "baybayin-noto", "Noto Sans Buhid", "Noto Sans Hanunoo", "Noto Sans Tagalog", "Noto Sans Tagbanwa"; /* Different Unicode blocks. */
+  --font-baybayin-nordenx: "baybayin-nordenx";
+  --font-barabara-fantasy: "barabara";
+}
+.font-baybayin-noto.font-baybayin-noto.font-baybayin-noto {
+  direction: ltr;
+  font-family: var(--font-baybayin-noto, sans-serif);
+}
+.font-baybayin-nordenx.font-baybayin-nordenx.font-baybayin-nordenx {
+  direction: ltr;
+  font-family: var(--font-baybayin-nordenx, sans-serif);
+}
+.font-barabara-fantasy.font-barabara-fantasy.font-barabara-fantasy {
+  direction: ltr;
+  font-family: var(--font-barabara-fantasy, fantasy);
+}
+/** END: :root and classes **/
 
-  /* BGN: Catch all PH (original) scripts */
-    :lang(phi), :lang(fil),
-    :lang(tbw), :lang(bku), :lang(hnn), :lang(tl) {
-      direction: ltr;
-      font-language-override: "PIL";
-      font-synthesis: initial;
-    }
-    :lang(tbw-Tagb), :lang(bku-Buhd), :lang(hnn-Hano), :lang(tl-Tglg)
-    /* :lang(*-Tagb), :lang(*-Buhd), :lang(*-Hano), :lang(*-Tglg) */
-    {
-      /* font-variant-east-asian: proportional-width; */
-      font-style: normal;
-      font-synthesis: weight;
-    }
-  /* END: Catch all PH (original) scripts */
-/* END: LANG */
-
-/**
-  * Font classes for override, and in rare cases, to force the font to an element.
-  *   Examples:
-  *     1. Templates with explicit font-face for selected elements
-  *     2. Header elements (<h1,2,3,4,5>) -- could be theme-based also
+/***
+  * BGN: Special font-family override
   *
-  * Baybayin: Baybayin Modern club > Noto Sans Tagalog
-  * Paleo Hebrew: Paleo Hebrew > Ancient Hebrew > Noto Sans Phoenician
-  * Modern Hebrew: Modern Hebrew = Noto Sans Hebrew
-  *
-  * "direction" has to be added to cover all styling practices
-**/
-.font-baybayin-noto {
-  direction: ltr;
-  font-family: var(font-baybayin-yelosan), sans-serif;
-}
+  *   - Subset fonts
+  *   - Pure Unicode-compliant fonts only, otherwise we have to manually subset.
+***/
 
-.font-baybayin-nordenx {
-  direction: ltr;
-  font-family: var(--font-baybayin-nordenx), sans-serif;
-}
+/* BGN: Catch all en-PH */
+  :lang(en-PH) {
+    direction: ltr;
+    font-language-override: "ENG";
+    font-synthesis: initial;
+  }
+/* END: Catch all en-PH */
 
-.font-barabara-fantasy {
-  direction: ltr;
-  font-family: var(--font-barabara-fantasy), fantasy;
-}
+/* BGN: Catch all PH (original) scripts */
+  /* Search: https: //iso639-3.sil.org/code_tables/639/data */
+
+  :lang(cbk), :lang(ibg), :lang(krj), :lang(xsb), :lang(yka),
+
+  :lang(bnc), :lang(ebk), :lang(lbk), :lang(obk), :lang(rbk), :lang(vbk), /* Bontok */
+  :lang(ivb), :lang(ivv), /* Ibatan */
+  :lang(sgd), :lang(tgn), /* Surigaonon, Tandaganon */
+
+  /*** Also in Arabic ***/
+    :lang(mdh), /* Maguindanaon */
+    :lang(mrw), /* Marano */
+    :lang(tsg), /* Tausug */
+
+  /*** Also in Baybayin ***/
+    :lang(akl), :lang(mlz), /* Aklanon */
+    :lang(bku), :lang(hnn), :lang(alj), :lang(bnj), :lang(bnk), :lang(btn), :lang(iry), :lang(tdy), :lang(twb), /* Mangyan (Buhid and Hanunoo) */
+    :lang(bcl), :lang(bik), :lang(bln), :lang(bto), :lang(cts), /* Bikolano (Basahan) */
+    :lang(bhk), :lang(fbl), :lang(lbl), :lang(rbl), :lang(ubl), /* Bikolano Albay (Basahan) */
+    :lang(ceb), /* Cebuano (Badlit) */
+    :lang(hil), /* Hiligaynon */
+    :lang(ilo), /* Ilokano (Kuritan) */
+    :lang(pag), /* Pangasinense (Kuritan) */
+    :lang(pam), /* Kapampangan (Kulitan) */
+    :lang(tbw), :lang(tbk), :lang(tgt), /* Tagbanwa */
+    :lang(tgl), :lang(tl), /* Tagalog */
+    :lang(war), /* Waray */
+    :lang(phi), :lang(fil) /* national and collective */
+  {
+    direction: ltr;
+    /* font-family: */ /* add default for Latin script in font-defaults.scss, like var(--font-sans-yelosan) */
+    font-language-override: "PIL";
+    font-synthesis: initial;
+  }
+
+  :lang(tbw-Tagb), :lang(tbk-Tagb), :lang(tgt-Tagb),
+  :lang(bku-Buhd), :lang(hnn-Hano),
+  :lang(tgl-Tglg), :lang(tl-Tglg),
+  :lang(phi-Tagb), :lang(phi-Buhd), :lang(phi-Hano), :lang(phi-Tglg),
+  :lang(fil-Tagb), :lang(fil-Buhd), :lang(fil-Hano), :lang(fil-Tglg),
+  :lang(\*-Tagb), :lang(\*-Buhd), :lang(\*-Hano), :lang(\*-Tglg) /* Not yet implemented by browsers */
+  {
+    direction: ltr;
+    font-family: var(--font-baybayin-sans-noto, sans-serif); /* to customise: use var(--font-baybayin-sans-yelosan) in font-defaults.scss */
+    font-style: normal;
+    font-synthesis: weight;
+    font-variant-east-asian: proportional-width;
+  }
+/* END: Catch all PH (original) scripts */

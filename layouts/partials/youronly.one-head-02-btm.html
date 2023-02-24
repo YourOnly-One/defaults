@@ -17,15 +17,17 @@
 {{- $twemojialljs := slice $twemojijs $twemojisettingsjs | resources.Concat "js/twemoji-all.js" -}}
 {{- $twemojialljs = $twemojialljs | minify | fingerprint "sha512" -}}
 
-{{- $yelosanfontscss := resources.Get "css/yelosan-fonts.css" -}}
-{{- $notofontscss := resources.Get "css/noto-fonts.css" -}}
-{{- $dejavufontscss := resources.Get "css/dejavu-fonts.css" -}}
-{{- $pilipinofontscss := resources.Get "css/pilipino-fonts.css" -}}
-{{- $hebrewfontscss := resources.Get "css/hebrew-fonts.css" -}}
-{{- $twemojicss := resources.Get "css/twemoji.css" -}}
-{{- $cciconscss := resources.Get "css/cc-icons.css" -}} {{/* src: https://github.com/techmagus/cc-icons or https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css */}}
-{{- $yelosanfontscss = slice $yelosanfontscss $notofontscss $dejavufontscss $pilipinofontscss $hebrewfontscss $twemojicss $cciconscss | resources.Concat "css/yelosan-fonts.css" -}}
-{{- $yelosanfontscss = $yelosanfontscss | minify | fingerprint "sha512" -}}
+{{- $FontYelosanCss := resources.Get "css/yelosan-fonts.css" -}}
+{{- $FontNotoCss := resources.Get "css/font-noto.css" -}}
+{{- $FontCjkCss := resources.Get "css/font-cjk.css" -}}
+{{- $FontPilipinoCss := resources.Get "css/font-pilipino.css" -}}
+{{- $FontDiacriticsCss := resources.Get "css/font-diacritics.css" -}}
+{{- $FontHebrewCss := resources.Get "css/font-hebrew.css" -}}
+{{- $FontSymbolsCss := resources.Get "css/font-symbols.css" -}} {{/* src: https://github.com/techmagus/cc-icons or https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css */}}
+{{- $FontEmojiCss := resources.Get "css/font-emoji.css" -}}
+{{- $FontDefaultsScss := resources.Get "scss/font-defaults.scss" | resources.ExecuteAsTemplate "css/fonts-defaults.css" . | toCSS -}}
+{{- $FontYelosanCss = slice $FontYelosanCss $FontNotoCss $FontCjkCss $FontPilipinoCss $FontDiacriticsCss $FontHebrewCss $FontSymbolsCss $FontEmojiCss $FontDefaultsScss | resources.Concat "css/yelosan-fonts.css" -}}
+{{- $FontYelosanCss = $FontYelosanCss | minify | fingerprint "sha512" -}}
 
 {{- $appletouchiconpng := resources.Get "favicon/apple-touch-icon.png" | fingerprint "sha512" -}}
 {{- /* $faviconsvg := resources.Get "favicon/favicon.svg" | fingerprint "sha512" */ -}}
@@ -75,7 +77,7 @@
   - cc-icons 1.2.1 as of 2022-12-13
 */ -}}
 <script src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}" crossorigin="anonymous" type="{{ $twemojialljs.MediaType }}" async ></script>
-<link href="{{ $yelosanfontscss.RelPermalink }}" integrity="{{ $yelosanfontscss.Data.Integrity }}" crossorigin="anonymous" type="{{ $yelosanfontscss.MediaType }}" media="all" rel="stylesheet" />
+<link href="{{ $FontYelosanCss.RelPermalink }}" integrity="{{ $FontYelosanCss.Data.Integrity }}" crossorigin="anonymous" type="{{ $FontYelosanCss.MediaType }}" media="all" rel="stylesheet" />
 <link href="{{ $yookicss.RelPermalink }}" integrity="{{ $yookicss.Data.Integrity }}" crossorigin="anonymous" type="{{ $yookicss.MediaType }}" media="all" rel="stylesheet" />
 
 {{/* BGN: favicon */}}
