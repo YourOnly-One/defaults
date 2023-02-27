@@ -138,23 +138,28 @@
 /* END: Barabara */
 
 /** BGN: :root and classes **/
-:root {
-  --font-baybayin-sans-noto: "baybayin-noto", "Noto Sans Buhid", "Noto Sans Hanunoo", "Noto Sans Tagalog", "Noto Sans Tagbanwa"; /* Different Unicode blocks. */
-  --font-baybayin-nordenx: "baybayin-nordenx";
-  --font-barabara-fantasy: "barabara";
-}
-.font-baybayin-noto.font-baybayin-noto.font-baybayin-noto {
-  direction: ltr;
-  font-family: var(--font-baybayin-noto, sans-serif);
-}
-.font-baybayin-nordenx.font-baybayin-nordenx.font-baybayin-nordenx {
-  direction: ltr;
-  font-family: var(--font-baybayin-nordenx, sans-serif);
-}
-.font-barabara-fantasy.font-barabara-fantasy.font-barabara-fantasy {
-  direction: ltr;
-  font-family: var(--font-barabara-fantasy, fantasy);
-}
+  /*
+  * 1. If the font is not a subset, the base font has to be declared first.
+  *   Example, we need Noto Sans to ensure the Latin scripts still have font-weight when mixed with non-Latin Noto fonts.
+  * 2. Do not use var(), it will not work correctly.
+  */
+  :root {
+    --font-baybayin-sans-noto: "noto-sans", "Noto Sans", "baybayin-noto", "Noto Sans Buhid", "Noto Sans Hanunoo", "Noto Sans Tagalog", "Noto Sans Tagbanwa"; /* Different Unicode blocks. */
+    --font-baybayin-nordenx: "baybayin-nordenx"; /* subset font */
+    --font-barabara-fantasy: "barabara";
+  }
+  .font-baybayin-sans-noto.font-baybayin-sans-noto.font-baybayin-sans-noto {
+    direction: ltr;
+    font-family: var(--font-baybayin-sans-noto, sans-serif);
+  }
+  .font-baybayin-nordenx.font-baybayin-nordenx.font-baybayin-nordenx {
+    direction: ltr;
+    font-family: var(--font-baybayin-nordenx, sans-serif);
+  }
+  .font-barabara-fantasy.font-barabara-fantasy.font-barabara-fantasy {
+    direction: ltr;
+    font-family: var(--font-barabara-fantasy, fantasy);
+  }
 /** END: :root and classes **/
 
 /***
@@ -174,6 +179,9 @@
 
 /* BGN: Catch all PH (original) scripts */
   /* Search: https: //iso639-3.sil.org/code_tables/639/data */
+  /***
+  ** Break down into groups to ensure UA's will not ignore.
+  ***/
 
   :lang(cbk), :lang(ibg), :lang(krj), :lang(xsb), :lang(yka),
 
@@ -182,15 +190,28 @@
   :lang(sgd), :lang(tgn), /* Surigaonon, Tandaganon */
 
   /*** Also in Arabic ***/
-    :lang(mdh), /* Maguindanaon */
-    :lang(mrw), /* Marano */
-    :lang(tsg), /* Tausug */
+  :lang(mdh), /* Maguindanaon */
+  :lang(mrw), /* Marano */
+  :lang(tsg) /* Tausug */
+  {
+    direction: ltr;
+    /* font-family: */ /* add default for Latin script in font-defaults.scss */
+    font-language-override: "PIL";
+    font-synthesis: initial;
+  }
 
   /*** Also in Baybayin ***/
     :lang(akl), :lang(mlz), /* Aklanon */
     :lang(bku), :lang(hnn), :lang(alj), :lang(bnj), :lang(bnk), :lang(btn), :lang(iry), :lang(tdy), :lang(twb), /* Mangyan (Buhid and Hanunoo) */
     :lang(bcl), :lang(bik), :lang(bln), :lang(bto), :lang(cts), /* Bikolano (Basahan) */
-    :lang(bhk), :lang(fbl), :lang(lbl), :lang(rbl), :lang(ubl), /* Bikolano Albay (Basahan) */
+    :lang(bhk), :lang(fbl), :lang(lbl), :lang(rbl), :lang(ubl) /* Bikolano Albay (Basahan) */
+  {
+    direction: ltr;
+    /* font-family: */ /* add default for Latin script in font-defaults.scss */
+    font-language-override: "PIL";
+    font-synthesis: initial;
+  }
+
     :lang(ceb), /* Cebuano (Badlit) */
     :lang(hil), /* Hiligaynon */
     :lang(ilo), /* Ilokano (Kuritan) */
@@ -202,7 +223,7 @@
     :lang(phi), :lang(fil) /* national and collective */
   {
     direction: ltr;
-    /* font-family: */ /* add default for Latin script in font-defaults.scss, like var(--font-sans-yelosan) */
+    /* font-family: */ /* add default for Latin script in font-defaults.scss */
     font-language-override: "PIL";
     font-synthesis: initial;
   }
@@ -215,7 +236,7 @@
   :lang(\*-Tagb), :lang(\*-Buhd), :lang(\*-Hano), :lang(\*-Tglg) /* Not yet implemented by browsers */
   {
     direction: ltr;
-    font-family: var(--font-baybayin-sans-noto, sans-serif); /* to customise: use var(--font-baybayin-sans-yelosan) in font-defaults.scss */
+    font-family: var(--font-baybayin-sans-noto, sans-serif); /* to customise: use var() in font-defaults.scss */
     font-style: normal;
     font-synthesis: weight;
     font-variant-east-asian: proportional-width;

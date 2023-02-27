@@ -106,13 +106,13 @@
     font-family: "Source Sans Pro", sans-serif;
   }
   [class$="-serif" i] {
-    font-family: var(--font-serif-yelosan), serif;
+    font-family: var(--font-serif-noto), serif;
   }
   [class$="-sans" i] {
-    font-family: var(--font-sans-yelosan), sans-serif;
+    font-family: var(--font-sans-noto), sans-serif;
   }
   [class$="-mono" i] {
-    font-family: var(--font-mono-yelosan, monospace);
+    font-family: var(--font-mono-noto, monospace);
   }
   */
 
@@ -149,18 +149,24 @@
       font-variant-caps: titling-caps;
     }
 
-  .markdown-body code, .markdown-body kbd, .markdown-body pre, .markdown-body samp,
-  code, kbd, pre, samp {
-    font-family: var(--font-mono-yelosan, monospace);
+  .markdown-body code,
+  .markdown-body kbd,
+  .markdown-body pre,
+  .markdown-body samp,
+  code:not(.\9),
+  kbd:not(.\9),
+  pre:not(.\9),
+  samp:not(.\9) {
+    font-family: var(--font-mono-noto, monospace);
   }
 
   html body [class~="smiley" i],
   html body [class~="emoticon" i],
   html body [class~="emoji" i] {
-    font-family: var(--font-emoji-yelosan, emoji);
+    font-family: var(--font-emoji, emoji);
   }
   html body .unicode_emoji { /* usage: <span class="unicode_emoji">emoji_here</span> */
-    font-family: var(--font-emoji-yelosan, emoji);
+    font-family: var(--font-emoji, emoji);
   }
 /************************
 ** END: Default styles **
@@ -231,11 +237,11 @@
   /* BGN: NotoSans */
     .font-greek-sans-noto {
       direction: ltr;
-      font-family: var(--font-sans-yelosan); /* Force override */
+      font-family: var(--font-sans-noto); /* Force override */
     }
     .font-greek-serif-noto {
       direction: ltr;
-      font-family: var(--font-serif-yelosan); /* Force override */
+      font-family: var(--font-serif-noto); /* Force override */
     }
   /* END: NotoSans */
 

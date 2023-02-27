@@ -51,17 +51,22 @@
 /** END: Noto Sans **/
 
 /** BGN: root and classes **/
+  /*
+  * 1. If the font is not a subset, the base font has to be declared first.
+  *   Example, we need Noto Sans to ensure the Latin scripts still have font-weight when mixed with non-Latin Noto fonts.
+  * 2. Do not use var(), it will not work correctly.
+  */
   :root {
     /* BGN: standard set */
-      --font-fangsong-zhs-sans-noto-rotated: "Noto Fangsong KSS Rotated"; /* fangsong */
-      --font-fangsong-zhs-sans-noto-vertical: "Noto Fangsong KSS Vertical"; /* fangsong */
+      --font-fangsong-zhs-sans-noto-rotated: "noto-sans", "Noto Sans", "Noto Fangsong KSS Rotated"; /* fangsong */
+      --font-fangsong-zhs-sans-noto-vertical: "noto-sans", "Noto Sans", "Noto Fangsong KSS Vertical"; /* fangsong */
     /* END: standard set */
 
     /* BGN: LANG set */
-      --font-zhs-sans-noto: "Noto Sans CJK SC", "Noto Sans SC";
-      --font-zht-sans-noto: "Noto Sans CJK TC", "Noto Sans TC";
-      --font-ja-sans-noto: "Noto Sans CJK JP", "Noto Sans JP"; /* Nihongo */
-      --font-ko-sans-noto: "Noto Sans CJK KR", "Noto Sans KR"; /* Hangugeo */
+      --font-zhs-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK SC", "Noto Sans SC";
+      --font-zht-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK TC", "Noto Sans TC";
+      --font-ja-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK JP", "Noto Sans JP"; /* Nihongo */
+      --font-ko-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK KR", "Noto Sans KR"; /* Hangugeo */
     /* END: LANG set */
   }
   .font-fangsong-zhs-sans-noto-rotated {

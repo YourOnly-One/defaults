@@ -67,11 +67,16 @@
 /* END: RARELY USED */
 
 /** BGN: root and classes **/
+  /*
+  * 1. If the font is not a subset, the base font has to be declared first.
+  *   Example, we need Noto Sans to ensure the Latin scripts still have font-weight when mixed with non-Latin Noto fonts.
+  * 2. Do not use var(), it will not work correctly.
+  */
   :root {
-    --font-hebrew-sans-noto: "phoenician-sans-noto", "Noto Sans Phoenician", "hebrew-sans-noto", "Noto Sans Hebrew"; /* Different Unicode blocks. */
-    --font-hebrew-serif-noto: "hebrew-serif-noto", "Noto Serif Hebrew";
-    --font-hebrew-sans-paleo-gezer: "hebrew-sans-paleo-gezer";
-    --font-hebrew-sans-proto-canaanite: "hebrew-sans-proto-canaanite";
+    --font-hebrew-sans-noto: "noto-sans", "Noto Sans", "phoenician-sans-noto", "Noto Sans Phoenician", "hebrew-sans-noto", "Noto Sans Hebrew"; /* Different Unicode blocks. */
+    --font-hebrew-serif-noto: "noto-serif", "Noto Serif", "hebrew-serif-noto", "Noto Serif Hebrew";
+    --font-hebrew-sans-paleo-gezer: "noto-sans", "Noto Sans", "hebrew-sans-paleo-gezer";
+    --font-hebrew-sans-proto-canaanite: "noto-sans", "Noto Sans", "hebrew-sans-proto-canaanite";
   }
   .font-hebrew-sans-noto.font-hebrew-sans-noto.font-hebrew-sans-noto {
     direction: rtl;

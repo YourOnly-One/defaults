@@ -101,11 +101,16 @@
 /** END: @font-face **/
 
 /** BGN: :root and classes **/
+  /*
+  * 1. If the font is not a subset, the base font has to be declared first.
+  *   Example, we need Noto Sans to ensure the Latin scripts still have font-weight when mixed with non-Latin Noto fonts.
+  * 2. Do not use var(), it will not work correctly.
+  */
   :root {
-    /*  --font-math-noto: "noto-sans-math", "Noto Sans Math", "Noto Math", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols"; */ /* math */
-        --font-math-noto: "noto-sans-math", "Noto Sans Math", "Noto Math"; /* math */
-    /*  --font-music-noto: "noto-music", "Noto Music", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols"; */
-        --font-music-noto: "noto-music", "Noto Music";
+    /*  --font-math-noto: "noto-sans", "Noto Sans", "noto-sans-math", "Noto Sans Math", "Noto Math", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols"; */ /* math */
+        --font-math-noto: "noto-sans", "Noto Sans", "noto-sans-math", "Noto Sans Math", "Noto Math"; /* math */
+    /*  --font-music-noto: "noto-sans", "Noto Sans", "noto-music", "Noto Music", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols"; */
+        --font-music-noto: "noto-sans", "Noto Sans", "noto-music", "Noto Music";
   }
   .font-math-noto {
     direction: ltr;

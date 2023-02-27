@@ -95,7 +95,7 @@
   *   * CSS Custom Properties for Cascading Variables Module Level 1
   *      * CR, 2015-12-03
   *      * https://www.w3.org/TR/css-variables/
-  *      * See: --font-sans-yelosan and --font-serif-yelosan, and var()
+  *      * See: --font-sans and --font-serif, and var()
   *
   *   * Selectors Level 4
   *      * WD, 2018-11-21
@@ -118,18 +118,6 @@
     *   font-family: var(--icon-creativecommons);
   ***/
   :root {
-    /* Default fonts */
-    --font-sans-yelosan: var(--font-sans-noto);
-    --font-serif-yelosan: var(--font-serif-noto);
-    --font-mono-yelosan: var(--font-mono-noto);
-    --font-emoji-yelosan: var(--font-emoji, var(--font-emoji-twemoji, var(--font-emoji-noto)));
-    --font-baybayin-sans-yelosan: var(--font-baybayin-sans-noto);
-    --font-hebrew-sans-yelosan: var(--font-hebrew-sans-paleo-gezer, var(--font-hebrew-sans-noto));
-    --font-zhs-sans-yelosan: var(--font-zhs-sans-noto);
-    --font-zht-sans-yelosan: var(--font-zht-sans-noto);
-    --font-ja-sans-yelosan: var(--font-ja-sans-noto);
-    --font-ko-sans-yelosan: var(--font-ko-sans-noto);
-
     -webkit-font-kerning: normal;
             font-kerning: normal;
 
@@ -154,31 +142,30 @@
 **************/
   /**
   * This is not a duplicate, this is where we customise the default fonts.
-  *
-  * vars should end in `-yelosan`
   **/
-  :root, *, html, body,
+  /* :root, *, html, body, */
   :lang(en) {
-    font-family: var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, var(--font-hebrew-sans-yelosan, sans-serif)));
+    font-family: var(--font-sans-noto, var(--font-baybayin-sans-noto, var(--font-hebrew-sans-noto, sans-serif)));
   }
 
-  :lang(zh) {
-    font-family: var(--font-zht-sans-yelosan, var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, var(--font-hebrew-sans-yelosan, sans-serif))));
+  :lang(zh),
+  :lang(zh-Hant) {
+    font-family: var(--font-zht-sans-noto, var(--font-baybayin-sans-noto, var(--font-hebrew-sans-noto, sans-serif)));
   }
   :lang(zh-Hans) {
-    font-family: var(--font-zhs-sans-yelosan, var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, var(--font-hebrew-sans-yelosan, sans-serif))));
+    font-family: var(--font-zhs-sans-noto, var(--font-baybayin-sans-noto, var(--font-hebrew-sans-noto, sans-serif)));
   }
 
   :lang(ja) {
-    font-family: var(--font-ja-sans-yelosan, var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, var(--font-hebrew-sans-yelosan, sans-serif))));
+    font-family: var(--font-ja-sans-noto, var(--font-baybayin-sans-noto, var(--font-hebrew-sans-noto, sans-serif)));
   }
 
   :lang(ko) {
-    font-family: var(--font-ko-sans-yelosan, var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, var(--font-hebrew-sans-yelosan, sans-serif))));
+    font-family: var(--font-ko-sans-noto, var(--font-baybayin-sans-noto, var(--font-hebrew-sans-noto, sans-serif)));
   }
 
   :lang(he), :lang(heb), :lang(hbo) {
-    font-family: var(--font-hebrew-sans-yelosan, var(--font-zht-sans-yelosan, var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, sans-serif))));
+    font-family: var(--font-hebrew-sans-noto, var(--font-baybayin-sans-noto, sans-serif));
   }
 
   :lang(tbw-Tagb), :lang(tbk-Tagb), :lang(tgt-Tagb),
@@ -188,7 +175,7 @@
   :lang(fil-Tagb), :lang(fil-Buhd), :lang(fil-Hano), :lang(fil-Tglg),
   :lang(\*-Tagb), :lang(\*-Buhd), :lang(\*-Hano), :lang(\*-Tglg) /* Not yet implemented by browsers */
   {
-    font-family: var(--font-baybayin-sans-yelosan, sans-serif);
+    font-family: var(--font-baybayin-sans-noto, sans-serif);
   }
 
   :lang(he-Latn), :lang(heb-Latn), :lang(hbo-Latn),
@@ -201,7 +188,7 @@
   :lang(\*-Latn) /* Not yet implemented by browsers */
   {
     direction: ltr;
-    font-family: var(--font-sans-yelosan, var(--font-baybayin-sans-yelosan, var(--font-hebrew-sans-yelosan, sans-serif)));
+    font-family: var(--font-sans-noto);
     font-synthesis: initial;
   }
 /**************
