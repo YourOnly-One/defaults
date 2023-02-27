@@ -341,7 +341,7 @@
 ** BGN: Ruby Annotation **
 *************************/
   /**
-    * As of 2023-02-21.
+    * As of 2023-02-27.
     *
     * We are declaring most of these due to lack of support in browsers.
     * Once CSS Ruby is fully supported, we can remove these base declarations.
@@ -377,12 +377,13 @@
 
   ruby,
   rbc, rb, span.ruby-base
-  rtc, rt, span.ruby-text {
+  rtc, span.ruby-text-container,
+  rt, span.ruby-text {
     unicode-bidi: -webkit-isolate;
     unicode-bidi: -moz-isolate;
     unicode-bidi: isolate;
   }
-  rtc,
+  rtc, span.ruby-text-container,
   rt, span.ruby-text {
     font-variant-east-asian: ruby;
     line-height: 1;
@@ -415,21 +416,43 @@
 
   /* Let's add some colours, because we can! */
   /* Works for Tabular and Interleaved models. */
+  /* RUBY BASE */
   /*
-  ruby {
+  span.ruby-base,
+  rb {
     color: purple;
   }
   */
-  ruby rt,
-  ruby span.ruby-text {
-    color: blue;
-  }
-  ruby ruby rt, ruby ruby span.ruby-text,
-  ruby ruby ruby {
-    color: green;
-  }
-  ruby ruby rt rt,
-  ruby ruby span.ruby-text span.ruby-text {
+  /* RUBY OVER */
+    ruby > ruby > rt,
+    ruby > ruby > rt > ruby > span.ruby-base,
+    ruby > ruby > rt > ruby > rb,
+    ruby > span.ruby-text-container:nth-of-type(odd) > rt,
+    ruby > span.ruby-text-container:nth-of-type(odd) > rt > ruby > rb,
+    ruby > rtc:nth-of-type(odd) > rt,
+    ruby > rtc:nth-of-type(odd) > rt > ruby > rb
+    {
+      color: green
+    }
+  /* RUBY BELOW */
+    ruby > rt,
+    ruby > rt > ruby > span.ruby-base,
+    ruby > rt > ruby > rb,
+    ruby > span.ruby-text-container:nth-of-type(even) > rt,
+    ruby > span.ruby-text-container:nth-of-type(even) > rt > ruby > rb,
+    ruby > rtc:nth-of-type(even) > rt,
+    ruby > rtc:nth-of-type(even) > rt > ruby > rb
+    {
+      /* RUBY BELOW */
+      color: blue;
+    }
+  /* RUBY OVER OVER and RUBY BELOW BELOW */
+  ruby > rt > ruby > rt,
+  ruby > span.ruby-text-container:nth-of-type(odd) > rt > ruby > rt,
+  ruby > span.ruby-text-container:nth-of-type(even) > rt > ruby > rt,
+  ruby > rtc:nth-of-type(odd) > rt > ruby > rt,
+  ruby > rtc:nth-of-type(even) > rt > ruby > rt
+  {
     color: red;
   }
 
