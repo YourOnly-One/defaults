@@ -39,32 +39,54 @@
       <div class="copyleft txt_center">
         {{ i18n "ContentOnBGN" }} <span xmlns:dct="https://purl.org/dc/terms/" property="dct:title"><b>{{ .Site.Title }}</b></span>&#x2122; {{ i18n "copyleft" }} &#x1F12F; {{ if eq now.Year .Site.Params.siteStartYear }}{{ now.Year }}{{ else }}{{ .Site.Params.siteStartYear }}–{{ now.Year }}{{ end }} <a xmlns:cc="https://creativecommons.org/ns#" href="https://im.youronly.one" property="cc:attributionName" rel="cc:attributionURL me noopener external">
           <!-- BGN: my name -->
-            <ruby>
-              <rb lang="he-Latn">Yahuhanan</rb>
-              <rp>(</rp><rt xml:lang="he" lang="he">יהוחנן</rt><rp>)</rp>
-            </ruby>
-            <ruby>
-              <ruby>
-                <ruby class="ruby-under">
-                  <rb lang="ja-Latn">Yukia</rb>
-                  <rp>(</rp><rt lang="zh-Latn">Xuěliàng</rt><rp>)</rp>
-                </ruby>
-                <rp>(</rp><rt lang="ja-Hani">雪亮</rt><rp>)</rp>
+            <ruby class="ruby-under" translate="no">
+              <ruby class="ruby-over">
+                <rb lang="he-Latn">Yáhuhánan</rb>
+                <rp>(</rp>
+                <rt lang="he">יהוחנן</rt>
               </ruby>
-              <rp>(</rp><rt lang="ja-Hira">ゆきあ</rt><rp>)</rp>
+              <rp>(</rp>
+              <rt lang="he-Latn">yá·hu·há·nan</rt>
+              <rp>)</rp>
             </ruby>
-            <ruby>
-              <ruby>
-                <ruby class="ruby-under">
-                  <rb lang="fil">Sese</rb>
-                  <rp>(</rp><rt xml:lang="zh-Latn" lang="zh-Latn">Xie</rt><rp>)</rp>
-                </ruby>
-                <rp>(</rp><rt xml:lang="zh" lang="zh">謝</rt><rp>)</rp>
+            <ruby class="ruby-under" translate="no">
+              <ruby class="ruby-over">
+                <rb lang="ja-Latn">Yukiá</rb>
+                <rp>(</rp>
+                <rt lang="ja-Hani"><ruby>
+                    <rb>雪亮</rb>
+                    <rt lang="ja-Hira">ゆきあ</rt>
+                  </ruby></rt>
+                <rp>)</rp>
               </ruby>
+              <rp>(</rp>
+              <rt lang="ja-Latn">yu·ki·yá</rt>
+              <rp>)</rp>
             </ruby>
-            <ruby>
-              <rb lang="fil">Cuneta</rb>
-              <rp>(</rp><rt xml:lang="tl-Tglg" lang="tl-Tglg">ᜃᜓᜈᜒᜆ</rt><rp>)</rp>
+            <ruby class="ruby-under" translate="no">
+              <ruby class="ruby-over">
+                <rb lang="fil">Sése</rb>
+                <rp>(</rp>
+                <rt lang="zh-Hant"><ruby>
+                    <rb>謝</rb>
+                    <rt lang="zh-Latn">xiè</rt>
+                  </ruby></rt>
+                <rp>)</rp>
+              </ruby>
+              <rp>(</rp>
+              <rt lang="fil">sé·se</rt>
+              <rp>)</rp>
+            </ruby>
+            <ruby class="ruby-under" translate="no">
+              <ruby class="ruby-over">
+                <rb lang="fil">Cunetá</rb>
+                <rp>(</rp>
+                <rt lang="fil-Tglg">ᜃᜓᜈᜒᜆ</rt>
+                <rp>)</rp>
+              </ruby>
+              <rp>(</rp>
+              <rt lang="fil">ku·ne·tá</rt>
+              <rp>)</rp>
             </ruby>
           <!-- END: my name -->
         </a> {{ i18n "ContentOnEND" }}
