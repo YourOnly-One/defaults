@@ -356,35 +356,38 @@
     ruby-merge: separate;
     ruby-overhang: auto;
   }
+  span.ruby-base-container,
   rbc { /* In W3C Working Draft but not in major browsers. */
     display: ruby-base-container;
   }
-  rb, /* Highly recommended by the W3C, but the HTML5 WG marked this as deprecated (this MUST be corrected). */
-  span.ruby-base {
+  span.ruby-base,
+  rb { /* Highly recommended by the W3C, but the HTML5 WG marked this as deprecated (this MUST be corrected). */
     display: ruby-base;
     white-space: nowrap;
   }
+  span.ruby-text-container,
   rtc { /* Very useful for multilingual Asian websites, but the HTML5 WG marked this as deprecated (this MUST be corrected). */
     display: ruby-text-container;
   }
   rp { /* For fallback parentheses only. */
     display: none;
   }
-  rt,
-  span.ruby-text { /* Annotation */
+  span.ruby-text,
+  rt { /* Annotation */
     display: ruby-text;
   }
 
+  span.ruby-base-container, span.ruby-base,
+  span.ruby-text-container, span.ruby-text,
   ruby,
-  rbc, rb, span.ruby-base
-  rtc, span.ruby-text-container,
-  rt, span.ruby-text {
+  rbc, rb
+  rtc, rt {
     unicode-bidi: -webkit-isolate;
     unicode-bidi: -moz-isolate;
     unicode-bidi: isolate;
   }
-  rtc, span.ruby-text-container,
-  rt, span.ruby-text {
+  span.ruby-text-container, span.ruby-text,
+  rtc, rt {
     font-variant-east-asian: ruby;
     line-height: 1;
     text-align: center; /* Webkit and Blink/Chromium-based browsers are keeping us in the Dark Ages, like IE used to be, for not supporting ruby-align. */
@@ -395,9 +398,12 @@
     white-space: nowrap;
   }
   /* suggested by W3C
+  span.ruby-text-container,
+  :not(span.ruby-text-container) > span.ruby-text,
+  :not(span.ruby-text-container) > rt,
   rtc,
-  :not(rtc) > rt,
-  :not(rtc) > span.ruby-text {
+  :not(rtc) > span.ruby-text,
+  :not(rtc) > rt {
     font-size: 67%;
   }
   rtc:lang(zh-TW),
@@ -409,8 +415,8 @@
     font-size: 30%;
   }
   */
-  rt rt,
-  span.ruby-text span.ruby-text {
+  span.ruby-text span.ruby-text,
+  rt rt {
     font-size: 0.9em;
   }
 
@@ -423,6 +429,7 @@
     color: purple;
   }
   */
+
   /* RUBY OVER */
     ruby > ruby > rt,
     ruby > ruby > rt > ruby > span.ruby-base,
