@@ -1,5 +1,3 @@
-{{- $onesignal := .Site.Params.tools.onesignal -}}
-
 {{- $yukiscss := resources.Get "scss/yuki-style.scss" -}}
 {{- $globalscss := resources.Get "scss/youronly.one-head-03-global.scss" -}}
 {{- $layoutscss := resources.Get "scss/layouts.scss" -}}
@@ -107,20 +105,18 @@
   {{ partial "relme.html" . }}
 {{- end }}
 
-{{/* BGN: OneSignal Push Notification */}}
+{{- with and .Site.Params.tools.onesignal (hugo.IsProduction) -}}
   {{/* NOTE: Do not add crossorigin=anonymous */}}
-  {{- with and $onesignal (hugo.IsProduction) }}
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" type="text/javascript" async ></script>
-    <script>
-      window.OneSignal = window.OneSignal || [];
-      OneSignal.push(function () {
-        OneSignal.init({
-          appId: "{{ $onesignal }}",
-        });
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" type="text/javascript" async ></script>
+  <script>
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function () {
+      OneSignal.init({
+        appId: "{{ . }}",
       });
-    </script>
-  {{- end -}}
-{{/* END: OneSignal Push Notification */}}
+    });
+  </script>
+{{- end -}}
 
 {{- $sitepath := (urls.Parse .Site.BaseURL).Path -}}
 {{ if or (eq $sitepath "/love/") (eq $sitepath "/snoworld/") (eq $sitepath "/techmagus/") (eq $sitepath "/yuki/") }}
