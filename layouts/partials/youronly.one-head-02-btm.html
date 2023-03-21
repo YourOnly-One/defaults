@@ -17,6 +17,7 @@
 {{- $twemojialljs := slice $twemojijs $twemojisettingsjs | resources.Concat "js/twemoji-all.js" -}}
 {{- $twemojialljs = $twemojialljs | minify | fingerprint "sha512" -}}
 
+{{- $FontDefaultsScss := resources.Get "scss/font-defaults.scss" | resources.ExecuteAsTemplate "css/fonts-defaults.css" . | toCSS -}}
 {{- $FontYelosanCss := resources.Get "css/yelosan-fonts.css" -}}
 {{- $FontNotoCss := resources.Get "css/font-noto.css" -}}
 {{- $FontCjkCss := resources.Get "css/font-cjk.css" -}}
@@ -25,8 +26,7 @@
 {{- $FontHebrewCss := resources.Get "css/font-hebrew.css" -}}
 {{- $FontSymbolsCss := resources.Get "css/font-symbols.css" -}} {{/* src: https://github.com/techmagus/cc-icons or https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css */}}
 {{- $FontEmojiCss := resources.Get "css/font-emoji.css" -}}
-{{- $FontDefaultsScss := resources.Get "scss/font-defaults.scss" | resources.ExecuteAsTemplate "css/fonts-defaults.css" . | toCSS -}}
-{{- $FontYelosanCss = slice $FontYelosanCss $FontNotoCss $FontCjkCss $FontPilipinoCss $FontDiacriticsCss $FontHebrewCss $FontSymbolsCss $FontEmojiCss $FontDefaultsScss | resources.Concat "css/yelosan-fonts.css" -}}
+{{- $FontYelosanCss = slice $FontDefaultsScss $FontYelosanCss $FontNotoCss $FontCjkCss $FontPilipinoCss $FontDiacriticsCss $FontHebrewCss $FontSymbolsCss $FontEmojiCss | resources.Concat "css/yelosan-fonts.css" -}}
 {{- $FontYelosanCss = $FontYelosanCss | minify | fingerprint "sha512" -}}
 
 {{- $appletouchiconpng := resources.Get "favicon/apple-touch-icon.png" | fingerprint "sha512" -}}
