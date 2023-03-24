@@ -14,7 +14,7 @@ Contact: https://matrix.to/#/@youronlyone:matrix.org
 # Contact: non-e2ee (in order of preference)
 Contact: https://im.youronly.one/p/contact-us/
 Contact: https://twitter.com/messages/compose?recipient_id=701940572227923968
-Contact: https://mastodon.social/@YourOnlyOne
+Contact: https://c.im/@YourOnlyOne
 
 # Expiration
 Expires: 2025-12-31T23:59:59.000Z
@@ -31,8 +31,8 @@ Preferred-Languages: en, fil, tl
 Canonical: https://im.youronly.one/.well-known/security.txt
 -----BEGIN PGP SIGNATURE-----
 
-iI4EARYKADYWIQT8KuNEQVQt8pzwXZA2XpOKztuK1QUCYq4LBhgYaGtwczovL2tl
-eXMub3BlbnBncC5vcmcACgkQNl6Tis7bitWewAEAjpmIg/n2mie3excR1XH7Uog3
-mKk09Bi+rT20Pp/mzVoBAMemdtgq867iJhjNvC+2cn8xsFNu2QDtWOAed0TpXZsH
-=Vr4h
+iI4EARYKADYWIQT8KuNEQVQt8pzwXZA2XpOKztuK1QUCZB0GkhgYaGtwczovL2tl
+eXMub3BlbnBncC5vcmcACgkQNl6Tis7bitVcGwEAgxbVWf6kViJrbWzRStLN6A4M
+uBbdHNRNJu7CiGJa89kA/1/t4uKSp6Dz2ccb+r21gzQy2N4UHY0wzvwEUtH3WegM
+=ds96
 -----END PGP SIGNATURE-----
