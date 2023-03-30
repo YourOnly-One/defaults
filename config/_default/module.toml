@@ -1,3 +1,5 @@
+# See: https://gohugo.io/hugo-modules/configuration/
+
 #[hugoVersion]
 #  extended = true
 #  #max = ""
