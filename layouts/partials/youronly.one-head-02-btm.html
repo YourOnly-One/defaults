@@ -118,7 +118,7 @@
   </script>
 {{- end -}}
 
-{{- $sitepath := (urls.Parse .Site.BaseURL).Path -}}
+{{- $sitepath := (urls.Parse site.BaseURL).Path -}}
 {{ if or (eq $sitepath "/love/") (eq $sitepath "/snoworld/") (eq $sitepath "/techmagus/") (eq $sitepath "/yuki/") }}
   {{- $lastfmcss := resources.Get "css/lastfm-nowplaying.css" | minify | fingerprint "sha512" -}}
   {{- $lastfmjs := resources.Get "js/lastfm-nowplaying.js" | minify | fingerprint "sha512" -}}
