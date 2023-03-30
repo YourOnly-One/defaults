@@ -42,29 +42,43 @@
 {{ end }}
 
 {{- /*
-{{- $image1280w := $image.Resize "1280x" -}}
-{{- $image1280wwebp := $image.Resize "1280x webp" -}}
+  {{- $image1280w := $image.Resize "1280x" -}}
+  {{- $image1280wwebp := $image.Resize "1280x webp" -}}
 
-{{- $image1024w := $image.Resize "1024x" -}}
-{{- $image1024wwebp := $image.Resize "1024x webp" -}}
+  {{- $image1024w := $image.Resize "1024x" -}}
+  {{- $image1024wwebp := $image.Resize "1024x webp" -}}
 
-{{- $image800w := $image.Resize "800x" -}}
-{{- $image800wwebp := $image.Resize "800x webp" -}}
+  {{- $image800w := $image.Resize "800x" -}}
+  {{- $image800wwebp := $image.Resize "800x webp" -}}
 */ -}}
 
-{{- $imageavif := "" -}}
-{{- $imagewebp := "" -}}
-{{- $imagejpg := "" -}}
-{{- $imagepng := "" -}}
-{{- /* NOTE: unused {{- $imagetype := "" -}} */ -}}
+{{- /*
+  {{- $imageavif := "" -}}
+  {{- $imagewebp := "" -}}
+  {{- $imagejpg := "" -}}
+  {{- $imagepng := "" -}}
+  {{- /* NOTE: unused {{- $imagetype := "" -}} */ -}}
+  {{ with $image }}
+    {{- $imageavif = .Resize (printf "%dx%d avif" .Width .Height) -}}
+    {{- $imagewebp = .Resize (printf "%dx%d webp" .Width .Height) -}}
+    {{- $imagepng = .Resize (printf "%dx%d png" .Width .Height) -}}
+    {{- $imagejpg = .Resize (printf "%dx%d jpg" .Width .Height) -}}
+    <picture>
+      {{- /* NOTE: no Hugo support yet <source srcset="{{ $imageavif.RelPermalink }}" type="image/avif" /> */ -}}
+      <source srcset="{{ $imagewebp.RelPermalink }}" type="image/webp" />
+      <img src="{{ if or (eq (path.Ext $image) ".avif") (eq (path.Ext $image) ".webp") }}{{ $imagepng.RelPermalink }}{{ else }}{{ $image.RelPermalink }}{{ end }}" alt="" width="{{ .Width }}" height="{{ .Height }}" loading="lazy" decoding="async" />
+    </picture>
+  {{ end }}
+*/ -}}
+
+{{- $imageURL := or (.Get 0) (.Get "url") -}}
+{{- $image := resources.GetMatch $imageURL -}}
+
 {{ with $image }}
-  {{- $imageavif = .Resize (printf "%dx%d avif" .Width .Height) -}}
-  {{- $imagewebp = .Resize (printf "%dx%d webp" .Width .Height) -}}
-  {{- $imagepng = .Resize (printf "%dx%d png" .Width .Height) -}}
-  {{- $imagejpg = .Resize (printf "%dx%d jpg" .Width .Height) -}}
   <picture>
-    {{- /* NOTE: no Hugo support yet <source srcset="{{ $imageavif.RelPermalink }}" type="image/avif" /> */ -}}
-    <source srcset="{{ $imagewebp.RelPermalink }}" type="image/webp" />
-    <img src="{{ if or (eq (path.Ext $image) ".avif") (eq (path.Ext $image) ".webp") }}{{ $imagepng.RelPermalink }}{{ else }}{{ $image.RelPermalink }}{{ end }}" alt="" width="{{ .Width }}" height="{{ .Height }}" loading="lazy" decoding="async" />
+    {{/* <source srcset="{{ .Resize "400x" | fingerprint "avif" }} 1x, {{ .Resize "800x" | fingerprint "avif" }} 2x" type="image/avif" /> */}}
+    <source srcset="{{ .Resize "400x" | fingerprint "webp" }} 1x, {{ .Resize "800x" | fingerprint "webp" }} 2x" type="image/webp" />
+    <source srcset="{{ .Resize "400x" | fingerprint }} 1x, {{ .Resize "800x" | fingerprint }} 2x" type="{{ if eq (path.Ext $image.RelPermalink) ".png" }}image/png{{ else }}image/jpeg{{ end }}" />
+    <img src="{{ .Resize "600x" | fingerprint }}" alt="" width="{{ .Width }}" height="{{ .Height }}" loading="lazy" decoding="async" />
   </picture>
 {{ end }}
