@@ -136,7 +136,7 @@
   article, section,
   header, footer,
   details, summary {
-    content-visibility: auto;
+    /* content-visibility: auto; */
     /* contain-intrinsic-size: auto; */
   }
   abbr {
@@ -536,7 +536,7 @@
    * <div class="responsive_embedframe"><iframe anonymous src="https://www.youtube-nocookie.com/embed/" sandbox="allow-same-origin allow-scripts" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe></div>
    */
   .rspnsv-embedframe, .responsive_embedframe {
-    content-visibility: auto;
+    /* content-visibility: auto; */
     /* contain-intrinsic-size: auto; */
     position: relative;
     padding-bottom: 56.25%; /* YouTube, Vimeo, Dailymotion, Google Maps, Generic */
@@ -777,7 +777,7 @@
   **/
   html body {
     .quote_box, .figure_box {
-      content-visibility: auto;
+      /* content-visibility: auto; */
       /* contain-intrinsic-size: auto; */
     }
 
@@ -1518,7 +1518,7 @@
 ** BGN: webmention **
 ********************/
   #webmentions {
-    content-visibility: auto;
+    /* content-visibility: auto; */
     /* contain-intrinsic-size: auto; */
   }
 
