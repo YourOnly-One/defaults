@@ -66,11 +66,14 @@
 /***
   * Based on:
   *
+  *   * CSS Color Module Level 5
+  *      * WD, 2022-06-28
+  *      * https://www.w3.org/TR/css-color-5/
+  *
   *   * CSS Color Module Level 4
-  *      * WD, 2016-07-05
+  *      * CR, 2022-11-01
   *      * https://www.w3.org/TR/css-color-4/
-  *      * https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hwb
-  *      * See: hwb()
+  *
   *   * CSS Color Module Level 3
   *      * REC, 2018-06-19
   *      * https://www.w3.org/TR/css-color-3/
@@ -79,6 +82,7 @@
   *      * WD, 2018-09-20
   *      * https://www.w3.org/TR/css-fonts-4/
   *      * See: see paninap-fonts.css
+  *
   *   * CSS Fonts Module Level 3
   *      * REC, 2018-09-20
   *      * https://www.w3.org/TR/css-fonts-3/
@@ -87,6 +91,7 @@
   *      * WD, 2018-03-13
   *      * https://www.w3.org/TR/css-text-decor-4/
   *      * See: text-decoration-skip -- not using currently
+  *
   *   * CSS Text Decoration Module Level 3
   *      * CR, 2018-07-03
   *      * https://www.w3.org/TR/css-text-decor-3/
@@ -101,6 +106,7 @@
   *      * WD, 2018-11-21
   *      * https://www.w3.org/TR/selectors-4/
   *      * See: :dir() and :lang("*-Latn")
+  *
   *   * Selectors Level 3
   *      * REC, 2018-11-06
   *      * https://www.w3.org/TR/selectors-3/
@@ -112,8 +118,9 @@
   * Notes:
   *
   * All colors must be:
-  *   * hsla()
-  *   * hwb() -- CSS Color 4, future proof
+  *   * hwb() -- our current base color format; do not use hex and rgb
+  *   * lch() -- temporary only, until oklch() is widely supported
+  *   * oklch()
   *
   * CSS Logical
   *   * https://www.w3.org/TR/css-logical-1/
@@ -123,9 +130,221 @@
   *     * padding-{block,inline}-{start,end}
 ***/
 
+/***
+** Color conversion tools:
+**
+**   * https://products.aspose.app/svg/color-converter/hwb-to-lch
+**   * https://css.land/lch/
+**   * https://lch.oklch.com
+**   * https://oklch.com
+***/
+
 /*************************
 ** BGN: Global Settings **
 *************************/
+  :root {
+    /* BLACK */
+      --color-black-bg: hwb(0 100% 0% / 0.5);
+      --color-black-bg: lch(100% 0 139.088 / 0.5);
+      --color-black-bg: oklch(100% 0 0 / 0.5);
+      --color-black: hwb(0 100% 0%);
+      --color-black: lch(100% 0 139.088);
+      --color-black: oklch(100% 0 0);
+
+    /* GREY LIGHT */
+      --color-grey-light-bg: hwb(0 83% 17% / 0.5);
+      --color-grey-light-bg: lch(84.556% 0 139.088 / 0.5);
+      --color-grey-light-bg: oklch(86.69% 0 0 / 0.5);
+      --color-grey-light: hwb(0 83% 17%);
+      --color-grey-light: lch(84.556% 0 139.088);
+      --color-grey-light: oklch(86.69% 0 0);
+
+    /* SILVER */
+      --color-silver-bg: hwb(0 75% 25% / 0.5);
+      --color-silver-bg: lch(77.704% 0 139.088 / 0.5);
+      --color-silver-bg: oklch(80.78% 0 0 / 0.5);
+      --color-silver: hwb(0 75% 25%);
+      --color-silver: lch(77.704% 0 139.088);
+      --color-silver: oklch(80.78% 0 0);
+
+    /* WHITE */
+      --color-white-bg: hwb(0 0% 100% / 0.5);
+      --color-white-bg: lch(0% 0 0 / 0.5);
+      --color-white-bg: oklch(0% 0 0 / 0.5);
+      --color-white: hwb(0 0% 100%);
+      --color-white: lch(0% 0 0);
+      --color-white: oklch(0% 0 0);
+
+    /* RED */
+      --color-red-bg: hwb(0 0% 0% / 0.5);
+      --color-red-bg: lch(54.291% 106.83719104365966 40.85766878213079 / 0.5);
+      --color-red-bg: oklch(62.8% 0.25768330773615683 29.2338851923426 / 0.5);
+      --color-red: hwb(0 0% 0%);
+      --color-red: lch(54.291% 106.83719104365966 40.85766878213079);
+      --color-red: oklch(62.8% 0.25768330773615683 29.2338851923426);
+
+    /* LIME */
+      --color-lime-bg: hwb(120 0% 0% / 0.5);
+      --color-lime-bg: lch(87.819% 113.32 134.38 / 0.5);
+      --color-lime-bg: oklch(86.64% 0.2948272403370167 142.49533888780996 / 0.5);
+      --color-lime: hwb(120 0% 0%);
+      --color-lime: lch(87.819% 113.32 134.38);
+      --color-lime: oklch(86.64% 0.2948272403370167 142.49533888780996);
+
+    /* GREEN */
+      --color-green-bg: hwb(120 0% 50% / 0.5);
+      --color-green-bg: lch(46.278% 67.984 134.384 / 0.5);
+      --color-green-bg: oklch(51.98% 0.17685825418032033 142.49533888780994 / 0.5);
+      --color-green: hwb(120 0% 50%);
+      --color-green: lch(46.278% 67.984 134.384);
+      --color-green: oklch(51.98% 0.17685825418032033 142.49533888780994);
+
+    /* BLUE */
+      --color-blue-bg: hwb(240 0% 0% / 0.5);
+      --color-blue-bg: lch(29.568% 131.1854613942089 301.36428148973533 / 0.5);
+      --color-blue-bg: oklch(45.2% 0.31321437166460125 264.052020638055 / 0.5);
+      --color-blue: hwb(240 0% 0%);
+      --color-blue: lch(29.568% 131.1854613942089 301.36428148973533);
+      --color-blue: oklch(45.2% 0.31321437166460125 264.052020638055);
+
+    /* INDIGO DYE*/
+      --color-indigo-dye-bg: hwb(203.208 0% 58% / 0.5);
+      --color-indigo-dye-bg: lch(25.753% 30.080379743730905 259.49712579751815 / 0.5);
+      --color-indigo-dye-bg: oklch(36.26% 0.091 244.97 / 0.5);
+      --color-indigo-dye: hwb(203.208 0% 58%);
+      --color-indigo-dye: lch(25.753% 30.080379743730905 259.49712579751815);
+      --color-indigo-dye: oklch(36.26% 0.091 244.97);
+
+    /* BLUE MIDNIGHT */
+      --color-blue-midnight-bg: hwb(240 10% 56% / 0.5);
+      --color-blue-midnight-bg: lch(14.929% 57.139 297.016 / 0.5);
+      --color-blue-midnight-bg: oklch(28.81% 0.144 272.76 / 0.5);
+      --color-blue-midnight: hwb(240 10% 56%);
+      --color-blue-midnight: lch(14.929% 57.139 297.016);
+      --color-blue-midnight: oklch(28.81% 0.144 272.76);
+
+    /* AQUA / CYAN */
+      --color-cyan-bg: hwb(180 0% 0% / 0.5);
+      --color-cyan-bg: lch(90.666% 52.81982158149982 196.45478245011327 / 0.5);
+      --color-cyan-bg: oklch(90.54% 0.15455001106436891 194.76894793196382 / 0.5);
+      --color-cyan: hwb(180 0% 0%);
+      --color-cyan: lch(90.666% 52.81982158149982 196.45478245011327);
+      --color-cyan: oklch(90.54% 0.15455001106436891 194.76894793196382);
+
+    /* FUCHSIA / MAGENTA */
+      --color-magenta-bg: hwb(300 0% 0% / 0.5);
+      --color-magenta-bg: lch(60.169% 111.38659434373716 327.1054738802461 / 0.5);
+      --color-magenta-bg: oklch(70.17% 0.322 328.36 / 0.5);
+      --color-magenta: hwb(300 0% 0%);
+      --color-magenta: lch(60.169% 111.38659434373716 327.1054738802461);
+      --color-magenta: oklch(70.17% 0.322 328.36);
+
+    /* YELLOW */
+      --color-yellow-bg: hwb(60 0% 0% / 0.5);
+      --color-yellow-bg: lch(97.607% 94.712 99.57226374240976 / 0.5);
+      --color-yellow-bg: oklch(96.8% 0.21100590772552355 109.76923207652125 / 0.5);
+      --color-yellow: hwb(60 0% 0%);
+      --color-yellow: lch(97.607% 94.712 99.57226374240976);
+      --color-yellow: oklch(96.8% 0.21100590772552355 109.76923207652125);
+
+    /* ORANGE */
+      --color-orange-bg: hwb(38.824 0% 0% / 0.5);
+      --color-orange-bg: lch(75.59% 83.7587948421583 70.82367779707081 / 0.5);
+      --color-orange-bg: oklch(79.27% 0.171 70.67 / 0.5);
+      --color-orange: hwb(38.824 0% 0%);
+      --color-orange: lch(75.59% 83.7587948421583 70.82367779707081);
+      --color-orange: oklch(79.27% 0.171 70.67);
+
+    /* GOLD */
+      --color-gold-bg: hwb(50.588 0% 0% / 0.5);
+      --color-gold-bg: lch(87.468% 86.59103759455243 88.07454203103275 / 0.5);
+      --color-gold-bg: oklch(88.68% 0.182 95.33 / 0.5);
+      --color-gold: hwb(50.588 0% 0%);
+      --color-gold: lch(87.468% 86.59103759455243 88.07454203103275);
+      --color-gold: oklch(88.68% 0.182 95.33);
+
+    /* PINK */
+      --color-pink-bg: hwb(349.524 75% 0% / 0.5);
+      --color-pink-bg: lch(83.787% 24.724253984206204 8.745997286616099 / 0.5);
+      --color-pink-bg: oklch(86.77% 0.07354199863627744 7.08551427339547 / 0.5);
+      --color-pink: hwb(349.524 75% 0%);
+      --color-pink: lch(83.787% 24.724253984206204 8.745997286616099);
+      --color-pink: oklch(86.77% 0.07354199863627744 7.08551427339547);
+
+    /* BROWN */
+      --color-brown-bg: hwb(26 39% 31% / 0.5);
+      --color-brown-bg: lch(59.04% 27.83 60.49 / 0.5);
+      --color-brown-bg: oklch(64.89% 0.07 58.55 / 0.5);
+      --color-brown: hwb(26 39% 31%);
+      --color-brown: lch(59.04% 27.83 60.49);
+      --color-brown: oklch(64.89% 0.07 58.55);
+
+    /* BROWN MEDIUM DARK */
+      --color-brown-medium-dark-bg: hwb(27 34% 32% / 0.5);
+      --color-brown-medium-dark-bg: lch(56.91% 33.11 61.54 / 0.5);
+      --color-brown-medium-dark-bg: oklch(63.08% 0.081 59.89 / 0.5);
+      --color-brown-medium-dark: hwb(27 34% 32%);
+      --color-brown-medium-dark: lch(56.91% 33.11 61.54);
+      --color-brown-medium-dark: oklch(63.08% 0.081 59.89);
+
+    /* FACEBOOK */
+      --color-facebook-bg: hwb(220 26% 30% / 0.5);
+      --color-facebook-bg: lch(43.93% 45.04 276.51 / 0.5);
+      --color-facebook-bg: oklch(52.56% 0.126 262.79 / 0.5);
+      --color-facebook: hwb(220 26% 30%);
+      --color-facebook: lch(43.93% 45.04 276.51);
+      --color-facebook: oklch(52.56% 0.126 262.79);
+
+    /* TWITTER */
+      --color-twitter-bg: hwb(203 11% 13% / 0.5);
+      --color-twitter-bg: lch(57.88% 48.94 256.6 / 0.5);
+      --color-twitter-bg: oklch(64.02% 0.148 243.45 / 0.5);
+      --color-twitter: hwb(203 11% 13%);
+      --color-twitter: lch(57.88% 48.94 256.6);
+      --color-twitter: oklch(64.02% 0.148 243.45);
+
+    /* GOOGLEPLUS */
+      --color-googleplus-bg: hwb(5 22% 14% / 0.5);
+      --color-googleplus-bg: lch(52.25% 71.66 35.83 / 0.5);
+      --color-googleplus-bg: oklch(60.38% 0.187 28.96 / 0.5);
+      --color-googleplus: hwb(5 22% 14%);
+      --color-googleplus: lch(52.25% 71.66 35.83);
+      --color-googleplus: oklch(60.38% 0.187 28.96);
+
+    /* UBUNTU */
+      --color-ubuntu-bg: hwb(16 13% 9% / 0.5);
+      --color-ubuntu-bg: lch(56.93% 81.53 46.27 / 0.5);
+      --color-ubuntu-bg: oklch(64.26% 0.193 38.26 / 0.5);
+      --color-ubuntu: hwb(16 13% 9%);
+      --color-ubuntu: lch(56.93% 81.53 46.27);
+      --color-ubuntu: oklch(64.26% 0.193 38.26);
+
+    /* MASTODON */
+      --color-mastodon-bg: hwb(205 17% 14% / 0.5);
+      --color-mastodon-bg: lch(57.02% 47.26 257.96 / 0.5);
+      --color-mastodon-bg: oklch(63.31% 0.142 245.03 / 0.5);
+      --color-mastodon: hwb(205 17% 14%);
+      --color-mastodon: lch(57.02% 47.26 257.96);
+      --color-mastodon: oklch(63.31% 0.142 245.03);
+
+    /* HUBZILLA */
+      --color-hubzilla-bg: hwb(236 26% 46% / 0.5);
+      --color-hubzilla-bg: lch(32.44% 40.76 289 / 0.5);
+      --color-hubzilla-bg: oklch(42.87% 0.109 277.68 / 0.5);
+      --color-hubzilla: hwb(236 26% 46%);
+      --color-hubzilla: lch(32.44% 40.76 289);
+      --color-hubzilla: oklch(42.87% 0.109 277.68);
+
+    /* CGM */
+      --color-cgm-bg: hwb(240 50% 0% / 0.5);
+      --color-cgm-bg: lch(58.2% 69.76218893179288 291.8265434122234 / 0.5);
+      --color-cgm-bg: oklch(66.01% 0.184 280.08 / 0.5);
+      --color-cgm: hwb(240 50% 0%);
+      --color-cgm: lch(58.2% 69.76218893179288 291.8265434122234);
+      --color-cgm: oklch(66.01% 0.184 280.08);
+
+  }
+
   :root, html, body, *,
   :root[lang], html[lang], body[lang], *[lang] {
     -webkit-hyphens: none;
@@ -439,7 +658,7 @@
     ruby > rtc:nth-of-type(odd) > rt,
     ruby > rtc:nth-of-type(odd) > rt > ruby > rb
     {
-      color: green
+      color: var(--color-green);
     }
   /* RUBY BELOW */
     ruby > rt,
@@ -451,7 +670,7 @@
     ruby > rtc:nth-of-type(even) > rt > ruby > rb
     {
       /* RUBY BELOW */
-      color: blue;
+      color: var(--color-blue);
     }
   /* RUBY OVER OVER and RUBY BELOW BELOW */
   ruby > rt > ruby > rt,
@@ -460,7 +679,7 @@
   ruby > rtc:nth-of-type(odd) > rt > ruby > rt,
   ruby > rtc:nth-of-type(even) > rt > ruby > rt
   {
-    color: red;
+    color: var(--color-red);
   }
 
   /* applies in <ruby> */
@@ -606,8 +825,7 @@
         padding: 0 0.5em;
 
         &.faq::marker {
-          color: hsla(0deg, 100%, 50%, 1);
-          color: hwb(0deg 0% 0% / 100%);
+          color: var(--color-red);
           content: "Q: ";
           font-weight: bold;
         }
@@ -623,8 +841,7 @@
           list-style-position: inside;
 
           &::marker {
-            color: hsla(240deg, 100%, 50%, 1);
-            color: hwb(240deg 0% 0% / 100%);
+            color: var(--color-blue);
             content: "A: ";
             font-weight: bold;
           }
@@ -653,8 +870,7 @@
         padding: 0 0.5em;
 
         &.faq::marker {
-          color: hsla(0deg, 100%, 50%, 1);
-          color: hwb(0deg 0% 0% / 100%);
+          color: var(--color-red);
           content: "Q: ";
           font-weight: bold;
         }
@@ -673,8 +889,7 @@
             list-style-position: inside;
 
             &::marker {
-              color: hsla(240deg, 100%, 50%, 1);
-              color: hwb(240deg 0% 0% / 100%);
+              color: var(--color-blue);
               content: "A: ";
               font-weight: bold;
             }
@@ -686,15 +901,13 @@
 
   :lang(ja) details > {
     summary.faq::marker {
-      color: hsla(0deg, 100%, 50%, 1);
-      color: hwb(0deg 0% 0% / 100%);
+      color: var(--color-red);
       content: "質問： ";
       font-weight: bold;
     }
 
     div.faq > p:first-of-type::marker {
-      color: hsla(240deg, 100%, 50%, 1);
-      color: hwb(240deg 0% 0% / 100%);
+      color: var(--color-blue);
       content: "答え： ";
       font-weight: bold;
     }
@@ -702,15 +915,13 @@
 
   :lang(ko) details > {
     summary.faq::marker {
-      color: hsla(0deg, 100%, 50%, 1);
-      color: hwb(0deg 0% 0% / 100%);
+      color: var(--color-red);
       content: "문제: ";
       font-weight: bold;
     }
 
     div.faq > p:first-of-type::marker {
-      color: hsla(240deg, 100%, 50%, 1);
-      color: hwb(240deg 0% 0% / 100%);
+      color: var(--color-blue);
       content: "답변: ";
       font-weight: bold;
     }
@@ -917,8 +1128,7 @@
           border-radius: 5px 17px 5px 17px;
           border-style: dashed;
           border-width: 4px;
-          box-shadow: hsla(0deg, 0%, 0%, 0.5) 7px 7px;
-          box-shadow: hwb(0deg 0% 100% / 50%) 7px 7px;
+          box-shadow: hwb(0 0% 100% / 50%) 7px 7px;
           margin: 1rem auto;
           padding-left: 2.44rem;
           padding-right: 2.44rem;
@@ -945,8 +1155,9 @@
       html body .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::before,
       html body .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::after {
         /* Let's leave the styling to the theme for now.
-          color: hsla(0deg, 0%, 48%, 1);
           color: hwb(0deg 48% 52% / 100%);
+          color: lch();
+          color: oklch();
         */
         font-family: var(--font-serif-noto);
         font-size: 3rem;
@@ -967,192 +1178,132 @@
     /* BGN: .quote_box Colours */
       /** Notes
         * deep indigo ("blueviolet") - #8A2BE2 138, 43, 226
-        *   * hsla(271deg, 76%, 53%, 1)
-        *   * hwb(271deg 17% 11% / 100%)
         *   * brighter than pigment indigo
         * pigment indigo ("indigo") - #4B0082 75, 0, 130
-        *   * hsla(275deg, 100%, 25%, 1)
-        *   * hwb(275deg 0% 49% / 100%)
         * indigo dye - #00416A 0, 65, 106
-        *   * hsla(203deg, 100%, 21%, 1)
-        *   * hwb(203deg 0% 58% / 100%)
         *   * actual color of the indigo dye
         *   * greenish dark blue
         *   * approximately "midnightblue" - #191970 25, 25, 112
-        *       * hsla(240deg, 64%, 27%, 1)
-        *       * hwb(240deg 10% 56% / 100%)
         *       * similar to "navy" - #000080 0, 0, 128
-        *           * color: hsl(240deg, 100%, 25%, 1);
-        *           * color: hwb(240deg 0% 50% / 100%);
         * "darkblue" - #00008B 0, 0, 139
-        *   * hsla(240deg, 100%, 27%, 1)
-        *   * hwb(240deg 0% 45% / 100%)
       **/
       /* BGN: Generic colours */
         html body .quote_box.qbc_black,
         html body .figure_box.qbc_black  {
-          background-color: hsla(0deg, 0%, 0%, 0.5);
-          background-color: hwb(0deg 0% 100% / 50%);
-          border-color: hsla(0deg, 0%, 0%, 1);
-          border-color: hwb(0deg 0% 100% / 100%);
+          background-color: var(--color-black-bg);
+          border-color: var(--color-black);
         }
         html body .quote_box.qbc_greylight,
         html body .figure_box.qbc_greylight {
-          background-color: hsla(0deg, 0%, 83%, 0.5);
-          background-color: hwb(0deg 83% 17% / 50%);
-          border-color: hsla(0deg, 0%, 83%, 1);
-          border-color: hwb(0deg 83% 17% / 100%);
+          background-color: var(--color-grey-light-bg);
+          border-color: var(--color-grey-light);
         }
         html body .quote_box.qbc_silver,
         html body .figure_box.qbc_silver {
-          background-color: hsla(0deg, 0%, 75%, 0.5);
-          background-color: hwb(0deg 75% 25% / 50%);
-          border-color: hsla(0deg, 0%, 75%, 1);
-          border-color: hwb(0deg 75% 25% / 100%);
+          background-color: var(--color-silver-bg);
+          border-color: var(--color-silver);
         }
         html body .quote_box.qbc_white,
         html body .figure_box.qbc_white {
-          background-color: hsla(0deg, 0%, 100%, 0.8);
-          background-color: hwb(0deg 100% 0% / 80%);
-          border-color: hsla(0deg, 0%, 100%, 1);
-          border-color: hwb(0deg 100% 0% / 100%);
+          background-color: var(--color-white-bg);
+          border-color: var(--color-white);
         }
         html body .quote_box.qbc_red,
         html body .figure_box.qbc_red {
-          background-color: hsla(0deg, 100%, 50%, 0.23);
-          background-color: hwb(0deg 0% 0% / 23%);
-          border-color: hsla(0deg, 100%, 50%, 1);
-          border-color: hwb(0deg 0% 0% / 100%);
+          background-color: var(--color-red-bg);
+          border-color: var(--color-red);
         }
         html body .quote_box.qbc_lime,
         html body .figure_box.qbc_lime {
-          background-color: hsla(120deg, 100%, 50%, 0.2);
-          background-color: hwb(120deg 0% 0% / 20%);
-          border-color: hsla(120deg, 100%, 50%, 1);
-          border-color: hwb(120deg 0% 0% / 100%);
+          background-color: var(--color-lime-bg);
+          border-color: var(--color-lime);
         }
         html body .quote_box.qbc_green,
         html body .figure_box.qbc_green {
-          background-color: hsla(120deg, 100%, 25%, 0.35);
-          background-color: hwb(120deg 0% 50% / 35%);
-          border-color: hsla(120deg, 100%, 25%, 1);
-          border-color: hwb(120deg 0% 50% / 100%);
+          background-color: var(--color-green-bg);
+          border-color: var(--color-green);
         }
         html body .quote_box.qbc_blue,
         html body .figure_box.qbc_blue {
-          background-color: hsla(240deg, 100%, 50%, 0.27);
-          background-color: hwb(240deg 0% 0% / 27%);
-          border-color: hsla(240deg, 100%, 50%, 1);
-          border-color: hwb(240deg 0% 0% / 100%);
+          background-color: var(--color-blue-bg);
+          border-color: var(--color-blue);
         }
         html body .quote_box.qbc_indigodye,
         html body .figure_box.qbc_indigodye {
-          background-color: hsla(203deg, 100%, 21%, 0.34);
-          background-color: hwb(203deg 0% 58% / 34%);
-          border-color: hsla(203deg, 100%, 21%, 1);
-          border-color: hwb(203deg 0% 58% / 100%);
-          /* border-color: hsla(240deg, 64%, 27%, 100%); */
-          /* border-color: hwb(240deg 10% 56% / 100%); */
+          background-color: var(--color-indigo-dye-bg);
+          border-color: var(--color-indigo-dye);
         }
         html body .quote_box.qbc_midnightblue,
         html body .figure_box.qbc_midnightblue {
-          background-color: hsla(240deg, 64%, 27%, 0.3);
-          background-color: hwb(240deg 10% 56% / 30%);
-          border-color: hsla(240deg, 64%, 27%, 1);
-          border-color: hwb(240deg 10% 56% / 100%);
-          /* border-color: hsla(240deg, 100%, 27%, 1); */
-          /* border-color: hwb(240deg 0% 45% / 100%); */
+          background-color: var(--color-blue-midnight-bg);
+          border-color: var(--color-blue-midnight);
         }
         html body .quote_box.qbc_aqua,
         html body .figure_box.qbc_aqua,
         html body .quote_box.qbc_cyan,
         html body .figure_box.qbc_cyan {
-          background-color: hsla(180deg, 100%, 50%, 0.13);
-          background-color: hwb(180deg 0% 0% / 13%);
-          border-color: hsla(180deg, 100%, 50%, 1);
-          border-color: hwb(180deg 0% 0% / 100%);
+          background-color: var(--color-cyan-bg);
+          border-color: var(--color-cyan);
         }
         html body .quote_box.qbc_fuchsia,
         html body .figure_box.qbc_fuchsia,
         html body .quote_box.qbc_magenta,
         html body .figure_box.qbc_magenta {
-          background-color: hsla(300deg, 100%, 50%, 0.18);
-          background-color: hwb(300deg 0% 0% / 18%);
-          border-color: hsla(300deg, 100%, 50%, 1);
-          border-color: hwb(300deg 0% 0% / 100%);
+          background-color: var(--color-magenta-bg);
+          border-color: var(--color-magenta);
         }
         html body .quote_box.qbc_yellow,
         html body .figure_box.qbc_yellow {
-          background-color: hsla(60deg, 100%, 50%, 0.18);
-          background-color: hwb(60deg 0% 0% / 18%);
-          border-color: hsla(60deg, 100%, 50%, 1);
-          border-color: hwb(60deg 0% 0% / 100%);
+          background-color: var(--color-yellow-bg);
+          border-color: var(--color-yellow);
         }
         html body .quote_box.qbc_orange,
         html body .figure_box.qbc_orange {
-          background-color: hsla(39deg, 100%, 50%, 0.28);
-          background-color: hwb(39deg 0% 0% / 28%);
-          border-color: hsla(39deg, 100%, 50%, 1);
-          border-color: hwb(39deg 0% 0% / 100%);
+          background-color: var(--color-orange-bg);
+          border-color: var(--color-orange);
         }
         html body .quote_box.qbc_gold,
         html body .figure_box.qbc_gold {
-          background-color: hsla(51deg, 100%, 50%, 0.37);
-          background-color: hwb(51deg 0% 0% / 37%);
-          border-color: hsla(51deg, 100%, 50%, 1);
-          border-color: hwb(51deg 0% 0% / 100%);
+          background-color: var(--color-gold-bg);
+          border-color: var(--color-gold);
         }
         html body .quote_box.qbc_pink,
         html body .figure_box.qbc_pink {
-          background-color: hsla(350deg, 100%, 88%, 0.55);
-          background-color: hwb(350deg 75% 0% / 55%);
-          border-color: hsla(350deg, 100%, 88%, 1);
-          border-color: hwb(350deg 75% 0% / 100%);
+          background-color: var(--color-pink-bg);
+          border-color: var(--color-pink);
         }
       /* END: Generic colours */
 
       /* BGN: Brand colours */
         html body .quote_box.qbc_facebook,
         html body .figure_box.qbc_facebook {
-          background-color: hsla(220deg, 46%, 48%, 0.45);
-          background-color: hwb(220deg 26% 30% / 45%);
-          border-color: hsla(220deg, 46%, 48%, 1);
-          border-color: hwb(220deg 26% 30% / 100%);
+          background-color: var(--color-facebook-bg);
+          border-color: var(--color-facebook);
         }
         html body .quote_box.qbc_twitter,
         html body .figure_box.qbc_twitter {
-          background-color: hsla(203deg, 78%, 49%, 0.45);
-          background-color: hwb(203deg 11% 12% / 45%);
-          border-color: hsla(203deg, 78%, 49%, 1);
-          border-color: hwb(203deg 11% 12% / 100%);
+          background-color: var(--color-twitter-bg);
+          border-color: var(--color-twitter);
         }
         html body .quote_box.qbc_googleplus,
         html body .figure_box.qbc_googleplus {
-          background-color: hsla(5deg, 69%, 54%, 0.4);
-          background-color: hwb(5deg 22% 14% / 40%);
-          border-color: hsla(5deg, 69%, 54%, 1);
-          border-color: hwb(5deg 22% 14% / 100%);
+          background-color: var(--color-googleplus-bg);
+          border-color: var(--color-googleplus);
         }
         html body .quote_box.qbc_ubuntu,
         html body .figure_box.qbc_ubuntu {
-          background-color: hsla(16deg, 82%, 52%, 0.25);
-          background-color: hwb(16deg 13% 9% / 25%);
-          border-color: hsla(16deg, 82%, 52%, 1);
-          border-color: hwb(16deg 13% 9% / 100%);
+          background-color: var(--color-ubuntu-bg);
+          border-color: var(--color-ubuntu);
         }
         html body .quote_box.qbc_mastodon,
         html body .figure_box.qbc_mastodon {
-          background-color: hsla(205deg, 70%, 51%, 0.44);
-          background-color: hwb(205deg 17% 15% / 44%);
-          border-color: hsla(205deg, 70%, 51%, 1);
-          border-color: hwb(205deg 17% 15% / 100%);
+          background-color: var(--color-mastodon-bg);
+          border-color: var(--color-mastodon);
         }
         html body .quote_box.qbc_hubzilla,
         html body .figure_box.qbc_hubzilla {
-          background-color: hsla(236deg, 35%, 40%, 0.43);
-          background-color: hwb(236deg 26% 46% / 43%);
-          border-color: hsla(236deg, 35%, 40%, 1);
-          border-color: hwb(236deg 26% 46% / 100%);
+          background-color: var(--color-hubzilla-bg);
+          border-color: var(--color-hubzilla);
         }
       /* END: Brand colours */
 
@@ -1163,10 +1314,8 @@
         html body .figure_box.qbc_gm,
         html body .quote_box.qbc_cgm,
         html body .figure_boxx.qbc_cgm {
-          background-color: hsla(180deg, 100%, 94%, 1);
-          background-color: hwb(180deg 88% 0% / 100%);
-          border-color: hsla(240deg, 100%, 75%, 1);
-          border-color: hwb(240deg 50% 0% / 100%);
+          background-color: var(--color-cgm-bg);
+          border-color: var(--color-cgm);
         }
       /* END: Special custom colours */
     /* END: .quote_box Colours */
@@ -1280,100 +1429,78 @@
   /* Background Colours */
   ol.custom_liststyle.list-bg-grey-light > li,
   ol.custom_liststyle.list-bg-greylight > li {
-    background: hsla(0deg, 0%, 83%, 0.2);
-    background: hwb(0deg 83% 17% / 0.2);
+    background-color: var(--color-grey-light);
   }
   ol.custom_liststyle.list-bg-silver > li {
-    background: hsla(0deg, 0%, 75%, 0.2);
-    background: hwb(0deg 75% 25% / 0.2);
+    background-color: var(--color-silver);
   }
 
   /* custom_liststyle: UL-level only */
   /* BGN: Generic colours */
     ul.custom_liststyle.list-black > li::before {
-      color: hsla(0deg, 0%, 0%, 1);
-      color: hwb(0deg 0% 100% / 100%);
+      color: var(--color-black);
     }
     ul.custom_liststyle.list-white > li::before {
-      color: hsla(0deg, 0%, 100%, 1);
-      color: hwb(0deg 100% 0% / 100%);
+      color: var(--color-white);
     }
     ul.custom_liststyle.list-red > li::before {
-      color: hsla(0deg, 100%, 50%, 1);
-      color: hwb(0deg 0% 0% / 100%);
+      color: var(--color-red);
     }
     ul.custom_liststyle.list-lime > li::before {
-      color: hsla(120deg, 100%, 50%, 1);
-      color: hwb(120deg 0% 0% / 100%);
+      color: var(--color-lime);
     }
     ul.custom_liststyle.list-green > li::before {
-      color: hsla(120deg, 100%, 25%, 1);
-      color: hwb(120deg 0% 50% / 100%);
+      color: var(--color-green);
     }
     ul.custom_liststyle.list-blue > li::before {
-      color: hsla(240deg, 100%, 50%, 1);
-      color: hwb(240deg 0% 0% / 100%);
+      color: var(--color-blue);
     }
     ul.custom_liststyle.list-aqua > li::before,
     ul.custom_liststyle.list-cyan > li::before {
-      color: hsla(180deg, 100%, 50%, 1);
-      color: hwb(180deg 0% 0% / 100%);
+      color: var(--color-cyan);
     }
     ul.custom_liststyle.list-fuchsia > li::before,
     ul.custom_liststyle.list-magenta > li::before {
-      color: hsla(300deg, 100%, 50%, 1);
-      color: hwb(300deg 0% 0% / 100%);
+      color: var(--color-magenta);
     }
     ul.custom_liststyle.list-yellow > li::before {
-      color: hsla(60deg, 100%, 50%, 1);
-      color: hwb(60deg 0% 0% / 100%);
+      color: var(--color-yellow);
     }
     ul.custom_liststyle.list-orange > li::before {
-      color: hsla(39deg, 100%, 50%, 1);
-      color: hwb(39deg 0% 0% / 100%);
+      color: var(--color-orange);
     }
     ul.custom_liststyle.list-gold > li::before {
-      color: hsla(51deg, 100%, 50%, 1);
-      color: hwb(51deg 0% 0% / 100%);
+      color: var(--color-gold);
     }
     ul.custom_liststyle.list-pink > li::before {
-      color: hsla(350deg, 100%, 88%, 1);
-      color: hwb(350deg 75% 0% / 100%);
+      color: var(--color-pink);
     }
     ul.custom_liststyle.list-brown > li::before {
-      color: hsla(26deg, 32%, 54%, 1);
-      color: hwb(26deg 39% 31% / 100%);
+      color: var(--color-brown);
     }
     ul.custom_liststyle.list-mediumdarkbrown > li::before {
-      color: hsla(27deg, 35%, 51%, 1);
-      color: hwb(27deg 34% 31% / 100%);
+      color: var(--color-brown-medium-dark);
     }
   /* END: Generic colours */
 
   /* BGN: Brand colours */
     ul.custom_liststyle.list-facebook > li::before {
-      color: hsla(220deg, 46%, 48%, 1);
-      color: hwb(220deg 26% 30% / 100%);
+      color: var(--color-facebook);
     }
     ul.custom_liststyle.list-twitter > li::before {
-      color: hsla(203deg, 78%, 49%, 1);
-      color: hwb(203deg 11% 12% / 100%);
+      color: var(--color-twitter);
     }
     ul.custom_liststyle.list-googleplus > li::before {
-      color: hsla(5deg, 69%, 54%, 1);
-      color: hwb(5deg 22% 14% / 100%);
+      color: var(--color-googleplus);
     }
     ul.custom_liststyle.list-ubuntu > li::before {
-      color: hsla(16deg, 82%, 52%, 1);
-      color: hwb(16deg 13% 9% / 100%);
+      color: var(--color-ubuntu);
     }
     ul.custom_liststyle.list-mastodon > li::before {
-      color: hsla(205deg, 70%, 51%, 1);
-      color: hwb(205deg 17% 15% / 100%);
+      color: var(--color-mastodon);
     }
     ul.custom_liststyle.list-hubzilla > li::before {
-      color: hsla(236deg, 35%, 40%, 1);
-      color: hwb(236deg 26% 46% / 100%);
+      color: var(--color-hubzilla);
     }
   /* END: Brand colours */
 
@@ -1391,122 +1518,100 @@
   /* BGN: Generic colours */
     ul.custom_liststyle > li.list-black::before,
     .text-black {
-      color: hsla(0deg, 0%, 0%, 1);
-      color: hwb(0deg 0% 100% / 100%);
+      color: var(--color-black);
     }
     ul.custom_liststyle > li.list-white::before,
     .text-white {
-      color: hsla(0deg, 0%, 100%, 1);
-      color: hwb(0deg 100% 0% / 100%);
+      color: var(--color-white);
     }
     ul.custom_liststyle > li.list-red::before,
     .text-red {
-      color: hsla(0deg, 100%, 50%, 1);
-      color: hwb(0deg 0% 0% / 100%);
+      color: var(--color-red);
     }
     ul.custom_liststyle > li.list-lime::before,
     .text-lime {
-      color: hsla(120deg, 100%, 50%, 1);
-      color: hwb(120deg 0% 0% / 100%);
+      color: var(--color-lime);
     }
     ul.custom_liststyle > li.list-green::before,
     .text-green {
-      color: hsla(120deg, 100%, 25%, 1);
-      color: hwb(120deg 0% 50% / 100%);
+      color: var(--color-green);
     }
     ul.custom_liststyle > li.list-blue::before,
     .text-blue {
-      color: hsla(240deg, 100%, 50%, 1);
-      color: hwb(240deg 0% 0% / 100%);
+      color: var(--color-blue);
     }
     ul.custom_liststyle > li.list-aqua::before,
     ul.custom_liststyle > li.list-cyan::before,
     .text-aqua,
     .text-cyan {
-      color: hsla(180deg, 100%, 50%, 1);
-      color: hwb(180deg 0% 0% / 100%);
+      color: var(--color-cyan);
     }
     ul.custom_liststyle > li.list-fuchsia::before,
     ul.custom_liststyle > li.list-magenta::before,
     .text-fuchsia,
     .text-magenta {
-      color: hsla(300deg, 100%, 50%, 1);
-      color: hwb(300deg 0% 0% / 100%);
+      color: var(--color-magenta);
     }
     ul.custom_liststyle > li.list-yellow::before,
     .text-yellow {
-      color: hsla(60deg, 100%, 50%, 1);
-      color: hwb(60deg 0% 0% / 100%);
+      color: var(--color-yellow);
     }
     ul.custom_liststyle > li.list-orange::before,
     .text-orange {
-      color: hsla(39deg, 100%, 50%, 1);
-      color: hwb(39deg 0% 0% / 100%);
+      color: var(--color-orange);
     }
     ul.custom_liststyle > li.list-gold::before,
     .text-gold {
-      color: hsla(51deg, 100%, 50%, 1);
-      color: hwb(51deg 0% 0% / 100%);
+      color: var(--color-gold);
     }
     ul.custom_liststyle > li.list-pink::before,
     .text-pink {
-      color: hsla(350deg, 100%, 88%, 1);
-      color: hwb(350deg 75% 0% / 100%);
+      color: var(--color-pink);
     }
     ul.custom_liststyle > li.list-brown::before,
     .text-brown {
-      color: hsla(26deg, 32%, 54%, 1);
-      color: hwb(26deg 39% 31% / 100%);
+      color: var(--color-brown);
     }
     ul.custom_liststyle > li.list-mediumdarkbrown::before,
-    .text-brown {
-      color: hsla(27deg, 35%, 51%, 1);
-      color: hwb(27deg 34% 31% / 100%);
+    .text-mediumdarkbrown {
+      color: var(--color-brown-medium-dark);
     }
   /* END: Generic colours */
 
   /* BGN: Brand colours */
     ul.custom_liststyle > li.list-facebook::before,
     .text-facebook {
-      color: hsla(220deg, 46%, 48%, 1);
-      color: hwb(220deg 26% 30% / 100%);
+      color: var(--color-facebook);
     }
     ul.custom_liststyle > li.list-twitter::before,
     .text-twitter {
-      color: hsla(203deg, 78%, 49%, 1);
-      color: hwb(203deg 11% 12% / 100%);
+      color: var(--color-twitter);
     }
     ul.custom_liststyle > li.list-googleplus::before,
     .text-googleplus {
-      color: hsla(5deg, 69%, 54%, 1);
-      color: hwb(5deg 22% 14% / 100%);
+      color: var(--color-googleplus);
     }
     ul.custom_liststyle > li.list-ubuntu::before,
     .text-ubuntu {
-      color: hsla(16deg, 82%, 52%, 1);
-      color: hwb(16deg 13% 9% / 100%);
+      color: var(--color-ubuntu);
     }
     ul.custom_liststyle > li.list-mastodon::before,
     .text-mastodon {
-      color: hsla(205deg, 70%, 51%, 1);
-      color: hwb(205deg 17% 15% / 100%);
+      color: var(--color-mastodon);
     }
     ul.custom_liststyle > li.list-hubzilla::before,
     .text-hubzilla {
-      color: hsla(236deg, 35%, 40%, 1);
-      color: hwb(236deg 26% 46% / 100%);
+      color: var(--color-hubzilla);
     }
   /* END: Brand colours */
 
   /* BGN: Special custom colours */
     .text-cm, .text-gm, .text-cgm {
-      color: hsla(210deg, 100%, 50%, 1);
-      color: hwb(210deg 0% 0% / 100%);
+      color: var(--color-cgm);
       font-weight: bold;
     }
     .text-guide {
-      color: hsla(0deg, 100%, 50%, 1);
-      color: hwb(0deg 0% 0% / 100%);
+      color: var(--color-red);
       font-weight: bold;
     }
   /* END: Special custom colours */
@@ -1727,9 +1832,13 @@
     margin: 2px;
     font-size: small;
     vertical-align: text-bottom;
-    background: #eee;
+    background-color: hwb(0 93% 7%);
+    background-color: lch(94.098% 0 139.088);
+    background-color: oklch(94.91% 0 0);
     font-weight: 500;
-    color: #555;
+    color: hwb(0 33% 67%);
+    color: lch(36.146% 0 139.088);
+    color: oklch(44.95% 0 0);
     cursor: pointer;
     font-variant: small-caps;
     font-weight: 600;
@@ -1749,13 +1858,13 @@
 
   kbd:hover,
   kbd:hover * {
-    color: black;
+    color: var(--color-black);
     /* box-shadow: 1px 1px 1px #333; */
   }
 
   kbd:active,
   kbd:active * {
-    color: black;
+    color: var(--color-black);
     box-shadow: 1px 1px 0px #ddd inset;
   }
 
@@ -1779,35 +1888,43 @@
   /* Deep blue */
   kbd.deep-blue,
   .deep-blue kbd {
-    background: steelblue;
-    color: #eee;
+    background-color: hwb(207.273 28% 29%);
+    background-color: lch(51.987% 33.881 255.712);
+    background-color: oklch(58.8% 0.099 245.74);
+    color: hwb(0 93% 7%);
+    color: lch(94.098% 0 139.088);
+    color: oklch(94.91% 0 0);
   }
 
   kbd.deep-blue:hover,
   kbd.deep-blue:hover *,
   .deep-blue kbd:hover {
-    color: white;
+    color: var(--color-white);
   }
 
   /* Dark apple */
   kbd.dark-apple,
   .dark-apple kbd {
-    background: black;
-    color: #ddd;
+    background-color: var(--color-black);
+    color: hwb(0 87% 13%);
+    color: lch(88.115% 0 139.088);
+    color: oklch(89.75% 0 0);
   }
 
   kbd.dark-apple:hover,
   kbd.dark-apple:hover *,
   .dark-apple kbd:hover {
-    color: white;
+    color: var(--color-white);
   }
 
   /* Type writer */
   kbd.type-writer,
   .type-writer kbd {
     border-radius: 10px;
-    background: #333;
-    color: white;
+    background-color: hwb(0 20% 80%);
+    background-color: lch(21.247% 0 139.088);
+    background-color: oklch(32.11% 0 0);
+    color: var(--color-white);
   }
 /*************
 ** END: kbd **
