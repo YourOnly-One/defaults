@@ -168,12 +168,12 @@
       --color-silver: oklch(80.78% 0 0);
 
     /* WHITE */
-    --color-white-bg: hwb(0 100% 0% / 0.5);
-    --color-white-bg: lch(100% 0 139.088 / 0.5);
-    --color-white-bg: oklch(100% 0 0 / 0.5);
-    --color-white: hwb(0 100% 0%);
-    --color-white: lch(100% 0 139.088);
-    --color-white: oklch(100% 0 0);
+      --color-white-bg: hwb(0 100% 0% / 0.5);
+      --color-white-bg: lch(100% 0 139.088 / 0.5);
+      --color-white-bg: oklch(100% 0 0 / 0.5);
+      --color-white: hwb(0 100% 0%);
+      --color-white: lch(100% 0 139.088);
+      --color-white: oklch(100% 0 0);
 
     /* RED */
       --color-red-bg: hwb(0 0% 0% / 0.20);
