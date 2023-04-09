@@ -210,7 +210,7 @@ Quotation marks
 content
 {{% /sembox %}}
 
-{{% quotebox boxstyle="qbs_generic" qmarkstyle="qbm_doublequotationmark" boxcolour="qbc_blue" attribalign="txt_right" srctitle="" srclink="" srcrel="noopener external" attribto="" attriblink="" attribrel="noopener external" %}}
+{{% quotebox boxstyle="qbs_generic" qmarkstyle="qbm_doublequotationmark" boxcolour="qbc_blue" attribalign="txt_right" citeby="" citelink="" citerel="noopener external" pubtitle="" publink="" pubrel="noopener external" %}}
 content
 {{% /quotebox %}}
 
