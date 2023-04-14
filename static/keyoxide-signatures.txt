@@ -1,0 +1,51 @@
+This is a signature profile for Keyoxide verification.
+
+You can verify this profile at: https://im.youronly.one/p/verified?keyoxide
+
+These are the online accounts I claim to be confirmed, official, and verified:
+
+### contact@im.youronly.one
+proof=dns:youronly.one?type=TXT
+proof=https://bookwyrm.social/@youronlyone
+proof=https://c.im/@youronlyone
+proof=https://calckey.social/@youronlyone
+proof=https://hashi.icu/@youronlyone
+proof=https://hashi.icu/notes/984xxl46ja
+proof=https://keybase.io/yukino
+proof=https://news.ycombinator.com/user?id=techmagus
+proof=https://p.lu/a/youronlyone
+proof=https://p.lu/c/youronly.one
+proof=https://pixelfed.social/users/youronlyone
+proof=https://qoto.org/@youronlyone
+proof=https://www.reddit.com/user/Laibcoms/comments/rbih9o/keyoxide_identity_verification/
+proof=https://social.vivaldi.net/@yahananxie
+proof=https://social.vivaldi.net/@youronlyone
+proof=https://sopuli.xyz/u/youronlyone
+proof=https://stackoverflow.com/users/306674/im-youronly-one
+proof=https://t.me/YourOnlyOne7?proof=YourOnlyOne7keyoxide
+proof=https://twitter.com/YourOnlyONEofcl/status/1468426980886413313
+proof=irc://irc.libera.chat/Laibcoms
+proof=irc://irc.chatlounge.net/Laibcoms
+proof=matrix:u/@youronlyone:matrix.org?org.keyoxide.r=!dBfQZxCoGVmSTujfiv:matrix.org&org.keyoxide.e=$4t8-NGw6dOA1X155yQAhYkkkk6yDpyOY0p01FdbSKQE
+
+### techmagus@im.youronly.one
+proof=https://codeberg.org/techmagus/gitea_proof
+proof=https://dev.to/techmagus/keyoxide-identity-verification-32ei
+proof=https://discourse.gohugo.io/u/techmagus
+proof=https://gist.github.com/techmagus/e48a595b796a8b615da510fcda9ce7a5
+proof=https://gitlab.com/techmagus/gitlab_proof
+
+### pay@im.youronly.one
+proof=https://liberapay.com/youronlyone
+
+### youronlyone@404.city
+proof=xmpp:youronlyone@404.city
+
+### youronlyone@conversations.im
+proof=xmpp:youronlyone@conversations.im
+
+### youronlyone@movim.eu
+proof=xmpp:youronlyone@movim.eu
+
+### youronlyone@sure.im
+proof=xmpp:youronlyone@sure.im
