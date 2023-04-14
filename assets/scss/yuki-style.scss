@@ -1336,6 +1336,45 @@
 *********************/
 
 /**********************
+** BGN: Table styles **
+**********************/
+  table.verified {
+    border: 1px solid;
+    max-width: 100%;
+    width: 100%;
+    box-shadow: 4px 4px 4px var(--color-blue-midnight);
+  }
+  table.verified th {
+    border: 1px outset;
+    text-align: center;
+  }
+  table.verified th:first-child {
+    min-width: 14%;
+  }
+  table.verified th:nth-child(3),
+  table.verified th:nth-child(4),
+  table.verified th:nth-child(5) {
+    min-width: 12%;
+  }
+  table.verified tr:not(:last-child) td {
+    border-bottom: 1px inset;
+  }
+  table.verified td:not(:last-child) {
+    border-right: 1px inset;
+  }
+  table.verified td {
+    text-aligin: left;
+  }
+  table.verified td:nth-child(3),
+  table.verified td:nth-child(4),
+  table.verified td:nth-child(5) {
+    text-align: center;
+  }
+/**********************
+** END: Table styles **
+**********************/
+
+/**********************
 ** BGN: Custom Lists **
 **********************/
   /* remove list style */
