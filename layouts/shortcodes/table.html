@@ -19,7 +19,7 @@
         </th>
         {{ else }}
         <td>
-          {{ . | markdownify }}
+          {{ . | safeHTML }}
         </td>
         {{ end }}
       {{ end }}
