@@ -1,0 +1,31 @@
+{{- /*
+  {{< table "" >}}
+
+  Based on: https://discourse.gohugo.io/t/how-to-create-tables-more-simpler-without-markdown/15254/6?u=techmagus
+*/ -}}
+{{- $filename := .Get "filename" -}}
+{{- $class := .Get "class" -}}
+{{- $i := index .Site.Data $filename -}}
+{{- $.Scratch.Set "count" 0 -}}
+<table{{ with $class }} class="{{ . }}"{{ end }}>
+{{ range $table := $i }}
+  {{ range $row := $table }}
+    <tr>
+    {{ range $datas := $row }}
+      {{ range $data := $datas }}
+        {{ if eq 0 ($.Scratch.Get "count") }}
+        <th>
+          {{ . }}
+        </th>
+        {{ else }}
+        <td>
+          {{ . | markdownify }}
+        </td>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    </tr>
+    {{ $.Scratch.Add "count" 1 }}
+  {{ end }}
+{{ end }}
+</table>
