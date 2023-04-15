@@ -335,10 +335,21 @@
         {{ with .Params.semweb.product.isbasedon.alternatenames }}"alternateName": [ {{ range $n, $v := . }}{{ if $n }}, {{ end }}"{{ $v }}"{{ end }} ],{{ end }}
         {{ with .Params.semweb.product.isbasedon.sameas }}"sameAs": [ {{ range $n, $v := . }}{{ if $n }}, {{ end }}"{{ $v }}"{{ end }} ],{{ end }}
         "author": {
-          "name": "{{ .Params.semweb.product.isbasedon.author.name }}",
-          {{ with .Params.semweb.product.isbasedon.author.alternatenames }}"alternateName": [ {{ range $n, $v := . }}{{ if $n }}, {{ end }}"{{ $v }}"{{ end }} ],{{ end }}
-          {{ with .Params.semweb.product.isbasedon.author.sameas }}"sameAs": [ {{ range $n, $v := . }}{{ if $n }}, {{ end }}"{{ $v }}"{{ end }} ],{{ end }}
-          "@type": "Person"
+          {{- if $.Params.semweb.product.isbasedon.authors }}
+            {{- range $n, $v := $.Params.semweb.product.isbasedon.authors }}{{ if $n -}},{{- end }}
+              {
+                "name": "{{ .name }}",
+                {{ with .alternatenames }}"alternateName": [ {{ range $n, $v := . }}{{ if $n }}, {{ end }}"{{ $v }}"{{ end }} ],{{ end }}
+                {{ with .sameas }}"sameAs": [ {{ range $n, $v := . }}{{ if $n }}, {{ end }}"{{ $v }}"{{ end }} ],{{ end }}
+                "@type": "Person"
+              }
+            {{- end }}
+          {{- else if .Params.semweb.product.isbasedon.author.name }}
+            "name": "{{ .Params.semweb.product.isbasedon.author.name }}",
+            {{ with .Params.semweb.product.isbasedon.author.alternatenames }}"alternateName": [ {{ range $n, $v := . }}{{ if $n }}, {{ end }}"{{ $v }}"{{ end }} ],{{ end }}
+            {{ with .Params.semweb.product.isbasedon.author.sameas }}"sameAs": [ {{ range $n, $v := . }}{{ if $n }}, {{ end }}"{{ $v }}"{{ end }} ],{{ end }}
+            "@type": "Person"
+          {{- end }}
         },
         "@type": "CreativeWork"
       },
