@@ -221,12 +221,3 @@ BODY
 
 注意:ネイバーPapago神経翻訳
 주의사항 : 네이버 파파고 신경번역
-
----
-
-Only use the following if needed
-
-<!-- markdownlint-disable-next-line -->
-
-<!-- markdownlint-disable -->
-<!-- markdownlint-enable -->
