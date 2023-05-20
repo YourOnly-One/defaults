@@ -12,8 +12,9 @@ mainentityofpage = "https://iam.youronly.one/"
 name = "JC John Sese Cuneta"
 sameas = [
   "https://iam.youronly.one",
-  "https://im.youronly.one/",
-  "https://youronly.one/",
+  "https://im.youronly.one",
+  "https://youronly.one",
+  "https://im.youronly.one/p/verified/",
   "https://youronly.one/?verify=keyoxide",
   "https://youronly.one/?verify=whosum",
   "https://youronly.one/?verify=keybase",
@@ -74,7 +75,15 @@ sameas = [
   "https://ecency.com/@youronlyone",
   "https://hive.blog/@youronlyone",
   "https://steemit.com/@youronlyone",
-  "https://linkedin.com/in/youronlyone"
+  "https://linkedin.com/in/youronlyone",
+  "https://meta.wikimedia.org/wiki/User:Laibcoms",
+  "https://commons.wikimedia.org/wiki/User:Laibcoms",
+  "https://www.wikidata.org/wiki/User:Laibcoms",
+  "https://en.wikipedia.org/wiki/User:Laibcoms",
+  "https://en.wiktionary.org/wiki/User:Laibcoms",
+  "https://tl.wikipedia.org/wiki/Tagagamit:Laibcoms",
+  "https://tl.wiktionary.org/wiki/Tagagamit:Laibcoms",
+  "https://simple.wikipedia.org/wiki/User:Laibcoms"
 ]
 url = "https://iam.youronly.one/"
 
