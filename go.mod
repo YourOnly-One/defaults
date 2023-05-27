@@ -1,3 +1,3 @@
 module codeberg.org/youronlyone/defaults
 
-go 1.19
+go 1.20.4
