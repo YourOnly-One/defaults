@@ -1,4 +1,4 @@
-{{- $lang := or site.LanguageCode site.Language.Lang -}}
+{{- $lang := or (site.Language.LanguageCode) (site.Language.Lang) -}}
 {{- $syndications := . -}}
 <div id="syndications">
   {{ if or (eq $lang "ja") (eq $lang "ko") }}

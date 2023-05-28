@@ -42,7 +42,7 @@
 {{/* BGN: Translations */}}
   {{- if .IsTranslated }}
   {{ range .AllTranslations -}}
-  <link href="{{ .Permalink }}" hreflang="{{ or (.Site.LanguageCode) (.Site.Language.Lang) }}" rel="alternate" />
+  <link href="{{ .Permalink }}" hreflang="{{ or (.Site.Language.LanguageCode) (.Site.Language.Lang) }}" rel="alternate" />
   {{ end -}}
   {{ range first 1 .AllTranslations }}<link href="{{ .Permalink }}" hreflang="x-default" rel="alternate" />{{ end }}
   {{- end -}}

@@ -404,7 +404,7 @@
     "dateCreated": "{{ $dateCreated | safeHTML }}",
     "dateModified": "{{ $dateModified | safeHTML }}",
     "datePublished": "{{ $datePublished | safeHTML }}",
-    "inLanguage": "{{ or (.Site.LanguageCode) (.Site.Language.Lang) }}",
+    "inLanguage": "{{ or (.Site.Language.LanguageCode) (.Site.Language.Lang) }}",
     {{ with .Keywords }}"keywords": [ {{ range $i, $keyword := . }}{{ if $i }}, {{ end }}"{{ $keyword }}"{{ end }} ],{{ end }}
     {{ with or (.Param "semweb.license") (.Param "license") }}"license": "{{ . }}",{{ end }}
     {{ with .Site.Params.semweb.publisher }}"publisher": {

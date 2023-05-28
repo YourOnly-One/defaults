@@ -18,7 +18,7 @@
       {{ if ge .Sitemap.Priority 0.0 }}<priority>{{ .Sitemap.Priority }}</priority>{{ end -}}
       {{- if .IsTranslated -}}
       {{ range .AllTranslations -}}
-      <xhtml:link rel="alternate" hreflang="{{ or (.Site.LanguageCode) (.Site.Language.Lang) }}" href="{{ .Permalink }}" />
+      <xhtml:link rel="alternate" hreflang="{{ or (.Site.Language.LanguageCode) (.Site.Language.Lang) }}" href="{{ .Permalink }}" />
       {{ end -}}
       {{ range first 1 .AllTranslations }}<xhtml:link rel="alternate" hreflang="x-default" href="{{ $escapedurl }}" />{{ end }}
       {{- end -}}
