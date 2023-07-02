@@ -42,7 +42,7 @@
     @font-face {
       font-family: "noto-sans-math";
       src:  local("Noto Sans Math"),
-            url("../fonts/NotoSansMath-Regular.ttf") format("opentype"),
+            url("../fonts/NotoSansMath-Regular.otf") format("opentype"),
             url("../fonts/NotoSansMath-Regular.ttf") format("truetype");
       font-display: swap;
     }
