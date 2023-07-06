@@ -18,7 +18,7 @@
 var lastfmData = {
   baseURL: "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
   /* Your Last.fm Username */
-  user: "Laibcoms",
+  user: "YourOnlyONEofcl",
   /* Your API key -- USE YOUR OWN API KEY thank you */
   api_key: "75a470d0baee986461911686b98156e4",
   additional: "&format=json&limit=1"
