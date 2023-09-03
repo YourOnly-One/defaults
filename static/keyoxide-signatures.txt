@@ -6,27 +6,35 @@ These are the online accounts I claim to be confirmed, official, and verified:
 
 ### contact@im.youronly.one
 proof=dns:youronly.one?type=TXT
+proof=irc://irc.chatlounge.net/Laibcoms
+proof=irc://irc.libera.chat/Laibcoms
 proof=https://bookwyrm.social/@youronlyone
 proof=https://c.im/@youronlyone
-proof=https://calckey.social/@youronlyone
-proof=https://hashi.icu/@youronlyone
-proof=https://hashi.icu/notes/984xxl46ja
-proof=https://keybase.io/yukino
 proof=https://news.ycombinator.com/user?id=techmagus
-proof=https://p.lu/a/youronlyone
-proof=https://p.lu/c/youronly.one
 proof=https://pixelfed.social/users/youronlyone
 proof=https://qoto.org/@youronlyone
-proof=https://www.reddit.com/user/Laibcoms/comments/rbih9o/keyoxide_identity_verification/
-proof=https://social.vivaldi.net/@yahananxie
-proof=https://social.vivaldi.net/@youronlyone
 proof=https://sopuli.xyz/u/youronlyone
 proof=https://stackoverflow.com/users/306674/im-youronly-one
 proof=https://t.me/YourOnlyOne7?proof=YourOnlyOne7keyoxide
 proof=https://twitter.com/YourOnlyONEofcl/status/1468426980886413313
-proof=irc://irc.libera.chat/Laibcoms
-proof=irc://irc.chatlounge.net/Laibcoms
+proof=https://www.reddit.com/user/Laibcoms/comments/rbih9o/keyoxide_identity_verification/
 proof=matrix:u/@youronlyone:matrix.org?org.keyoxide.r=!dBfQZxCoGVmSTujfiv:matrix.org&org.keyoxide.e=$4t8-NGw6dOA1X155yQAhYkkkk6yDpyOY0p01FdbSKQE
+proof=https://social.vivaldi.net/@youronlyone
+proof=https://social.vivaldi.net/@yahananxie
+proof=https://p.lu/a/youronlyone
+proof=https://p.lu/c/youronly.one
+proof=https://hashi.icu/@youronlyone
+proof=https://hashi.icu/notes/984xxl46ja
+proof=https://keybase.io/yukino
+proof=xmpp:youronlyone@404.city
+proof=xmpp:youronlyone@conversations.im
+proof=xmpp:youronlyone@movim.eu
+proof=xmpp:youronlyone@sure.im
+proof=https://firefish.social/@youronlyone
+proof=https://c.wtf/@youronlyone
+proof=https://kbin.social/u/youronlyone
+proof=https://fedia.io/u/youronlyone
+proof=https://r.nf/u/youronlyone
 
 ### techmagus@im.youronly.one
 proof=https://codeberg.org/techmagus/gitea_proof
