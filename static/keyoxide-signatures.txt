@@ -19,6 +19,7 @@ proof=https://t.me/YourOnlyOne7?proof=YourOnlyOne7keyoxide
 proof=https://twitter.com/YourOnlyONEofcl/status/1468426980886413313
 proof=https://www.reddit.com/user/Laibcoms/comments/rbih9o/keyoxide_identity_verification/
 proof=matrix:u/@youronlyone:matrix.org?org.keyoxide.r=!dBfQZxCoGVmSTujfiv:matrix.org&org.keyoxide.e=$4t8-NGw6dOA1X155yQAhYkkkk6yDpyOY0p01FdbSKQE
+proof=https://mozilla.social/@youronlyone
 proof=https://social.vivaldi.net/@youronlyone
 proof=https://social.vivaldi.net/@yahananxie
 proof=https://p.lu/a/youronlyone
