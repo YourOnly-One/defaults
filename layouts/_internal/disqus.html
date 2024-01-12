@@ -1,7 +1,7 @@
 {{- $pc := .Site.Config.Privacy.Disqus -}}
 {{- if not $pc.Disable -}}
-  {{- /* if (.Site.DisqusShortname) */ -}}
-  {{ if and (.Site.DisqusShortname) (hugo.IsProduction) }}
+  {{- /* if ($.Params.disqusShortname) */ -}}
+  {{ if and ($.Params.disqusShortname) (hugo.IsProduction) }}
     {{- $relcanonical := urls.Parse .Params.relcanonical -}}
     {{- $permalink := urls.Parse .Permalink -}}
 
@@ -24,7 +24,7 @@
     */ -}}
     {{- $disqus_url_auto := printf "%s://%s%s" $relcanonical.Scheme $relcanonical.Host $relcanonical.EscapedPath -}}
 
-    {{- $disqusjsvars := dict "DisqusShortName" .Site.DisqusShortname "disqus_identifier_fm" $disqus_identifier_fm "disqus_title_fm" $disqus_title_fm "disqus_url_fm" $disqus_url_fm "disqus_identifier_auto" $disqus_identifier_auto "disqus_title_auto" $disqus_title_auto "disqus_url_auto" $disqus_url_auto }}
+    {{- $disqusjsvars := dict "DisqusShortName" $.Params.disqusShortname "disqus_identifier_fm" $disqus_identifier_fm "disqus_title_fm" $disqus_title_fm "disqus_url_fm" $disqus_url_fm "disqus_identifier_auto" $disqus_identifier_auto "disqus_title_auto" $disqus_title_auto "disqus_url_auto" $disqus_url_auto }}
     {{- $disqusjspath := split ( path.Dir $permalink.Path ) "/" -}}
     {{- $disqusjspath = index ( after 2 $disqusjspath ) -}}
     {{- $disqusjspath = printf "%s/disqus.js" ( path.Join $disqusjspath ) -}}
