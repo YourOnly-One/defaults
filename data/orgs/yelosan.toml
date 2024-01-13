@@ -9,8 +9,8 @@ alternatenames = ["Yelosan", "YelosanPub", "Yelosan Pub"]
 description = "We specialise in content creation and web development."
 name = "Yelosan Publishing"
 sameas = [
-  "https://facebook.com/101597304949708/",
-  "https://facebook.com/yelosanpub/",
+  "https://www.facebook.com/101597304949708/",
+  "https://www.facebook.com/yelosanpub/",
   "https://codeberg.org/yelosan",
   "https://gitlab.com/yelosan",
   "https://github.com/yelosan"
