@@ -17,8 +17,8 @@
 {{ end }}
 {{ with .Params.audio }}<meta property="og:audio" content="{{ . }}" />{{ end }}
 {{ with .Params.videos }}{{ range . }}<meta property="og:video" content="{{ . | absURL }}" />{{ end }}{{ end }}
-{{ with .Site.Social.facebook_authorid }}<meta property="article:author" content="https://facebook.com/{{ . }}" />{{ end }}
-{{ with .Site.Social.facebook_pageid }}<meta property="article:publisher" content="https://facebook.com/{{ . }}" />{{ end }}
+{{ with .Site.Params.social.facebook_authorid }}<meta property="article:author" content="https://www.facebook.com/{{ . }}" />{{ end }}
+{{ with .Site.Params.social.facebook_pageid }}<meta property="article:publisher" content="https://www.facebook.com/{{ . }}" />{{ end }}
 {{ with or .PublishDate .Date .Lastmod }}<meta property="article:published_time" {{ .UTC.Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />{{ end }}
 {{ with or .Lastmod .PublishDate .Date }}<meta property="article:modified_time" {{ .UTC.Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />{{ end }}
 {{ with (.GetTerms "categories") }}{{ range . -}}
@@ -43,5 +43,5 @@
 {{ end }}{{ end }}
 
 {{- /* NOTE: Facebook Page Admin ID for Domain Insights */}}
-{{ with .Site.Social.facebook_appid }}<meta property="fb:app_id" content="{{ . }}" />{{ end }}
-{{ with .Site.Social.facebook_admin }}<meta property="fb:admins" content="{{ . }}" />{{ end }}
+{{ with .Site.Params.social.facebook_appid }}<meta property="fb:app_id" content="{{ . }}" />{{ end }}
+{{ with .Site.Params.social.facebook_admin }}<meta property="fb:admins" content="{{ . }}" />{{ end }}
