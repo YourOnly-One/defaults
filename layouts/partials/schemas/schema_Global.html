@@ -1,7 +1,7 @@
 {{- if .IsPage }}
 
   {{- if or (in .Params.contenttypes "CriticReview") -}}
-    {{ partial "schemas/schema_CriticReview.html" .  | safeJS }}
+    {{ partial "schemas/schema_CriticReview.html" . | safeJS | safeHTML }}
   {{- end -}}
 
 {{- end }}
