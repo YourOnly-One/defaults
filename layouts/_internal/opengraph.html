@@ -32,15 +32,18 @@
 {{ end }}
 <meta property="og:site_name" content="{{ .Site.Title }}" />
 
-{{- /* NOTE: If it is part of a series, link to related articles */}}
+{{- /* If it is part of a series, link to related articles */}}
 {{- $permalink := .Permalink }}
 {{- $siteSeries := .Site.Taxonomies.series }}
+{{- if $siteSeries }}
 {{ with .Params.series }}{{- range $name := . }}
   {{- $series := index $siteSeries ($name | urlize) }}
   {{- range $page := first 6 $series.Pages }}
     {{- if ne $page.Permalink $permalink }}<meta property="og:see_also" content="{{ $page.Permalink }}" />{{ end }}
   {{- end }}
 {{ end }}{{ end }}
+{{- end }}
+
 
 {{- /* NOTE: Facebook Page Admin ID for Domain Insights */}}
 {{ with .Site.Params.social.facebook_appid }}<meta property="fb:app_id" content="{{ . }}" />{{ end }}
