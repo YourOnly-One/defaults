@@ -1,0 +1,40 @@
+# See: https://gohugo.io/getting-started/configuration/#merge-configuration-from-themes
+_merge = "deep"
+
+### BGN: Social ###
+  [social]
+    #facebook_authorid = ""              # template-only
+    codeberg = "techmagus"                       # username
+    #codepen = ""              # username
+    #deviantart = "laibcoms"                     # URL-name without @
+    #email = "contact@im.youronly.one"                          #
+    facebook = "YourOnly.ONE.ofcl"                       # URL-name
+    facebook_admin = "532996690,100042645428366,2308171266072912"                 # profile ID number and page admin to get domain insights
+    facebook_appid = "183794425326191"                 # app ID
+    facebook_authorid = "2308171266072912"              # user ID
+    facebook_pageid = "339301830572387"                # page ID
+    github = "techmagus"                         # username
+    #gitlab = "techmagus"                         # username
+    #googlescholar = ""              # username
+    #instagram = "youronly.one.ofcl"                      # username
+    keybase = "yukino"                        # username
+    keyoxide = "youronly.one/?verify=keyoxide"                       # URL
+    #linkedin = "youronlyone"                       # URL-name
+    mastodon = "c.im/@youronlyone"                       # example.com/@username
+    #medium = ""                         # username without @
+    #pinterest = "YourOnlyONEofcl"                      # username
+    pixelfed = "pixelfed.social/@youronlyone"                       # example.com/@username
+    #reddit = "Laibcoms"                         # username
+    #researchgate = ""              # username
+    #slideshare = ""              # username
+    #stackoverflow = "306674"                  # user number
+    strava = "faithfulathlete"                         # URL-name or userID number
+    #telegram = ""                       # URL-name
+    threads = "youronly.one.ofcl"              # username without @
+    tumblr = "t.youronly.one"              # URL
+    twitter = "YourOnlyONEofcl"                        # username; do not include @-at
+    twitter_creator = "@YourOnlyONEofcl"                # @username
+    twitter_site = "@YourOnlyONEofcl"                   # @username
+    #wordpress = ""                      # URL
+    youtube = "YourOnlyONEofcl"                        # username without @
+### END: Social ###
