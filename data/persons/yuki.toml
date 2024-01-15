@@ -1,5 +1,5 @@
 id = "https://iam.youronly.one/#yuki"
-additionalnames = ["Yahuhanan Yukia Sese Cuneta", "Yuki", "雪亮", "ᜌᜓᜃᜒ", "스노", "Seu No", "SeuNo"]
+additionalnames = ["Yahuhanan Yukiya Sese Cuneta", "Yuki", "ᜌᜓᜃᜒ", "사요한", "사유키", "ジヨン 雪矢(ゆきや) 謝謝(セセ) クネタ", "יהוחנן", "유키", "ゆき", "雪亮", "雪", "謝"]
 #email = ""
 jobtitles = ["Founder"]
 knowslanguage = ["en-PH", "tl", "fil", "tl-Tglg", "fil-Tglg", "en"]
@@ -189,11 +189,11 @@ url = "https://iam.youronly.one/"
 
 # images: required
 [[images]]
-  caption = "Yahuhanan Yukia Sese Cuneta"
+  caption = "Yahuhanan Yukiya Sese Cuneta"
   url = "https://rsc.youronly.one/img/y/Yuki-formal-bnw-600x.jpg"
   isphoto = true
 [[images]]
-  caption = "Yahuhanan Yukia Sese Cuneta"
+  caption = "Yahuhanan Yukiya Sese Cuneta"
   url = "https://rsc.youronly.one/img/y/Yuki-formal-bnw-600x.webp"
   isphoto = true
 
