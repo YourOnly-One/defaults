@@ -62,8 +62,8 @@ url = "https://yelosan.youronly.one/"
   iswebsite = true
 [[brands]]
   id = "https://im.youronly.one/yugenbard/"
-  logo = "https://rsc.youronly.one/img/y/Yūgen_Bard-logo-01-1500x.webp"
-  name = "Yūgen Bard 🎻"
+  logo = "https://rsc.youronly.one/img/y/Yugen_Bard-logo-01-1500x.webp"
+  name = "Yūgen Bard 🎻"
   url = "https://im.youronly.one/yugenbard/"
   iswebsite = true
 [[brands]]
