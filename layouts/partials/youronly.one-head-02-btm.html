@@ -10,11 +10,6 @@
 {{- $yookicss = slice $yookicss $semwebcss $quotecss $localcss | resources.Concat "css/yooki.css" -}}
 {{- $yookicss = $yookicss | minify | fingerprint "sha512" -}}
 
-{{- $twemojijs := resources.Get "js/twemoji.js" -}} {{/* src: https://github.com/jdecked/twemoji/tree/gh-pages/v */}}
-{{- $twemojisettingsjs := resources.Get "js/twemoji-settings.js" -}}
-{{- $twemojialljs := slice $twemojijs $twemojisettingsjs | resources.Concat "js/twemoji-all.js" -}}
-{{- $twemojialljs = $twemojialljs | minify | fingerprint "sha512" -}}
-
 {{- $FontDefaultsScss := resources.Get "scss/font-defaults.scss" | resources.ExecuteAsTemplate "css/fonts-defaults.css" . | toCSS -}}
 {{- $FontYelosanCss := resources.Get "css/yelosan-fonts.css" -}}
 {{- $FontNotoCss := resources.Get "css/font-noto.css" -}}
@@ -36,49 +31,50 @@
 {{- $faviconico := resources.Get "favicon/favicon.ico" | fingerprint "sha512" -}}
 {{- $browserconfigxml := resources.Get "favicon/browserconfig.xml" | resources.ExecuteAsTemplate "favicon/browserconfig.xml" . | fingerprint "sha512" -}}
 
-<link href="https://polyfill.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated" crossorigin="anonymous" rel="preload" as="script" />
-<script src="https://polyfill.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated" crossorigin="anonymous" type="text/javascript"></script>
+{{/* BGN: Polyfill */}}
+  {{/* 2024-01-17: v3.111.0; see: https://polyfill.io */}}
+  <link href="https://polyfill.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated" crossorigin="anonymous" rel="preload" as="script" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated" crossorigin="anonymous" fetchpriority="high" id="Polyfill-script" type="text/javascript"></script>
+{{/* END: Polyfill */}}
 
-{{- with .Site.Params.jquerycdn }}
-  {{/* NOTE: jQuery 3.7.0 as of 2023-07-31 */}}
-  {{- $jqueryjs := resources.Get "js/jquery.js" -}} {{/* src: https://jquery.com/download/ */}}
-  {{- $jqueryjs = $jqueryjs | minify | fingerprint "sha512" -}}
-  <link href="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
-  <script src="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" type="{{ $jqueryjs.MediaType }}"></script>
-{{ end -}}
+{{/* BGN: jQuery */}}
+  {{/* 2024-01-17: v3.7.1; see: https://jquery.com/download/ */}}
+  {{- with .Site.Params.jquerycdn }}
+    {{- $jqueryjs := resources.Get "js/jquery.js" -}}
+    {{- $jqueryjs = $jqueryjs | minify | fingerprint "sha512" -}}
+    <link href="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
+    <script src="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" fetchpriority="high" id="jQuery-script" type="{{ $jqueryjs.MediaType }}"></script>
+  {{ end -}}
+{{/* END: jQuery */}}
 
-{{- with .Params.math }}
-  {{/* NOTE: mathjax 3.2.2 as of 2023-07-31 */}}
-  {{- /* <script src="https://polyfill.io/v3/polyfill.min.js?features=es7"></script> */ -}}
-  {{- /* <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous" type="text/javascript" id="MathJax-script" async ></script> */ -}}
-  {{- /* <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async ></script> */ -}}
-  <script src="https://cdn.jsdelivr.net/npm/mathjax-full@3/es5/tex-mml-chtml.min.js" id="MathJax-script" async ></script>
-{{ end -}}
+{{/* BGN: mathjax */}}
+  {{/* 2024-01-17: v3.2.2 */}}
+  {{- with .Params.math }}
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-mml-chtml.min.js" crossorigin="anonymous" fetchpriority="auto" id="MathJax-script" type="text/javascript" async ></script>
+  {{ end -}}
+{{/* END: mathjax */}}
 
-{{- /*
-  NOTE:
-    - some themes use fontawesome5pro
-    - some themes use fontawesome-free
-    - icons missing from fontawesome are in fork-awesome
-*/ -}}
+{{/* BGN: fontawesome and fork-awesome */}}
+  {{- /*
+    - 2024-01-17
+      - fontawesome5pro v5.14.0
+      - fontawesome-free v6.5.1
+      - fork-awesome v1.2.0
+    - some themes use fontawesome5pro or fontawesome-free
+    - icons missing in fontawesome are in fork-awesome
+  */ -}}
+  <link href="https://cdn.jsdelivr.net/npm/fontawesome5pro@latest/css/all.min.css" crossorigin="anonymous" media="all" rel="stylesheet" type="text/css" />
+  {{/* <script src="https://cdn.jsdelivr.net/npm/fontawesome5pro@latest/js/fontawesome.min.js" crossorigin="anonymous" fetchpriority="low" defer ></script> */}}
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/fontawesome.min.css" crossorigin="anonymous" media="all" rel="stylesheet" type="text/css" />
+  {{/* <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/js/fontawesome.min.js" crossorigin="anonymous" fetchpriority="low" defer ></script> */}}
+  <link href="https://cdn.jsdelivr.net/npm/fork-awesome@latest/css/fork-awesome.min.css" crossorigin="anonymous" media="all" rel="stylesheet" type="text/css" />
+{{/* END: fontawesome and fork-awesome */}}
+
 {{- /* NOTE:
-  - fontawesome5pro 5.14.0 as of 2022-10-06
-  - fontawesome-free 6.2.0 as of 2022-10-06
-  - fontawesome-svg-core 6.2.0 as of 2022-10-06
-  - fork-awesome 1.2.0 as of 2022-10-06
-*/ -}}
-<link href="https://cdn.jsdelivr.net/npm/fontawesome5pro@5.14.0/css/all.min.css" integrity="sha256-5947S0kIn4zdgmftplLzWAbLK3D3xc7ANR9tEpJj5Ss=" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
-{{- /* <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-svg-core@6.2.0/styles.css" integrity="sha256-jV0um2PJP27znK1fgW1q7JQl4wqywhvcTrwEHNw+B8w=" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" /> */ -}}
-<link href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous" type="text/css" media="all" rel="stylesheet" />
-
-{{- /* NOTE:
-  - twemoji 14.1.0 as of 2023-01-13; see: https://github.com/jdecked/twemoji
   - cc-icons 1.2.1 as of 2022-12-13
 */ -}}
-<script src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}" crossorigin="anonymous" type="{{ $twemojialljs.MediaType }}" async ></script>
-<link href="{{ $FontYelosanCss.RelPermalink }}" integrity="{{ $FontYelosanCss.Data.Integrity }}" crossorigin="anonymous" type="{{ $FontYelosanCss.MediaType }}" media="all" rel="stylesheet" />
-<link href="{{ $yookicss.RelPermalink }}" integrity="{{ $yookicss.Data.Integrity }}" crossorigin="anonymous" type="{{ $yookicss.MediaType }}" media="all" rel="stylesheet" />
+<link href="{{ $FontYelosanCss.RelPermalink }}" integrity="{{ $FontYelosanCss.Data.Integrity }}" crossorigin="anonymous" media="all" rel="stylesheet" type="{{ $FontYelosanCss.MediaType }}" />
+<link href="{{ $yookicss.RelPermalink }}" integrity="{{ $yookicss.Data.Integrity }}" crossorigin="anonymous" media="all" rel="stylesheet" type="{{ $yookicss.MediaType }}" />
 
 {{/* BGN: favicon */}}
   <link href="{{ $appletouchiconpng.RelPermalink }}" integrity="{{ $appletouchiconpng.Data.Integrity }}" crossorigin="anonymous" type="{{ $appletouchiconpng.MediaType }}" sizes="180x180" rel="apple-touch-icon" />
@@ -107,23 +103,38 @@
   {{ partial "relme.html" . }}
 {{- end }}
 
-{{- with and .Site.Params.tools.onesignal (hugo.IsProduction) -}}
-  {{/* NOTE: Do not add crossorigin=anonymous */}}
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" type="text/javascript" async ></script>
-  <script>
-    window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function () {
-      OneSignal.init({
-        appId: "{{ . }}",
+{{/* BGN: OneSignal */}}
+  {{- with and .Site.Params.tools.onesignal (hugo.IsProduction) -}}
+    {{/* NOTE: Do not add crossorigin=anonymous */}}
+    {{- /* 2024-01-17: disabled
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" type="text/javascript" async ></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function () {
+        OneSignal.init({
+          appId: "{{ . }}",
+        });
       });
-    });
-  </script>
-{{- end -}}
+    </script>
+    */ -}}
+  {{- end -}}
+{{/* END: OneSignal */}}
 
-{{- $sitepath := (urls.Parse site.BaseURL).Path -}}
-{{ if or (eq $sitepath "/love/") (eq $sitepath "/snoworld/") (eq $sitepath "/techmagus/") (eq $sitepath "/yuki/") }}
-  {{- $lastfmcss := resources.Get "css/lastfm-nowplaying.css" | minify | fingerprint "sha512" -}}
-  {{- $lastfmjs := resources.Get "js/lastfm-nowplaying.js" | minify | fingerprint "sha512" -}}
-  <link href="{{ $lastfmcss.RelPermalink }}" integrity="{{ $lastfmcss.Data.Integrity }}" crossorigin="anonymous" type="{{ $lastfmcss.MediaType }}" media="all" rel="stylesheet" />
-  <script src="{{ $lastfmjs.RelPermalink }}" integrity="{{ $lastfmjs.Data.Integrity }}" crossorigin="anonymous" type="{{ $lastfmjs.MediaType }}" defer ></script>
-{{ end }}
+{{/* BGN: NowPlaying LastFM */}}
+  {{- $sitepath := (urls.Parse site.BaseURL).Path -}}
+  {{ if or (eq $sitepath "/love/") (eq $sitepath "/snoworld/") (eq $sitepath "/techmagus/") (eq $sitepath "/yuki/") }}
+    {{- $lastfmcss := resources.Get "css/lastfm-nowplaying.css" | minify | fingerprint "sha512" -}}
+    {{- $lastfmjs := resources.Get "js/lastfm-nowplaying.js" | minify | fingerprint "sha512" -}}
+    <link href="{{ $lastfmcss.RelPermalink }}" integrity="{{ $lastfmcss.Data.Integrity }}" crossorigin="anonymous" type="{{ $lastfmcss.MediaType }}" media="all" rel="stylesheet" />
+    <script src="{{ $lastfmjs.RelPermalink }}" integrity="{{ $lastfmjs.Data.Integrity }}" crossorigin="anonymous" fetchpriority="low" id="NowPlaying-script" type="{{ $lastfmjs.MediaType }}" defer ></script>
+  {{ end }}
+{{/* END: NowPlaying LastFM */}}
+
+{{/* BGN: twemoji */}}
+  {{- /* 2024-01-17: v15.0.3; see: https://github.com/jdecked/twemoji */ -}}
+  {{- $twemojijs := resources.Get "js/twemoji.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.js */}}
+  {{- $twemojisettingsjs := resources.Get "js/twemoji-settings.js" -}}
+  {{- $twemojialljs := slice $twemojijs $twemojisettingsjs | resources.Concat "js/twemoji-all.js" -}}
+  {{- $twemojialljs = $twemojialljs | minify | fingerprint "sha512" -}}
+  <script src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}" crossorigin="anonymous" fetchpriority="low" id="twemoji-script" type="{{ $twemojialljs.MediaType }}" defer ></script>
+{{/* END: twemoji */}}
