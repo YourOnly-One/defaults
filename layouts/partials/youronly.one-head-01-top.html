@@ -46,7 +46,6 @@
   {{ end -}}
   {{ range first 1 .AllTranslations -}}
   <link href="{{ .Permalink }}" hreflang="x-default" rel="alternate" />
-  <link href="https://fed.brid.gy/r/{{ .Permalink }}" rel="alternate" type="application/activity+json" />
   {{ end -}}
   {{- end -}}
 {{/* END: Translations */}}
@@ -54,6 +53,7 @@
   <link href="{{ .Permalink | safeURL }}" type="{{ .MediaType.Type | html }}" rel="{{ .Rel }}" />
 {{- end }}
 <link href="{{ .Permalink }}" rel="self" />
+<link href="https://fed.brid.gy/r/{{ .Permalink }}" rel="alternate" type="application/activity+json" />
 {{ range .Site.Params.websubhubs }}
   <link href="{{ . }}" rel="hub" />
 {{- end }}
