@@ -44,7 +44,10 @@
   {{ range .AllTranslations -}}
   <link href="{{ .Permalink }}" hreflang="{{ or (.Site.Language.LanguageCode) (.Site.Language.Lang) }}" rel="alternate" />
   {{ end -}}
-  {{ range first 1 .AllTranslations }}<link href="{{ .Permalink }}" hreflang="x-default" rel="alternate" />{{ end }}
+  {{ range first 1 .AllTranslations -}}
+  <link href="{{ .Permalink }}" hreflang="x-default" rel="alternate" />
+  <link href="https://fed.brid.gy/r/{{ .Permalink }}" rel="alternate" type="application/activity+json" />
+  {{ end -}}
   {{- end -}}
 {{/* END: Translations */}}
 {{ range .AlternativeOutputFormats }}
