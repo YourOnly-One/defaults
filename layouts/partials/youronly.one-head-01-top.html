@@ -41,9 +41,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'" /> -->
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<!-- Note: Above is fixed in position. -->
+{{/* Note: Above is fixed in position. */}}
 
-<link rel="self" href="{{ .Permalink }}" />
 {{/* BGN: Translations, AlternateOutputFormats */}}
   {{- if .IsTranslated }}
     {{ range .AllTranslations }}<link rel="alternate" href="{{ .Permalink }}" hreflang="{{ or (.Site.Language.LanguageCode) (.Site.Language.Lang) }}" />{{ end }}
@@ -51,6 +50,7 @@
   {{- end -}}
   {{ range .AlternativeOutputFormats }}<link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ .Permalink | safeURL }}" />{{ end }}
 {{/* END: Translations, AlternateOutputFormats */}}
+<link rel="self" href="{{ .Permalink }}" />
 
 {{/* BGN: Fediverse, IndieWeb, Webmention, OpenID */}}
   <link rel="alternate" type="application/activity+json" href="https://fed.brid.gy/r/{{ .Permalink }}" />
@@ -103,6 +103,7 @@
 {{ partial "schemas/semweb.html" . }}
 {{ partial "schemas/schema_Global.html" . }}
 {{ template "_internal/opengraph.html" . }}
+<meta name="twitter:dnt" content="on">
 {{ template "_internal/twitter_cards.html" . }}
 
 {{- with resources.Get "site.webmanifest" -}}
@@ -112,54 +113,6 @@
 {{ if site.IsServer }}
   <meta http-equiv="cache-control" content="no-cache">
 {{ end }}
-
-{{/* BGN: Analytics codes */}}
-  {{- with and .Site.Params.analytics.cfwebanalytics (hugo.IsProduction) -}}
-    <script type="text/javascript" crossorigin src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}'></script>
-  {{- end -}}
-
-  {{- with and .Site.Params.analytics.microanalyticsio (hugo.IsProduction) -}}
-    <script type="text/javascript" id="{{ . }}" src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true"></script>
-  {{- end -}}
-
-  {{- with and .Site.Params.analytics.naver (hugo.IsProduction) -}}
-    <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
-    {{- /* NOTE: Naver Analytics will only work if inline and the actual code is retained.
-        - Tested:
-          - external JS
-          - embedding Hugo processed JS (with params)
-    */ -}}
-    <script type="text/javascript">
-      if(!wcs_add) var wcs_add = {};
-      wcs_add["wa"] = "{{ . }}";
-      if(window.wcs) {
-        wcs_do();
-      }
-    </script>
-  {{- end -}}
-
-  {{- with and .Site.Params.analytics.counterdev (hugo.IsProduction) -}}
-    {{- $counterdevjs := resources.Get "js/analytics-counterdev.js" | js.Build ( dict "params" ( dict "counterdevid" . ) ) -}}
-    {{- $counterdevjs = $counterdevjs | minify | fingerprint "sha512" -}}
-    <script type="{{ $counterdevjs.MediaType }}" crossorigin src="{{ $counterdevjs.RelPermalink }}" integrity="{{ $counterdevjs.Data.Integrity }}"></script>
-  {{- end -}}
-
-  {{- with and .Site.Params.analytics.swetrix (hugo.IsProduction) -}}
-    {{- $swetrixjs := resources.Get "js/analytics-swetrix.js" | js.Build ( dict "params" ( dict "swetrixid" . ) ) -}}
-    {{- $swetrixjs = $swetrixjs | minify | fingerprint "sha512" -}}
-    <script type="text/javascript" src="https://swetrix.org/swetrix.js"></script>
-    <script type="{{ $swetrixjs.MediaType }}" crossorigin src="{{ $swetrixjs.RelPermalink }}" integrity="{{ $swetrixjs.Data.Integrity }}"></script>
-    {{/* <noscript><img referrerpolicy="no-referrer-when-downgrade" src="https://api.swetrix.com/log/noscript?pid={{ . }}" alt="" /></noscript> */}}
-  {{- end -}}
-
-  {{- with and .Site.Params.analytics.microsoftclarity (hugo.IsProduction) -}}
-    {{- $msftclarityjs := resources.Get "js/analytics-msftclarity.js" | js.Build ( dict "params" ( dict "msftclarityid" . ) ) -}}
-    {{- $msftclarityjs = $msftclarityjs | minify | fingerprint "sha512" -}}
-    <script type="{{ $msftclarityjs.MediaType }}" crossorigin src="{{ $msftclarityjs.RelPermalink }}" integrity="{{ $msftclarityjs.Data.Integrity }}"></script>
-  {{- end -}}
-{{/* END: Analytics codes */}}
-
-{{/* NOTE: above was ordered intentionally */}}
 
 {{/* BGN: Verifications */}}
   {{ with .Site.Params.verify.flattr }}<meta name="flattr:id" content="{{ . }}" />{{ end }}
@@ -172,6 +125,8 @@
   {{ with .Site.Params.verify.wot }}<meta name="wot-verification" content="{{ . }}" />{{ end }}
   {{ with .Site.Params.verify.yandex }}<meta name="yandex-verification" content="{{ . }}">{{ end }}
 {{/* END: Verifications */}}
+
+{{/* NOTE: above was ordered intentionally */}}
 
 {{ hugo.Generator }}
 
