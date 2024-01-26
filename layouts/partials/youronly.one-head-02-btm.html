@@ -33,8 +33,8 @@
 
 {{/* BGN: Polyfill */}}
   {{/* 2024-01-17: v3.111.0; see: https://polyfill.io */}}
-  <link href="https://polyfill.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated" crossorigin="anonymous" rel="preload" as="script" />
-  <script src="https://polyfill.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated" crossorigin="anonymous" fetchpriority="high" id="Polyfill-script" type="text/javascript"></script>
+  <link rel="preload" as="script" crossorigin href="https://polyfill.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated" />
+  <script type="text/javascript" id="Polyfill-script" fetchpriority="high" crossorigin src="https://polyfill.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated"></script>
 {{/* END: Polyfill */}}
 
 {{/* BGN: jQuery */}}
@@ -42,15 +42,15 @@
   {{- with .Site.Params.jquerycdn }}
     {{- $jqueryjs := resources.Get "js/jquery.js" -}}
     {{- $jqueryjs = $jqueryjs | minify | fingerprint "sha512" -}}
-    <link href="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" rel="preload" as="script" />
-    <script src="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" crossorigin="anonymous" fetchpriority="high" id="jQuery-script" type="{{ $jqueryjs.MediaType }}"></script>
+    <link rel="preload" as="script" crossorigin href="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}" />
+    <script type="{{ $jqueryjs.MediaType }}" id="jQuery-script" fetchpriority="high" crossorigin src="{{ $jqueryjs.RelPermalink }}" integrity="{{ $jqueryjs.Data.Integrity }}"></script>
   {{ end -}}
 {{/* END: jQuery */}}
 
 {{/* BGN: mathjax */}}
   {{/* 2024-01-17: v3.2.2 */}}
   {{- with .Params.math }}
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-mml-chtml.min.js" crossorigin="anonymous" fetchpriority="auto" id="MathJax-script" type="text/javascript" async ></script>
+    <script type="text/javascript" id="MathJax-script" async fetchpriority="auto" crossorigin src="https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-mml-chtml.min.js"></script>
   {{ end -}}
 {{/* END: mathjax */}}
 
@@ -63,33 +63,33 @@
     - some themes use fontawesome5pro or fontawesome-free
     - icons missing in fontawesome are in fork-awesome
   */ -}}
-  <link href="https://cdn.jsdelivr.net/npm/fontawesome5pro@latest/css/all.min.css" crossorigin="anonymous" media="all" rel="stylesheet" type="text/css" />
-  {{/* <script src="https://cdn.jsdelivr.net/npm/fontawesome5pro@latest/js/fontawesome.min.js" crossorigin="anonymous" fetchpriority="low" defer ></script> */}}
-  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/fontawesome.min.css" crossorigin="anonymous" media="all" rel="stylesheet" type="text/css" />
-  {{/* <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/js/fontawesome.min.js" crossorigin="anonymous" fetchpriority="low" defer ></script> */}}
-  <link href="https://cdn.jsdelivr.net/npm/fork-awesome@latest/css/fork-awesome.min.css" crossorigin="anonymous" media="all" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" media="all" crossorigin href="https://cdn.jsdelivr.net/npm/fontawesome5pro@latest/css/all.min.css" />
+  {{/* <script defer fetchpriority="low" crossorigin src="https://cdn.jsdelivr.net/npm/fontawesome5pro@latest/js/fontawesome.min.js"></script> */}}
+  <link rel="stylesheet" type="text/css" media="all" crossorigin href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/fontawesome.min.css" />
+  {{/* <script defer fetchpriority="low" crossorigin src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/js/fontawesome.min.js" ></script> */}}
+  <link rel="stylesheet" type="text/css" media="all" crossorigin href="https://cdn.jsdelivr.net/npm/fork-awesome@latest/css/fork-awesome.min.css" />
 {{/* END: fontawesome and fork-awesome */}}
 
 {{- /* NOTE:
   - cc-icons 1.2.1 as of 2022-12-13
 */ -}}
-<link href="{{ $FontYelosanCss.RelPermalink }}" integrity="{{ $FontYelosanCss.Data.Integrity }}" crossorigin="anonymous" media="all" rel="stylesheet" type="{{ $FontYelosanCss.MediaType }}" />
-<link href="{{ $yookicss.RelPermalink }}" integrity="{{ $yookicss.Data.Integrity }}" crossorigin="anonymous" media="all" rel="stylesheet" type="{{ $yookicss.MediaType }}" />
+<link rel="stylesheet" type="{{ $FontYelosanCss.MediaType }}" media="all" crossorigin href="{{ $FontYelosanCss.RelPermalink }}" integrity="{{ $FontYelosanCss.Data.Integrity }}" />
+<link rel="stylesheet" type="{{ $yookicss.MediaType }}" media="all" crossorigin href="{{ $yookicss.RelPermalink }}" integrity="{{ $yookicss.Data.Integrity }}" />
 
 {{/* BGN: favicon */}}
-  <link href="{{ $appletouchiconpng.RelPermalink }}" integrity="{{ $appletouchiconpng.Data.Integrity }}" crossorigin="anonymous" type="{{ $appletouchiconpng.MediaType }}" sizes="180x180" rel="apple-touch-icon" />
+  <link rel="apple-touch-icon" type="{{ $appletouchiconpng.MediaType }}" sizes="180x180" crossorigin href="{{ $appletouchiconpng.RelPermalink }}" integrity="{{ $appletouchiconpng.Data.Integrity }}" />
   {{- /* NOTE: disabled temporarily until we upload this file in each blog
-    <link href="{{ $faviconsvg.RelPermalink }}" integrity="{{ $faviconsvg.Data.Integrity }}" crossorigin="anonymous" type="{{ $faviconsvg.MediaType }}" rel="icon" />
+    <link rel="icon" type="{{ $faviconsvg.MediaType }}" crossorigin href="{{ $faviconsvg.RelPermalink }}" integrity="{{ $faviconsvg.Data.Integrity }}" />
   */ -}}
-  <link href="{{ $favicon32png.RelPermalink }}" integrity="{{ $favicon32png.Data.Integrity }}" crossorigin="anonymous" type="{{ $favicon32png.MediaType }}" sizes="32x32" rel="icon" />
-  <link href="{{ $androidchrome192png.RelPermalink }}" integrity="{{ $androidchrome192png.Data.Integrity }}" crossorigin="anonymous" type="{{ $androidchrome192png.MediaType }}" sizes="192x192" rel="icon" />
-  <link href="{{ $favicon16png.RelPermalink }}" integrity="{{ $favicon16png.Data.Integrity }}" crossorigin="anonymous" type="{{ $favicon16png.MediaType }}" sizes="16x16" rel="icon" />
-  <link href="{{ $safaripinnedtabsvg.RelPermalink }}" integrity="{{ $safaripinnedtabsvg.Data.Integrity }}" crossorigin="anonymous" color="#5bbad5" type="{{ $safaripinnedtabsvg.MediaType }}" rel="mask-icon" />
-  <link href="{{ $faviconico.RelPermalink }}" integrity="{{ $faviconico.Data.Integrity }}" crossorigin="anonymous" type="{{ $faviconico.MediaType }}" rel="shortcut icon" />
+  <link rel="icon" type="{{ $favicon32png.MediaType }}" sizes="32x32" crossorigin href="{{ $favicon32png.RelPermalink }}" integrity="{{ $favicon32png.Data.Integrity }}" />
+  <link rel="icon" type="{{ $androidchrome192png.MediaType }}" sizes="192x192" crossorigin href="{{ $androidchrome192png.RelPermalink }}" integrity="{{ $androidchrome192png.Data.Integrity }}" />
+  <link rel="icon" type="{{ $favicon16png.MediaType }}" sizes="16x16" crossorigin href="{{ $favicon16png.RelPermalink }}" integrity="{{ $favicon16png.Data.Integrity }}" />
+  <link rel="mask-icon" type="{{ $safaripinnedtabsvg.MediaType }}" color="#5bbad5" crossorigin href="{{ $safaripinnedtabsvg.RelPermalink }}" integrity="{{ $safaripinnedtabsvg.Data.Integrity }}" />
+  <link rel="shortcut icon" type="{{ $faviconico.MediaType }}" crossorigin href="{{ $faviconico.RelPermalink }}" integrity="{{ $faviconico.Data.Integrity }}" />
   <meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}">
   <meta name="application-name" content="{{ .Site.Title }}">
   {{ with .Site.Params.favicon_mstilecolor }}<meta name="msapplication-TileColor" content="{{ . }}" />{{ end }}
-  <meta name="msapplication-config" content="{{ $browserconfigxml.Permalink }}" integrity="{{ $browserconfigxml.Data.Integrity }}" crossorigin="anonymous" />
+  <meta name="msapplication-config" content="{{ $browserconfigxml.Permalink }}" integrity="{{ $browserconfigxml.Data.Integrity }}" />
   <meta name="theme-color" content="{{ .Site.Params.themeColor | default "#ffffff" }}" />
 {{/* END: favicon */}}
 
@@ -125,8 +125,8 @@
   {{ if or (eq $sitepath "/love/") (eq $sitepath "/snoworld/") (eq $sitepath "/techmagus/") (eq $sitepath "/yuki/") }}
     {{- $lastfmcss := resources.Get "css/lastfm-nowplaying.css" | minify | fingerprint "sha512" -}}
     {{- $lastfmjs := resources.Get "js/lastfm-nowplaying.js" | minify | fingerprint "sha512" -}}
-    <link href="{{ $lastfmcss.RelPermalink }}" integrity="{{ $lastfmcss.Data.Integrity }}" crossorigin="anonymous" type="{{ $lastfmcss.MediaType }}" media="all" rel="stylesheet" />
-    <script src="{{ $lastfmjs.RelPermalink }}" integrity="{{ $lastfmjs.Data.Integrity }}" crossorigin="anonymous" fetchpriority="low" id="NowPlaying-script" type="{{ $lastfmjs.MediaType }}" defer ></script>
+    <link rel="stylesheet" type="{{ $lastfmcss.MediaType }}" media="all" crossorigin href="{{ $lastfmcss.RelPermalink }}" integrity="{{ $lastfmcss.Data.Integrity }}" />
+    <script type="{{ $lastfmjs.MediaType }}" id="NowPlaying-script" defer fetchpriority="low" crossorigin src="{{ $lastfmjs.RelPermalink }}" integrity="{{ $lastfmjs.Data.Integrity }}"></script>
   {{ end }}
 {{/* END: NowPlaying LastFM */}}
 
@@ -136,5 +136,5 @@
   {{- $twemojisettingsjs := resources.Get "js/twemoji-settings.js" -}}
   {{- $twemojialljs := slice $twemojijs $twemojisettingsjs | resources.Concat "js/twemoji-all.js" -}}
   {{- $twemojialljs = $twemojialljs | minify | fingerprint "sha512" -}}
-  <script src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}" crossorigin="anonymous" fetchpriority="low" id="twemoji-script" type="{{ $twemojialljs.MediaType }}" defer ></script>
+  <script type="{{ $twemojialljs.MediaType }}" id="twemoji-script" defer fetchpriority="low" crossorigin src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}"></script>
 {{/* END: twemoji */}}
