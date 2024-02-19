@@ -21,7 +21,7 @@ _merge = "deep"
     keyoxide = "youronly.one/?verify=keyoxide"                       # URL
     #linkedin = "youronlyone"                       # URL-name
     mastodon = "c.im/@youronlyone"                       # example.com/@username
-    #medium = ""                         # username without @
+    #medium = "youronly.one"                         # username without @
     #pinterest = "YourOnlyONEofcl"                      # username
     pixelfed = "pixelfed.social/@youronlyone"                       # example.com/@username
     #reddit = "Laibcoms"                         # username
@@ -35,6 +35,6 @@ _merge = "deep"
     twitter = "YourOnlyONEofcl"                        # username; do not include @-at
     twitter_creator = "@YourOnlyONEofcl"                # @username
     twitter_site = "@YourOnlyONEofcl"                   # @username
-    #wordpress = ""                      # URL
+    #wordpress = "youronlyoneofcl.wordpress.com"                      # URL
     youtube = "YourOnlyONEofcl"                        # username without @
 ### END: Social ###
