@@ -88,8 +88,8 @@
   <link rel="mask-icon" type="{{ $safaripinnedtabsvg.MediaType }}" color="#5bbad5" crossorigin href="{{ $safaripinnedtabsvg.RelPermalink }}" integrity="{{ $safaripinnedtabsvg.Data.Integrity }}" />
   <link rel="shortcut icon" type="{{ $faviconico.MediaType }}" crossorigin href="{{ $faviconico.RelPermalink }}" integrity="{{ $faviconico.Data.Integrity }}" />
 
-  <meta name="theme-color" content="{{ .Site.Params.themeColor | default '#000' }}" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="{{ .Site.Params.themeColor | default '#fff' }}" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="{{ .Site.Params.themeColor | default `#000` }}" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="{{ .Site.Params.themeColor | default `#fff` }}" media="(prefers-color-scheme: light)">
   {{ with .Site.Params.favicon_mstilecolor }}<meta name="msapplication-TileColor" content="{{ . }}" />{{ end }}
   <meta name="msapplication-config" content="{{ $browserconfigxml.Permalink }}" integrity="{{ $browserconfigxml.Data.Integrity }}" />
 
@@ -147,7 +147,7 @@
 
 {{/* BGN: Analytics codes */}}
   {{- with and .Site.Params.analytics.cfwebanalytics (hugo.IsProduction) -}}
-    <script type="text/javascript" crossorigin src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}'></script>
+    <script type="text/javascript" crossorigin src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ . }}"}'></script>
   {{- end -}}
 
   {{- with and .Site.Params.analytics.microanalyticsio (hugo.IsProduction) -}}
