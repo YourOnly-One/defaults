@@ -126,7 +126,7 @@
   */
 /* END: Nordenx Baybayin */
 
-  /* BGN: Barabara */
+/* BGN: Barabara */
   @font-face {
     font-family: "barabara";
     src:  local("BARABARA"), /* full font name */
@@ -180,11 +180,10 @@
 /* BGN: Catch all PH (original) scripts */
   /* Search: https: //iso639-3.sil.org/code_tables/639/data */
   /***
-  ** Break down into groups to ensure UA's will not ignore.
+  ** Break down into groups to ensure UAs will not ignore.
   ***/
 
   :lang(cbk), :lang(ibg), :lang(krj), :lang(xsb), :lang(yka),
-
   :lang(bnc), :lang(ebk), :lang(lbk), :lang(obk), :lang(rbk), :lang(vbk), /* Bontok */
   :lang(ivb), :lang(ivv), /* Ibatan */
   :lang(sgd), :lang(tgn), /* Surigaonon, Tandaganon */
@@ -201,10 +200,10 @@
   }
 
   /*** Also in Baybayin ***/
-    :lang(akl), :lang(mlz), /* Aklanon */
-    :lang(bku), :lang(hnn), :lang(alj), :lang(bnj), :lang(bnk), :lang(btn), :lang(iry), :lang(tdy), :lang(twb), /* Mangyan (Buhid and Hanunoo) */
-    :lang(bcl), :lang(bik), :lang(bln), :lang(bto), :lang(cts), /* Bikolano (Basahan) */
-    :lang(bhk), :lang(fbl), :lang(lbl), :lang(rbl), :lang(ubl) /* Bikolano Albay (Basahan) */
+  :lang(akl), :lang(mlz), /* Aklanon */
+  :lang(bku), :lang(hnn), :lang(alj), :lang(bnj), :lang(bnk), :lang(btn), :lang(iry), :lang(tdy), :lang(twb), /* Mangyan (Buhid and Hanunoo) */
+  :lang(bcl), :lang(bik), :lang(bln), :lang(bto), :lang(cts), /* Bikolano (Basahan) */
+  :lang(bhk), :lang(fbl), :lang(lbl), :lang(rbl), :lang(ubl) /* Bikolano Albay (Basahan) */
   {
     direction: ltr;
     /* font-family: */ /* add default for Latin script in font-defaults.scss */
@@ -212,15 +211,15 @@
     font-synthesis: initial;
   }
 
-    :lang(ceb), /* Cebuano (Badlit) */
-    :lang(hil), /* Hiligaynon */
-    :lang(ilo), /* Ilokano (Kuritan) */
-    :lang(pag), /* Pangasinense (Kuritan) */
-    :lang(pam), /* Kapampangan (Kulitan) */
-    :lang(tbw), :lang(tbk), :lang(tgt), /* Tagbanwa */
-    :lang(tgl), :lang(tl), /* Tagalog */
-    :lang(war), /* Waray */
-    :lang(phi), :lang(fil) /* national and collective */
+  :lang(ceb), /* Cebuano (Badlit) */
+  :lang(hil), /* Hiligaynon */
+  :lang(ilo), /* Ilokano (Kuritan) */
+  :lang(pag), /* Pangasinense (Kuritan) */
+  :lang(pam), /* Kapampangan (Kulitan) */
+  :lang(tbw), :lang(tbk), :lang(tgt), /* Tagbanwa */
+  :lang(tgl), :lang(tl), /* Tagalog */
+  :lang(war), /* Waray */
+  :lang(phi), :lang(fil) /* national and collective */
   {
     direction: ltr;
     /* font-family: */ /* add default for Latin script in font-defaults.scss */

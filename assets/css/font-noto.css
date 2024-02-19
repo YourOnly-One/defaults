@@ -93,29 +93,6 @@
   }
 /** END: Noto Sans **/
 
-/** BGN: Noto Sans Mono **/
-  @font-face {
-    font-family: "noto-sans-mono";
-    src:  local("Noto Sans Mono"),
-          local("Noto Mono"), /* old name */
-          url("../fonts/NotoSansMono-Regular.ttf") format("opentype"),
-          url("../fonts/NotoSansMono-Regular.ttf") format("truetype");
-    font-display: swap;
-    font-style: normal;
-    font-weight: normal;
-  }
-  @font-face {
-    font-family: "noto-sans-mono";
-    src:  local("Noto Sans Mono"),
-          local("Noto Mono"), /* old name */
-          url("../fonts/NotoSansMono-Bold.ttf") format("opentype"),
-          url("../fonts/NotoSansMono-Bold.ttf") format("truetype");
-    font-display: swap;
-    font-style: normal;
-    font-weight: bold;
-  }
-/** END: Noto Sans Mono **/
-
 /** BGN: Noto Serif **/
   /* Not using this
   @font-face {
@@ -157,6 +134,29 @@
   */
 /** END: Noto Serif **/
 
+/** BGN: Noto Sans Mono **/
+  @font-face {
+    font-family: "noto-sans-mono";
+    src:  local("Noto Sans Mono"),
+          local("Noto Mono"), /* old name */
+          url("../fonts/NotoSansMono-Regular.ttf") format("opentype"),
+          url("../fonts/NotoSansMono-Regular.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: normal;
+  }
+  @font-face {
+    font-family: "noto-sans-mono";
+    src:  local("Noto Sans Mono"),
+          local("Noto Mono"), /* old name */
+          url("../fonts/NotoSansMono-Bold.ttf") format("opentype"),
+          url("../fonts/NotoSansMono-Bold.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: bold;
+  }
+/** END: Noto Sans Mono **/
+
 /** BGN: root and classes **/
   :root {
     /* BGN: standard set */
@@ -172,7 +172,7 @@
     font-family: var(--font-serif-noto, serif);
   }
   .font-mono-noto {
-    font-family: var(--font-mono-noto, serif);
+    font-family: var(--font-mono-noto, monospace);
   }
 /** END: :root and classes **/
 

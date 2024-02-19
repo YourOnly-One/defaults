@@ -105,11 +105,17 @@
   ***/
 
   /* BGN: Catch all Hebrew langs and scripts */
+    /* NOTES: https://en.wikipedia.org/wiki/ISO_15924 && https://en.wikipedia.org/wiki/ISO_639-3
+        * -Hebr - modern Hebrew script
+        * -Phnx - Paleo-Hebrew script
+        * he- or heb- - modern Hebrew
+        * hbo- - ancient Hebrew
+    */
     :lang(he), :lang(heb) {
       font-language-override: "IWR";
     }
     :lang(he), :lang(heb),
-    :lang(hbo), :lang(hbo-Hebr) {
+    :lang(hbo), :lang(hbo-Phnx), :lang(hbo-Hebr) {
       direction: rtl;
       font-style: normal;
       font-synthesis: weight;

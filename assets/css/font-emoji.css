@@ -76,7 +76,7 @@
     --font-emoji-twemoji: "twemoji-color", "Twitter Color Emoji";
     /*  --font-emoji-noto: "Noto Color Emoji", "Noto Emoji", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols"; */
     --font-emoji-noto: "Noto Color Emoji";
-    /* Temporary workaround to incompliete var() implementation in Gecko and Blink engines */
+    /* Temporary workaround to incomplete var() implementation in Gecko and Blink engines */
     --font-emoji: "twemoji-color", "Twitter Color Emoji", "JoyPixels", "Emoji Two", "EmojiOne Mozilla", "Emoji One", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji";
   }
   .font-emoji-twemoji {
