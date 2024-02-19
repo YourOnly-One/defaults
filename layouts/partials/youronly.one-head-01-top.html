@@ -31,11 +31,11 @@
 
 {{- $keywords := "" -}}
 {{- if .Params.keywords -}}
-  {{ $keywords = delimit .Params.keywords ", " }}
+  {{ $keywords = delimit .Params.keywords ", " | safeHTML }}
 {{- else if or .Params.tags .Params.categories -}}
-  {{ $keywords = delimit (apply (union .Params.tags .Params.categories) "chomp" ".") ", " }}
+  {{ $keywords = delimit (apply (union .Params.tags .Params.categories) "chomp" ".") ", " | safeHTML }}
 {{- else -}}
-  {{ $keywords = delimit .Site.Params.keywords ", " }}
+  {{ $keywords = delimit .Site.Params.keywords ", " | safeHTML }}
 {{- end -}}
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
