@@ -32,9 +32,9 @@
 {{- $browserconfigxml := resources.Get "favicon/browserconfig.xml" | resources.ExecuteAsTemplate "favicon/browserconfig.xml" . | fingerprint "sha512" -}}
 
 {{/* BGN: Polyfill */}}
-  {{/* 2024-01-17: v3.111.0; see: https://polyfill.io */}}
-  <link rel="preload" as="script" crossorigin href="https://polyfill.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated" />
-  <script type="text/javascript" id="Polyfill-script" fetchpriority="high" crossorigin src="https://polyfill.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated"></script>
+  {{/* 2024-01-17: v3.111.0; see: https://polyfill-fastly.io */}}
+  <link rel="preload" as="script" crossorigin href="https://polyfill-fastly.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated" />
+  <script type="text/javascript" id="Polyfill-script" fetchpriority="high" crossorigin src="https://polyfill-fastly.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated"></script>
 {{/* END: Polyfill */}}
 
 {{/* BGN: jQuery */}}
