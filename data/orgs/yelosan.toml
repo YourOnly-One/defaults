@@ -21,49 +21,49 @@ url = "https://yelosan.youronly.one/"
 [[brands]]
   id = "https://im.youronly.one/love/"
   logo = "https://rsc.youronly.one/img/y/Love_and_Relationship.webp"
-  name = "Love and Relationships 💞"
+  name = "Love and Relationships"
   url = "https://im.youronly.one/love/"
   iswebsite = true
 [[brands]]
   id = "https://im.youronly.one/snoworld/"
   logo = "https://rsc.youronly.one/img/y/snoworld-square.webp"
-  name = "Snoworld ❄️"
+  name = "Snoworld"
   url = "https://im.youronly.one/snoworld/"
   iswebsite = true
 [[brands]]
   id = "https://im.youronly.one/techmagus/"
   logo = "https://rsc.youronly.one/img/y/techmagus-Architetto-Esperiment-chimico.webp"
-  name = "techmagus 🚀"
+  name = "techmagus"
   url = "https://im.youronly.one/techmagus/"
   iswebsite = true
 [[brands]]
   id = "https://im.youronly.one/way/"
   logo = "https://rsc.youronly.one/img/y/Way-Hanukkahns4.svg"
-  name = "One Way Faith 🛐"
+  name = "One Way Faith"
   url = "https://im.youronly.one/way/"
   iswebsite = true
 [[brands]]
   id = "https://im.youronly.one/yuki/"
   logo = "https://rsc.youronly.one/img/y/Yuki_flag-square-888x.webp"
-  name = "YOOki Chronicles 📜"
+  name = "YOOki Chronicles"
   url = "https://im.youronly.one/yuki/"
   iswebsite = true
 [[brands]]
   id = "https://im.youronly.one/confidentraveler/"
   logo = "https://rsc.youronly.one/img/y/Confident_Traveler-logo-01-1500x.webp"
-  name = "Confident Traveler 🧭"
+  name = "Confident Traveler"
   url = "https://im.youronly.one/confidentraveler/"
   iswebsite = true
 [[brands]]
   id = "https://im.youronly.one/faithfulathlete/"
   logo = "https://rsc.youronly.one/img/y/Faithful_Athlete-logo-02-1500x.webp"
-  name = "Faithful Athlete 🎽"
+  name = "Faithful Athlete"
   url = "https://im.youronly.one/faithfulathlete/"
   iswebsite = true
 [[brands]]
   id = "https://im.youronly.one/yugenbard/"
   logo = "https://rsc.youronly.one/img/y/Yugen_Bard-logo-01-1500x.webp"
-  name = "Yūgen Bard 🎻"
+  name = "Yūgen Bard"
   url = "https://im.youronly.one/yugenbard/"
   iswebsite = true
 [[brands]]
