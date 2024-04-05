@@ -177,7 +177,7 @@ url = "https://iam.youronly.one/"
 [[brands]]
   id = "https://im.youronly.one/"
   logo = "https://rsc.youronly.one/img/y/Yuki_flag-square-888x.webp"
-  name = "♾️ 🐬 I'M YourOnly.One 🔏"
+  name = "I'M YourOnly.One"
   url = "https://im.youronly.one/"
   iswebsite = true
 
