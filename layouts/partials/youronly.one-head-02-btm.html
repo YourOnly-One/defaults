@@ -3,11 +3,12 @@
 {{- $layoutscss := resources.Get "scss/layouts.scss" -}}
 {{- $semwebcss := resources.Get "css/semweb-style.css" -}}
 {{- $quotecss := resources.Get "css/quote.css" -}}
+{{- $syndicationcss := resources.Get "css/syndication.css" -}}
 {{- $localcss := resources.Get "css/youronly.one-head-04-local.css" -}}
 
 {{- $yookiscss := slice $yukiscss $globalscss $layoutscss | resources.Concat "scss/yooki.scss" -}}
 {{- $yookicss := $yookiscss | resources.ExecuteAsTemplate "css/yooki.css" . | toCSS -}}
-{{- $yookicss = slice $yookicss $semwebcss $quotecss $localcss | resources.Concat "css/yooki.css" -}}
+{{- $yookicss = slice $yookicss $semwebcss $quotecss $syndicationcss $localcss | resources.Concat "css/yooki.css" -}}
 {{- $yookicss = $yookicss | minify | fingerprint "sha512" -}}
 
 {{- $FontDefaultsScss := resources.Get "scss/font-defaults.scss" | resources.ExecuteAsTemplate "css/fonts-defaults.css" . | toCSS -}}
