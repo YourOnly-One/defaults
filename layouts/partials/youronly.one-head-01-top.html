@@ -6,7 +6,7 @@
   - The consumer app/software can do the conversion as needed.
   - do not re-arrange
 */ -}}
-{{- $iso8601 := "2006-01-02T15:04:05Z07:00" -}}
+{{- $iso8601 := "2006-01-02T15:04:05Z07:00" }}
 
 {{- $authors := "" -}}
 {{- $datapersons := .Site.Data.persons -}}
@@ -29,48 +29,104 @@
   {{ $authors = .Param "author" }}
 {{- end -}}
 
-{{- $keywords := "" -}}
-{{- if .Params.keywords -}}
-  {{ $keywords = delimit .Params.keywords ", " | safeHTML }}
-{{- else if or .Params.tags .Params.categories -}}
-  {{ $keywords = delimit (apply (union .Params.tags .Params.categories) "chomp" ".") ", " | safeHTML }}
-{{- else -}}
-  {{ $keywords = delimit .Site.Params.keywords ", " | safeHTML }}
-{{- end -}}
+{{- $keywords := "" }}
+{{- if .Params.keywords }}
+  {{- $keywords = delimit .Params.keywords ", " | safeHTML }}
+{{- else if or .Params.tags .Params.categories }}
+  {{- $keywords = delimit (apply (union .Params.tags .Params.categories) "chomp" ".") ", " | safeHTML }}
+{{- else }}
+  {{- $keywords = delimit site.Params.keywords ", " | safeHTML }}
+{{- end }}
 
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'" /> -->
-<meta name="referrer" content="strict-origin-when-cross-origin" />
-{{/* Note: Above is fixed in position. */}}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{- /* NOTE: It is better to set this on the server
+  {{ if hugo.IsServer }}<meta http-equiv="Content-Security-Policy" content="default-src 'self'">{{- end }}
+*/}}
+<meta name="referrer" content="strict-origin-when-cross-origin">
+{{ with .Params.redirectto }}<meta http-equiv="refresh" content="0; url='{{ . }}'">{{ end }}
 
 {{/* BGN: Translations, AlternateOutputFormats */}}
-  {{- if .IsTranslated }}
-    {{ range .AllTranslations }}<link rel="alternate" href="{{ .Permalink }}" hreflang="{{ or (.Site.Language.LanguageCode) (.Site.Language.Lang) }}" />{{ end }}
-    {{ range first 1 .AllTranslations }}<link rel="alternate" href="{{ .Permalink }}" hreflang="x-default" />{{ end }}
-  {{- end -}}
-  {{ range .AlternativeOutputFormats }}<link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ .Permalink | safeURL }}" />{{ end }}
+  {{ if .IsTranslated }}
+    {{- range .AllTranslations }}
+      <link rel="alternate" hreflang="{{ or .Site.Language.LanguageCode .Site.Language.Lang }}" href="{{ .Permalink }}">
+    {{- end }}
+    {{- range first 1 .AllTranslations }}
+      <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+    {{- end }}
+  {{- end }}
+  {{- range .AlternativeOutputFormats }}
+      <link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ .Permalink | safeURL }}">
+  {{- end }}
 {{/* END: Translations, AlternateOutputFormats */}}
-<link rel="self" href="{{ .Permalink }}" />
+<link rel="self" href="{{ .Permalink }}">
 
 {{/* BGN: Fediverse, IndieWeb, Webmention, OpenID */}}
-  <link rel="alternate" type="application/activity+json" href="https://fed.brid.gy/r/{{ .Permalink }}" />
-  <link rel="alternate" type="application/activity+json" href="https://web.brid.gy/r/{{ .Permalink }}" />
-  {{ range .Site.Params.websubhubs }}<link rel="hub" href="{{ . }}" />{{ end }}
-  <link rel="webmention" href="https://webmention.io/im.youronly.one/webmention" />
-  <link rel="pingback" href="https://webmention.io/im.youronly.one/xmlrpc" />
-  <link rel="indieauth-metadata authorization_endpoint" href="https://indieauth.com/auth" />
-  <link rel="openid.delegate" href="https://im.youronly.one/" />
-  <link rel="openid.server" href="https://openid.indieauth.com/openid" />
+  <link rel="alternate" type="application/activity+json" href="https://fed.brid.gy/r/{{ .Permalink }}">
+  {{- /* <link rel="alternate" type="application/activity+json" href="https://web.brid.gy/r/{{ .Permalink }}"> */}}
+  {{- range site.Params.websubhubs }}
+    <link rel="hub" href="{{ . }}">
+  {{- end }}
+  <link rel="webmention" href="{{ site.Params.indieweb.webmention }}">
+  <link rel="pingback" href="{{ site.Params.indieweb.pingback }}">
+  <link rel="indieauth-metadata authorization_endpoint" href="{{ site.Params.indieweb.indieauth }}">
+  <link rel="openid.delegate" href="{{ site.Params.indieweb.openid.delegate }}">
+  <link rel="openid.server" href="{{ site.Params.indieweb.openid.server }}">
 {{/* END: Fediverse, IndieWeb, Webmention, OpenID */}}
 
-<meta name="robots" content="{{ if .Params.metarobots }}{{ .Params.metarobots }}{{ else }}all, index{{ end }}, follow" />
-{{ with .Params.redirectto }}<meta http-equiv="refresh" content="0; url='{{ . }}'" />{{ end }}
-<meta name="author" content="{{ $authors }}" />
-{{ with (.Param "description") }}<meta name="description" class="p-summary" content="{{ . | plainify }}" />{{ end }}
-{{ with $keywords }}<meta name="keywords" content="{{ . }}" />{{ end }}
-{{ with or .Lastmod .PublishDate .Date }}<meta name="modified" content="{{ .UTC.Format $iso8601 | safeHTML }}" />{{ end }}
-{{ with or .PublishDate .Date .Lastmod }}<meta name="created" content="{{ .UTC.Format $iso8601 | safeHTML }}" />{{ end }}
-<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" />
+{{/* BGN: Verifications */}}
+  {{ with site.Params.verifications.flattr }}<meta name="flattr:id" content="{{ . }}">{{- end }}
+  {{ with site.Params.verifications.followit }}<meta name="follow.it-verification-code" content="{{ . }}">{{- end }}
+  {{ with site.Params.verifications.google }}<meta name="google-site-verification" content="{{ . }}">{{- end }}
+  {{ with site.Params.verifications.microsoft }}<meta name="msvalidate.01" content="{{ . }}">{{- end }}
+  {{ with site.Params.verifications.naver }}<meta name="naver-site-verification" content="{{ . }}">{{- end }}
+  {{ with site.Params.verifications.ocs }}<meta name="ocs-site-verification" content="{{ . }}">{{- end }}
+  {{ with site.Params.verifications.pinterest }}<meta name="p:domain_verify" content="{{ . }}">{{- end }}
+  {{ with site.Params.verifications.wot }}<meta name="wot-verification" content="{{ . }}">{{- end }}
+  {{ with site.Params.verifications.yandex }}<meta name="yandex-verification" content="{{ . }}">{{- end }}
+{{/* END: Verifications */}}
+
+{{/* Note: Above is fixed in position. */}}
+
+{{ hugo.Generator }}
+{{ if hugo.IsServer }}<meta http-equiv="cache-control" content="no-cache">{{- end }}
+
+<meta name="robots" content="{{ with (.Param `metarobots`) }}{{ . }}{{ end }}">
+{{- with or .Lastmod .PublishDate .Date }}<meta name="modified" content="{{ .UTC.Format $iso8601 | safeHTML }}">{{- end }}
+{{- with or .PublishDate .Date .Lastmod }}<meta name="created" content="{{ .UTC.Format $iso8601 | safeHTML }}">{{- end }}
+<link rel="license" href="{{ .Param `license` }}">
+
+<title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ site.Title }}{{ end }}</title>
+
+{{ with (.Param "description") }}<meta name="description"{{ if $.IsPage }} class="p-summary"{{ end }} content="{{ . | plainify }}">{{- end }}
+
+<meta name="author" content="{{ $authors }}">
+{{ with $keywords }}<meta name="keywords" content="{{ . }}">{{- end }}
+
+{{ partial "schemas/semweb.html" . }}
+{{ partial "schemas/schema_Global.html" . }}
+{{ template "_internal/opengraph.html" . }}
+<meta name="twitter:dnt" content="on">
+{{ template "_internal/twitter_cards.html" . }}
+
+{{ with resources.Get "site.webmanifest" }}
+{{- $sitewebmanifest := resources.Get "site.webmanifest" | resources.ExecuteAsTemplate "site.webmanifest" . | resources.Fingerprint "sha512" }}
+<link rel="manifest" crossorigin href="{{ $sitewebmanifest.RelPermalink }}" integrity="{{ $sitewebmanifest.Data.Integrity }}">
+{{- end }}
+
+{{/* BGN: Preconnect, dns-prefetch */}}
+  {{- range site.Params.preconnect }}
+  <link rel="preconnect" crossorigin href="{{ . }}">
+  {{- end }}
+  {{- range site.Params.dnsprefetch }}
+  <link rel="dns-prefetch" crossorigin href="{{ . }}">
+  {{- end }}
+{{/* END: Preconnect, dns-prefetch */}}
+
+{{/* BGN: Fonts - external */}}
+  {{ with site.Params.webfonts }}{{- range $i, $webfont := . }}{{ if $i }}{{ end }}{{ if .enable }}
+  <link rel="stylesheet" crossorigin href="{{ .url }}" />
+  {{- end }}{{- end }}{{- end }}
+{{/* END: Fonts - external */}}
 
 {{- /*
   NOTE: This is a temporary hack to save the cover image.
@@ -99,85 +155,3 @@
     {{- $savecoverimage =$savecoverimagelocal.RelPermalink -}}
   {{- end -}}
 {{- end -}}
-
-{{ partial "schemas/semweb.html" . }}
-{{ partial "schemas/schema_Global.html" . }}
-{{ template "_internal/opengraph.html" . }}
-<meta name="twitter:dnt" content="on">
-{{ template "_internal/twitter_cards.html" . }}
-
-{{- with resources.Get "site.webmanifest" -}}
-  {{- $sitewebmanifest := resources.Get "site.webmanifest" | resources.ExecuteAsTemplate "site.webmanifest" . | resources.Fingerprint "sha512" -}}
-  <link rel="manifest" crossorigin href="{{ $sitewebmanifest.RelPermalink }}" integrity="{{ $sitewebmanifest.Data.Integrity }}" />
-{{- end -}}
-{{ if site.IsServer }}
-  <meta http-equiv="cache-control" content="no-cache">
-{{ end }}
-
-{{/* BGN: Verifications */}}
-  {{ with .Site.Params.verify.flattr }}<meta name="flattr:id" content="{{ . }}" />{{ end }}
-  {{ with .Site.Params.verify.followit }}<meta name="follow.it-verification-code" content="{{ . }}" />{{ end }}
-  {{ with .Site.Params.verify.google }}<meta name="google-site-verification" content="{{ . }}">{{ end }}
-  {{ with .Site.Params.verify.microsoft }}<meta name="msvalidate.01" content="{{ . }}">{{ end }}
-  {{ with .Site.Params.verify.naver }}<meta name="naver-site-verification" content="{{ . }}" />{{ end }}
-  {{ with .Site.Params.verify.ocs }}<meta name="ocs-site-verification" content="{{ . }}" />{{ end }}
-  {{ with .Site.Params.verify.pinterest }}<meta name="p:domain_verify" content="{{ . }}">{{ end }}
-  {{ with .Site.Params.verify.wot }}<meta name="wot-verification" content="{{ . }}" />{{ end }}
-  {{ with .Site.Params.verify.yandex }}<meta name="yandex-verification" content="{{ . }}">{{ end }}
-{{/* END: Verifications */}}
-
-{{/* NOTE: above was ordered intentionally */}}
-
-{{ hugo.Generator }}
-
-{{/* BGN: Preconnect, dns-prefetch */}}
-  {{- /* see:
-          https://developer.mozilla.org/en-US/docs/Web/Performance/Speculative_loading
-          https://css-tricks.com/prefetching-preloading-prebrowsing/
-          https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API
-  */ -}}
-  {{- /*
-    * preconnect
-      * Use on your most critical cross-origin connections to provide performance improvements when connecting to them.
-    * dns-prefetch
-      * Use on all of your cross-origin connections to provide small performance improvements when connecting to them.
-    * preload
-      * Use to load high-priority resources faster on the current page, for strategic performance improvements.
-      * Don't preload everything, otherwise you won't see the benefit.
-      * other uses: https://www.smashingmagazine.com/2016/02/preload-what-is-it-good-for/
-    * modulepreload
-      * Use to preload high-priority JavaScript modules for strategic performance improvements.
-      * Do not add the 'as' attribute
-    * prefecth
-      * Use to prefetch same-site future navigation resources or subresources used on those pages.
-      * Uses HTTP cache therefore has a number of issues with document prefetches, such as being potentially blocked by Cache-Control headers.
-      * better to use the Speculation Rules API instead
-    * prerender
-      * DEPRECATED
-      * better to use the Speculation Rules API instead
-  */ -}}
-  <link rel="preconnect" crossorigin href="https://fonts.bunny.net" />
-  <link rel="preconnect" crossorigin href="https://cdn.jsdelivr.net" />
-  <link rel="dns-prefetch" crossorigin href="https://unpkg.com" />
-  <link rel="dns-prefetch" crossorigin href="https://cdnjs.cloudflare.com" />
-  <link rel="dns-prefetch" crossorigin href="https://ajax.cloudflare.com" />
-{{/* END: Preconnect, dns-prefetch */}}
-
-{{/* BGN: Fonts - external */}}
-  {{- /* see:
-          https://csswizardry.com/2020/05/the-fastest-google-fonts/
-          https://sia.codes/posts/making-google-fonts-faster/
-
-    NOTE: due to CSP, we can not use the media="print" onload="this.media='all'" hack in rel="stylesheet"
-  */ -}}
-
-  {{- /* NOTE: cache the styles */ -}}
-  <link rel="preload" as="style" crossorigin href="https://fonts.bunny.net/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" />
-  {{- /* NOTE: execute the styles */ -}}
-  <link rel="stylesheet" media="all" crossorigin href="https://fonts.bunny.net/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" />
-  {{- /* NOTE: We do not need this since the print hack is disabled
-    <noscript>
-      <link rel="stylesheet" crossorigin href="https://fonts.bunny.net/css2??family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;700&family=Noto+Sans+Tagalog&family=Noto+Sans+Tagbanwa&family=Noto+Sans+Buhid&family=Noto+Sans+Hanunoo&family=Noto+Sans+Phoenician&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"  />
-    </noscript>
-  */ -}}
-{{/* END: Fonts - external */}}

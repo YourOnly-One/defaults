@@ -32,6 +32,10 @@
 {{- $faviconico := resources.Get "favicon/favicon.ico" | fingerprint "sha512" -}}
 {{- $browserconfigxml := resources.Get "favicon/browserconfig.xml" | resources.ExecuteAsTemplate "favicon/browserconfig.xml" . | fingerprint "sha512" -}}
 
+{{- if templates.Exists "partials/relme.html" -}}
+  {{ partial "relme.html" . }}
+{{- end }}
+
 {{/* BGN: Polyfill */}}
   {{/* 2024-01-17: v3.111.0; see: https://polyfill-fastly.io */}}
   <link rel="preload" as="script" crossorigin href="https://polyfill-fastly.io/v3/polyfill.min.js?version=3.111.0&features=default%2CIntl%2Ces5%2Ces6%2Ces7%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019%2Ces2020%2Ces2021%2Ces2022&flags=gated" />
@@ -78,54 +82,52 @@
 <link rel="stylesheet" type="{{ $yookicss.MediaType }}" media="all" crossorigin href="{{ $yookicss.RelPermalink }}" integrity="{{ $yookicss.Data.Integrity }}" />
 
 {{/* BGN: favicon */}}
-  {{- /* NOTE: disabled temporarily until we upload this file in each blog
-    <link rel="icon" type="{{ $faviconsvg.MediaType }}" sizes="any" crossorigin href="{{ $faviconsvg.RelPermalink }}" integrity="{{ $faviconsvg.Data.Integrity }}" />
-  */ -}}
-
-  <link rel="icon" type="{{ $androidchrome192png.MediaType }}" sizes="192x192" crossorigin href="{{ $androidchrome192png.RelPermalink }}" integrity="{{ $androidchrome192png.Data.Integrity }}" />
-  <link rel="apple-touch-icon" type="{{ $appletouchiconpng.MediaType }}" sizes="180x180" crossorigin href="{{ $appletouchiconpng.RelPermalink }}" integrity="{{ $appletouchiconpng.Data.Integrity }}" />
-  <link rel="icon" type="{{ $favicon32png.MediaType }}" sizes="32x32" crossorigin href="{{ $favicon32png.RelPermalink }}" integrity="{{ $favicon32png.Data.Integrity }}" />
-  <link rel="icon" type="{{ $favicon16png.MediaType }}" sizes="16x16" crossorigin href="{{ $favicon16png.RelPermalink }}" integrity="{{ $favicon16png.Data.Integrity }}" />
-  <link rel="mask-icon" type="{{ $safaripinnedtabsvg.MediaType }}" color="#5bbad5" crossorigin href="{{ $safaripinnedtabsvg.RelPermalink }}" integrity="{{ $safaripinnedtabsvg.Data.Integrity }}" />
-  <link rel="shortcut icon" type="{{ $faviconico.MediaType }}" crossorigin href="{{ $faviconico.RelPermalink }}" integrity="{{ $faviconico.Data.Integrity }}" />
-
   <meta name="theme-color" content="{{ .Site.Params.themeColor | default `#000` }}" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="{{ .Site.Params.themeColor | default `#fff` }}" media="(prefers-color-scheme: light)">
-  {{ with .Site.Params.favicon_mstilecolor }}<meta name="msapplication-TileColor" content="{{ . }}" />{{ end }}
-  <meta name="msapplication-config" content="{{ $browserconfigxml.Permalink }}" integrity="{{ $browserconfigxml.Data.Integrity }}" />
-
-  <meta name="application-name" content="{{ .Site.Title }}">
-  <meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}">
+  {{ with resources.Get "favicon/browserconfig.xml" }}
+    {{- $browserconfigxml := . | resources.ExecuteAsTemplate "favicon/browserconfig.xml" . | fingerprint "sha512" }}
+    <meta name="msapplication-config" content="{{ $browserconfigxml.Permalink }}" integrity="{{ $browserconfigxml.Data.Integrity }}">
+  {{- end }}
+  {{ with resources.Get "favicon/favicon.svg" }}
+    {{- $faviconsvg := . | fingerprint "sha512" }}
+    <link rel="icon" type="{{ $faviconsvg.MediaType }}" sizes="any" crossorigin href="{{ $faviconsvg.RelPermalink }}" integrity="{{ $faviconsvg.Data.Integrity }}">
+  {{- end }}
+  {{ with resources.Get "favicon/android-chrome-192x192.png" }}
+    {{- $androidchrome192png := . | fingerprint "sha512" }}
+    <link rel="icon" type="{{ $androidchrome192png.MediaType }}" sizes="192x192" crossorigin href="{{ $androidchrome192png.RelPermalink }}" integrity="{{ $androidchrome192png.Data.Integrity }}">
+  {{- end }}
+  {{ with resources.Get "favicon/apple-touch-icon.png" }}
+    {{- $appletouchiconpng := . | fingerprint "sha512" }}
+    <link rel="apple-touch-icon" type="{{ $appletouchiconpng.MediaType }}" sizes="180x180" crossorigin href="{{ $appletouchiconpng.RelPermalink }}" integrity="{{ $appletouchiconpng.Data.Integrity }}">
+  {{- end }}
+  {{ with resources.Get "favicon/favicon-32x32.png" }}
+    {{- $favicon32png := . | fingerprint "sha512" }}
+    <link rel="icon" type="{{ $favicon32png.MediaType }}" sizes="32x32" crossorigin href="{{ $favicon32png.RelPermalink }}" integrity="{{ $favicon32png.Data.Integrity }}">
+  {{- end }}
+  {{ with resources.Get "favicon/favicon-16x16.png" }}
+    {{- $favicon16png := . | fingerprint "sha512" }}
+    <link rel="icon" type="{{ $favicon16png.MediaType }}" sizes="16x16" crossorigin href="{{ $favicon16png.RelPermalink }}" integrity="{{ $favicon16png.Data.Integrity }}">
+  {{- end }}
+  {{ with resources.Get "favicon/safari-pinned-tab.svg" }}
+    {{- $safaripinnedtabsvg := . | fingerprint "sha512" }}
+    <link rel="mask-icon" type="{{ $safaripinnedtabsvg.MediaType }}" color="#5bbad5" crossorigin href="{{ $safaripinnedtabsvg.RelPermalink }}" integrity="{{ $safaripinnedtabsvg.Data.Integrity }}">
+  {{- end }}
+  {{ with resources.Get "favicon/favicon.ico" }}
+    {{- $faviconico := . | fingerprint "sha512" }}
+    <link rel="shortcut icon" type="{{ $faviconico.MediaType }}" crossorigin href="{{ $faviconico.RelPermalink }}" integrity="{{ $faviconico.Data.Integrity }}">
+  {{- end }}
+  {{ with site.Params.favicon_mstilecolor }}<meta name="msapplication-TileColor" content="{{ . }}">{{- end }}
+  <meta name="application-name" content="{{ site.Title }}">
+  <meta name="apple-mobile-web-app-title" content="{{ site.Title }}">
 {{/* END: favicon */}}
 
 {{/* BGN: Geotags */}}
-  <meta name="DC.title" content="{{ .Site.Title }}" />
-  <meta name="geo.region" content="PH-00" />
-  <meta name="geo.placename" content="Manila" />
-  <meta name="geo.position" content="14.599781;120.973935" />
-  <meta name="ICBM" content="14.599781, 120.973935" />
+  <meta name="DC.title" content="{{ site.Title }}">
+  <meta name="geo.region" content="{{ site.Params.geotags.region }}">
+  <meta name="geo.placename" content="{{ site.Params.geotags.placename }}">
+  <meta name="geo.position" content="{{ site.Params.geotags.poslat }};{{ site.Params.geotags.poslong }}">
+  <meta name="ICBM" content="{{ site.Params.geotags.poslat }}, {{ site.Params.geotags.poslong }}">
 {{/* END: Geotags */}}
-
-{{- if templates.Exists "partials/relme.html" -}}
-  {{ partial "relme.html" . }}
-{{- end }}
-
-{{/* BGN: OneSignal */}}
-  {{- with and .Site.Params.tools.onesignal (hugo.IsProduction) -}}
-    {{/* NOTE: Do not add crossorigin=anonymous */}}
-    {{- /* 2024-01-17: disabled
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" type="text/javascript" async ></script>
-    <script>
-      window.OneSignal = window.OneSignal || [];
-      OneSignal.push(function () {
-        OneSignal.init({
-          appId: "{{ . }}",
-        });
-      });
-    </script>
-    */ -}}
-  {{- end -}}
-{{/* END: OneSignal */}}
 
 {{/* BGN: NowPlaying LastFM */}}
   {{- $sitepath := (urls.Parse site.BaseURL).Path -}}
@@ -137,25 +139,30 @@
   {{ end }}
 {{/* END: NowPlaying LastFM */}}
 
-{{/* BGN: twemoji */}}
-  {{- /* 2024-01-17: v15.0.3; see: https://github.com/jdecked/twemoji */ -}}
-  {{- $twemojijs := resources.Get "js/twemoji.js" -}} {{/* src: https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.js */}}
-  {{- $twemojisettingsjs := resources.Get "js/twemoji-settings.js" -}}
-  {{- $twemojialljs := slice $twemojijs $twemojisettingsjs | resources.Concat "js/twemoji-all.js" -}}
-  {{- $twemojialljs = $twemojialljs | minify | fingerprint "sha512" -}}
-  <script type="{{ $twemojialljs.MediaType }}" id="twemoji-script" defer fetchpriority="low" crossorigin src="{{ $twemojialljs.RelPermalink }}" integrity="{{ $twemojialljs.Data.Integrity }}"></script>
-{{/* END: twemoji */}}
-
 {{/* BGN: Analytics codes */}}
-  {{- with and .Site.Params.analytics.cfwebanalytics (hugo.IsProduction) -}}
-    <script type="text/javascript" crossorigin src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ . }}"}'></script>
-  {{- end -}}
-
-  {{- with and .Site.Params.analytics.microanalyticsio (hugo.IsProduction) -}}
+  {{- with and site.Params.analytics.microanalyticsio hugo.IsProduction -}}
     <script type="text/javascript" id="{{ . }}" src="https://microanalytics.io/js/script.js" data-host="https://microanalytics.io" data-dnt="true"></script>
   {{- end -}}
 
-  {{- with and .Site.Params.analytics.naver (hugo.IsProduction) -}}
+  {{- with and site.Params.analytics.swetrix hugo.IsProduction -}}
+    {{- $swetrixjs := resources.Get "js/analytics-swetrix.js" | js.Build ( dict "params" ( dict "swetrixid" . ) ) -}}
+    {{- $swetrixjs = $swetrixjs | minify | fingerprint "sha512" -}}
+    <script type="text/javascript" src="https://swetrix.org/swetrix.js"></script>
+    <script type="{{ $swetrixjs.MediaType }}" crossorigin src="{{ $swetrixjs.RelPermalink }}" integrity="{{ $swetrixjs.Data.Integrity }}"></script>
+    {{/* <noscript><img referrerpolicy="no-referrer-when-downgrade" src="https://api.swetrix.com/log/noscript?pid={{ . }}" alt=""></noscript> */}}
+  {{- end -}}
+
+  {{- with and site.Params.analytics.counterdev hugo.IsProduction -}}
+    {{- $counterdevjs := resources.Get "js/analytics-counterdev.js" | js.Build ( dict "params" ( dict "counterdevid" . ) ) -}}
+    {{- $counterdevjs = $counterdevjs | minify | fingerprint "sha512" -}}
+    <script type="{{ $counterdevjs.MediaType }}" crossorigin src="{{ $counterdevjs.RelPermalink }}" integrity="{{ $counterdevjs.Data.Integrity }}"></script>
+  {{- end -}}
+
+  {{- with and site.Params.analytics.cfwebanalytics hugo.IsProduction -}}
+    <script type="text/javascript" crossorigin src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ . }}"}'></script>
+  {{- end -}}
+
+  {{- with and site.Params.analytics.naver hugo.IsProduction -}}
     <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
     {{- /* NOTE: Naver Analytics will only work if inline and the actual code is retained.
         - Tested:
@@ -171,21 +178,7 @@
     </script>
   {{- end -}}
 
-  {{- with and .Site.Params.analytics.counterdev (hugo.IsProduction) -}}
-    {{- $counterdevjs := resources.Get "js/analytics-counterdev.js" | js.Build ( dict "params" ( dict "counterdevid" . ) ) -}}
-    {{- $counterdevjs = $counterdevjs | minify | fingerprint "sha512" -}}
-    <script type="{{ $counterdevjs.MediaType }}" crossorigin src="{{ $counterdevjs.RelPermalink }}" integrity="{{ $counterdevjs.Data.Integrity }}"></script>
-  {{- end -}}
-
-  {{- with and .Site.Params.analytics.swetrix (hugo.IsProduction) -}}
-    {{- $swetrixjs := resources.Get "js/analytics-swetrix.js" | js.Build ( dict "params" ( dict "swetrixid" . ) ) -}}
-    {{- $swetrixjs = $swetrixjs | minify | fingerprint "sha512" -}}
-    <script type="text/javascript" src="https://swetrix.org/swetrix.js"></script>
-    <script type="{{ $swetrixjs.MediaType }}" crossorigin src="{{ $swetrixjs.RelPermalink }}" integrity="{{ $swetrixjs.Data.Integrity }}"></script>
-    {{/* <noscript><img referrerpolicy="no-referrer-when-downgrade" src="https://api.swetrix.com/log/noscript?pid={{ . }}" alt="" /></noscript> */}}
-  {{- end -}}
-
-  {{- with and .Site.Params.analytics.microsoftclarity (hugo.IsProduction) -}}
+  {{- with and site.Params.analytics.microsoftclarity hugo.IsProduction -}}
     {{- $msftclarityjs := resources.Get "js/analytics-msftclarity.js" | js.Build ( dict "params" ( dict "msftclarityid" . ) ) -}}
     {{- $msftclarityjs = $msftclarityjs | minify | fingerprint "sha512" -}}
     <script type="{{ $msftclarityjs.MediaType }}" crossorigin src="{{ $msftclarityjs.RelPermalink }}" integrity="{{ $msftclarityjs.Data.Integrity }}"></script>
