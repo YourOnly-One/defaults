@@ -57,17 +57,13 @@
   * 2. Do not use var(), it will not work correctly.
   */
   :root {
-    /* BGN: standard set */
-      --font-fangsong-zhs-sans-noto-rotated: "noto-sans", "Noto Sans", "Noto Fangsong KSS Rotated"; /* fangsong */
-      --font-fangsong-zhs-sans-noto-vertical: "noto-sans", "Noto Sans", "Noto Fangsong KSS Vertical"; /* fangsong */
-    /* END: standard set */
+    --font-zhs-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK SC", "Noto Sans SC";
+    --font-zht-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK TC", "Noto Sans TC";
+    --font-fangsong-zhs-sans-noto-rotated: "noto-sans", "Noto Sans", "Noto Fangsong KSS Rotated";
+    --font-fangsong-zhs-sans-noto-vertical: "noto-sans", "Noto Sans", "Noto Fangsong KSS Vertical";
 
-    /* BGN: LANG set */
-      --font-zhs-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK SC", "Noto Sans SC";
-      --font-zht-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK TC", "Noto Sans TC";
-      --font-ja-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK JP", "Noto Sans JP"; /* Nihongo */
-      --font-ko-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK KR", "Noto Sans KR"; /* Hangugeo */
-    /* END: LANG set */
+    --font-ja-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK JP", "Noto Sans JP";
+    --font-ko-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK KR", "Noto Sans KR";
   }
   .font-fangsong-zhs-sans-noto-rotated {
     font-family: var(--font-fangsong-zhs-sans-noto-rotated);
@@ -89,61 +85,49 @@
   }
 /** END: :root and classes **/
 
-/* BGN: Catch all Chinese lang */
-  /* :lang("zh-*"), */
-  :lang(zh) {
-    direction: ltr;
-    font-variant-east-asian: traditional proportional-width;
-    font-language-override: "ZHT";
-    font-style: normal;
-    font-synthesis: weight;
-  }
-  :lang(zh-Hans) {
-    direction: ltr;
-    font-variant-east-asian: simplified proportional-width;
-    font-language-override: "ZHS";
-    font-style: normal;
-    font-synthesis: weight;
-  }
-  :lang(zh-Hant-HK) {
-    direction: ltr;
-    font-variant-east-asian: traditional proportional-width;
-    font-language-override: "ZHH";
-    font-style: normal;
-    font-synthesis: weight;
-  }
-  :lang(zh-Hans-HK) {
-    direction: ltr;
-    font-variant-east-asian: simplified proportional-width;
-    font-language-override: "ZHS";
-    font-style: normal;
-    font-synthesis: weight;
-  }
-  :lang(zh-Latn),
-  :lang(zh-Latn-pinyin), :lang(zh-Latn-tongyong), :lang(zh-Latn-wadegile),
-  :lang(yue-jyutping), :lang(zh-yue-jyutping) {
-    font-language-override: "ZHP";
-  }
-/* END: Catch all Chinese lang */
+  /* BGN: Hanzi (Traditional & Simple) */
+    :lang(yue),
+    :lang(zh) {
+      direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+      /* font-family: */ /* Don't set this. Use -Hant or -Hans instead. */
+      font-style: normal; /* ensure there are no italic and oblique styles */
+      font-synthesis: weight; /* only allow 'bold' synthesis */
+      /* font-variant-east-asian: */ /* Don't set this. Use -Hant or -Hans instead. */
+    }
+    :lang(zh-Hans) {
+      font-family: var(--font-zhs-sans-serif, sans-serif);
+      font-language-override: "ZHS";
+      font-variant-east-asian: simplified full-width;
+    }
+    :lang(zh-Hant) {
+      font-family: var(--font-zht-sans-serif), sans-serif;
+      font-language-override: "ZHT";
+      font-variant-east-asian: traditional full-width;
+    }
+    :lang(zh-Hant-HK) {
+      font-family: var(--font-zht-sans-serif), sans-serif;
+      font-language-override: "ZHH";
+    }
+  /* END: Hanzi (Traditional & Simple) */
 
-/* BGN: Catch all Japanese lang */
-  /* :lang("ja-*"), */
-  :lang(ja) {
-    direction: ltr;
-    font-variant-east-asian: jis04 proportional-width;
-    font-language-override: "JAN";
-    font-style: normal;
-    font-synthesis: weight;
-  }
-/* END: Catch all Japanese lang */
+  /* BGN: Kana + Nihongo */
+    :lang(ja) {
+      direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+      font-family: var(--font-ja-sans-serif, sans-serif);
+      font-language-override: "JAN";
+      font-style: normal; /* ensure there are no italic and oblique styles */
+      font-synthesis: weight; /* only allow 'bold' synthesis */
+      font-variant-east-asian: jis04 full-width;
+    }
+  /* END: Kana + Nihongo */
 
-/* BGN: Catch all Korean lang */
-  /* :lang("ko-*"), */
-  :lang(ko) {
-    direction: ltr;
-    font-variant-east-asian: proportional-width;
-    font-language-override: "KOR";
-    font-style: normal;
-    font-synthesis: weight;
-  }
-/* END: Catch all Korean lang */
+  /* BGN: Hangeul + Hangugeo */
+    :lang(ko) {
+      direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+      font-family: var(--font-ko-sans-serif, sans-serif);
+      font-language-override: "KOR";
+      font-style: normal; /* ensure there are no italic and oblique styles */
+      font-synthesis: weight; /* only allow 'bold' synthesis */
+      font-variant-east-asian: full-width;
+    }
+  /* END: Hangeul + Hangugeo */

@@ -37,15 +37,25 @@
 ***/
 
 /* BGN: REGULARLY USED */
+  @font-face {
+    font-family: "phoenician-sans-noto";
+    src:  url("../fonts/NotoSansPhoenician-Regular.otf") format("opentype"),
+          url("../fonts/NotoSansPhoenician-Regular.ttf") format("truetype"),
+          local("Noto Sans Phoenician");
+    font-display: swap;
+    size-adjust: 100%;
+  }
+
   /* BGN: [Custom] Hebrew-Paleo-Gezer-Unicode */
     @font-face {
       font-family: "hebrew-sans-paleo-gezer";
-      src:  local("Hebrew Paleo Gezer"), /* full font name */
-            local("Hebrew-Paleo-Gezer"), /* Postscript name */
-            url("../fonts/hebrew-paleo-gezer-pure-unicode-webfont.woff2") format("woff2"),
+      src:  url("../fonts/hebrew-paleo-gezer-pure-unicode-webfont.woff2") format("woff2"),
             url("../fonts/hebrew-paleo-gezer-pure-unicode-webfont.woff") format("woff"),
-            url("../fonts/hebrew-paleo-gezer-pure-unicode-webfont.ttf") format("opentype");
+            url("../fonts/hebrew-paleo-gezer-pure-unicode-webfont.ttf") format("opentype"),
+            local("Hebrew Paleo Gezer"), /* full font name */
+            local("Hebrew-Paleo-Gezer"); /* Postscript name */
       font-display: swap;
+      size-adjust: 100%;
       unicode-range: U+10900-1091F;
     }
   /* END: [Custom] Hebrew-Paleo-Gezer-Unicode */
@@ -55,12 +65,13 @@
   /* BGN: [Custom] Hebrew-Proto-Canaanite-Unicode */
     @font-face {
       font-family: "hebrew-sans-proto-canaanite";
-      src:  local("Proto Canaanite"), /* full font name */
-            local("Proto-Canaanite"), /* Postscript name */
-            url("../fonts/proto-canaanite-pure-unicode-webfont.woff2") format("woff2"),
+      src:  url("../fonts/proto-canaanite-pure-unicode-webfont.woff2") format("woff2"),
             url("../fonts/proto-canaanite-pure-unicode-webfont.woff") format("woff"),
-            url("../fonts/proto-canaanite-pure-unicode-webfont.ttf") format("opentype");
+            url("../fonts/proto-canaanite-pure-unicode-webfont.ttf") format("opentype"),
+            local("Proto Canaanite"), /* full font name */
+            local("Proto-Canaanite"); /* Postscript name */
       font-display: swap;
+      size-adjust: 100%;
       unicode-range: U+10900-1091F;
     }
   /* END: [Custom] Hebrew-Proto-Canaanite-Unicode */
@@ -111,14 +122,20 @@
         * he- or heb- - modern Hebrew
         * hbo- - ancient Hebrew
     */
-    :lang(he), :lang(heb) {
+
+    :lang(he),
+    :lang(hbo) {
+      direction: rtl; /* Be sure to also set dir="rtl" in HTML. */
+      font-family: var(--font-hebrew-sans-serif, sans-serif); /* combined; different Unicode points */
+      font-style: normal; /* ensure there are no italic and oblique styles */
+      font-synthesis: weight; /* only allow 'bold' synthesis */
+    }
+    :lang(he) { /* Modern Hebrew */
       font-language-override: "IWR";
     }
-    :lang(he), :lang(heb),
-    :lang(hbo), :lang(hbo-Phnx), :lang(hbo-Hebr) {
-      direction: rtl;
-      font-style: normal;
-      font-synthesis: weight;
+    /*
+    :lang(hbo) { /* Paleo-Hebrew * /
     }
+    */
   /* END: Catch all Hebrew langs and scripts */
 /* END: LANG */

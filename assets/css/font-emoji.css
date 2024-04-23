@@ -61,21 +61,24 @@
   *   U+2900-297F - Supplemental Arrows-B
 **/
 
-@font-face {
-  font-family: "twemoji-color";
-  src: local("Twitter Color Emoji"),
-    url("../fonts/TwitterColorEmoji-SVGinOT.ttf") format("opentype");
-  font-display: swap;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: normal;
-}
+  /* We switched to Noto Color Emoji, which is frequently updated and now using a standard design.
+  @font-face {
+    font-family: "twemoji-color";
+    src:  url("../fonts/TwitterColorEmoji-SVGinOT.ttf") format("opentype"),
+          local("Twitter Color Emoji");
+    font-display: swap;
+    size-adjust: 100%;
+  }
+  */
 
 /** BGN: :root and classes **/
   :root {
+    --font-emoji-fallback: "Apple Color Emoji", "Segoe UI Emoji", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols";
+    --font-emoji-noto: "Noto Color Emoji", "Noto Emoji";
+    --font-emoji-joypixels: "JoyPixels", "Emoji Two", "EmojiOne Mozilla", "Emoji One";
     --font-emoji-twemoji: "twemoji-color", "Twitter Color Emoji";
-    /*  --font-emoji-noto: "Noto Color Emoji", "Noto Emoji", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols"; */
-    --font-emoji-noto: "Noto Color Emoji";
+    /* --font-emoji-one-var: "twemoji-color", "Twitter Color Emoji", "JoyPixels", "Emoji Two", "EmojiOne Mozilla", "Emoji One", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji"; */
+
     /* Temporary workaround to incomplete var() implementation in Gecko and Blink engines */
     --font-emoji: "twemoji-color", "Twitter Color Emoji", "JoyPixels", "Emoji Two", "EmojiOne Mozilla", "Emoji One", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji";
   }
@@ -87,27 +90,33 @@
   }
 /** END: :root and classes **/
 
-/*
-  html body [class^="smiley-" i], html body [class$="-smiley" i],
-  html body [class^="emoticon-" i], html body [class$="-emoticon" i],
-  html body [class^="emoji-" i], html body [class$="-emoji" i],
-  html body [class*="emoji-" i], html body [class*="-emoji" i],
-*/
-html body [class~="smiley" i],
-html body [class~="emoticon" i],
-html body [class~="emoji" i] {
-  display: inline-block;
-  height: 1em; /* Twemoji suggestion */
-  width: 1em; /* Twemoji suggestion */
-  margin: 0 .05em 0 .1em; /* Twemoji suggestion */
-  /* vertical-align: -0.1em; */ /* Twemoji suggestion */
+body :is(.smiley, .emoticon, .emoji) {
+  display: inline flow;
+  font-family: var(--font-emoji-noto, emoji);
+  font-synthesis: none; /* do not allow any synthesis */
+    font-style: normal; /* ensure there are no italic and oblique styles */
+    font-weight: normal;  /* ensure there is no bold weight */
+  text-decoration: none; /* ensure there are no inherited decoration styles */
+  text-shadow: none; /* ensure there are no inherited shadow effects */
+  inline-size: 1em;
+  block-size: 1em;
+  margin-inline: .1em .05em;
+  margin-block: 0;
   vertical-align: initial;
-  font-variant-emoji: emoji;
-  font-style: normal;
-  font-synthesis: none;
-  font-weight: normal;
 }
+@supports (font-variant-emoji: unicode) {
+  body :is(.smiley, .emoticon, .emoji) {
+    font-variant-emoji: unicode;
+  }
+}
+
+/*
+    NOTE:
+      Backwards compatibility, for a specific post only. See emoji test page in techmagus.
+      Delete this after updating it.
+*/
 html body .unicode_emoji {
+  font-family: var(--font-emoji-noto, emoji);
   font-variant-emoji: emoji;
   /* font-size: larger; */
   font-style: normal;

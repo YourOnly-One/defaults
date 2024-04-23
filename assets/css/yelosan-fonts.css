@@ -157,16 +157,7 @@
   kbd:not(.\9),
   pre:not(.\9),
   samp:not(.\9) {
-    font-family: var(--font-mono-noto, monospace);
-  }
-
-  html body [class~="smiley" i],
-  html body [class~="emoticon" i],
-  html body [class~="emoji" i] {
-    font-family: var(--font-emoji, emoji);
-  }
-  html body .unicode_emoji { /* usage: <span class="unicode_emoji">emoji_here</span> */
-    font-family: var(--font-emoji, emoji);
+    font-family: var(--font-mono-sans-noto, monospace);
   }
 /************************
 ** END: Default styles **
@@ -205,29 +196,23 @@
       *   - Pure Unicode-compliant fonts only
     ***/
 
-    /* BGN: Catch all Greek langs and scripts */
-      :lang(el), :lang(gre), :lang(ell), /* Modern Greek */
-      :lang(el-Latn), :lang(gre-Latn), :lang(ell-Latn),
-      :lang(grc), /* Ancient Greek */
-      :lang(grc-Latn) {
-        direction: ltr;
-      }
-      :lang(el), :lang(gre), :lang(ell) /* Modern Greek */ {
-        font-language-override: "ELL";
-        font-style: normal;
-        font-synthesis: weight;
-      }
-      :lang(el-Latn), :lang(gre-Latn), :lang(ell-Latn) {
-        font-synthesis: initial;
-      }
+    /* BGN: Greek & Ancient Greek */
+      :lang(el),
       :lang(grc) {
-        font-style: normal;
-        font-synthesis: weight;
+        direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+        font-family: var(--font-greek-sans-noto, sans-serif); /* combined; different Unicode points */
+        font-style: normal; /* ensure there are no italic and oblique styles */
+        font-synthesis: weight; /* only allow 'bold' synthesis */
       }
-      :lang(grc-Latn) {
-        font-synthesis: initial;
+
+      :lang(el) { /* Modern Greek */
+        font-language-override: "ELL";
       }
-    /* END: Catch all Greek langs and scripts */
+      /*
+      :lang(grc) { /* Ancient Greek * /
+      }
+      */
+    /* END: Greek & Ancient Greek */
 
     .reset-1_25em { /* e.g. use for -Tglg and -Hebr scripts when there are Latin-scripts within the same element */
       font-size: 0.8em;
@@ -237,11 +222,11 @@
   /* BGN: NotoSans */
     .font-greek-sans-noto {
       direction: ltr;
-      font-family: var(--font-sans-noto); /* Force override */
+      font-family: var(--font-greek-sans-noto, sans-serif); /* Force override */
     }
     .font-greek-serif-noto {
       direction: ltr;
-      font-family: var(--font-serif-noto); /* Force override */
+      font-family: var(--font-greek-sans-noto, sans-serif); /* Force override */
     }
   /* END: NotoSans */
 
@@ -257,6 +242,35 @@
   .larger {
     font-size: larger;
   }
+
+  /* BGN: :lang(\*-Latn) */
+    /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+      @supports not (selector(:lang("\*-Latn"))) {
+        :lang(yue-jyutping), :lang(zh-yue-jyutping),
+        :lang(zh-Latn),
+        :lang(ja-Latn),
+        :lang(ko-Latn),
+        :lang(he-Latn), :lang(hbo-Latn),
+        :lang(el-Latn), :lang(grc-Latn) {
+          direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
+          font-family: var(--font-sans-serif, sans-serif);
+          font-language-override: normal; /* needed because :lang(C) is a wildcard match */
+          font-synthesis: initial;
+        }
+      }
+    /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+
+    @supports selector(:lang("\*-Latn")) {
+      :lang(\*-jyutping),
+      :lang(\*-Latn) {
+        direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
+        font-family: var(--font-sans-serif, sans-serif);
+        font-language-override: normal; /* needed because :lang(C) is a wildcard match */
+        font-synthesis: initial;
+      }
+    }
+  /* END: :lang(\*-Latn) */
+
 /***************
 ** END: FONTS **
 ***************/
