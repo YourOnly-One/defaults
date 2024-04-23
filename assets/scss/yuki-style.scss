@@ -139,235 +139,6 @@
 **   * https://oklch.com
 ***/
 
-/*************************
-** BGN: Global Settings **
-*************************/
-  :root {
-    /* BLACK */
-      --color-black-bg: hwb(0 0% 100% / 0.25);
-      --color-black-bg: lch(0% 0 0 / 0.25);
-      --color-black-bg: oklch(0% 0 0 / 0.25);
-      --color-black: hwb(0 0% 100%);
-      --color-black: lch(0% 0 0);
-      --color-black: oklch(0% 0 0);
-
-    /* GREY LIGHT */
-      --color-grey-light-bg: hwb(0 83% 17% / 0.20);
-      --color-grey-light-bg: lch(84.556% 0 139.088 / 0.20);
-      --color-grey-light-bg: oklch(86.69% 0 0 / 0.20);
-      --color-grey-light: hwb(0 83% 17%);
-      --color-grey-light: lch(84.556% 0 139.088);
-      --color-grey-light: oklch(86.69% 0 0);
-
-    /* SILVER */
-      --color-silver-bg: hwb(0 75% 25% / 0.20);
-      --color-silver-bg: lch(77.704% 0 139.088 / 0.20);
-      --color-silver-bg: oklch(80.78% 0 0 / 0.20);
-      --color-silver: hwb(0 75% 25%);
-      --color-silver: lch(77.704% 0 139.088);
-      --color-silver: oklch(80.78% 0 0);
-
-    /* WHITE */
-      --color-white-bg: hwb(0 100% 0% / 0.5);
-      --color-white-bg: lch(100% 0 139.088 / 0.5);
-      --color-white-bg: oklch(100% 0 0 / 0.5);
-      --color-white: hwb(0 100% 0%);
-      --color-white: lch(100% 0 139.088);
-      --color-white: oklch(100% 0 0);
-
-    /* RED */
-      --color-red-bg: hwb(0 0% 0% / 0.20);
-      --color-red-bg: lch(54.291% 106.83719104365966 40.85766878213079 / 0.20);
-      --color-red-bg: oklch(62.8% 0.25768330773615683 29.2338851923426 / 0.20);
-      --color-red: hwb(0 0% 0%);
-      --color-red: lch(54.291% 106.83719104365966 40.85766878213079);
-      --color-red: oklch(62.8% 0.25768330773615683 29.2338851923426);
-
-    /* LIME */
-      --color-lime-bg: hwb(120 0% 0% / 0.20);
-      --color-lime-bg: lch(87.819% 113.32 134.38 / 0.20);
-      --color-lime-bg: oklch(86.64% 0.2948272403370167 142.49533888780996 / 0.20);
-      --color-lime: hwb(120 0% 0%);
-      --color-lime: lch(87.819% 113.32 134.38);
-      --color-lime: oklch(86.64% 0.2948272403370167 142.49533888780996);
-
-    /* GREEN */
-      --color-green-bg: hwb(120 0% 50% / 0.25);
-      --color-green-bg: lch(46.278% 67.984 134.384 / 0.25);
-      --color-green-bg: oklch(51.98% 0.17685825418032033 142.49533888780994 / 0.25);
-      --color-green: hwb(120 0% 50%);
-      --color-green: lch(46.278% 67.984 134.384);
-      --color-green: oklch(51.98% 0.17685825418032033 142.49533888780994);
-
-    /* BLUE */
-      --color-blue-bg: hwb(240 0% 0% / 0.35);
-      --color-blue-bg: lch(29.568% 131.1854613942089 301.36428148973533 / 0.35);
-      --color-blue-bg: oklch(45.2% 0.31321437166460125 264.052020638055 / 0.35);
-      --color-blue: hwb(240 0% 0%);
-      --color-blue: lch(29.568% 131.1854613942089 301.36428148973533);
-      --color-blue: oklch(45.2% 0.31321437166460125 264.052020638055);
-
-    /* INDIGO DYE*/
-      --color-indigo-dye-bg: hwb(203.208 0% 58% / 0.35);
-      --color-indigo-dye-bg: lch(25.753% 30.080379743730905 259.49712579751815 / 0.35);
-      --color-indigo-dye-bg: oklch(36.26% 0.091 244.97 / 0.35);
-      --color-indigo-dye: hwb(203.208 0% 58%);
-      --color-indigo-dye: lch(25.753% 30.080379743730905 259.49712579751815);
-      --color-indigo-dye: oklch(36.26% 0.091 244.97);
-
-    /* BLUE MIDNIGHT */
-      --color-blue-midnight-bg: hwb(240 10% 56% / 0.5);
-      --color-blue-midnight-bg: lch(14.929% 57.139 297.016 / 0.5);
-      --color-blue-midnight-bg: oklch(28.81% 0.144 272.76 / 0.5);
-      --color-blue-midnight: hwb(240 10% 56%);
-      --color-blue-midnight: lch(14.929% 57.139 297.016);
-      --color-blue-midnight: oklch(28.81% 0.144 272.76);
-
-    /* AQUA / CYAN */
-      --color-aqua-bg: hwb(180 0% 0% / 0.20);
-      --color-aqua-bg: lch(90.666% 52.81982158149982 196.45478245011327 / 0.20);
-      --color-aqua-bg: oklch(90.54% 0.15455001106436891 194.76894793196382 / 0.20);
-      --color-aqua: hwb(180 0% 0%);
-      --color-aqua: lch(90.666% 52.81982158149982 196.45478245011327);
-      --color-aqua: oklch(90.54% 0.15455001106436891 194.76894793196382);
-
-    /* FUCHSIA / MAGENTA */
-      --color-magenta-bg: hwb(300 0% 0% / 0.22);
-      --color-magenta-bg: lch(60.169% 111.38659434373716 327.1054738802461 / 0.22);
-      --color-magenta-bg: oklch(70.17% 0.322 328.36 / 0.22);
-      --color-magenta: hwb(300 0% 0%);
-      --color-magenta: lch(60.169% 111.38659434373716 327.1054738802461);
-      --color-magenta: oklch(70.17% 0.322 328.36);
-
-    /* YELLOW */
-      --color-yellow-bg: hwb(60 0% 0% / 0.22);
-      --color-yellow-bg: lch(97.607% 94.712 99.57226374240976 / 0.22);
-      --color-yellow-bg: oklch(96.8% 0.21100590772552355 109.76923207652125 / 0.22);
-      --color-yellow: hwb(60 0% 0%);
-      --color-yellow: lch(97.607% 94.712 99.57226374240976);
-      --color-yellow: oklch(96.8% 0.21100590772552355 109.76923207652125);
-
-    /* ORANGE */
-      --color-orange-bg: hwb(38.824 0% 0% / 0.22);
-      --color-orange-bg: lch(75.59% 83.7587948421583 70.82367779707081 / 0.22);
-      --color-orange-bg: oklch(79.27% 0.171 70.67 / 0.22);
-      --color-orange: hwb(38.824 0% 0%);
-      --color-orange: lch(75.59% 83.7587948421583 70.82367779707081);
-      --color-orange: oklch(79.27% 0.171 70.67);
-
-    /* GOLD */
-      --color-gold-bg: hwb(50.588 0% 0% / 0.20);
-      --color-gold-bg: lch(87.468% 86.59103759455243 88.07454203103275 / 0.20);
-      --color-gold-bg: oklch(88.68% 0.182 95.33 / 0.20);
-      --color-gold: hwb(50.588 0% 0%);
-      --color-gold: lch(87.468% 86.59103759455243 88.07454203103275);
-      --color-gold: oklch(88.68% 0.182 95.33);
-
-    /* PINK */
-      --color-pink-bg: hwb(349.524 75% 0% / 0.35);
-      --color-pink-bg: lch(83.787% 24.724253984206204 8.745997286616099 / 0.35);
-      --color-pink-bg: oklch(86.77% 0.07354199863627744 7.08551427339547 / 0.35);
-      --color-pink: hwb(349.524 75% 0%);
-      --color-pink: lch(83.787% 24.724253984206204 8.745997286616099);
-      --color-pink: oklch(86.77% 0.07354199863627744 7.08551427339547);
-
-    /* BROWN */
-      --color-brown-bg: hwb(26 39% 31% / 0.20);
-      --color-brown-bg: lch(59.04% 27.83 60.49 / 0.20);
-      --color-brown-bg: oklch(64.89% 0.07 58.55 / 0.20);
-      --color-brown: hwb(26 39% 31%);
-      --color-brown: lch(59.04% 27.83 60.49);
-      --color-brown: oklch(64.89% 0.07 58.55);
-
-    /* BROWN MEDIUM DARK */
-      --color-brown-medium-dark-bg: hwb(27 34% 32% / 0.20);
-      --color-brown-medium-dark-bg: lch(56.91% 33.11 61.54 / 0.20);
-      --color-brown-medium-dark-bg: oklch(63.08% 0.081 59.89 / 0.20);
-      --color-brown-medium-dark: hwb(27 34% 32%);
-      --color-brown-medium-dark: lch(56.91% 33.11 61.54);
-      --color-brown-medium-dark: oklch(63.08% 0.081 59.89);
-
-    /* FACEBOOK */
-      --color-facebook-bg: hwb(220 26% 30% / 0.25);
-      --color-facebook-bg: lch(43.93% 45.04 276.51 / 0.25);
-      --color-facebook-bg: oklch(52.56% 0.126 262.79 / 0.25);
-      --color-facebook: hwb(220 26% 30%);
-      --color-facebook: lch(43.93% 45.04 276.51);
-      --color-facebook: oklch(52.56% 0.126 262.79);
-
-    /* TWITTER */
-      --color-twitter-bg: hwb(203 11% 13% / 0.25);
-      --color-twitter-bg: lch(57.88% 48.94 256.6 / 0.25);
-      --color-twitter-bg: oklch(64.02% 0.148 243.45 / 0.25);
-      --color-twitter: hwb(203 11% 13%);
-      --color-twitter: lch(57.88% 48.94 256.6);
-      --color-twitter: oklch(64.02% 0.148 243.45);
-
-    /* GOOGLEPLUS */
-      --color-googleplus-bg: hwb(5 22% 14% / 0.25);
-      --color-googleplus-bg: lch(52.25% 71.66 35.83 / 0.25);
-      --color-googleplus-bg: oklch(60.38% 0.187 28.96 / 0.25);
-      --color-googleplus: hwb(5 22% 14%);
-      --color-googleplus: lch(52.25% 71.66 35.83);
-      --color-googleplus: oklch(60.38% 0.187 28.96);
-
-    /* UBUNTU */
-      --color-ubuntu-bg: hwb(16 13% 9% / 0.25);
-      --color-ubuntu-bg: lch(56.93% 81.53 46.27 / 0.25);
-      --color-ubuntu-bg: oklch(64.26% 0.193 38.26 / 0.25);
-      --color-ubuntu: hwb(16 13% 9%);
-      --color-ubuntu: lch(56.93% 81.53 46.27);
-      --color-ubuntu: oklch(64.26% 0.193 38.26);
-
-    /* MASTODON */
-      --color-mastodon-bg: hwb(205 17% 14% / 0.25);
-      --color-mastodon-bg: lch(57.02% 47.26 257.96 / 0.25);
-      --color-mastodon-bg: oklch(63.31% 0.142 245.03 / 0.25);
-      --color-mastodon: hwb(205 17% 14%);
-      --color-mastodon: lch(57.02% 47.26 257.96);
-      --color-mastodon: oklch(63.31% 0.142 245.03);
-
-    /* HUBZILLA */
-      --color-hubzilla-bg: hwb(236 26% 46% / 0.25);
-      --color-hubzilla-bg: lch(32.44% 40.76 289 / 0.25);
-      --color-hubzilla-bg: oklch(42.87% 0.109 277.68 / 0.25);
-      --color-hubzilla: hwb(236 26% 46%);
-      --color-hubzilla: lch(32.44% 40.76 289);
-      --color-hubzilla: oklch(42.87% 0.109 277.68);
-
-    /* CGM */
-      --color-cgm-bg: hwb(240 50% 0% / 0.25);
-      --color-cgm-bg: lch(58.2% 69.76218893179288 291.8265434122234 / 0.25);
-      --color-cgm-bg: oklch(66.01% 0.184 280.08 / 0.25);
-      --color-cgm: hwb(240 50% 0%);
-      --color-cgm: lch(58.2% 69.76218893179288 291.8265434122234);
-      --color-cgm: oklch(66.01% 0.184 280.08);
-
-  }
-
-  :root, html, body, *,
-  :root[lang], html[lang], body[lang], *[lang] {
-    -webkit-hyphens: none;
-        -ms-hyphens: none;
-            hyphens: none; /* Browser hyphenation algorithm is incorrect. Turn-off globally. */
-    word-wrap: break-word; /* But keep word-wrap "on" to allow wrapping of very long words. */
-  }
-  article, section,
-  header, footer,
-  details, summary {
-    /* content-visibility: auto; */
-    /* contain-intrinsic-size: auto; */
-  }
-  abbr {
-    cursor: help;
-  }
-  address {
-    display: inline-block;
-    font-style: normal;
-  }
-/*************************
-** END: Global Settings **
-*************************/
 
 /******************************************************************************/
 /******************************************************************************/
@@ -378,21 +149,12 @@
   /*** BGN: Alignments ***/
     html body {
       .grid_center.grid_center.grid_center {
-        margin-left: auto;
-        margin-right: auto;
-        -webkit-margin-start: auto;
         margin-inline-start: auto;
-        -webkit-margin-end: auto;
         margin-inline-end: auto;
       }
 
       .img_center.img_center.img_center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        -webkit-margin-start: auto;
         margin-inline-start: auto;
-        -webkit-margin-end: auto;
         margin-inline-end: auto;
       }
 
@@ -453,11 +215,12 @@
       grid-template-areas:  "best_viewed best_viewed best_viewed"
                             "menu_footer menu_footer menu_footer"
                             ". cc_icons ."
-                            "ypub copyleft gfiles";
+                            "copyleft copyleft copyleft"
+                            "ypub permissions gfiles";
       -ms-grid-columns: auto 0.35rem 8fr 0.35rem auto;
       grid-template-columns: auto 8fr auto;
       -ms-grid-rows: auto 0.35rem auto 0.35rem auto 0.35rem auto;
-      grid-template-rows: repeat(4, auto);
+      grid-template-rows: repeat(6, auto);
 
       div {
         &.best_viewed {
@@ -495,8 +258,19 @@
           */
         }
 
-        &.ypub {
+        &.copyleft {
           -ms-grid-row: 7;
+          -ms-grid-column: 1;
+          -ms-grid-column-span: 5;
+          grid-area: copyleft;
+          /*
+          grid-row: 4;
+          */
+          margin-block: 1rem;
+        }
+
+        &.ypub {
+          -ms-grid-row: 9;
           -ms-grid-column: 1;
           grid-area: ypub;
           /*
@@ -505,17 +279,17 @@
           */
         }
 
-        &.copyleft {
-          -ms-grid-row: 7;
+        &.permissions {
+          -ms-grid-row: 9;
           -ms-grid-column: 3;
-          grid-area: copyleft;
+          grid-area: permissions;
           /*
           grid-row: 4;
           */
         }
 
         &.gfiles {
-          -ms-grid-row: 7;
+          -ms-grid-row: 9;
           -ms-grid-column: 5;
           grid-area: gfiles;
           /*
@@ -542,7 +316,7 @@
     }
 
     /* Copyleft */
-    .gfiles, .copyleft {
+    .gfiles, .copyleft, .permissions {
       -webkit-text-decoration-line: none;
               text-decoration-line: none;
 
@@ -555,167 +329,6 @@
 /************************
 ** END: COMMON CLASSES **
 ************************/
-
-/*************************
-** BGN: Ruby Annotation **
-*************************/
-  /**
-    * As of 2023-02-27.
-    *
-    * We are declaring most of these due to lack of support in browsers.
-    * Once CSS Ruby is fully supported, we can remove these base declarations.
-    *
-    * See:
-    *   1. https://www.w3.org/TR/css-ruby-1/
-    *   2. https://www.w3.org/TR/html-ruby-extensions/
-    *   3. https://www.w3.org/International/articles/ruby/markup.en
-  **/
-  ruby {
-    display: ruby;
-    ruby-merge: separate;
-    ruby-overhang: auto;
-  }
-  span.ruby-base-container,
-  rbc { /* In W3C Working Draft but not in major browsers. */
-    display: ruby-base-container;
-  }
-  span.ruby-base,
-  rb { /* Highly recommended by the W3C, but the HTML5 WG marked this as deprecated (this MUST be corrected). */
-    display: ruby-base;
-    white-space: nowrap;
-  }
-  span.ruby-text-container,
-  rtc { /* Very useful for multilingual Asian websites, but the HTML5 WG marked this as deprecated (this MUST be corrected). */
-    display: ruby-text-container;
-  }
-  rp { /* For fallback parentheses only. */
-    display: none;
-  }
-  span.ruby-text,
-  rt { /* Annotation */
-    display: ruby-text;
-  }
-
-  span.ruby-base-container, span.ruby-base,
-  span.ruby-text-container, span.ruby-text,
-  ruby,
-  rbc, rb
-  rtc, rt {
-    unicode-bidi: -webkit-isolate;
-    unicode-bidi: -moz-isolate;
-    unicode-bidi: isolate;
-  }
-  span.ruby-text-container, span.ruby-text,
-  rtc, rt {
-    font-variant-east-asian: ruby;
-    line-height: 1;
-    text-align: center; /* Webkit and Blink/Chromium-based browsers are keeping us in the Dark Ages, like IE used to be, for not supporting ruby-align. */
-    ruby-align: center; /* better presentation */
-    -webkit-text-emphasis: none;
-            text-emphasis: none;
-    text-transform: full-size-kana;
-    white-space: nowrap;
-  }
-  /* suggested by W3C
-  span.ruby-text-container,
-  :not(span.ruby-text-container) > span.ruby-text,
-  :not(span.ruby-text-container) > rt,
-  rtc,
-  :not(rtc) > span.ruby-text,
-  :not(rtc) > rt {
-    font-size: 67%;
-  }
-  rtc:lang(zh-TW),
-  :not(rtc) > rt:lang(zh-TW),
-  :not(rtc) > span.ruby-text:lang(zh-TW),
-  rtc:lang(zh-Hanb),
-  :not(rtc) > rt:lang(zh-Hanb),
-  :not(rtc) > span.ruby-text:lang(zh-Hanb) {
-    font-size: 30%;
-  }
-  */
-  span.ruby-text span.ruby-text,
-  rt rt {
-    font-size: 0.9em;
-  }
-
-  /* Let's add some colours, because we can! */
-  /* Works for Tabular and Interleaved models. */
-  /* RUBY BASE */
-  /*
-  span.ruby-base,
-  rb {
-    color: purple;
-  }
-  */
-
-  /* RUBY OVER */
-    ruby > ruby > rt,
-    ruby > ruby > rt > ruby > span.ruby-base,
-    ruby > ruby > rt > ruby > rb,
-    ruby > span.ruby-text-container:nth-of-type(odd) > rt,
-    ruby > span.ruby-text-container:nth-of-type(odd) > rt > ruby > rb,
-    ruby > rtc:nth-of-type(odd) > rt,
-    ruby > rtc:nth-of-type(odd) > rt > ruby > rb
-    {
-      color: var(--color-green);
-    }
-  /* RUBY BELOW */
-    ruby > rt,
-    ruby > rt > ruby > span.ruby-base,
-    ruby > rt > ruby > rb,
-    ruby > span.ruby-text-container:nth-of-type(even) > rt,
-    ruby > span.ruby-text-container:nth-of-type(even) > rt > ruby > rb,
-    ruby > rtc:nth-of-type(even) > rt,
-    ruby > rtc:nth-of-type(even) > rt > ruby > rb
-    {
-      /* RUBY BELOW */
-      color: var(--color-blue);
-    }
-  /* RUBY OVER OVER and RUBY BELOW BELOW */
-  ruby > rt > ruby > rt,
-  ruby > span.ruby-text-container:nth-of-type(odd) > rt > ruby > rt,
-  ruby > span.ruby-text-container:nth-of-type(even) > rt > ruby > rt,
-  ruby > rtc:nth-of-type(odd) > rt > ruby > rt,
-  ruby > rtc:nth-of-type(even) > rt > ruby > rt
-  {
-    color: var(--color-red);
-  }
-
-  /* applies in <ruby> */
-  .ruby-alternate { /* initial value */
-    ruby-position: alternate;
-  }
-  .ruby-over { /* default setting in major browsers */
-    ruby-position: over;
-  }
-  .ruby-under {
-    ruby-position: under;
-  }
-  .ruby-intercharacter {
-    ruby-position: inter-character;
-  }
-
-  /* applies in <rbc>, <rb>, <rtc>, and <rt> */
-  .ruby-spacearound { /* initial value, declared in case we need override */
-    ruby-align: space-around;
-  }
-  .ruby-center { /* our default for better presentation */
-    ruby-align: center;
-  }
-  .ruby-spacebetween {
-    ruby-align: space-between;
-  }
-  .ruby-start {
-    ruby-align: start;
-  }
-
-  .ruby-guide {
-    border: 1px dotted;
-  }
-/*************************
-** END: Ruby Annotation **
-*************************/
 
 /*********************************************************
 ** BGN: Additional styles for Fork Awesome and cc-icons **
@@ -832,7 +445,7 @@
       }
 
       div {
-        display: inline-block;
+        display: inline flow-root;
         margin: 0.7em 0 0 0;
         padding: 0 1.7em;
 
@@ -877,7 +490,7 @@
       }
 
       div {
-        display: inline-block;
+        display: inline flow-root;
         margin: 0.7em 0 0 0;
         padding: 0 1.7em;
 
@@ -1459,7 +1072,6 @@
       /* light check mark */
     }
   }
-
 /**********************
 ** END: Custom Lists **
 **********************/
@@ -1690,7 +1302,7 @@
 
     li.reaction_mention {
       /* margin: 123px; */
-      display: inline-block;
+      display: inline flow-root;
     }
 
     a {
@@ -1712,7 +1324,7 @@
 
     .reacts {
       img {
-        display: inline-block;
+        display: inline flow-root;
         margin: 3px -1ex 1px 0;
       }
 
@@ -1786,7 +1398,6 @@
       }
     }
   /* END: Speech bubble style-01 */
-
 /********************
 ** BGN: webmention **
 ********************/
@@ -1795,7 +1406,7 @@
 ** BGN: Link icons **
 ********************/
   [class^="icon_"]::after {
-    display: inline-block;
+    display: inline flow-root;
     text-decoration: none;
     white-space: pre-wrap;
     margin-left: 0.25em;
@@ -1849,12 +1460,12 @@
   }
 
   .badges-content.badges-content span {
-    display: inline-block;
+    display: inline flow-root;
     margin-left: 0.1rem;
     margin-right: 0.2rem;
   }
   .badges-footer.badges-footer span {
-    display: inline-block;
+    display: inline flow-root;
     margin-left: 0.1rem;
     margin-right: 0.2rem;
   }
@@ -1871,7 +1482,6 @@
    * By: auth0 https://github.com/auth0
   */
   kbd {
-    display: inline-block;
     border-radius: 3px;
     padding: 0px 4px;
     box-shadow: 1px 1px 1px #777;
