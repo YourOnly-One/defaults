@@ -1,0 +1,1363 @@
+@charset "UTF-8";
+/***
+  * My personal styles and overrides
+  *
+  * Websites:
+  *   * YourOnly.One™: https://YourOnly.One
+  *
+  * Contact:
+  *   * Fediverse: https://quey.org/@techmagus | @techmagus@quey.org
+  *   * Facebook: https://fb.me/techmagus | https://m.me/techmagus
+***/
+
+/***
+  * yuki-style.css Copyright © 2003-2023 JC John Sese Cuneta
+  *
+  * Licenses: [1] MIT/Expat License; [2] MPL v2.0; [3] LGPLv3
+  *
+  * LICENSE: MIT License / Expat License
+  *   Permission is hereby granted, free of charge, to any person obtaining a copy
+  *   of this software and associated documentation files (the "Software"), to deal
+  *   in the Software without restriction, including without limitation the rights
+  *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  *   copies of the Software, and to permit persons to whom the Software is
+  *   furnished to do so, subject to the following conditions:
+  *
+  *   The above copyright notice and this permission notice shall be included in all
+  *   copies or substantial portions of the Software.
+  *
+  *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  *   SOFTWARE.
+  *
+  * LICENSE: Mozilla Public License Version 2.0 ("MPL 2.0")
+  *   This Source Code Form is subject to the terms of the Mozilla Public
+  *   License, v. 2.0. If a copy of the MPL was not distributed with this
+  *   file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  *
+  * LICENSE: GNU LESSER GENERAL PUBLIC LICENSE Version 3 ("LGPLv3")
+  *   This program is free software: you can redistribute it and/or modify
+  *   it under the terms of the Lesser GNU General Public License as published by
+  *   the Free Software Foundation, either version 3 of the License, or
+  *   (at your option) any later version.
+  *
+  *   This program is distributed in the hope that it will be useful,
+  *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  *   Lesser GNU General Public License for more details.
+  *
+  *   You should have received a copy of the Lesser GNU General Public License
+  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+***/
+
+/***
+  * Other Attributions
+  *
+  * Embed Responsively: embedresponsively.com
+  * Fork-Awesome
+  * Twemoji
+  * Cryptocoins (webfont/svg): https://github.com/AllienWorks/cryptocoins
+***/
+
+/***
+  * Based on:
+  *
+  *   * CSS Color Module Level 5
+  *      * WD, 2022-06-28
+  *      * https://www.w3.org/TR/css-color-5/
+  *
+  *   * CSS Color Module Level 4
+  *      * CR, 2022-11-01
+  *      * https://www.w3.org/TR/css-color-4/
+  *
+  *   * CSS Color Module Level 3
+  *      * REC, 2018-06-19
+  *      * https://www.w3.org/TR/css-color-3/
+  *
+  *   * CSS Fonts Module Level 4
+  *      * WD, 2018-09-20
+  *      * https://www.w3.org/TR/css-fonts-4/
+  *      * See: see paninap-fonts.css
+  *
+  *   * CSS Fonts Module Level 3
+  *      * REC, 2018-09-20
+  *      * https://www.w3.org/TR/css-fonts-3/
+  *
+  *   * CSS Text Decoration Module Level 4
+  *      * WD, 2018-03-13
+  *      * https://www.w3.org/TR/css-text-decor-4/
+  *      * See: text-decoration-skip -- not using currently
+  *
+  *   * CSS Text Decoration Module Level 3
+  *      * CR, 2018-07-03
+  *      * https://www.w3.org/TR/css-text-decor-3/
+  *      * See: text-decoration property
+  *
+  *   * CSS Custom Properties for Cascading Variables Module Level 1
+  *      * CR, 2015-12-03
+  *      * https://www.w3.org/TR/css-variables/
+  *      * See: --font-sans and --font-serif, and var()
+  *
+  *   * Selectors Level 4
+  *      * WD, 2018-11-21
+  *      * https://www.w3.org/TR/selectors-4/
+  *      * See: :dir() and :lang("*-Latn")
+  *
+  *   * Selectors Level 3
+  *      * REC, 2018-11-06
+  *      * https://www.w3.org/TR/selectors-3/
+  *      * See: :root, :first-child, :last-child
+  *
+***/
+
+/***
+  * Notes:
+  *
+  * All colors must be:
+  *   * hwb() -- our current base color format; do not use hex and rgb
+  *   * lch() -- temporary only, until oklch() is widely supported
+  *   * oklch()
+  *
+  * CSS Logical
+  *   * https://www.w3.org/TR/css-logical-1/
+  *   * https://css-tricks.com/css-logical-properties/
+  *     * border-{block,inline}-{start,end}-{width,style,color}
+  *     * margin-{block,inline}-{start,end}
+  *     * padding-{block,inline}-{start,end}
+***/
+
+/***
+** Color conversion tools:
+**
+**   * https://products.aspose.app/svg/color-converter/hwb-to-lch
+**   * https://css.land/lch/
+**   * https://lch.oklch.com
+**   * https://oklch.com
+***/
+
+/*************************
+** BGN: Global Settings **
+*************************/
+  :root {
+    /* BGN: COLOUR VARS */
+      --color-black-bg: oklch(0% 0 0 / 0.25);
+      --color-black: oklch(0% 0 0);
+
+      --color-grey-light-bg: oklch(86.69% 0 0 / 0.20);
+      --color-grey-light: oklch(86.69% 0 0);
+
+      --color-silver-bg: oklch(80.78% 0 0 / 0.20);
+      --color-silver: oklch(80.78% 0 0);
+
+      --color-white-bg: oklch(100% 0 0 / 0.5);
+      --color-white: oklch(100% 0 0);
+
+      --color-red-bg: oklch(62.8% 0.2577 29.2339 / 0.20);
+      --color-red: oklch(62.8% 0.2577 29.2339);
+
+      --color-lime-bg: oklch(86.64% 0.2948 142.4953 / 0.20);
+      --color-lime: oklch(86.64% 0.2948 142.4953);
+
+      --color-green-bg: oklch(51.98% 0.1769 142.4953 / 0.25);
+      --color-green: oklch(51.98% 0.1769 142.4953);
+
+      --color-blue-bg: oklch(45.2% 0.3132 264.0520 / 0.35);
+      --color-blue: oklch(45.2% 0.3132 264.0520);
+
+      --color-indigo-dye-bg: oklch(36.26% 0.091 244.97 / 0.35);
+      --color-indigo-dye: oklch(36.26% 0.091 244.97);
+
+      --color-blue-midnight-bg: oklch(28.81% 0.144 272.76 / 0.5);
+      --color-blue-midnight: oklch(28.81% 0.144 272.76);
+
+      --color-aqua-bg: oklch(90.54% 0.1546 194.7689 / 0.20);
+      --color-aqua: oklch(90.54% 0.1546 194.7689);
+
+      --color-magenta-bg: oklch(70.17% 0.322 328.36 / 0.22);
+      --color-magenta: oklch(70.17% 0.322 328.36);
+
+      --color-yellow-bg: oklch(96.8% 0.2110 109.7692 / 0.22);
+      --color-yellow: oklch(96.8% 0.2110 109.7692);
+
+      --color-orange-bg: oklch(79.27% 0.171 70.67 / 0.22);
+      --color-orange: oklch(79.27% 0.171 70.67);
+
+      --color-gold-bg: oklch(88.68% 0.182 95.33 / 0.20);
+      --color-gold: oklch(88.68% 0.182 95.33);
+
+      --color-pink-bg: oklch(86.77% 0.0735 7.0855 / 0.35);
+      --color-pink: oklch(86.77% 0.0735 7.0855);
+
+      --color-brown-bg: oklch(64.89% 0.07 58.55 / 0.20);
+      --color-brown: oklch(64.89% 0.07 58.55);
+
+      --color-brown-medium-dark-bg: oklch(63.08% 0.081 59.89 / 0.20);
+      --color-brown-medium-dark: oklch(63.08% 0.081 59.89);
+
+      --color-facebook-bg: oklch(52.56% 0.126 262.79 / 0.25);
+      --color-facebook: oklch(52.56% 0.126 262.79);
+
+      --color-twitter-bg: oklch(64.02% 0.148 243.45 / 0.25);
+      --color-twitter: oklch(64.02% 0.148 243.45);
+
+      --color-googleplus-bg: oklch(60.38% 0.187 28.96 / 0.25);
+      --color-googleplus: oklch(60.38% 0.187 28.96);
+
+      --color-ubuntu-bg: oklch(64.26% 0.193 38.26 / 0.25);
+      --color-ubuntu: oklch(64.26% 0.193 38.26);
+
+      --color-mastodon-bg: oklch(63.31% 0.142 245.03 / 0.25);
+      --color-mastodon: oklch(63.31% 0.142 245.03);
+
+      --color-hubzilla-bg: oklch(42.87% 0.109 277.68 / 0.25);
+      --color-hubzilla: oklch(42.87% 0.109 277.68);
+
+      --color-cgm-bg: oklch(66.01% 0.184 280.08 / 0.25);
+      --color-cgm: oklch(66.01% 0.184 280.08);
+    /* END: COLOUR VARS */
+
+    /* BGN: FONT VARS */
+      --font-greek-sans-noto: "";
+      --font-greek-serif-noto: "";
+    /* END: FONT VARS */
+
+    /* BGN: THEME SETTINGS */
+      /**
+        * NOTES:
+        *   - Make changes here.
+        *   - Do not add generic fallback.
+        *     - Already added in the font-family property.
+        *     - Also opens up a slot for your custom fallback.
+      **/
+
+      /* BGN: font-family */
+        --font-sans-serif: var(--font-sans-noto);
+        --font-serif: var(--font-serif-noto);
+        --font-monospace: var(--font-mono-sans-noto);
+        --font-fantasy: var(--font-barabara-fantasy, var(--font-serif-noto));
+
+        --font-zhs-sans-serif: var(--font-zhs-sans-noto);
+        --font-zht-sans-serif: var(--font-zht-sans-noto);
+        --font-fangsong-zhs-sans-serif-rotated: var(--font-fangsong-zhs-sans-noto-rotated);
+        --font-fangsong-zhs-sans-serif-vertical: var(--font-fangsong-zhs-sans-noto-vertical);
+
+        --font-ja-sans-serif: var(--font-ja-sans-noto);
+        --font-ko-sans-serif: var(--font-ko-sans-noto);
+
+        --font-hebrew-sans-serif: var(--font-hebrew-sans-noto);
+        --font-hebrew-serif: var(--font-hebrew-serif-noto);
+
+        --font-greek-sans-serif: var(--font-greek-sans-noto);
+        --font-greek-serif: var(--font-greek-serif-noto);
+
+        --font-math: var(--font-math-sans-noto);
+        --font-music: var(--font-music-noto);
+
+        --font-emoji: var(--font-emoji-twemoji, var(--font-emoji-emoji, var(--font-emoji-noto, var(--font-emoji-fallback))));
+      /* END: font-family */
+
+      /* BGN: colours */
+        /*
+        --theme-dark-bg: var(--color-black);
+        --theme-dark-txt: var(--color-green);
+        */
+        --theme-dark-bg: var(--color-white);
+        --theme-dark-txt: var(--color-black);
+
+        --theme-light-bg: var(--color-white);
+        --theme-light-txt: var(--color-black);
+
+        --headings-text-color: #723d29;
+        --headings-text-shadow-color: var(--color-black);
+
+        --body-text-color: var(--color-black);
+        --body-text-shadow-color: var(--color-grey-light);
+
+        --p-first-letter-text-color: var(--color-lime);
+        --p-first-letter-text-fill-color: var(--color-black);
+        --p-first-letter-text-shadow-color: var(--color-lime);
+        --p-first-letter-text-stroke-color: var(--color-green);
+
+        --skipnav-background-color: var(--color-indigo-dye);
+        --mainmenu-background-color: var(--color-black);
+        --mainmenu-box-shadow-color: var(--color-white);
+      /* END: colours */
+
+      /* BGN: other settings */
+        --link-color: #446625;
+        --link-cursor: crosshair;
+        --link-decoration-color: var(--color-blue);
+        --link-decoration-line: none;
+        --link-decoration-style: dashed;
+
+        --link-color-hover: var(--color-blue);
+        --link-decoration-color-hover: var(--color-red);
+        --link-decoration-line-hover: overline underline;
+        --link-decoration-style-hover: solid;
+      /* END: other settings */
+    /* END: THEME SETTINGS */
+  }
+
+  * {
+    /**
+      * NOTES:
+      *   - 'hyphens' - https://developer.mozilla.org/en-US/docs/Web/CSS/hyphens
+      *   - 'word-break' - https://developer.mozilla.org/en-US/docs/Web/CSS/word-break
+      *     - 'normal' - best option for now
+      *     - 'break-all' - problematic, breaks anywhere
+      *     - 'manual' - for ASEAN languages only, not yet implemented
+      *       - 'auto-phrase' - best option
+      *         - currently only for lang="ja" in Chromium-based browsers
+      *   - 'overflow-wrap' (f. 'word-wrap') - https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap
+    **/
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+  @supports not ((word-break: manual) or (word-break: auto-phrase)) {
+    * { word-break: normal; }
+  }
+  @supports (word-break: manual) and (not (word-break: auto-phrase)) {
+    * { word-break: manual; }
+  }
+  @supports (word-break: auto-phrase) {
+    * { word-break: auto-phrase; }
+  }
+
+  html {
+    /**
+      * NOTES:
+      *   - lower than <body>
+      *   - for default font styles
+    **/
+    font-family: var(--font-sans-serif, sans-serif);
+    /* TODO: make it dependent on viewport size; kerning is bad for small viewports */
+      font-kerning: normal;
+    font-variant-numeric: oldstyle-nums tabular-nums ordinal slashed-zero;
+    /* only set per class/font/:lang()
+      font-synthesis:
+      font-variant-alternates: historical-forms
+      font-variant-caps:
+      font-variant-east-asian:
+      font-variant-ligatures:
+      font-variant-position:
+    */
+  }
+  @supports (font-variant-emoji: unicode) {
+    html { font-variant-emoji: unicode; }
+  }
+  @supports not (text-rendering: geometricPrecision) {
+    html { text-rendering: optimizeLegibility; }
+  }
+  @supports (text-rendering: geometricPrecision) {
+    html { text-rendering: geometricPrecision; }
+  }
+
+  body {
+    /**
+      * NOTES:
+      *   - set everything here
+    **/
+    min-block-size: 100vh;
+  }
+
+  .center-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  header, hgroup,
+  thead, th,
+  h1, h2, h3, h4, h5, h6,
+  a {
+    hyphens: none;
+  }
+
+  a {
+    display: inline flow;
+    background-color: transparent;
+    text-decoration-thickness: from-font; /* line thickness */
+    text-decoration-skip-ink: all;
+  }
+/*************************
+** END: Global Settings **
+*************************/
+
+/*****************
+** BGN: Generic **
+*****************/
+  div, aside, section,
+  nav, main, article {
+    display: block flow-root;
+  }
+
+  footer {
+    display: block flow-root;
+    text-wrap: balance;
+  }
+
+  math {
+    font-family: var(--font-math, math); /* combined; different Unicode points */
+  }
+  music {
+    font-family: var(--font-music); /* combined; different Unicode points */
+  }
+/*****************
+** END: Generic **
+*****************/
+
+/******************
+** BGN: Headings **
+******************/
+  /**
+    * NOTES:
+    *   - font-size changes
+    *   - <h1> remains 2.00em & <h6> is 1.00em
+    *     - This prevents h5 & h6 smaller than default font-size.
+    *     - Skipping heading ranks is strongly discouraged for a11y.
+    *       - See: https://www.w3.org/WAI/tutorials/page-structure/headings/
+    *       - To use h5 & h6 other than as a proper heading hierarchy is
+    *           against accessibility (a11y).
+    *   - scaling if inside article, aside, nav, and section, is disabled
+    *     - In Firefox, it only works for h1.
+    *     - It makes everything weird if not set for h2–h6.
+    *     - Disabling entirely allows for consistent h1–h6 font-size
+    *         expectation.
+  **/
+  header, hgroup {
+    display: block flow-root;
+  }
+  header, hgroup,
+  thead, th {
+    font-family: var(--font-serif, serif);
+    text-wrap: balance;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    display: block flow-root;
+    font-family: var(--font-serif, serif);
+    font-weight: 700;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: 2.00em; /* 2.00em */
+    /* margin-block: 0.67em; */
+  }
+
+  /* to make h1 scale if inside these elements, uncomment the following
+  :where(article, aside, nav, section) h1,
+  */
+  h2 {
+    font-size: 1.67em; /* 1.50em */
+    /* margin-block: 0.78em; */
+  }
+
+  /* to make h1 & h2 scale if inside these elements, uncomment the following
+  :where(article, aside, nav, section) :where(article, aside, nav, section) h1,
+  :where(article, aside, nav, section) h2,
+  */
+  h3 {
+    font-size: 1.52em; /* 1.17em */
+    /* margin-block: 0.89em; */
+  }
+
+  /* to make h1–h3 scale if inside these elements, uncomment the following
+  :where(article, aside, nav, section) :where(article, aside, nav, section) :where(article, aside, nav, section) h1,
+  :where(article, aside, nav, section) :where(article, aside, nav, section) h2,
+  :where(article, aside, nav, section) h3,
+  */
+  h4 {
+    font-size: 1.33em; /* 1.00em */
+    /* margin-block: 1.01em; */
+  }
+
+  /* to make h1–h4 scale if inside these elements, uncomment the following
+  :where(article, aside, nav, section) :where(article, aside, nav, section) :where(article, aside, nav, section) :where(article, aside, nav, section) h1,
+  :where(article, aside, nav, section) :where(article, aside, nav, section) :where(article, aside, nav, section) h2,
+  :where(article, aside, nav, section) :where(article, aside, nav, section) h3,
+  :where(article, aside, nav, section) h4,
+  */
+  h5 {
+    font-size: 1.17em; /* 0.83em */
+    /* margin-block: 1.11em; */
+  }
+
+  /* to make h1–h5 scale if inside these elements, uncomment the following
+  :where(article, aside, nav, section) :where(article, aside, nav, section) :where(article, aside, nav, section) :where(article, aside, nav, section) :where(article, aside, nav, section) h1,
+  :where(article, aside, nav, section) :where(article, aside, nav, section) :where(article, aside, nav, section) :where(article, aside, nav, section) h2,
+  :where(article, aside, nav, section) :where(article, aside, nav, section) :where(article, aside, nav, section) h3,
+  :where(article, aside, nav, section) :where(article, aside, nav, section) h4,
+  :where(article, aside, nav, section) h5,
+  */
+  h6 {
+    font-size: 1.00em; /* 0.67em */
+    /* margin-block: 1.33em; */
+  }
+/******************
+** END: Headings **
+******************/
+
+/***************
+** BGN: Lists **
+***************/
+  /**
+    * NOTES:
+    *   - To ensure lists are announced as lists, include role="list" to <ol>
+    *       and <ul> elements, especially if the list is not nested in a
+    *       <nav>.
+    *   - This restores list semantics without affecting the design.
+    *   - See: https://developer.mozilla.org/en-US/docs/Web/CSS/list-style#accessibility_concerns
+  **/
+
+  /* Revert “The New CSS Reset” */
+  /*
+  menu, ol, ul {
+    list-style: revert;
+  }
+  */
+
+  menu, ol, ul {
+    display: block flow-root;
+  }
+  dl {
+    display: block flow-root;
+    margin-block: 1em;
+  }
+  dt {
+    display: run-in flow;
+  }
+  dt::after {
+    content: ": ";
+  }
+  dd {
+    display: block flow-root;
+    margin-inline-start: 40px;
+  }
+  ol {
+    /**
+      * SEE: https://bugzilla.mozilla.org/show_bug.cgi?id=1881517 (2024-02-22)
+      *
+      * Firefox implements CSS lists using CSS counters as per spec, so you're
+      *   really resetting https://searchfox.org/mozilla-central/rev/a8cc31504a2379bcf8ba395d2da7bb632b5521d6/layout/style/res/html.css#570.
+      * The issue is that other browsers don't implement html lists using CSS.
+      *
+      * As of 2024-04-23: https://searchfox.org/mozilla-central/source/layout/style/res/html.css
+      *   Not missing in Firefox. The issue is Chromium-based browsers are doing it wrong.
+    **/
+    counter-reset: list-item;
+  }
+  li {
+    display: list-item;
+  }
+
+  /** BGN: ul & menu: Level 0–4 **/
+    /* Sequence: disc > circle > square > disc > circle > circle */
+    :where(menu, ul) {
+      list-style-type: disc;
+    }
+    :where(menu, ol, ul) :where(menu, ul) {
+      list-style-type: circle;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ul) {
+      list-style-type: square;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ul) {
+      list-style-type: disc;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ul) {
+      list-style-type: circle;
+    }
+  /** END: ul & menu: Level 0–4 **/
+
+  /** BGN: ol (decimal): Levels 0–4 **/
+    /* Sequence: 1. > a. > i. > 1. > a. > a. */
+    ol {
+      list-style-type: decimal;
+    }
+    :where(menu, ol, ul) ol {
+      list-style-type: lower-latin;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) ol {
+      list-style-type: lower-roman;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) ol {
+      list-style-type: decimal;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) ol {
+      list-style-type: lower-latin;
+    }
+  /** END: ol (decimal): Levels 0–4 **/
+
+  /** BGN: ol (upper-latin): Levels 0–5 **/
+    /* Sequence: A. > 1. > a. > i. > 1. > a. > a.
+        * upper-latin is not repeated
+    */
+    ol.upper-latin {
+      list-style-type: upper-latin;
+    }
+    :where(menu, ol, ul) ol.upper-latin {
+      list-style-type: decimal;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) ol.upper-latin {
+      list-style-type: lower-latin;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) ol.upper-latin {
+      list-style-type: lower-roman;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) ol.upper-latin {
+      list-style-type: decimal;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) ol.upper-latin {
+      list-style-type: lower-latin;
+    }
+  /** END: ol (upper-latin): Levels 0–5 **/
+
+  /** BGN: ol (roman & latin): Levels 0–5 **/
+    /* Sequence: I. > A. > i. > a. > i. > a. > a.
+        * upper-roman and upper-latin are not repeated
+    */
+    ol.rotin {
+      list-style-type: upper-roman;
+    }
+    :where(menu, ol, ul) ol.rotin {
+      list-style-type: upper-latin;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) ol.rotin {
+      list-style-type: lower-roman;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) ol.rotin {
+      list-style-type: lower-latin;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) ol.rotin {
+      list-style-type: lower-roman;
+    }
+    :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) :where(menu, ol, ul) ol.rotin {
+      list-style-type: lower-latin;
+    }
+  /** END: ol (roman & latin): Levels 0–5 **/
+
+  /** Ensures nested lists have zero block margins **/
+    :where(dl, menu, ol, ul) :where(dl, menu, ol, ul) {
+      margin-block: 0;
+    }
+/***************
+** END: Lists **
+***************/
+
+/**************
+** BGN: Text **
+**************/
+  p {
+    display: block flow-root;
+    margin-block-end: 1em;
+  }
+
+  address {
+    /* display: block flow-root; */
+    display: inline flow-root;
+    font-style: normal;
+  }
+
+  blockquote {
+    display: block flow-root;
+    text-wrap: balance;
+  }
+
+  caption {
+    text-wrap: balance;
+  }
+
+  :where(b, strong, i, em, ins, del, s, small, sup, sub, mark) {
+    display: inline flow;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  small {
+    font-size: 0.8em;
+  }
+  sup, sub {
+    font-size: 0.75em;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sup {
+    inset-block-start: -0.5em;
+  }
+  sub {
+    inset-block-end: -0.25em;
+  }
+
+  abbr {
+    display: inline flow;
+    cursor: help;
+    text-decoration: underline dotted;
+  }
+
+  dfn,
+  cite, q,
+  span {
+    display: inline flow;
+  }
+/**************
+** END: Text **
+**************/
+
+/************************
+** BGN: Details family **
+************************/
+  details {
+    display: block flow-root;
+  }
+  summary {
+    display: list-item;
+    /* list-style: revert; */ /* Revert “The New CSS Reset” */
+  }
+/************************
+** END: Details family **
+************************/
+
+/************************
+** BGN: Images, Videos **
+************************/
+  figure {
+    display: block flow-root;
+    text-wrap: balance;
+  }
+  figcaption {
+    display: block flow-root;
+    text-wrap: balance;
+  }
+
+  canvas {
+    display: block flow-root;
+    max-inline-size: 100%;
+  }
+  picture {
+    display: block flow-root;
+    max-inline-size: 100%;
+  }
+
+  img {
+    display: block flow-root;
+  }
+  svg {
+    display: block flow-root;
+    max-inline-size: 100%;
+    max-block-size: 100%;
+  }
+
+  video {
+    display: block flow-root;
+    max-inline-size: 100%;
+  }
+/************************
+** END: Images, Videos **
+************************/
+
+/**************************
+** BGN: Monospace family **
+**************************/
+  pre {
+    display: block flow-root;
+    margin-block: 1em;
+    font-family: var(--font-monospace, monospace, monospace);
+    font-size: 1em;
+  }
+  code, kbd, samp, var {
+    display: inline flow;
+    font-family: var(--font-monospace, monospace, monospace);
+    font-size: 1em;
+  }
+/**************************
+** END: Monospace family **
+**************************/
+
+/*********************
+** BGN: Quote marks **
+*********************/
+  /**
+    * NOTES:
+    *   It's 2024 and Chromium is still NOT supporting:
+    *     1. :lang(C, C) = comma-separated lang codes
+    *     2. :lang(\*-C) = wildcard matching of lang codes
+    *
+    * USAGE:
+    *   .quote--name = <span></span>
+    *     - channel name, TV network, brand/company name, author name,
+    *         band name, singer name
+    *   .quote--title = <cite></cite>
+    *     - movies, television, radio shows, books, periodicals, databases,
+    *         websites
+    *     - old print: underline
+    *     - digital style: italicized
+    *   .quote--work = <q></q>
+    *     - episodes, articles, essays, chapters, poems, songs, speeches
+  **/
+
+  /* BGN: Regular <q> */
+    /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+      @supports not (selector(:lang(phi, fil, en-PH))) {
+        :lang(en),
+        :lang(he) {
+          quotes: "\201C" "\201D" "\2018" "\2019"; /* “ ” ‘ ’ */
+        }
+        :lang(el) {
+          quotes: "\00AB" "\00BB" "\201C" "\201D"; /* « » “ ” */
+        }
+        :lang(yue-Hans), :lang(zh-Hans),
+        :lang(yue-Hant), :lang(zh-Hant),
+        :lang(ja) {
+          quotes: "\300C" "\300D" "\300E" "\300F"; /* 「 」 『 』 */
+        }
+        :lang(ko) {
+          quotes: "\300A" "\300B" "\3008" "\3009"; /* 《 》 〈 〉 */
+        }
+        :lang(pag), :lang(pam), :lang(war), :lang(bik), :lang(hil), :lang(ilo), :lang(ceb),
+        :lang(tbw), :lang(bku), :lang(hnn), :lang(tl),
+        :lang(phi), :lang(fil),
+        :lang(en-PH) {
+          quotes: "\00AB" "\00BB" "\2039" "\203A"; /* « » ‹ › */
+        }
+      }
+    /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+
+    @supports selector(:lang(phi, fil, en-PH)) {
+      :lang(en, he) {
+        quotes: "\201C" "\201D" "\2018" "\2019"; /* “ ” ‘ ’ */
+      }
+      :lang(el) {
+        quotes: "\00AB" "\00BB" "\201C" "\201D"; /* « » “ ” */
+      }
+      :lang(yue-Hans, zh-Hans, yue-Hant, zh-Hant, ja) {
+        quotes: "\300C" "\300D" "\300E" "\300F"; /* 「 」 『 』 */
+      }
+      :lang(ko) {
+        quotes: "\300A" "\300B" "\3008" "\3009"; /* 《 》 〈 〉 */
+      }
+      :lang(pag, pam, war, bik, hil, ilo, ceb),
+      :lang(tbw, bku, hnn, tl),
+      :lang(phi, fil, en-PH) {
+        quotes: "\00AB" "\00BB" "\2039" "\203A"; /* « » ‹ › */
+      }
+    }
+  /* END: Regular <q> */
+
+  .quote--name {
+    text-transform: capitalize;
+  }
+
+  /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+    @supports not (selector(:lang(phi, fil, en-PH))) {
+      :lang(yue) .quote--title,
+      :lang(zh) .quote--title,
+      :lang(ja) .quote--title,
+      :lang(ko) .quote--title {
+        quotes: "\300A" "\300B" "\3008" "\3009"; /* 《 》 〈 〉 */
+      }
+      /* Philippine major languages */
+      :lang(pag) .quote--title, :lang(pam) .quote--title, :lang(war) .quote--title, :lang(bik) .quote--title, :lang(hil) .quote--title, :lang(ilo) .quote--title, :lang(ceb) .quote--title,
+      :lang(tbw) .quote--title, :lang(bku) .quote--title, :lang(hnn) .quote--title, :lang(tl) .quote--title,
+      :lang(phi) .quote--title, :lang(fil) .quote--title,
+      :lang(en-PH) .quote--title {
+        quotes: "\00AB" "\00BB" "\2039" "\203A"; /* « » ‹ › */
+      }
+
+      :lang(yue) .quote--work,
+      :lang(zh) .quote--work,
+      :lang(ja) .quote--work,
+      :lang(ko) .quote--work,
+      /* Philippine major languages */
+      :lang(pag) .quote--work, :lang(pam) .quote--work, :lang(war) .quote--work, :lang(bik) .quote--work, :lang(hil) .quote--work, :lang(ilo) .quote--work, :lang(ceb) .quote--work,
+      :lang(tbw) .quote--work, :lang(bku) .quote--work, :lang(hnn) .quote--work, :lang(tl) .quote--work,
+      :lang(phi) .quote--work, :lang(fil) .quote--work,
+      :lang(en-PH) .quote--work {
+        quotes: "\300C" "\300D" "\300E" "\300F"; /* 「 」 『 』 */
+      }
+
+      :lang(yue) :where(.quote--title, .quote--work)::before,
+      :lang(zh) :where(.quote--title, .quote--work)::before,
+      :lang(ja) :where(.quote--title, .quote--work)::before,
+      :lang(ko) :where(.quote--title, .quote--work)::before,
+      /* Philippine major languages */
+      :lang(pag) :where(.quote--title, .quote--work)::before, :lang(pam) :where(.quote--title, .quote--work)::before, :lang(war) :where(.quote--title, .quote--work)::before, :lang(bik) :where(.quote--title, .quote--work)::before, :lang(hil) :where(.quote--title, .quote--work)::before, :lang(ilo) :where(.quote--title, .quote--work)::before, :lang(ceb) :where(.quote--title, .quote--work)::before,
+      :lang(tbw) :where(.quote--title, .quote--work)::before, :lang(bku) :where(.quote--title, .quote--work)::before, :lang(hnn) :where(.quote--title, .quote--work)::before, :lang(tl) :where(.quote--title, .quote--work)::before,
+      :lang(phi) :where(.quote--title, .quote--work)::before, :lang(fil) :where(.quote--title, .quote--work)::before,
+      :lang(en-PH) :where(.quote--title, .quote--work)::before {
+        content: open-quote;
+      }
+
+      :lang(yue) :where(.quote--title, .quote--work)::after,
+      :lang(zh) :where(.quote--title, .quote--work)::after,
+      :lang(ja) :where(.quote--title, .quote--work)::after,
+      :lang(ko) :where(.quote--title, .quote--work)::after,
+      /* Philippine major languages */
+      :lang(pag) :where(.quote--title, .quote--work)::after, :lang(pam) :where(.quote--title, .quote--work)::after, :lang(war) :where(.quote--title, .quote--work)::after, :lang(bik) :where(.quote--title, .quote--work)::after, :lang(hil) :where(.quote--title, .quote--work)::after, :lang(ilo) :where(.quote--title, .quote--work)::after, :lang(ceb) :where(.quote--title, .quote--work)::after,
+      :lang(tbw) :where(.quote--title, .quote--work)::after, :lang(bku) :where(.quote--title, .quote--work)::after, :lang(hnn) :where(.quote--title, .quote--work)::after, :lang(tl) :where(.quote--title, .quote--work)::after,
+      :lang(phi) :where(.quote--title, .quote--work)::after, :lang(fil) :where(.quote--title, .quote--work)::after,
+      :lang(en-PH) :where(.quote--title, .quote--work)::after {
+        content: close-quote;
+      }
+    }
+  /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+
+  @supports selector(:lang(phi, fil, en-PH)) {
+    :lang(yue, zh, ja, ko) .quote--title {
+      quotes: "\300A" "\300B" "\3008" "\3009"; /* 《 》 〈 〉 */
+    }
+    /* Philippine major languages */
+    :lang(pag, pam, war, bik, hil, ilo, ceb) .quote--title,
+    :lang(tbw, bku, hnn, tl) .quote--title,
+    :lang(phi, fil, en-PH) .quote--title {
+      quotes: "\00AB" "\00BB" "\2039" "\203A"; /* « » ‹ › */
+    }
+
+    :lang(yue, zh, ja, ko) .quote--work,
+    /* Philippine major languages */
+    :lang(pag, pam, war, bik, hil, ilo, ceb) .quote--work,
+    :lang(tbw, bku, hnn, tl) .quote--work,
+    :lang(phi, fil, en-PH) .quote--work {
+      quotes: "\300C" "\300D" "\300E" "\300F"; /* 「 」 『 』 */
+    }
+
+    :lang(yue, zh, ja, ko) :where(.quote--title, .quote--work)::before,
+    /* Philippine major languages */
+    :lang(pag, pam, war, bik, hil, ilo, ceb) :where(.quote--title, .quote--work)::before,
+    :lang(tbw, bku, hnn, tl) :where(.quote--title, .quote--work)::before,
+    :lang(phi, fil, en-PH) :where(.quote--title, .quote--work)::before {
+      content: open-quote;
+    }
+
+    :lang(yue, zh, ja, ko) :where(.quote--title, .quote--work)::after,
+    /* Philippine major languages */
+    :lang(pag, pam, war, bik, hil, ilo, ceb) :where(.quote--title, .quote--work)::after,
+    :lang(tbw, bku, hnn, tl) :where(.quote--title, .quote--work)::after,
+    :lang(phi, fil, en-PH) :where(.quote--title, .quote--work)::after {
+      content: close-quote;
+    }
+  }
+/*********************
+** END: Quote marks **
+*********************/
+
+/*************************
+** BGN: Ruby Annotation **
+*************************/
+  /**
+    * As of 2024-02-07.
+    *
+    * We are declaring most of these due to lack of support in browsers.
+    * Once CSS Ruby is fully supported, we can remove these base declarations.
+    *
+    * See:
+    *   1. https://www.w3.org/TR/css-ruby-1/ || https://drafts.csswg.org/css-ruby/
+    *   2. https://www.w3.org/TR/html-ruby-extensions/
+    *   3. https://www.w3.org/International/articles/ruby/markup.en
+    *
+    * display: ruby-*
+    *   - see:
+    *       1. https://caniuse.com/?search=display%3A+ruby
+    *       2. https://www.w3.org/TR/css-display-3/#propdef-display
+  **/
+
+  /* BGN: <ruby> shim */
+    /**
+      * NOTES:
+      *
+      *   As per:
+      *     - https://www.w3.org/TR/css-ruby-1/
+      *     - https://drafts.csswg.org/css-ruby-1/
+    **/
+
+    /* BGN: Basic */
+      ruby {
+        display: ruby; /* backwards-compatibility */
+        display: inline ruby;
+      }
+
+      /**
+        * NOTES:
+        *   - <rbc> is in W3C Working Draft.
+        *     - see: https://www.w3.org/TR/css-ruby-1/
+        *   - NOT IMPLEMENTED in Chromium; but works in Firefox.
+        *     - see: https://caniuse.com/?search=rbc
+        *   - temporary workaround: .ruby-base-container
+      **/
+        .ruby-base-container,
+        rbc {
+          display: ruby-base-container;
+        }
+      /* */
+
+      /**
+        * NOTES:
+        *   - <rb> is highly recommended by the W3C.
+        *     - But the HTML5 WG marked this as deprecated which MUST be
+        *         corrected!
+        *     - see: https://www.w3.org/TR/css-ruby-1/
+        *   - PROBLEMATIC in Chromium-based browsers.
+        *     - see: https://caniuse.com/?search=rb
+        *   - temporary workaround: .ruby-base
+      **/
+        .ruby-base,
+        rb {
+          display: ruby-base;
+          white-space: nowrap;
+        }
+      /* */
+
+      /**
+        * NOTES:
+        *   - <rtc> is very useful for multilingual Asian websites.
+        *     - But the HTML5 WG marked this as deprecated which MUST be
+        *         corrected!
+        *     - see: https://www.w3.org/TR/css-ruby-1/
+        *   - IMPLEMENTED in all browsers.
+        *     - but USELESS in Chromium-based browsers
+        *       - when <rt> is a child of any element, it stops working correctly!
+        *     - see: https://caniuse.com/?search=rtc
+      **/
+        .ruby-text-container,
+        rtc {
+          display: ruby-text-container;
+          ruby-merge: auto;
+          ruby-overhang: auto;
+          ruby-position: over; /* backwards-compatibility */
+          ruby-position: alternate;
+        }
+      /* */
+
+      /* Annotation */
+        .ruby-text,
+        rt {
+          display: ruby-text;
+          font-size: 0.7rem;
+        }
+      /* */
+
+      /* For fallback parentheses only. */
+        rp {
+          display: none;
+        }
+      /* */
+
+      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+        @supports not (ruby-align: center) {
+          /* ruby, */ /* Don't */
+          .ruby-base-container, .ruby-base, .ruby-text-container, .ruby-text,
+          rbc, rb, rtc, rt {
+            text-align: center;
+          }
+        }
+      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+      @supports (ruby-align: center) {
+        .ruby-base-container, .ruby-base, .ruby-text-container, .ruby-text,
+        rbc, rb, rtc, rt {
+          ruby-align: center; /* better than the default ‘start’ */
+          /* text-transform: full-size-kana; */ /* needed? */
+        }
+      }
+    /* END: Basic */
+
+    /* BGN: font-variant-east-asian */
+      ruby,
+      .ruby-base-container, .ruby-base, .ruby-text-container, .ruby-text,
+      rbc, rb, rtc, rt {
+        font-variant-east-asian: full-width ruby;
+        unicode-bidi: isolate;
+      }
+      ruby:lang(zh-Hans),
+      :where(.ruby-base-container, .ruby-base, .ruby-text-container, .ruby-text):lang(zh-Hans),
+      :where(rbc, rb, rtc, rt):lang(zh-Hans) {
+        font-variant-east-asian: simplified full-width ruby;
+      }
+      ruby:lang(zh-Hant),
+      :where(.ruby-base-container, .ruby-base, .ruby-text-container, .ruby-text):lang(zh-Hant),
+      :where(rbc, rb, rtc, rt):lang(zh-Hant) {
+        font-variant-east-asian: traditional full-width ruby;
+      }
+      ruby:lang(ja),
+      :where(.ruby-base-container, .ruby-base, .ruby-text-container, .ruby-text):lang(ja),
+      :where(rbc, rb, rtc, rt):lang(ja) {
+        font-variant-east-asian: jis04 full-width ruby;
+      }
+    /* END: font-variant-east-asian */
+  /* END: <ruby> shim */
+
+  .ruby-text-container, .ruby-text,
+  rtc, rt {
+    /* line-height: 1; */
+    /* text-emphasis: none; */
+    white-space: nowrap;
+  }
+
+  /* BGN: suggested by W3C */
+    /*
+    .ruby-text-container,
+    :not(.ruby-text-container) > .ruby-text,
+    :not(.ruby-text-container) > rt,
+    rtc,
+    :not(rtc) > .ruby-text,
+    :not(rtc) > rt {
+      font-size: 50%;
+    }
+    rtc:lang(zh-TW),
+    :not(rtc) > .ruby-text:lang(zh-TW),
+    :not(rtc) > rt:lang(zh-TW),
+    rtc:lang(zh-Hanb),
+    :not(rtc) > .ruby-text:lang(zh-Hanb),
+    :not(rtc) > rt:lang(zh-Hanb) {
+      font-size: 30%;
+    }
+    */
+  /* END: suggested by W3C */
+
+  /* BGN: Ruby Classes */
+    /* BGN: ruby-align classes (<rtb>, <rb>, <rtc>, <rt>) */
+      .ruby-align--center {
+        ruby-align: center;
+      }
+      .ruby-align--space-around { /* initial value */
+        ruby-align: space-around;
+      }
+      .ruby-align--space-between {
+        ruby-align: space-between;
+      }
+      .ruby-align--start {
+        ruby-align: start;
+      }
+    /* END: ruby-align classes (<rtb>, <rb>, <rtc>, <rt>) */
+
+    /* BGN: ruby-merge (<rtc>) */
+      .ruby-merge--auto {
+        ruby-merge: auto;
+      }
+      .ruby-merge--merge {
+        ruby-merge: merge;
+      }
+      .ruby-merge--separate { /* initial */
+        ruby-merge: separate;
+      }
+    /* END: ruby-merge (<rtc>) */
+
+    /* BGN: ruby-overhang (<rtc>) */
+      .ruby-overhang--auto { /* initial */
+        ruby-overhang: auto;
+      }
+      .ruby-overhang--none {
+        ruby-overhang: none;
+      }
+    /* END: ruby-overhang (<rtc>) */
+
+    /* BGN: ruby-position classes (<rtc>) */
+      .ruby-position--alternate { /* initial value and best */
+        ruby-position: alternate;
+      }
+      .ruby-position--inter-character {
+        ruby-position: inter-character;
+      }
+      .ruby-position--over { /* default setting in major browsers */
+        ruby-position: over;
+      }
+      .ruby-position--under {
+        ruby-position: under;
+      }
+    /* END: ruby-position classes (<rtc>) */
+  /* END: Ruby Classes */
+
+  /* BGN: Colours */
+    /**
+      * NOTES:
+      *   - Works for Tabular and Interleaved models.
+      *
+    **/
+    /* RUBY BASE */
+      /*
+      .ruby-base,
+      rb {
+        color: purple;
+      }
+      */
+
+    /* RUBY OVER */
+      ruby > rb > ruby > rt,
+      ruby > rb > ruby > rt > ruby > .ruby-base,
+      ruby > rb > ruby > rt > ruby > rb,
+      ruby > .ruby-text-container:nth-of-type(odd) > rt,
+      ruby > .ruby-text-container:nth-of-type(odd) > rt > ruby > rb,
+      ruby > rtc:nth-of-type(odd) > rt,
+      ruby > rtc:nth-of-type(odd) > rt > ruby > rb
+      {
+        color: var(--color-green);
+      }
+
+    /* RUBY BELOW */
+      ruby > rt,
+      ruby > rt > ruby > .ruby-base,
+      ruby > rt > ruby > rb,
+      ruby > .ruby-text-container:nth-of-type(even) > rt,
+      ruby > .ruby-text-container:nth-of-type(even) > rt > ruby > rb,
+      ruby > rtc:nth-of-type(even) > rt,
+      ruby > rtc:nth-of-type(even) > rt > ruby > rb
+      {
+        color: var(--color-magenta);
+      }
+
+    /* RUBY OVER OVER and RUBY BELOW BELOW */
+      ruby > rt > ruby > rt,
+      ruby > .ruby-text-container:nth-of-type(odd) > rt > ruby > rt,
+      ruby > .ruby-text-container:nth-of-type(even) > rt > ruby > rt,
+      ruby > rtc:nth-of-type(odd) > rt > ruby > rt,
+      ruby > rtc:nth-of-type(even) > rt > ruby > rt
+      {
+        color: var(--color-red);
+      }
+  /* END: Colours */
+
+  .ruby-guide {
+    outline: 1px dotted;
+  }
+  .ruby-block {
+    height: fit-content;
+    outline: 1px solid var(--color-orange);
+  }
+/*************************
+** END: Ruby Annotation **
+*************************/
+
+/**********************
+** BGN: Interactives **
+**********************/
+  button {
+    display: inline flow-root;
+    font: inherit;
+    line-height: 1.2;
+    text-transform: none;
+  }
+
+  label {
+    line-height: 1.2;
+  }
+
+  progress {
+    vertical-align: baseline;
+  }
+
+  search {
+    display: block flow-root;
+  }
+
+  /* BGN: Form family */
+    form,
+    legend {
+      display: block flow-root;
+    }
+
+    fieldset {
+      display: block flow-root;
+      margin-inline: 2px;
+    }
+
+    textarea {
+      display: inline flow-root;
+      font: inherit;
+      line-height: 1.2;
+      margin-block: 1px;
+    }
+
+    input {
+      display: inline flow-root;
+      font: inherit;
+      line-height: 1.2;
+    }
+    input[type="checkbox"] {
+      margin-inline: 4px 3px;
+      margin-block: 3px;
+    }
+    input[type="radio"] {
+      margin-inline: 5px 3px;
+      margin-block: 3px 0;
+    }
+    input[type="range"] {
+      margin-inline: 2px;
+      margin-block: 2px;
+    }
+    input[type="file"] > label {
+      display: inline flow-root;
+    }
+  /* END: Form family */
+
+  /* BGN: Select family */
+    optgroup {
+      font: inherit;
+      line-height: 1.2;
+    }
+    optgroup, optgroup::before,
+    option {
+      display: block flow-root;
+    }
+    select {
+      display: inline flow-root;
+      font: inherit;
+      line-height: 1.2;
+      text-transform: none;
+    }
+  /* END: Select family */
+/**********************
+** END: Interactives **
+**********************/
+
+/*********************************
+** BGN: Pop-up dialogs / modals **
+*********************************/
+  dialog {
+    display: block flow-root;
+    margin-inline: auto;
+    margin-block: auto;
+  }
+  ::backdrop {
+    display: block flow-root;
+  }
+/*********************************
+** END: Pop-up dialogs / modals **
+*********************************/
+
+/******************************************************************************/
+/******************************************************************************/
+
+/**************
+** BGN: Last **
+**************/
+  hr {
+    block-size: 0;
+    border-block-start-width: 1px;
+    box-sizing: content-box;
+    clear: both;
+    color: currentColor;
+    /* margin-inline: auto; */
+    margin-block: 0.5em;
+  }
+
+  /* OpenType Superscript (sups) */
+    sup, .superscript {
+      font-variant-position: super;
+    }
+
+  /* OpenType Subscript (subs) */
+    sub, .subscript {
+      font-variant-position: sub;
+    }
+
+  /* Fractions */
+    .fractions {
+      font-variant-numeric: oldstyle-nums diagonal-fractions slashed-zero;
+    }
+/**************
+** END: Last **
+**************/
