@@ -1,3 +1,7 @@
+{{- /*
+  See default: https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_default/_markup/render-link.html
+*/}}
+
 {{- $baseurl := urls.Parse site.BaseURL -}}
 {{- $url := urls.Parse .Destination -}}
 {{- $getpage := site.GetPage .Destination -}}
