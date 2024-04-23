@@ -14,7 +14,7 @@ _merge = 'deep'
 ### BGN: Other Settings ###
   [analytics]
     enable = true
-    position = 'head'       # head or footer
+    position = 'head'       # head or body
     cfwebanalytics = '07a05e5302d1458da3561ce41791e284'       # https://cloudflare.com | 'privacy-first'
     counterdev = 'youronlyone'           # https://counter.dev | 'privacy-friendly'
     #microanalyticsio = 'ZwSg9rf6GA'     # https://microanalytics.io | 'privacy-first', 'green energy'
