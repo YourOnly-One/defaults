@@ -1,0 +1,182 @@
+/*******************************************************************************
+** YourOnly.One font-family (youronlyone-font-family.css)                     **
+**                                                                            **
+** - by Yuki (https://im.youronly.one); Yelosan Publishing                    **
+*******************************************************************************/
+
+/**
+  * NOTE:
+  *   - load last
+  *   - makes it easier to increase specificity for font-family without
+  *       affecting other styles
+**/
+
+html {
+  font-family: var(--font-sans-default);
+}
+
+/******************
+** BGN: :lang(C) **
+******************/
+  :lang(en) {
+    font-family: var(--font-latn-sans-default);
+  }
+
+  /* BGN: Hanzi (Traditional & Simple) */
+    :lang(yue),
+    :lang(zh) {
+      /* font-family: */ /* Don't set this. Use -Hant or -Hans instead. */
+    }
+    :lang(zh-Hans) {
+      font-family: var(--font-hans-sans-default);
+    }
+    :lang(zh-Hant) {
+      font-family: var(--font-hant-sans-default);
+    }
+    :lang(zh-Hant-HK) {
+      font-family: var(--font-hant-hk-sans-default);
+    }
+    :lang(zh-Bopo) {
+      font-family: var(--font-bopo-sans-default);
+    }
+  /* END: Hanzi (Traditional & Simple) */
+
+  /* BGN: Kana + Nihongo */
+    :lang(ja) {
+      font-family: var(--font-jpan-sans-default);
+    }
+  /* END: Kana + Nihongo */
+
+  /* BGN: Hangeul + Hangugeo */
+    :lang(ko) {
+      font-family: var(--font-kore-sans-default);
+    }
+  /* END: Hangeul + Hangugeo */
+
+  /* BGN: Hebrew & Paleo-Hebrew */
+    :lang(he),
+    :lang(hbo) {
+      font-family: var(--font-hebr-sans-default); /* combined; different Unicode points */
+    }
+  /* END: Hebrew & Paleo-Hebrew */
+
+  /* BGN: Greek & Ancient Greek */
+    :lang(el),
+    :lang(grc) {
+      font-family: var(--font-grek-sans-default); /* combined; different Unicode points */
+    }
+  /* END: Greek & Ancient Greek */
+
+  /* BGN: Pilipino */
+    /* BGN: Pilipino in Latin script */
+      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+        @supports not (selector(:lang(phi, fil, en-PH))) {
+          :lang(pag), :lang(pam), :lang(war), :lang(bik), :lang(hil), :lang(ilo), :lang(ceb),
+          :lang(tbw), :lang(bku), :lang(hnn), :lang(tl),
+          :lang(phi), :lang(fil), :lang(en-PH) {
+            font-family: var(--font-pilipino-sans-default);
+          }
+        }
+      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+      @supports selector(:lang(phi, fil, en-PH)) {
+        :lang(pag, pam, war, bik, hil, ilo, ceb),
+        :lang(tbw, bku, hnn, tl),
+        :lang(phi, fil, en-PH) {
+          font-family: var(--font-pilipino-sans-default);
+        }
+      }
+    /* END: Pilipino in Latin script */
+
+    /* BGN: Pilipino in Baybayin scripts */
+      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+        @supports not (selector(:lang("\*-Tagb", "\*-Buhd", "\*-Hano", "\*-Tglg"))) {
+          :lang(pag-Tagb), :lang(pag-Buhd), :lang(pag-Hano), :lang(pag-Tglg), /* Pangasinense in Baybayin */
+          :lang(pam-Tagb), :lang(pam-Buhd), :lang(pam-Hano), :lang(pam-Tglg), /* Kapampangan in Baybayin */
+          :lang(war-Tagb), :lang(war-Buhd), :lang(war-Hano), :lang(war-Tglg), /* Waray in Baybayin */
+          :lang(bik-Tagb), :lang(bik-Buhd), :lang(bik-Hano), :lang(bik-Tglg), /* Bikolano in Baybayin */
+          :lang(hil-Tagb), :lang(hil-Buhd), :lang(hil-Hano), :lang(hil-Tglg), /* Hiligaynon (Ilonggo) in Baybayin */
+          :lang(ilo-Tagb), :lang(ilo-Buhd), :lang(ilo-Hano), :lang(ilo-Tglg), /* Iloko (Ilokano) in Baybayin */
+          :lang(ceb-Tagb), :lang(ceb-Buhd), :lang(ceb-Hano), :lang(ceb-Tglg), /* Cebuano (Binasaya, Bisaya; Boholano) in Baybayin */
+          :lang(tbw-Tagb), :lang(tbw-Buhd), :lang(tbw-Hano), :lang(tbw-Tglg), /* Aborlan Tagbanwa in Baybayin */
+          :lang(bku-Tagb), :lang(bku-Buhd), :lang(bku-Hano), :lang(bku-Tglg), /* Mangyan Buhid in Baybayin */
+          :lang(hnn-Tagb), :lang(hnn-Buhd), :lang(hnn-Hano), :lang(hnn-Tglg), /* Mangyan Hanunoo in Baybayin */
+          :lang(tl-Tagb), :lang(tl-Buhd), :lang(tl-Hano), :lang(tl-Tglg), /* Tagalog in Baybayin */
+          :lang(phi-Tagb), :lang(phi-Buhd), :lang(phi-Hano), :lang(phi-Tglg), /* Philippine languages in Baybayin */
+          :lang(fil-Tagb), :lang(fil-Buhd), :lang(fil-Hano), :lang(fil-Tglg) /* Filipino language in Baybayin */
+          {
+            font-family: var(--font-baybayin-sans-default); /* combined; different Unicode points */
+          }
+        }
+      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+      @supports selector(:lang("\*-Tagb", "\*-Buhd", "\*-Hano", "\*-Tglg")) {
+        :lang(\*-Tagb), :lang(\*-Buhd), :lang(\*-Hano), :lang(\*-Tglg) /* in Baybayin */
+        {
+          font-family: var(--font-baybayin-sans-default); /* combined; different Unicode points */
+        }
+      }
+    /* END: Pilipino in Baybayin scripts */
+  /* END: Pilipino */
+
+  /* BGN: :lang(\*-Latn) */
+    /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+      @supports not (selector(:lang("\*-Latn"))) {
+        :lang(yue-jyutping), :lang(zh-yue-jyutping),
+        :lang(zh-Latn),
+        :lang(ja-Latn),
+        :lang(ko-Latn),
+        :lang(he-Latn), :lang(hbo-Latn),
+        :lang(el-Latn), :lang(grc-Latn) {
+          font-family: var(--font-latn-sans-default);
+        }
+      }
+    /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+    @supports selector(:lang("\*-Latn")) {
+      :lang(\*-jyutping),
+      :lang(\*-Latn) {
+        font-family: var(--font-latn-sans-default);
+      }
+    }
+  /* END: :lang(\*-Latn) */
+/******************
+** END: :lang(C) **
+******************/
+
+/*****************
+** BGN: Generic **
+*****************/
+  math {
+    font-family: var(--font-math-sans-default); /* combined; different Unicode points */
+  }
+  music {
+    font-family: var(--font-music-default); /* combined; different Unicode points */
+  }
+/*****************
+** END: Generic **
+*****************/
+
+/******************
+** BGN: Headings **
+******************/
+  header, hgroup,
+  thead, th {
+    font-family: var(--font-serif-default);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif-default);
+  }
+/******************
+** END: Headings **
+******************/
+
+/**************************
+** BGN: Monospace family **
+**************************/
+  :is(pre, code, kbd, samp, var):not(#\9)::before,
+  :is(pre, code, kbd, samp, var):not(#\9) span,
+  :is(pre, code, kbd, samp, var):not(#\9) {
+    font-family: var(--font-mono-sans-default);
+  }
+/**************************
+** END: Monospace family **
+**************************/
