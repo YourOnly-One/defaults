@@ -77,22 +77,19 @@
     --font-emoji-noto: "Noto Color Emoji", "Noto Emoji";
     --font-emoji-joypixels: "JoyPixels", "Emoji Two", "EmojiOne Mozilla", "Emoji One";
     --font-emoji-twemoji: "twemoji-color", "Twitter Color Emoji";
-    /* --font-emoji-one-var: "twemoji-color", "Twitter Color Emoji", "JoyPixels", "Emoji Two", "EmojiOne Mozilla", "Emoji One", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji"; */
-
-    /* Temporary workaround to incomplete var() implementation in Gecko and Blink engines */
-    --font-emoji: "twemoji-color", "Twitter Color Emoji", "JoyPixels", "Emoji Two", "EmojiOne Mozilla", "Emoji One", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji";
-  }
-  .font-emoji-twemoji {
-    font-family: var(--font-emoji-twemoji, emoji);
+    --font-emoji-combined: "Noto Color Emoji", "twemoji-color", "Twitter Color Emoji", "Apple Color Emoji", "Noto Emoji", "JoyPixels", "Emoji Two", "EmojiOne Mozilla", "Emoji One", "Segoe UI Emoji", "noto-sans-symbols2", "Noto Sans Symbols 2", "noto-sans-symbols", "Noto Sans Symbols";
   }
   .font-emoji-noto {
-    font-family: var(--font-emoji-noto, emoji);
+    font-family: var(--font-emoji-noto), emoji;
+  }
+  .font-emoji-twemoji {
+    font-family: var(--font-emoji-twemoji), emoji;
   }
 /** END: :root and classes **/
 
 body :is(.smiley, .emoticon, .emoji) {
   display: inline flow;
-  font-family: var(--font-emoji-noto, emoji);
+  font-family: var(--font-emoji-default);
   font-synthesis: none; /* do not allow any synthesis */
     font-style: normal; /* ensure there are no italic and oblique styles */
     font-weight: normal;  /* ensure there is no bold weight */
@@ -116,7 +113,7 @@ body :is(.smiley, .emoticon, .emoji) {
       Delete this after updating it.
 */
 html body .unicode_emoji {
-  font-family: var(--font-emoji-noto, emoji);
+  font-family: var(--font-emoji-default);
   font-variant-emoji: emoji;
   /* font-size: larger; */
   font-style: normal;

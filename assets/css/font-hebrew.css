@@ -84,26 +84,30 @@
   * 2. Do not use var(), it will not work correctly.
   */
   :root {
-    --font-hebrew-sans-noto: "noto-sans", "Noto Sans", "phoenician-sans-noto", "Noto Sans Phoenician", "hebrew-sans-noto", "Noto Sans Hebrew"; /* Different Unicode blocks. */
-    --font-hebrew-serif-noto: "noto-serif", "Noto Serif", "hebrew-serif-noto", "Noto Serif Hebrew";
-    --font-hebrew-sans-paleo-gezer: "noto-sans", "Noto Sans", "hebrew-sans-paleo-gezer";
-    --font-hebrew-sans-proto-canaanite: "noto-sans", "Noto Sans", "hebrew-sans-proto-canaanite";
+    --font-hebr-sans-noto: "noto-sans", "Noto Sans", "phoenician-sans-noto", "Noto Sans Phoenician", "hebrew-sans-noto", "Noto Sans Hebrew"; /* Different Unicode blocks. */
+    --font-hebr-serif-noto: "noto-serif", "Noto Serif", "hebrew-serif-noto", "Noto Serif Hebrew";
+    --font-hebr-sans-paleo-gezer: "noto-sans", "Noto Sans", "hebrew-sans-paleo-gezer";
+    --font-hebr-sans-proto-canaanite: "noto-sans", "Noto Sans", "hebrew-sans-proto-canaanite";
   }
-  .font-hebrew-sans-noto.font-hebrew-sans-noto.font-hebrew-sans-noto {
+  .font-hebrew-sans-noto.font-hebrew-sans-noto.font-hebrew-sans-noto,
+  .font-hebr-sans-noto {
     direction: rtl;
-    font-family: var(--font-hebrew-sans-noto);
+    font-family: var(--font-hebr-sans-noto), sans-serif;
   }
-  .font-hebrew-serif-noto.font-hebrew-serif-noto.font-hebrew-serif-noto {
+  .font-hebrew-serif-noto.font-hebrew-serif-noto.font-hebrew-serif-noto,
+  .font-hebr-serif-noto {
     direction: rtl;
-    font-family: var(--font-hebrew-serif-noto);
+    font-family: var(--font-hebr-serif-noto), serif;
   }
-  .font-hebrew-sans-paleo-gezer.font-hebrew-sans-paleo-gezer.font-hebrew-sans-paleo-gezer {
+  .font-hebrew-sans-paleo-gezer.font-hebrew-sans-paleo-gezer.font-hebrew-sans-paleo-gezer,
+  .font-hebr-sans-paleo-gezer {
     direction: rtl;
-    font-family: var(--font-hebrew-sans-paleo-gezer);
+    font-family: var(--font-hebr-sans-paleo-gezer);
   }
-  .font-hebrew-sans-proto-canaanite.font-hebrew-sans-proto-canaanite.font-hebrew-sans-proto-canaanite {
+  .font-hebrew-sans-proto-canaanite.font-hebrew-sans-proto-canaanite.font-hebrew-sans-proto-canaanite,
+  .font-hebr-sans-proto-canaanite {
     direction: rtl;
-    font-family: var(--font-hebrew-sans-proto-canaanite);
+    font-family: var(--font-hebr-sans-proto-canaanite);
   }
 /** END: :root and classes **/
 
@@ -126,7 +130,7 @@
     :lang(he),
     :lang(hbo) {
       direction: rtl; /* Be sure to also set dir="rtl" in HTML. */
-      font-family: var(--font-hebrew-sans-serif, sans-serif); /* combined; different Unicode points */
+      font-family: var(--font-hebr-sans-default); /* combined; different Unicode points */
       font-style: normal; /* ensure there are no italic and oblique styles */
       font-synthesis: weight; /* only allow 'bold' synthesis */
     }

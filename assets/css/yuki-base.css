@@ -221,8 +221,8 @@
     /* END: COLOUR VARS */
 
     /* BGN: FONT VARS */
-      --font-greek-sans-noto: "";
-      --font-greek-serif-noto: "";
+      --font-grek-sans-noto: "";
+      --font-grek-serif-noto: "";
     /* END: FONT VARS */
 
     /* BGN: THEME SETTINGS */
@@ -235,29 +235,47 @@
       **/
 
       /* BGN: font-family */
-        --font-sans-serif: var(--font-sans-noto);
-        --font-serif: var(--font-serif-noto);
-        --font-monospace: var(--font-mono-sans-noto);
-        --font-fantasy: var(--font-barabara-fantasy, var(--font-serif-noto));
+        /**
+          * NOTE: var(--font-one, var(--font-two, sans-serif)); is all or nothing
+          *   - if a single character matches the first var, the fallback isn't used even if a glyph is missing in the first match
+          *     - Using the example above, if “A” is in --font-one, but “B” is not, it won't check var(--font-two).
+          *   - As of 2024-04-24 UTC+8.
+          *
+          * Solution:
+          *   - manually declare a combined var instead of relying on this format: var(--font-one, var(--font-two, sans-serif));
+          *   - Untested format
+          *     - font-family: var(--font-one), var(--font-two), sans-serif;
+        **/
+        --font-sans-default: var(--font-sans-noto), sans-serif;
+        --font-serif-default: var(--font-serif-noto), serif;
+        --font-mono-sans-default: var(--font-mono-sans-noto), monospace, monospace;
 
-        --font-zhs-sans-serif: var(--font-zhs-sans-noto);
-        --font-zht-sans-serif: var(--font-zht-sans-noto);
-        --font-fangsong-zhs-sans-serif-rotated: var(--font-fangsong-zhs-sans-noto-rotated);
-        --font-fangsong-zhs-sans-serif-vertical: var(--font-fangsong-zhs-sans-noto-vertical);
+        --font-latn-sans-default: var(--font-latn-sans-noto), sans-serif;
+        --font-latn-fantasy-default: var(--font-latn-fantasy-barabara), var(--font-serif-noto), fantasy;
 
-        --font-ja-sans-serif: var(--font-ja-sans-noto);
-        --font-ko-sans-serif: var(--font-ko-sans-noto);
+        --font-hans-sans-default: var(--font-hans-sans-noto), sans-serif;
+        --font-hant-sans-default: var(--font-hant-sans-noto), sans-serif;
+        --font-hant-hk-sans-default: var(--font-hant-hk-sans-noto), sans-serif;
+        --font-bopo-sans-default: var(--font-bopo-sans-noto), sans-serif;
+        --font-hans-sans-default-fangsong-rotated: var(--font-hans-sans-noto-fangsong-rotated);
+        --font-hans-sans-default-fangsong-vertical: var(--font-hans-sans-noto-fangsong-vertical);
 
-        --font-hebrew-sans-serif: var(--font-hebrew-sans-noto);
-        --font-hebrew-serif: var(--font-hebrew-serif-noto);
+        --font-jpan-sans-default: var(--font-jpan-sans-noto), sans-serif;
+        --font-kore-sans-default: var(--font-kore-sans-noto), sans-serif;
 
-        --font-greek-sans-serif: var(--font-greek-sans-noto);
-        --font-greek-serif: var(--font-greek-serif-noto);
+        --font-hebr-sans-default: var(--font-hebr-sans-noto), sans-serif;
+        --font-hebr-serif-default: var(--font-hebr-serif-noto), serif;
 
-        --font-math: var(--font-math-sans-noto);
-        --font-music: var(--font-music-noto);
+        --font-grek-sans-default: var(--font-grek-sans-noto), sans-serif;
+        --font-grek-serif-default: var(--font-grek-serif-noto), serif;
 
-        --font-emoji: var(--font-emoji-twemoji, var(--font-emoji-emoji, var(--font-emoji-noto, var(--font-emoji-fallback))));
+        --font-pilipino-sans-default: var(--font-pilipino-sans-noto), sans-serif;
+        --font-baybayin-sans-default: var(--font-baybayin-sans-noto), sans-serif;
+
+        --font-math-sans-default: var(--font-math-sans-noto), math;
+        --font-music-default: var(--font-music-noto);
+
+        --font-emoji-default: var(--font-emoji-combined), emoji;
       /* END: font-family */
 
       /* BGN: colours */
@@ -373,7 +391,7 @@
   thead, th,
   h1, h2, h3, h4, h5, h6,
   a {
-    hyphens: none;
+    hyphens: none;  /* Not good if hyphenated. */
   }
 
   a {
@@ -396,7 +414,6 @@
 
   footer {
     display: block flow-root;
-    text-wrap: balance;
   }
 
   math {
@@ -655,6 +672,7 @@
   p {
     display: block flow-root;
     margin-block-end: 1em;
+    text-wrap: pretty;
   }
 
   address {

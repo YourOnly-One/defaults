@@ -114,7 +114,7 @@
   }
   .font-math-sans-noto {
     direction: ltr;
-    font-family: var(--font-math-sans-noto);
+    font-family: var(--font-math-sans-noto), math;
   }
   .font-music-noto {
     direction: ltr;

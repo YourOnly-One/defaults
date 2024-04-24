@@ -178,27 +178,27 @@
 
 /** BGN: root and classes **/
   :root {
-    /* BGN: standard set */
-      --font-sans-noto: "noto-sans", "Noto Sans";
-      --font-serif-noto: "noto-serif", "Noto Serif";
-      --font-mono-sans-noto: "noto-sans-mono", "Noto Sans Mono", "Noto Mono";
-    /* END: standard set */
+    --font-sans-noto: "noto-sans", "Noto Sans";
+    --font-serif-noto: "noto-serif", "Noto Serif";
+    --font-mono-sans-noto: "noto-sans-mono", "Noto Sans Mono", "Noto Mono";
+
+    --font-latn-sans-noto: "noto-sans", "Noto Sans";
   }
   .font-sans-noto {
-    font-family: var(--font-sans-noto, sans-serif);
+    font-family: var(--font-sans-noto), sans-serif;
   }
   .font-serif-noto {
-    font-family: var(--font-serif-noto, serif);
+    font-family: var(--font-serif-noto), serif;
   }
   .font-mono-sans-noto {
-    font-family: var(--font-mono-sans-noto, monospace);
+    font-family: var(--font-mono-sans-noto), monospace, monospace;
   }
 /** END: :root and classes **/
 
 /* BGN: Catch all English */
   :lang(en) {
     direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-    font-family: var(--font-sans-serif, sans-serif);
+    font-family: var(--font-latn-sans-default);
     font-language-override: "ENG";
     font-synthesis: initial;
   }

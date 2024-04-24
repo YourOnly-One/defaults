@@ -57,31 +57,33 @@
   * 2. Do not use var(), it will not work correctly.
   */
   :root {
-    --font-zhs-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK SC", "Noto Sans SC";
-    --font-zht-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK TC", "Noto Sans TC";
-    --font-fangsong-zhs-sans-noto-rotated: "noto-sans", "Noto Sans", "Noto Fangsong KSS Rotated";
-    --font-fangsong-zhs-sans-noto-vertical: "noto-sans", "Noto Sans", "Noto Fangsong KSS Vertical";
+    --font-hans-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK SC", "Noto Sans SC";
+    --font-hant-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK TC", "Noto Sans TC";
+    --font-hant-hk-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK HK", "Noto Sans HK";
+    --font-bopo-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK TC", "Noto Sans TC";
+    --font-hans-sans-noto-fangsong-rotated: "noto-sans", "Noto Sans", "Noto Fangsong KSS Rotated";
+    --font-hans-sans-noto-fangsong-vertical: "noto-sans", "Noto Sans", "Noto Fangsong KSS Vertical";
 
-    --font-ja-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK JP", "Noto Sans JP";
-    --font-ko-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK KR", "Noto Sans KR";
+    --font-jpan-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK JP", "Noto Sans JP";
+    --font-kore-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK KR", "Noto Sans KR";
   }
-  .font-fangsong-zhs-sans-noto-rotated {
-    font-family: var(--font-fangsong-zhs-sans-noto-rotated);
+  .font-hans-sans-noto-fangsong-rotated {
+    font-family: var(--font-hans-sans-noto-fangsong-rotated);
   }
-  .font-fangsong-zhs-sans-noto-vertical {
-    font-family: var(--font-fangsong-zhs-sans-noto-vertical);
+  .font-hans-sans-noto-fangsong-vertical {
+    font-family: var(--font-hans-sans-noto-fangsong-vertical);
   }
-  .font-zht-sans-noto {
-    font-family: var(--font-zht-sans-noto);
+  .font-hans-sans-noto {
+    font-family: var(--font-hans-sans-noto), sans-serif;
   }
-  .font-zhs-sans-noto {
-    font-family: var(--font-zhs-sans-noto);
+  .font-hant-sans-noto {
+    font-family: var(--font-hant-sans-noto), sans-serif;
   }
-  .font-ja-sans-noto {
-    font-family: var(--font-ja-sans-noto);
+  .font-jpan-sans-noto {
+    font-family: var(--font-jpan-sans-noto), sans-serif;
   }
-  .font-ko-sans-noto {
-    font-family: var(--font-ko-sans-noto);
+  .font-kore-sans-noto {
+    font-family: var(--font-kore-sans-noto), sans-serif;
   }
 /** END: :root and classes **/
 
@@ -95,17 +97,17 @@
       /* font-variant-east-asian: */ /* Don't set this. Use -Hant or -Hans instead. */
     }
     :lang(zh-Hans) {
-      font-family: var(--font-zhs-sans-serif, sans-serif);
+      font-family: var(--font-hans-sans-default);
       font-language-override: "ZHS";
       font-variant-east-asian: simplified full-width;
     }
     :lang(zh-Hant) {
-      font-family: var(--font-zht-sans-serif), sans-serif;
+      font-family: var(--font-hant-sans-default);
       font-language-override: "ZHT";
       font-variant-east-asian: traditional full-width;
     }
     :lang(zh-Hant-HK) {
-      font-family: var(--font-zht-sans-serif), sans-serif;
+      font-family: var(--font-hant-hk-sans-default);
       font-language-override: "ZHH";
     }
   /* END: Hanzi (Traditional & Simple) */
@@ -113,7 +115,7 @@
   /* BGN: Kana + Nihongo */
     :lang(ja) {
       direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-      font-family: var(--font-ja-sans-serif, sans-serif);
+      font-family: var(--font-jpan-sans-default);
       font-language-override: "JAN";
       font-style: normal; /* ensure there are no italic and oblique styles */
       font-synthesis: weight; /* only allow 'bold' synthesis */
@@ -124,7 +126,7 @@
   /* BGN: Hangeul + Hangugeo */
     :lang(ko) {
       direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-      font-family: var(--font-ko-sans-serif, sans-serif);
+      font-family: var(--font-kore-sans-default);
       font-language-override: "KOR";
       font-style: normal; /* ensure there are no italic and oblique styles */
       font-synthesis: weight; /* only allow 'bold' synthesis */

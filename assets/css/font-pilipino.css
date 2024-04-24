@@ -137,21 +137,23 @@
   * 2. Do not use var(), it will not work correctly.
   */
   :root {
+    --font-pilipino-sans-noto: "noto-sans", "Noto Sans", "baybayin-noto", "Noto Sans Buhid", "Noto Sans Hanunoo", "Noto Sans Tagalog", "Noto Sans Tagbanwa"; /* Different Unicode blocks. */
     --font-baybayin-sans-noto: "noto-sans", "Noto Sans", "baybayin-noto", "Noto Sans Buhid", "Noto Sans Hanunoo", "Noto Sans Tagalog", "Noto Sans Tagbanwa"; /* Different Unicode blocks. */
     --font-baybayin-nordenx: "baybayin-nordenx"; /* subset font */
-    --font-barabara-fantasy: "barabara";
+    --font-latn-fantasy-barabara: "barabara";
   }
   .font-baybayin-sans-noto.font-baybayin-sans-noto.font-baybayin-sans-noto {
     direction: ltr;
-    font-family: var(--font-baybayin-sans-noto, sans-serif);
+    font-family: var(--font-baybayin-sans-noto), sans-serif;
   }
   .font-baybayin-nordenx.font-baybayin-nordenx.font-baybayin-nordenx {
     direction: ltr;
-    font-family: var(--font-baybayin-nordenx, sans-serif);
+    font-family: var(--font-baybayin-nordenx);
   }
-  .font-barabara-fantasy.font-barabara-fantasy.font-barabara-fantasy {
+  .font-barabara-fantasy.font-barabara-fantasy.font-barabara-fantasy,
+  .font-latn-fantasy-barabara {
     direction: ltr;
-    font-family: var(--font-barabara-fantasy, fantasy);
+    font-family: var(--font-latn-fantasy-barabara), fantasy;
   }
 /** END: :root and classes **/
 
@@ -169,7 +171,7 @@
           :lang(tbw), :lang(bku), :lang(hnn), :lang(tl),
           :lang(phi), :lang(fil), :lang(en-PH) {
             direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-            font-family: var(--font-sans-serif, sans-serif);
+            font-family: var(--font-pilipino-sans-default);
             font-language-override: "PIL";
             font-style: normal; /* ensure there are no italic and oblique styles */
             font-synthesis: weight; /* only allow 'bold' synthesis */
@@ -183,7 +185,7 @@
         :lang(tbw, bku, hnn, tl),
         :lang(phi, fil, en-PH) {
           direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-          font-family: var(--font-sans-serif, sans-serif);
+          font-family: var(--font-pilipino-sans-default);
           font-language-override: "PIL";
           font-style: normal; /* ensure there are no italic and oblique styles */
           font-synthesis: weight; /* only allow 'bold' synthesis */
@@ -209,7 +211,7 @@
           :lang(phi-Tagb), :lang(phi-Buhd), :lang(phi-Hano), :lang(phi-Tglg), /* Philippine languages in Baybayin */
           :lang(fil-Tagb), :lang(fil-Buhd), :lang(fil-Hano), :lang(fil-Tglg) /* Filipino language in Baybayin */
           {
-            font-family: var(--font-baybayin-sans-noto, sans-serif); /* combined; different Unicode points */
+            font-family: var(--font-baybayin-sans-default); /* combined; different Unicode points */
           }
         }
       /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
@@ -217,7 +219,7 @@
       @supports selector(:lang("\*-Tagb", "\*-Buhd", "\*-Hano", "\*-Tglg")) {
         :lang(\*-Tagb), :lang(\*-Buhd), :lang(\*-Hano), :lang(\*-Tglg) /* in Baybayin */
         {
-          font-family: var(--font-baybayin-sans-noto, sans-serif); /* combined; different Unicode points */
+          font-family: var(--font-baybayin-sans-default); /* combined; different Unicode points */
         }
       }
     /* END: Pilipino in Baybayin scripts */
