@@ -130,7 +130,6 @@
     :lang(he),
     :lang(hbo) {
       direction: rtl; /* Be sure to also set dir="rtl" in HTML. */
-      font-family: var(--font-hebr-sans-default); /* combined; different Unicode points */
       font-style: normal; /* ensure there are no italic and oblique styles */
       font-synthesis: weight; /* only allow 'bold' synthesis */
     }

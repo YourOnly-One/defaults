@@ -351,7 +351,6 @@
       *   - lower than <body>
       *   - for default font styles
     **/
-    font-family: var(--font-sans-default);
     /* TODO: make it dependent on viewport size; kerning is bad for small viewports */
       font-kerning: normal;
     font-variant-numeric: oldstyle-nums tabular-nums ordinal slashed-zero;
@@ -415,13 +414,6 @@
   footer {
     display: block flow-root;
   }
-
-  math {
-    font-family: var(--font-math-sans-default); /* combined; different Unicode points */
-  }
-  music {
-    font-family: var(--font-music-default); /* combined; different Unicode points */
-  }
 /*****************
 ** END: Generic **
 *****************/
@@ -449,13 +441,11 @@
   }
   header, hgroup,
   thead, th {
-    font-family: var(--font-serif-default);
     text-wrap: balance;
   }
 
   h1, h2, h3, h4, h5, h6 {
     display: block flow-root;
-    font-family: var(--font-serif-default);
     font-weight: 700;
     line-height: 1.2;
     text-wrap: balance;
@@ -790,17 +780,6 @@
   code, kbd, samp, var {
     display: inline flow;
     font-size: 1em;
-  }
-
-  /**
-    * Monospace is monospace
-    *
-    * It is safe to give this a high specificity to ensure our font is used.
-  **/
-  :is(pre, code, kbd, samp, var):not(#\9)::before,
-  :is(pre, code, kbd, samp, var):not(#\9) span,
-  :is(pre, code, kbd, samp, var):not(#\9) {
-    font-family: var(--font-mono-sans-default);
   }
 /**************************
 ** END: Monospace family **

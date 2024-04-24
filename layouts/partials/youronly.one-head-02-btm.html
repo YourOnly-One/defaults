@@ -1,17 +1,3 @@
-{{- $yukibase := resources.Get "css/yuki-base.css" -}}
-{{- $yukiscss := resources.Get "scss/yuki-style.scss" -}}
-{{- $globalscss := resources.Get "scss/youronly.one-head-03-global.scss" -}}
-{{- $layoutscss := resources.Get "scss/layouts.scss" -}}
-{{- $semwebcss := resources.Get "css/semweb-style.css" -}}
-{{- $quotecss := resources.Get "css/quote.css" -}}
-{{- $syndicationcss := resources.Get "css/syndication.css" -}}
-{{- $localcss := resources.Get "css/youronly.one-head-04-local.css" -}}
-
-{{- $yookiscss := slice $yukiscss $globalscss $layoutscss | resources.Concat "scss/yooki.scss" -}}
-{{- $yookicss := $yookiscss | resources.ExecuteAsTemplate "css/yooki.css" . | toCSS -}}
-{{- $yookicss = slice $yukibase $yookicss $semwebcss $quotecss $syndicationcss $localcss | resources.Concat "css/yooki.css" -}}
-{{- $yookicss = $yookicss | minify | fingerprint "sha512" -}}
-
 {{- $FontDefaultsScss := resources.Get "scss/font-defaults.scss" | resources.ExecuteAsTemplate "css/fonts-defaults.css" . | toCSS -}}
 {{- $FontYelosanCss := resources.Get "css/yelosan-fonts.css" -}}
 {{- $FontNotoCss := resources.Get "css/font-noto.css" -}}
@@ -21,8 +7,27 @@
 {{- $FontHebrewCss := resources.Get "css/font-hebrew.css" -}}
 {{- $FontSymbolsCss := resources.Get "css/font-symbols.css" -}} {{/* src: https://github.com/techmagus/cc-icons or https://cdn.jsdelivr.net/gh/cc-icons/cc-icons@1.2.1/css/cc-icons.css */}}
 {{- $FontEmojiCss := resources.Get "css/font-emoji.css" -}}
+
+{{- $yukibase := resources.Get "css/yuki-base.css" -}}
+{{- $yukiscss := resources.Get "scss/yuki-style.scss" -}}
+{{- $globalscss := resources.Get "scss/youronly.one-head-03-global.scss" -}}
+
+{{- $layoutscss := resources.Get "scss/layouts.scss" -}}
+
+{{- $semwebcss := resources.Get "css/semweb-style.css" -}}
+{{- $quotecss := resources.Get "css/quote.css" -}}
+{{- $syndicationcss := resources.Get "css/syndication.css" -}}
+{{- $fontfamilycss := resources.Get "css/font-family.css" -}}
+
+{{- $localcss := resources.Get "css/youronly.one-head-04-local.css" -}}
+
 {{- $FontYelosanCss = slice $FontDefaultsScss $FontYelosanCss $FontNotoCss $FontCjkCss $FontPilipinoCss $FontDiacriticsCss $FontHebrewCss $FontSymbolsCss $FontEmojiCss | resources.Concat "css/yelosan-fonts.css" -}}
-{{- $FontYelosanCss = $FontYelosanCss | minify | fingerprint "sha512" -}}
+{{- $yookiscss := slice $yukiscss $globalscss $layoutscss | resources.Concat "scss/yooki.scss" -}}
+{{- $yookicss := $yookiscss | resources.ExecuteAsTemplate "css/yooki.css" . | toCSS -}}
+
+{{- $stylesheet := slice $FontYelosanCss $yukibase $yookicss $semwebcss $quotecss $syndicationcss $fontfamilycss $localcss | resources.Concat "css/styles.css" -}}
+{{- $stylesheet = $stylesheet | minify | fingerprint "sha512" -}}
+
 
 {{- $appletouchiconpng := resources.Get "favicon/apple-touch-icon.png" | fingerprint "sha512" -}}
 {{- /* $faviconsvg := resources.Get "favicon/favicon.svg" | fingerprint "sha512" */ -}}
@@ -83,8 +88,7 @@
 {{- /* NOTE:
   - cc-icons 1.2.1 as of 2022-12-13
 */ -}}
-<link rel="stylesheet" type="{{ $FontYelosanCss.MediaType }}" media="all" crossorigin href="{{ $FontYelosanCss.RelPermalink }}" integrity="{{ $FontYelosanCss.Data.Integrity }}" />
-<link rel="stylesheet" type="{{ $yookicss.MediaType }}" media="all" crossorigin href="{{ $yookicss.RelPermalink }}" integrity="{{ $yookicss.Data.Integrity }}" />
+<link rel="stylesheet" type="{{ $stylesheet.MediaType }}" media="all" href="{{ $stylesheet.RelPermalink }}" integirty="{{ $stylesheet.Data.Integrity }}">
 
 {{/* BGN: favicon */}}
   <meta name="theme-color" content="{{ .Site.Params.themeColor | default `#000` }}" media="(prefers-color-scheme: dark)">

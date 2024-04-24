@@ -91,31 +91,29 @@
     :lang(yue),
     :lang(zh) {
       direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-      /* font-family: */ /* Don't set this. Use -Hant or -Hans instead. */
       font-style: normal; /* ensure there are no italic and oblique styles */
       font-synthesis: weight; /* only allow 'bold' synthesis */
       /* font-variant-east-asian: */ /* Don't set this. Use -Hant or -Hans instead. */
     }
     :lang(zh-Hans) {
-      font-family: var(--font-hans-sans-default);
       font-language-override: "ZHS";
       font-variant-east-asian: simplified full-width;
     }
     :lang(zh-Hant) {
-      font-family: var(--font-hant-sans-default);
       font-language-override: "ZHT";
       font-variant-east-asian: traditional full-width;
     }
     :lang(zh-Hant-HK) {
-      font-family: var(--font-hant-hk-sans-default);
       font-language-override: "ZHH";
+    }
+    :lang(zh-Bopo) {
+      /* font-language-override: "ZHT"; */
     }
   /* END: Hanzi (Traditional & Simple) */
 
   /* BGN: Kana + Nihongo */
     :lang(ja) {
       direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-      font-family: var(--font-jpan-sans-default);
       font-language-override: "JAN";
       font-style: normal; /* ensure there are no italic and oblique styles */
       font-synthesis: weight; /* only allow 'bold' synthesis */
@@ -126,7 +124,6 @@
   /* BGN: Hangeul + Hangugeo */
     :lang(ko) {
       direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-      font-family: var(--font-kore-sans-default);
       font-language-override: "KOR";
       font-style: normal; /* ensure there are no italic and oblique styles */
       font-synthesis: weight; /* only allow 'bold' synthesis */

@@ -172,6 +172,12 @@ html {
 /**************************
 ** BGN: Monospace family **
 **************************/
+  /**
+    * Monospace is monospace
+    *
+    * It is safe to give this a high specificity to ensure our font is used.
+  **/
+  .markdown-body :is(pre, code, kbd, samp, var),
   :is(pre, code, kbd, samp, var):not(#\9)::before,
   :is(pre, code, kbd, samp, var):not(#\9) span,
   :is(pre, code, kbd, samp, var):not(#\9) {
@@ -180,3 +186,10 @@ html {
 /**************************
 ** END: Monospace family **
 **************************/
+
+body :is(.smiley, .emoticon, .emoji) {
+  font-family: var(--font-emoji-default);
+}
+html body .unicode_emoji {
+  font-family: var(--font-emoji-default);
+}

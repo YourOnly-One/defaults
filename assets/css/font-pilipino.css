@@ -164,62 +164,30 @@
   *   - Pure Unicode-compliant fonts only, otherwise we have to manually subset.
 ***/
 
-    /* BGN: Pilipino in Latin script */
-      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
-        @supports not (selector(:lang(phi, fil, en-PH))) {
-          :lang(pag), :lang(pam), :lang(war), :lang(bik), :lang(hil), :lang(ilo), :lang(ceb),
-          :lang(tbw), :lang(bku), :lang(hnn), :lang(tl),
-          :lang(phi), :lang(fil), :lang(en-PH) {
-            direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-            font-family: var(--font-pilipino-sans-default);
-            font-language-override: "PIL";
-            font-style: normal; /* ensure there are no italic and oblique styles */
-            font-synthesis: weight; /* only allow 'bold' synthesis */
-            font-variant-east-asian: full-width;
-          }
-        }
-      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
-
-      @supports selector(:lang(phi, fil, en-PH)) {
-        :lang(pag, pam, war, bik, hil, ilo, ceb),
-        :lang(tbw, bku, hnn, tl),
-        :lang(phi, fil, en-PH) {
-          direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-          font-family: var(--font-pilipino-sans-default);
-          font-language-override: "PIL";
-          font-style: normal; /* ensure there are no italic and oblique styles */
-          font-synthesis: weight; /* only allow 'bold' synthesis */
-          font-variant-east-asian: full-width;
-        }
+/* BGN: Pilipino in Latin script */
+  /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+    @supports not (selector(:lang(phi, fil, en-PH))) {
+      :lang(pag), :lang(pam), :lang(war), :lang(bik), :lang(hil), :lang(ilo), :lang(ceb),
+      :lang(tbw), :lang(bku), :lang(hnn), :lang(tl),
+      :lang(phi), :lang(fil), :lang(en-PH) {
+        direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+        font-language-override: "PIL";
+        font-style: normal; /* ensure there are no italic and oblique styles */
+        font-synthesis: weight; /* only allow 'bold' synthesis */
+        font-variant-east-asian: full-width;
       }
-    /* END: Pilipino in Latin script */
+    }
+  /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
 
-    /* BGN: Pilipino in Baybayin scripts */
-      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
-        @supports not (selector(:lang("\*-Tagb", "\*-Buhd", "\*-Hano", "\*-Tglg"))) {
-          :lang(pag-Tagb), :lang(pag-Buhd), :lang(pag-Hano), :lang(pag-Tglg), /* Pangasinense in Baybayin */
-          :lang(pam-Tagb), :lang(pam-Buhd), :lang(pam-Hano), :lang(pam-Tglg), /* Kapampangan in Baybayin */
-          :lang(war-Tagb), :lang(war-Buhd), :lang(war-Hano), :lang(war-Tglg), /* Waray in Baybayin */
-          :lang(bik-Tagb), :lang(bik-Buhd), :lang(bik-Hano), :lang(bik-Tglg), /* Bikolano in Baybayin */
-          :lang(hil-Tagb), :lang(hil-Buhd), :lang(hil-Hano), :lang(hil-Tglg), /* Hiligaynon (Ilonggo) in Baybayin */
-          :lang(ilo-Tagb), :lang(ilo-Buhd), :lang(ilo-Hano), :lang(ilo-Tglg), /* Iloko (Ilokano) in Baybayin */
-          :lang(ceb-Tagb), :lang(ceb-Buhd), :lang(ceb-Hano), :lang(ceb-Tglg), /* Cebuano (Binasaya, Bisaya; Boholano) in Baybayin */
-          :lang(tbw-Tagb), :lang(tbw-Buhd), :lang(tbw-Hano), :lang(tbw-Tglg), /* Aborlan Tagbanwa in Baybayin */
-          :lang(bku-Tagb), :lang(bku-Buhd), :lang(bku-Hano), :lang(bku-Tglg), /* Mangyan Buhid in Baybayin */
-          :lang(hnn-Tagb), :lang(hnn-Buhd), :lang(hnn-Hano), :lang(hnn-Tglg), /* Mangyan Hanunoo in Baybayin */
-          :lang(tl-Tagb), :lang(tl-Buhd), :lang(tl-Hano), :lang(tl-Tglg), /* Tagalog in Baybayin */
-          :lang(phi-Tagb), :lang(phi-Buhd), :lang(phi-Hano), :lang(phi-Tglg), /* Philippine languages in Baybayin */
-          :lang(fil-Tagb), :lang(fil-Buhd), :lang(fil-Hano), :lang(fil-Tglg) /* Filipino language in Baybayin */
-          {
-            font-family: var(--font-baybayin-sans-default); /* combined; different Unicode points */
-          }
-        }
-      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
-
-      @supports selector(:lang("\*-Tagb", "\*-Buhd", "\*-Hano", "\*-Tglg")) {
-        :lang(\*-Tagb), :lang(\*-Buhd), :lang(\*-Hano), :lang(\*-Tglg) /* in Baybayin */
-        {
-          font-family: var(--font-baybayin-sans-default); /* combined; different Unicode points */
-        }
-      }
-    /* END: Pilipino in Baybayin scripts */
+  @supports selector(:lang(phi, fil, en-PH)) {
+    :lang(pag, pam, war, bik, hil, ilo, ceb),
+    :lang(tbw, bku, hnn, tl),
+    :lang(phi, fil, en-PH) {
+      direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+      font-language-override: "PIL";
+      font-style: normal; /* ensure there are no italic and oblique styles */
+      font-synthesis: weight; /* only allow 'bold' synthesis */
+      font-variant-east-asian: full-width;
+    }
+  }
+/* END: Pilipino in Latin script */

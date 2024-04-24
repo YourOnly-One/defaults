@@ -198,7 +198,6 @@
 /* BGN: Catch all English */
   :lang(en) {
     direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-    font-family: var(--font-latn-sans-default);
     font-language-override: "ENG";
     font-synthesis: initial;
   }

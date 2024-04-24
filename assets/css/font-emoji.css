@@ -89,7 +89,6 @@
 
 body :is(.smiley, .emoticon, .emoji) {
   display: inline flow;
-  font-family: var(--font-emoji-default);
   font-synthesis: none; /* do not allow any synthesis */
     font-style: normal; /* ensure there are no italic and oblique styles */
     font-weight: normal;  /* ensure there is no bold weight */
@@ -113,7 +112,6 @@ body :is(.smiley, .emoticon, .emoji) {
       Delete this after updating it.
 */
 html body .unicode_emoji {
-  font-family: var(--font-emoji-default);
   font-variant-emoji: emoji;
   /* font-size: larger; */
   font-style: normal;

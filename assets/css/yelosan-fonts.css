@@ -148,17 +148,6 @@
     .titling-caps {
       font-variant-caps: titling-caps;
     }
-
-  .markdown-body code,
-  .markdown-body kbd,
-  .markdown-body pre,
-  .markdown-body samp,
-  code:not(.\9),
-  kbd:not(.\9),
-  pre:not(.\9),
-  samp:not(.\9) {
-    font-family: var(--font-mono-sans-default);
-  }
 /************************
 ** END: Default styles **
 ************************/
@@ -200,7 +189,6 @@
       :lang(el),
       :lang(grc) {
         direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-        font-family: var(--font-grek-sans-default); /* combined; different Unicode points */
         font-style: normal; /* ensure there are no italic and oblique styles */
         font-synthesis: weight; /* only allow 'bold' synthesis */
       }
@@ -253,7 +241,6 @@
         :lang(he-Latn), :lang(hbo-Latn),
         :lang(el-Latn), :lang(grc-Latn) {
           direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
-          font-family: var(--font-latn-sans-default);
           font-language-override: normal; /* needed because :lang(C) is a wildcard match */
           font-synthesis: initial;
         }
@@ -264,7 +251,6 @@
       :lang(\*-jyutping),
       :lang(\*-Latn) {
         direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
-        font-family: var(--font-latn-sans-default);
         font-language-override: normal; /* needed because :lang(C) is a wildcard match */
         font-synthesis: initial;
       }
