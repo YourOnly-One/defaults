@@ -779,14 +779,49 @@
         position: absolute;
       }
       html body .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::before {
-        content: open-quote;
-        left: -2rem;
-        top: -1.0rem;
+        content: "\201c";
+        inset-block-start: -0.4em;
+        inset-inline-start: -0.8em;
       }
       html body .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::after {
+        content: "\201d";
+        inset-block-end: -0.88em;
+        inset-inline-end: -0.8em;
+      }
+
+      html body :lang(en-ph) .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::before,
+      html body :lang(fil) .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::before {
+        content: open-quote;
+        inset-block-start: -0.7em;
+        inset-inline-start: -0.8em;
+      }
+      html body :lang(en-ph) .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::after,
+      html body :lang(fil) .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::after {
         content: close-quote;
-        bottom: -1rem;
-        right: -2rem;
+        inset-block-end: -0.7em;
+        inset-inline-end: -0.8em;
+      }
+
+      html body :lang(ja) .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::before {
+        content: open-quote;
+        inset-block-start: -0.4em;
+        inset-inline-start: -0.8em;
+      }
+      html body :lang(ja) .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::after {
+        content: close-quote;
+        inset-block-end: -0.4em;
+        inset-inline-end: -0.8em;
+      }
+
+      html body :lang(ko) .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::before {
+        content: open-quote;
+        inset-block-start: -0.4em;
+        inset-inline-start: -0.8em;
+      }
+      html body :lang(ko) .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::after {
+        content: close-quote;
+        inset-block-end: -0.4em;
+        inset-inline-end: -0.8em;
       }
     /* END: .quote_box Quotation Marks */
 
