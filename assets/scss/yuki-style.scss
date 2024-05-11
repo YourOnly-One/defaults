@@ -805,23 +805,27 @@
       html body :lang(ja) .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::before {
         content: open-quote;
         inset-block-start: -0.4em;
-        inset-inline-start: -0.8em;
+        inset-inline-start: -0.8em; /* Firefox */
+        inset-inline-start: -1.2em; /* Chromium */
       }
       html body :lang(ja) .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::after {
         content: close-quote;
         inset-block-end: -0.4em;
-        inset-inline-end: -0.8em;
+        inset-inline-start: -0.8em; /* Firefox */
+        inset-inline-start: -1.2em; /* Chromium */
       }
 
       html body :lang(ko) .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::before {
         content: open-quote;
         inset-block-start: -0.4em;
-        inset-inline-start: -0.8em;
+        inset-inline-start: -0.8em; /* Firefox */
+        inset-inline-start: -1.2em; /* Chromium */
       }
       html body :lang(ko) .qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark.qbm_doublequotationmark::after {
         content: close-quote;
         inset-block-end: -0.4em;
-        inset-inline-end: -0.8em;
+        inset-inline-end: -0.8em; /* Firefox */
+        inset-inline-end: -1.2em; /* Chromium */
       }
     /* END: .quote_box Quotation Marks */
 
