@@ -33,7 +33,7 @@ _merge = 'deep'
     #email = 'contact@im.youronly.one'                                      # address@example.com
     facebook = 'YourOnly.ONE.ofcl'                                   # URL-name
     facebook_admin = '532996690,100042645428366,2308171266072912'                             # profile ID number and page admin to get domain insights
-    facebook_appid = '183794425326191'                             # app ID
+    facebook_app_id = '183794425326191'                            # app ID
     facebook_authorid = '2308171266072912'                          # user ID
     facebook_pageid = '339301830572387'                            # page ID
     github = 'techmagus'                                     # username
@@ -57,7 +57,6 @@ _merge = 'deep'
     tumblr = 't.youronly.one'                                     # URL
     twitter = 'YourOnlyONEofcl'                                    # username; do not include @-at
     twitter_creator = '@YourOnlyONEofcl'                            # @username
-    twitter_site = '@YourOnlyONEofcl'                               # @username
     wordpress = 'youronlyoneofcl.wordpress.com'                                  # URL
     youtube = 'YourOnlyONEofcl'                                    # username without @
 ### END: Other Settings ###
