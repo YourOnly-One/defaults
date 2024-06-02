@@ -1,0 +1,45 @@
+{
+  "names": {
+    "_": "9a78383cdc20ed1cff3ffc3e1973870a9c32ea8b218f1e84dd4136377a869487"
+  },
+  "relays": {
+    "9a78383cdc20ed1cff3ffc3e1973870a9c32ea8b218f1e84dd4136377a869487": [
+      "wss://nostr-02.yakihonne.com",
+      "wss://nostr-03.dorafactory.org",
+      "wss://nostr-02.dorafactory.org",
+      "wss://yabu.me",
+      "wss://th2.nostr.earnkrub.xyz",
+      "wss://relay.siamstr.com",
+      "wss://relay.nostr.wirednet.jp",
+      "wss://relay.satsdays.com",
+      "wss://nostr-01.yakihonne.com",
+      "wss://relay2.denostr.com",
+      "wss://nostr.btczh.tw",
+      "wss://th1.nostr.earnkrub.xyz",
+      "wss://nostr.15b.blue",
+      "wss://relay.mom",
+      "wss://nostr.zoel.network",
+      "wss://th1.nostream.earnkrub.xyz",
+      "wss://directory.yabu.me",
+      "wss://relay.notoshi.win",
+      "wss://relay.bitdevs.tw",
+      "wss://dev-relay.nostrassets.com",
+      "wss://nostr.ser1.net",
+      "wss://deno.blowater.app",
+      "wss://nostr.1sat.org",
+      "wss://kr.purplerelay.com",
+      "wss://tw.purplerelay.com",
+      "wss://misskey.04.si",
+      "wss://relay.nostr.moctane.com",
+      "wss:/jp.purplerelay.com",
+      "wss://relay.snort.social",
+      "wss://relay.nostr.band",
+      "wss://atlas.nostr.land",
+      "wss://hist.nostr.land",
+      "wss://sakhalin.nostr1.com",
+      "wss://nostr.wine",
+      "wss://relay.stoner.com",
+      "wss://relay.blackbyte.nl"
+    ]
+  }
+}
