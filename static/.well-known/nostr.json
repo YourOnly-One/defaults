@@ -16,6 +16,7 @@
       "wss://directory.yabu.me",
       "wss://relay.mostr.pub",
       "wss://relay.momostr.pink",
+      "wss://njump.me",
       "wss://relay.siamstr.com",
       "wss://relay.nostr.wirednet.jp",
       "wss://relay.satsdays.com",
@@ -48,6 +49,8 @@
       "wss://nos.lol",
       "wss://140.f7z.io",
       "wss://relay.damus.io",
+      "wss://relay.noswhere.com",
+      "wss://creatr.nostr.wine",
       "wss://nostr.wine",
       "wss://relay.stoner.com",
       "wss://relay.blackbyte.nl"
