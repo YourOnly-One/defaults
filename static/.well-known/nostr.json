@@ -46,7 +46,9 @@
       "wss://relay.nostr.moctane.com",
       "wss://relay.stoner.com",
       "wss://relay.blackbyte.nl",
-      "wss://140.f7z.io"
+      "wss://140.f7z.io",
+      "wss://nostr-pub.wellorder.net",
+      "wss://nostr-verified.wellorder.net"
     ]
   }
 }
