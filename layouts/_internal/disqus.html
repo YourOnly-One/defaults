@@ -1,17 +1,22 @@
 {{- $pc := .Site.Config.Privacy.Disqus }}
 {{- if not $pc.Disable }}
-  {{- if and .Site.Config.Services.Disqus.Shortname (hugo.IsProduction) }}
+  {{- /* if and .Site.Config.Services.Disqus.Shortname (hugo.IsProduction) */}}
+  {{- if .Site.Config.Services.Disqus.Shortname }}
 
     {{- $relcanonical := .Params.relcanonical }}
     {{- $relcanonical_parsed := urls.Parse $relcanonical }}
     {{- $permalink := urls.Parse .Permalink }}
 
+    {{- $disqus_identifier := or .Params.disqus_identifier (path.Base $relcanonical_parsed.Path) }}
     {{- $disqus_identifier_manual := .Params.disqus_identifier }}
-    {{- $disqus_url_manual := .Params.disqus_url }}
-    {{- $disqus_title_manual := .Params.disqus_title }}
-
     {{- $disqus_identifier_auto := path.Base $relcanonical_parsed.Path }}
+
+    {{- $disqus_url := or .Params.disqus.url $relcanonical }}
+    {{- $disqus_url_manual := .Params.disqus_url }}
     {{- $disqus_url_auto := $relcanonical }}
+
+    {{- $disqus_title := or .Params.disqus_title (.Title | htmlUnescape) }}
+    {{- $disqus_title_manual := .Params.disqus_title }}
     {{- $disqus_title_auto := .Title | htmlUnescape }}
 
     {{- $disqusjsvars := dict
@@ -35,10 +40,13 @@
     {{- /* For testing only
     <ul>
       <li>$relcanonical = {{ $relcanonical }}</li>
+      <li>$disqus_identifier = {{ $disqus_identifier }}</li>
       <li>$disqus_identifier_manual = {{ $disqus_identifier_manual }}</li>
       <li>$disqus_identifier_auto = {{ $disqus_identifier_auto }}</li>
+      <li>$disqus_url = {{ $disqus_url }}</li>
       <li>$disqus_url_manual = {{ $disqus_url_manual }}</li>
       <li>$disqus_url_auto = {{ $disqus_url_auto }}</li>
+      <li>$disqus_title = {{ $disqus_title }}</li>
       <li>$disqus_title_manual = {{ $disqus_title_manual }}</li>
       <li>$disqus_title_auto = {{ $disqus_title_auto }}</li>
       <li>$disqusjsvars = {{ $disqusjsvars }}</li>
@@ -48,7 +56,21 @@
 
     <div id="disqus_thread"></div>
 
-    <script type="{{ $disqusjs.MediaType }}" id="" async fetchpriority="auto" crossorigin src="{{ $disqusjs.RelPermalink }}" integrity="{{ $disqusjs.Data.Integrity }}"></script>
+    {{- /* <script type="{{ $disqusjs.MediaType }}" id="" async fetchpriority="auto" crossorigin src="{{ $disqusjs.RelPermalink }}" integrity="{{ $disqusjs.Data.Integrity }}"></script> */}}
+
+    <script>
+      var disqus_config = function () {
+        {{ with $disqus_identifier }}this.page.identifier = '{{ . }}';{{ end }} // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        {{ with $disqus_url }}this.page.url = '{{ . | html  }}';{{ end }}  // Replace PAGE_URL with your page's canonical URL variable
+        {{ with $disqus_title }}this.page.title = '{{ . }}';{{ end }}
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://' + {{ .Site.Config.Services.Disqus.Shortname }} + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
 
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   {{ else }}
