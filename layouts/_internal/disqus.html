@@ -1,40 +1,39 @@
-{{- $pc := .Site.Config.Privacy.Disqus -}}
-{{- if not $pc.Disable -}}
-  {{- /* if (.Site.Config.Services.Disqus.Shortname) */ -}}
-  {{ if and (.Site.Config.Services.Disqus.Shortname) (hugo.IsProduction) }}
-    {{- $relcanonical := urls.Parse .Params.relcanonical -}}
-    {{- $permalink := urls.Parse .Permalink -}}
+{{- $pc := .Site.Config.Privacy.Disqus }}
+{{- if not $pc.Disable }}
+  {{- if and .Site.Config.Services.Disqus.Shortname (hugo.IsProduction) }}
 
-    {{- $disqus_identifier_fm := .Params.disqus_identifier -}}
-    {{- $disqus_title_fm := .Params.disqus_title -}}
-    {{- $disqus_url_fm := .Params.disqus_url -}}
+    {{- $relcanonical := .Params.relcanonical }}
+    {{- $relcanonical_parsed := urls.Parse $relcanonical }}
+    {{- $permalink := urls.Parse .Permalink }}
 
-    {{- $disqus_identifier_auto := path.Base $relcanonical.Path -}}
-    {{- $disqus_title_auto := .Title | htmlUnescape -}}
-    {{- /* TODO: aggregate-friendly $disqusurl
-      NOTE: current implementation is
-        - im.youronly.one/aggr-site/post-title/ => im.youronly.one/aggr-site/post-title/
-        - im.youronly.one/aggr-site/ja/post-title/ => im.youronly.one/aggr-site/ja/post-title/
+    {{- $disqus_identifier_manual := .Params.disqus_identifier }}
+    {{- $disqus_url_manual := .Params.disqus_url }}
+    {{- $disqus_title_manual := .Params.disqus_title }}
 
-      IDEA: if aggregated from another site, $disqusurl should point back to the source
-        - im.youronly.one/aggr-site/post-title/ => im.youronly.one/main-site/post-title/
-        - im.youronly.one/aggr-site/ja/post-title/ => im.youronly.one/main-site/ja/post-title/
+    {{- $disqus_identifier_auto := path.Base $relcanonical_parsed.Path }}
+    {{- $disqus_url_auto := $relcanonical }}
+    {{- $disqus_title_auto := .Title | htmlUnescape }}
 
-      {{- $disqus_url_auto := printf "%s://%s%s" $relcanonical.Scheme $relcanonical.Host (path.Base $relcanonical.EscapedPath) -}}
-    */ -}}
-    {{- $disqus_url_auto := printf "%s://%s%s" $relcanonical.Scheme $relcanonical.Host $relcanonical.EscapedPath -}}
-
-    {{- $disqusjsvars := dict "DisqusShortName" .Site.Config.Services.Disqus.Shortname "disqus_identifier_fm" $disqus_identifier_fm "disqus_title_fm" $disqus_title_fm "disqus_url_fm" $disqus_url_fm "disqus_identifier_auto" $disqus_identifier_auto "disqus_title_auto" $disqus_title_auto "disqus_url_auto" $disqus_url_auto }}
-    {{- $disqusjspath := split ( path.Dir $permalink.Path ) "/" -}}
-    {{- $disqusjspath = index ( after 2 $disqusjspath ) -}}
-    {{- $disqusjspath = printf "%s/disqus.js" ( path.Join $disqusjspath ) -}}
-    {{- $disqusjs := resources.Get "js/disqus.js" -}}
-    {{- $disqusjs = $disqusjs | js.Build ( dict "targetPath" $disqusjspath "params" $disqusjsvars ) | minify | fingerprint "sha512" -}}
+    {{- $disqusjsvars := dict
+      "DisqusShortName" .Site.Config.Services.Disqus.Shortname
+      "disqus_identifier_manual" $disqus_identifier_manual
+      "disqus_title_manual" $disqus_title_manual
+      "disqus_url_manual" $disqus_url_manual
+      "disqus_identifier_auto" $disqus_identifier_auto
+      "disqus_title_auto" $disqus_title_auto
+      "disqus_url_auto" $disqus_url_auto
+    }}
+    {{- $disqusjspath := split ( path.Dir $permalink.Path ) "/" }}
+    {{- $disqusjspath = index ( after 2 $disqusjspath ) }}
+    {{- $disqusjspath = printf "%s/disqus.js" ( path.Join $disqusjspath ) }}
+    {{- $disqusjs := resources.Get "js/disqus.js" }}
+    {{- $disqusjs = $disqusjs | js.Build ( dict "targetPath" $disqusjspath "params" $disqusjsvars ) | minify | fingerprint "sha512" }}
 
     <div id="disqus_thread"></div>
-    <script src="{{ $disqusjs.RelPermalink }}" integrity="{{ $disqusjs.Data.Integrity }}" crossorigin="anonymous" type="{{ $disqusjs.MediaType }}" async ></script>
+
+    <script type="{{ $disqusjs.MediaType }}" id="" async fetchpriority="auto" crossorigin src="{{ $disqusjs.RelPermalink }}" integrity="{{ $disqusjs.Data.Integrity }}"></script>
+
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   {{ else }}
     <p id="hugoserver_disqus">Disqus is not available when using hugo server.</p>
   {{ end }}
