@@ -1,6 +1,6 @@
 {{- $pc := .Site.Config.Privacy.Disqus }}
 {{- if not $pc.Disable }}
-  {{- if .Site.Config.Services.Disqus.Shortname }}
+  {{- if and .Site.Config.Services.Disqus.Shortname (hugo.IsProduction) }}
 
     {{- $relcanonical := .Params.relcanonical }}
     {{- $relcanonical_parsed := urls.Parse $relcanonical }}
@@ -32,6 +32,7 @@
       "params" $disqusjsvars
     ) | minify | fingerprint "sha512" }}
 
+    {{- /* For testing only
     <ul>
       <li>$relcanonical = {{ $relcanonical }}</li>
       <li>$disqus_identifier_manual = {{ $disqus_identifier_manual }}</li>
@@ -43,6 +44,7 @@
       <li>$disqusjsvars = {{ $disqusjsvars }}</li>
       <li>$disqusjs = {{ $disqusjs }}</li>
     </ul>
+    */}}
 
     <div id="disqus_thread"></div>
 
