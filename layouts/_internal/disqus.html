@@ -1,6 +1,6 @@
 {{- $pc := .Site.Config.Privacy.Disqus }}
 {{- if not $pc.Disable }}
-  {{- if and .Site.Config.Services.Disqus.Shortname (hugo.IsProduction) }}
+  {{- if .Site.Config.Services.Disqus.Shortname }}
 
     {{- $relcanonical := .Params.relcanonical }}
     {{- $relcanonical_parsed := urls.Parse $relcanonical }}
@@ -31,6 +31,18 @@
       "targetPath" $disqusjspath
       "params" $disqusjsvars
     ) | minify | fingerprint "sha512" }}
+
+    <ul>
+      <li>$relcanonical = {{ $relcanonical }}</li>
+      <li>$disqus_identifier_manual = {{ $disqus_identifier_manual }}</li>
+      <li>$disqus_identifier_auto = {{ $disqus_identifier_auto }}</li>
+      <li>$disqus_url_manual = {{ $disqus_url_manual }}</li>
+      <li>$disqus_url_auto = {{ $disqus_url_auto }}</li>
+      <li>$disqus_title_manual = {{ $disqus_title_manual }}</li>
+      <li>$disqus_title_auto = {{ $disqus_title_auto }}</li>
+      <li>$disqusjsvars = {{ $disqusjsvars }}</li>
+      <li>$disqusjs = {{ $disqusjs }}</li>
+    </ul>
 
     <div id="disqus_thread"></div>
 
