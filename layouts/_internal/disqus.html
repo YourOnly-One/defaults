@@ -27,7 +27,10 @@
     {{- $disqusjspath = index ( after 2 $disqusjspath ) }}
     {{- $disqusjspath = printf "%s/disqus.js" ( path.Join $disqusjspath ) }}
     {{- $disqusjs := resources.Get "js/disqus.js" }}
-    {{- $disqusjs = $disqusjs | js.Build ( dict "targetPath" $disqusjspath "params" $disqusjsvars ) | minify | fingerprint "sha512" }}
+    {{- $disqusjs = $disqusjs | js.Build ( dict
+      "targetPath" $disqusjspath
+      "params" $disqusjsvars
+    ) | minify | fingerprint "sha512" }}
 
     <div id="disqus_thread"></div>
 
