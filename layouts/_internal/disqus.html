@@ -1,67 +1,20 @@
 {{- $pc := .Site.Config.Privacy.Disqus }}
 {{- if not $pc.Disable }}
-  {{- /* if and .Site.Config.Services.Disqus.Shortname (hugo.IsProduction) */}}
-  {{- if .Site.Config.Services.Disqus.Shortname }}
+  {{- if and .Site.Config.Services.Disqus.Shortname (hugo.IsProduction) }}
 
-    {{- $relcanonical := .Params.relcanonical }}
-    {{- $relcanonical_path := (urls.Parse $relcanonical).Path }}
-    {{- $permalink := urls.Parse .Permalink }}
-
-    {{- $disqus_identifier := or .Params.disqus_identifier (path.Base $relcanonical_path) }}
-    {{- $disqus_url := (or .Params.disqus.url $relcanonical) | html }}
-    {{- $disqus_title := (or .Params.disqus_title .Title) | htmlUnescape | safeJSStr }}
-
-    {{- $disqusjsvars := dict
-      "disqus_shortname" .Site.Config.Services.Disqus.Shortname
-      "disqus_identifier" $disqus_identifier
-      "disqus_url" $disqus_url
-      "disqus_title" $disqus_title
-    }}
-
-    {{- $disqusjspath := split ( path.Dir $permalink.Path ) "/" }}
-    {{- $disqusjspath = index ( after 2 $disqusjspath ) }}
-    {{- $disqusjspath = printf "%s/disqus.js" ( path.Join $disqusjspath ) }}
-
-    {{- $disqusjs := resources.Get "js/disqus.js" }}
-    {{- $disqusjs = $disqusjs | js.Build ( dict
-      "targetPath" $disqusjspath
-      "params" $disqusjsvars
-    )}}
-    {{- $disqus_script := $disqusjs | minify | fingerprint "sha512" }}
-
-    {{- /* For testing only
-    <ul>
-      <li>$relcanonical = {{ $relcanonical }}</li>
-      <li>$relcanonical_path = {{ $relcanonical_path }}</li>
-      <li>$disqus_identifier = {{ $disqus_identifier }}</li>
-      <li>$disqus_url = {{ $disqus_url }}</li>
-      <li>$disqus_title = {{ $disqus_title }}</li>
-      <li>$disqusjsvars = {{ $disqusjsvars }}</li>
-      <li>$disqusjspath = {{ $disqusjspath }}</li>
-      <li>$disqusjs = {{ $disqusjs }}</li>
-    </ul>
+    {{- /* NOTES:
+      1. For CSP purposes, our script is an external file.
+      2. We're using `resources.ExecuteAsTemplate` instead of `js.Build` so we can pipe `$disqus_title` to `safeJSStr`.
     */}}
+
+    {{- $permalink_path := (urls.Parse .Permalink).Path }}
+    {{- $disqusjs_targetpath := split (path.Dir $permalink_path) "/" }}
+    {{- $disqusjs_targetpath = index (after 2 $disqusjs_targetpath) }}
+    {{- $disqusjs_targetpath = printf "%s/disqus.js" (path.Join $disqusjs_targetpath) }}
+    {{- $disqus_script := resources.Get "js/disqus.js" | resources.ExecuteAsTemplate $disqusjs_targetpath . | minify | fingerprint "sha512" }}
 
     <div id="disqus_thread"></div>
-
     <script type="{{ $disqus_script.MediaType }}" id="disqus_script" async fetchpriority="auto" crossorigin src="{{ $disqus_script.RelPermalink }}" integrity="{{ $disqus_script.Data.Integrity }}"></script>
-
-    {{- /*
-    <script>
-      var disqus_config = function () {
-        {{ with $disqus_identifier }}this.page.identifier = '{{ . }}';{{ end }} // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        {{ with $disqus_url }}this.page.url = '{{ . | html  }}';{{ end }}  // Replace PAGE_URL with your page's canonical URL variable
-        {{ with $disqus_title }}this.page.title = '{{ . | safeJSStr }}';{{ end }}
-      };
-      (function() {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://' + {{ .Site.Config.Services.Disqus.Shortname }} + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-      })();
-    </script>
-    */}}
-
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   {{ else }}
     <p id="hugoserver_disqus">Disqus is not available when using hugo server.</p>
