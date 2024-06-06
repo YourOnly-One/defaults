@@ -5,6 +5,14 @@
     {{- /* NOTES:
       1. For CSP purposes, our script is an external file.
       2. We're using `resources.ExecuteAsTemplate` instead of `js.Build` so we can pipe `$disqus_title` to `safeJSStr`.
+      3. Non-ASCII Unicode characters will always appear garbled if the js file is opened directly.
+          This is not a bug.
+
+          There is no conforming way to declare an external JavaScript's character encoding (charset).
+            * BOM is not ideal
+            * Declaring the charset via `Content-Type` is obsolete and can become problematic for other JavaScript files.
+
+          If the file is opened within a Unicode document or editor, it appears correctly. Based on my tests, Disqus and compliant browsers are displaying it properly.
     */}}
 
     {{- $permalink_path := (urls.Parse .Permalink).Path }}
