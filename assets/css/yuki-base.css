@@ -521,17 +521,8 @@
     *   - See: https://developer.mozilla.org/en-US/docs/Web/CSS/list-style#accessibility_concerns
   **/
 
-  /* Revert “The New CSS Reset” */
-  /*
-  menu, ol, ul {
-    list-style: revert;
-  }
-  */
-
-  menu, ol, ul {
-    display: block flow-root;
-  }
   dl {
+    counter-reset: dl-dd;
     display: block flow-root;
     margin-block: 1em;
   }
@@ -544,6 +535,25 @@
   dd {
     display: block flow-root;
     margin-inline-start: 40px;
+  }
+  dt + dd::before {
+    counter-set: dl-dd 1;
+    counter-increment: dl-dd;
+    content: "(" counter(dl-dd) ") ";
+  }
+  dd + dd::before {
+    counter-increment: dl-dd;
+    content: "(" counter(dl-dd) ") ";
+  }
+
+  /* Revert “The New CSS Reset” */
+  /*
+  menu, ol, ul {
+    list-style: revert;
+  }
+  */
+  menu, ol, ul {
+    display: block flow-root;
   }
   ol {
     /**
@@ -1352,12 +1362,12 @@
 
   /* OpenType Superscript (sups) */
     sup, .superscript {
-      font-variant-position: super;
+      /* font-variant-position: super; */
     }
 
   /* OpenType Subscript (subs) */
     sub, .subscript {
-      font-variant-position: sub;
+      /* font-variant-position: sub; */
     }
 
   /* Fractions */

@@ -118,11 +118,11 @@
 
   /* OpenType Superscript (sups) */
     sup, .superscript {
-      font-variant-position: super;
+      /* font-variant-position: super; */
     }
   /* OpenType Subscript (subs) */
     sub, .subscript {
-      font-variant-position: sub;
+      /* font-variant-position: sub; */
     }
   /* OpenType small-caps (smcp) */
     .small-caps {
