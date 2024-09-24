@@ -113,7 +113,7 @@ contenttypes = ["CriticReview"]                                                 
 #[[authors]]
 #  person = "yuki"
 #  #id = ""
-#  name = "Yohan Yuki Xieㆍ사요한・謝雪矢"
+#  name = "Yohan Yukiya Sese-Cunetaㆍ사요한・謝雪矢"
 #  #name = "Snoworld / スノーワールド / 스노우월드"
 #  url = "https://im.youronly.one/snoworld/"
 #  avatar = "https://rsc.youronly.one/img/y/snoworld-square.webp"
@@ -123,7 +123,7 @@ contenttypes = ["CriticReview"]                                                 
 #[[authors]]
 #  person = "yuki"
 #  #id = ""
-#  name = "Yohan Yuki Xieㆍ사요한・謝雪矢"
+#  name = "Yohan Yukiya Sese-Cunetaㆍ사요한・謝雪矢"
 #  #name = "techmagus / テク魔法使い / 테크마법사"
 #  url = "https://im.youronly.one/techmagus/"
 #  avatar = "https://rsc.youronly.one/img/y/techmagus-Architetto-Esperiment-chimico.webp"
@@ -133,7 +133,7 @@ contenttypes = ["CriticReview"]                                                 
 #[[authors]]
 #  person = "yuki"
 #  #id = ""
-#  name = "Yohan Yuki Xieㆍ사요한・謝雪矢"
+#  name = "Yohan Yukiya Sese-Cunetaㆍ사요한・謝雪矢"
 #  #name = "One Way Faith / 一方通行信仰 / 일방통행신앙"
 #  url = "https://im.youronly.one/way/"
 #  avatar = "https://img.youronly.one/works/FlagMenorah-Proto-(CC0).webp"
@@ -143,7 +143,7 @@ contenttypes = ["CriticReview"]                                                 
 #[[authors]]
 #  person = "yuki"
 #  #id = ""
-#  name = "Yohan Yuki Xieㆍ사요한・謝雪矢"
+#  name = "Yohan Yukiya Sese-Cunetaㆍ사요한・謝雪矢"
 #  #name = "Love and Relationships / 愛と関係 / 사랑과관계"
 #  url = "https://im.youronly.one/love/"
 #  avatar = "https://rsc.youronly.one/img/y/Love_and_Relationship.webp"
@@ -153,7 +153,7 @@ contenttypes = ["CriticReview"]                                                 
 #[[authors]]
 #  person = "yuki"
 #  #id = ""
-#  name = "Yohan Yuki Xieㆍ사요한・謝雪矢"
+#  name = "Yohan Yukiya Sese-Cunetaㆍ사요한・謝雪矢"
 #  #name = "gameshōgun / ゲームしょうぐん / 게임쇼군"
 #  url = "https://im.youronly.one"
 #  avatar = "https://rsc.youronly.one/img/y/gameshogun-joystick-1280x.png"
@@ -163,7 +163,7 @@ contenttypes = ["CriticReview"]                                                 
 #[[authors]]
 #  person = "yuki"
 #  #id = ""
-#  name = "Yohan Yuki Xieㆍ사요한・謝雪矢"
+#  name = "Yohan Yukiya Sese-Cunetaㆍ사요한・謝雪矢"
 #  #name = "YOOki Chronicles / YOOkiクロニクルズ / YOOki 연대기"
 #  url = "https://im.youronly.one/yuki/"
 #  avatar = "https://rsc.youronly.one/img/y/Yuki_flag-square-300x.webp"
@@ -173,7 +173,7 @@ contenttypes = ["CriticReview"]                                                 
 #[[authors]]
 #  person = "yuki"
 #  #id = ""
-#  name = "Yohan Yuki Xieㆍ사요한・謝雪矢"
+#  name = "Yohan Yukiya Sese-Cunetaㆍ사요한・謝雪矢"
 #  #name = "Verses.Space (KWWP)"
 #  url = "https://verses.space"
 #  avatar = "https://rsc.youronly.one/img/y/KWWP-logo-01-1280wh-transparent.webp"
@@ -183,7 +183,7 @@ contenttypes = ["CriticReview"]                                                 
 #[[authors]]
 #  person = "yuki"
 #  #id = ""
-#  name = "Yohan Yuki Xieㆍ사요한・謝雪矢"
+#  name = "Yohan Yukiya Sese-Cunetaㆍ사요한・謝雪矢"
 #  #name = "Health Welfareness / 健康福祉 / 건강복지"
 #  url = "https://health.youronly.one"
 #  avatar = "https://rsc.youronly.one/img/y/CHANGE_THIS.webp"
@@ -193,7 +193,7 @@ contenttypes = ["CriticReview"]                                                 
 #[[authors]]
 #  person = "yuki"
 #  #id = ""
-#  name = "Yohan Yuki Xieㆍ사요한・謝雪矢"
+#  name = "Yohan Yukiya Sese-Cunetaㆍ사요한・謝雪矢"
 #  #name = "Wealth Welfareness / 富と福祉 / 부복지"
 #  url = "https://wealth.youronly.one"
 #  avatar = "https://rsc.youronly.one/img/y/CHANGE_THIS.webp"
@@ -203,7 +203,7 @@ contenttypes = ["CriticReview"]                                                 
 #[[authors]]
 #  person = "yuki"
 #  #id = ""
-#  name = "Yohan Yuki Xieㆍ사요한・謝雪矢"
+#  name = "Yohan Yukiya Sese-Cunetaㆍ사요한・謝雪矢"
 #  #name = "Confident Traveler / 自信のある旅行者 / 당당하 여행자"
 #  url = "https://im.youronly.one/confidentraveler/"
 #  avatar = "https://rsc.youronly.one/img/y/Confident_Traveler-logo-01-1500x.webp"
@@ -213,7 +213,7 @@ contenttypes = ["CriticReview"]                                                 
 #[[authors]]
 #  person = "yuki"
 #  #id = ""
-#  name = "Yohan Yuki Xieㆍ사요한・謝雪矢"
+#  name = "Yohan Yukiya Sese-Cunetaㆍ사요한・謝雪矢"
 #  #name = "Faithful Athlete / 忠実なアスリート / 충실한 운동선수"
 #  url = "https://im.youronly.one/faithfulathlete/"
 #  avatar = "https://rsc.youronly.one/img/y/Faithful_Athlete-logo-02-1500x.webp"
@@ -223,7 +223,7 @@ contenttypes = ["CriticReview"]                                                 
 #[[authors]]
 #  person = "yuki"
 #  #id = ""
-#  name = "Yohan Yuki Xieㆍ사요한・謝雪矢"
+#  name = "Yohan Yukiya Sese-Cunetaㆍ사요한・謝雪矢"
 #  #name = "Yūgen Bard / 幽玄吟遊詩人 / 음유시인"
 #  url = "https://im.youronly.one/yugenbard/"
 #  avatar = "https://rsc.youronly.one/img/y/Yugen_Bard-logo-01-1500x.webp"
@@ -233,7 +233,7 @@ contenttypes = ["CriticReview"]                                                 
 #[[authors]]
 #  person = ""
 #  #id = ""
-#  #name = "Yohan Yuki Xieㆍ사요한・謝雪矢"
+#  #name = "Yohan Yukiya Sese-Cunetaㆍ사요한・謝雪矢"
 #  name = "guest author"
 #  url = ""
 #  avatar = ""
