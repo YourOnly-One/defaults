@@ -318,41 +318,45 @@
         --link-decoration-style-hover: solid;
       /* END: other settings */
     /* END: THEME SETTINGS */
+
+    scroll-behavior: smooth; /* only affects the viewport */
+    text-rendering: optimizeLegibility; /* in :root to also set for svg; inherited */
+  }
+  @supports (text-rendering: geometricPrecision) {
+    :root { text-rendering: geometricPrecision; /* in :root to also set for svg; inherited */ }
   }
 
   * {
     /**
       * NOTES:
-      *   - 'hyphens' - https://developer.mozilla.org/en-US/docs/Web/CSS/hyphens
-      *   - 'word-break' - https://developer.mozilla.org/en-US/docs/Web/CSS/word-break
-      *     - 'normal' - best option for now
-      *     - 'break-all' - problematic, breaks anywhere
-      *     - 'manual' - for ASEAN languages only, not yet implemented
-      *       - 'auto-phrase' - best option
-      *         - currently only for lang="ja" in Chromium-based browsers
-      *   - 'overflow-wrap' (f. 'word-wrap') - https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap
+      *   - useful for non-inherited properties
     **/
-    hyphens: auto;
-    overflow-wrap: break-word;
-  }
-  @supports not ((word-break: manual) or (word-break: auto-phrase)) {
-    * { word-break: normal; }
-  }
-  @supports (word-break: manual) and (not (word-break: auto-phrase)) {
-    * { word-break: manual; }
-  }
-  @supports (word-break: auto-phrase) {
-    * { word-break: auto-phrase; }
+    scroll-behavior: smooth; /* affects all elements but not the viewport */
   }
 
   html {
     /**
       * NOTES:
-      *   - lower than <body>
-      *   - for default font styles
+      *   - lower than :root and <body>
+      *   - for styles with a root size option (usually font-size)
+      *   - affects pseudo-classes (as compared to :root)
     **/
-    /* TODO: make it dependent on viewport size; kerning is bad for small viewports */
-      font-kerning: normal;
+    font-size: 1em; /* equivalent to 16px */
+  }
+
+  body {
+    /**
+      * NOTES:
+      *   - set everything here
+      *   - if it can be inherited, this is the best place to set it
+      *   - high than <html>
+    **/
+    /* light-dark() supported as of 2024 */
+      /* not using this for other themes
+      background-color: light-dark(var(--theme-light-bg), var(--theme-dark-bg));
+      color: light-dark(var(--theme-light-txt), var(--theme-dark-txt));
+      */
+    font-kerning: normal; /* TODO: make it dependent on viewport size; kerning is bad for small viewports */
     font-variant-numeric: oldstyle-nums tabular-nums ordinal slashed-zero;
     /* only set per class/font/:lang()
       font-synthesis:
@@ -362,23 +366,21 @@
       font-variant-ligatures:
       font-variant-position:
     */
+    image-rendering: smooth; /* different value keywords for svg */
+    line-height: 1.7; /* accessibility */
+    min-block-size: 100vh;
+    /* BGN: wrapping related */
+      hyphens: auto;
+      line-break: strict;
+      overflow-wrap: break-word;
+      word-break: normal;
+    /* END: wrapping related */
   }
   @supports (font-variant-emoji: unicode) {
-    html { font-variant-emoji: unicode; }
+    body { font-variant-emoji: unicode; }
   }
-  @supports not (text-rendering: geometricPrecision) {
-    html { text-rendering: optimizeLegibility; }
-  }
-  @supports (text-rendering: geometricPrecision) {
-    html { text-rendering: geometricPrecision; }
-  }
-
-  body {
-    /**
-      * NOTES:
-      *   - set everything here
-    **/
-    min-block-size: 100vh;
+  @supports (word-break: auto-phrase) {
+    body { word-break: auto-phrase; }
   }
 
   .center-container {
@@ -390,7 +392,7 @@
   thead, th,
   h1, h2, h3, h4, h5, h6,
   a {
-    hyphens: none;  /* Not good if hyphenated. */
+    hyphens: none;  /* not good if hyphenated. */
   }
 
   a {
@@ -407,12 +409,9 @@
 ** BGN: Generic **
 *****************/
   div, aside, section,
-  nav, main, article {
-    display: block flow-root;
-  }
-
+  nav, main, article,
   footer {
-    display: block flow-root;
+    display: block flow;
   }
 /*****************
 ** END: Generic **
@@ -437,7 +436,7 @@
     *         expectation.
   **/
   header, hgroup {
-    display: block flow-root;
+    display: block flow;
   }
   header, hgroup,
   thead, th {
@@ -445,7 +444,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    display: block flow-root;
+    display: block flow;
     font-weight: 700;
     line-height: 1.2;
     text-wrap: balance;
@@ -523,30 +522,37 @@
 
   dl {
     counter-reset: dl-dd;
-    display: block flow-root;
-    margin-block: 1em;
+    display: block flow;
+    margin-block: 1em; /* default */ /* YOO: can we safely remove this since it's a UA default? */
   }
   dt {
     display: run-in flow;
   }
-  dt::after {
-    content: ": ";
-  }
+  /* BGN: styling multiple terms */
+    dt:has(+ dt)::after {
+      content: ", ";
+    }
+    dt:has(+ dd)::after {
+      content: ": ";
+    }
+  /* END: styling multiple terms */
   dd {
-    display: block flow-root;
-    margin-inline-start: 40px;
+    display: block flow;
+    margin-inline-start: 40px; /* default */ /* YOO: can we safely remove this since it's a UA default? */
   }
-  dt + dd::before {
-    counter-set: dl-dd 1;
-    counter-increment: dl-dd;
-    content: "(" counter(dl-dd) ") ";
-  }
-  dd + dd::before {
-    counter-increment: dl-dd;
-    content: "(" counter(dl-dd) ") ";
-  }
-  dt::after {
-    content: "";
+  /* BGN: styling multiple definitions */
+    dt + dd::before {
+      counter-set: dl-dd 1;
+      counter-increment: dl-dd;
+      content: "(" counter(dl-dd) ") ";
+    }
+    dd + dd::before {
+      counter-increment: dl-dd;
+      content: "(" counter(dl-dd) ") ";
+    }
+  /* END: styling multiple definitions */
+  dl p:first-child {
+    display: inline flow;
   }
 
   /* Revert “The New CSS Reset” */
@@ -556,7 +562,8 @@
   }
   */
   menu, ol, ul {
-    display: block flow-root;
+    display: block flow;
+    list-style-position: outside; /* YOO: is 'inside' better? */
   }
   ol {
     /**
@@ -673,19 +680,19 @@
 ** BGN: Text **
 **************/
   p {
-    display: block flow-root;
-    margin-block-end: 1em;
+    display: block flow;
+      margin-block-end: 1em; /* default */ /* YOO: can we safely remove this since it's a UA default? */
     text-wrap: pretty;
   }
 
   address {
-    /* display: block flow-root; */
-    display: inline flow-root;
+    /* display: block flow; */
+    display: inline flow-root; /* YOO: this makes more sense in our cultural style for addresses */
     font-style: normal;
   }
 
   blockquote {
-    display: block flow-root;
+    display: block flow;
     text-wrap: balance;
   }
 
@@ -734,10 +741,10 @@
 ** BGN: Details family **
 ************************/
   details {
-    display: block flow-root;
+    display: block flow;
   }
   summary {
-    display: list-item;
+    display: list-item; /* YOO: some UAs set this to 'block flow' */
     /* list-style: revert; */ /* Revert “The New CSS Reset” */
   }
 /************************
@@ -747,36 +754,23 @@
 /************************
 ** BGN: Images, Videos **
 ************************/
-  figure {
-    display: block flow-root;
-    text-wrap: balance;
-  }
-  figcaption {
-    display: block flow-root;
+  figure, figcaption {
+    display: block flow;
     text-wrap: balance;
   }
 
-  canvas {
-    display: block flow-root;
+  canvas, picture,
+  video {
+    display: block flow;
     max-inline-size: 100%;
   }
-  picture {
-    display: block flow-root;
-    max-inline-size: 100%;
-  }
-
   img {
-    display: block flow-root;
+    display: block flow;
   }
   svg {
-    display: block flow-root;
+    display: block flow;
     max-inline-size: 100%;
     max-block-size: 100%;
-  }
-
-  video {
-    display: block flow-root;
-    max-inline-size: 100%;
   }
 /************************
 ** END: Images, Videos **
@@ -786,13 +780,13 @@
 ** BGN: Monospace family **
 **************************/
   pre {
-    display: block flow-root;
-    margin-block: 1em;
-    font-size: 1em;
+    display: block flow;
+    margin-block: 1em; /* default */ /* YOO: can we safely remove this since it's a UA default? */
+    font-size: 1em; /* YOO: do we need this since it's our default? */
   }
   code, kbd, samp, var {
     display: inline flow;
-    font-size: 1em;
+    font-size: 1em; /* YOO: do we need this since it's our default? */
   }
 /**************************
 ** END: Monospace family **
@@ -1027,7 +1021,7 @@
         .ruby-base,
         rb {
           display: ruby-base;
-          white-space: nowrap;
+          white-space: nowrap; /* default */ /* YOO: can we safely remove this since it's a UA default? */
         }
       /* */
 
@@ -1089,7 +1083,7 @@
       .ruby-base-container, .ruby-base, .ruby-text-container, .ruby-text,
       rbc, rb, rtc, rt {
         font-variant-east-asian: full-width ruby;
-        unicode-bidi: isolate;
+        unicode-bidi: isolate; /* default */ /* YOO: can we safely remove this since it's a UA default? */
       }
       ruby:lang(zh-Hans),
       :where(.ruby-base-container, .ruby-base, .ruby-text-container, .ruby-text):lang(zh-Hans),
@@ -1111,9 +1105,9 @@
 
   .ruby-text-container, .ruby-text,
   rtc, rt {
-    /* line-height: 1; */
-    /* text-emphasis: none; */
-    white-space: nowrap;
+    /* line-height: 1; */ /* default */ /* YOO: can we safely remove this since it's a UA default? */
+    /* text-emphasis: none; */ /* default */ /* YOO: can we safely remove this since it's a UA default? */
+    white-space: nowrap; /* default */ /* YOO: can we safely remove this since it's a UA default? */
   }
 
   /* BGN: suggested by W3C */
@@ -1255,7 +1249,7 @@
 **********************/
   button {
     display: inline flow-root;
-    font: inherit;
+    font: inherit; /* force to inherit */
     line-height: 1.2;
     text-transform: none;
   }
@@ -1269,30 +1263,30 @@
   }
 
   search {
-    display: block flow-root;
+    display: block flow;
   }
 
   /* BGN: Form family */
     form,
     legend {
-      display: block flow-root;
+      display: block flow;
     }
 
     fieldset {
-      display: block flow-root;
+      display: block flow;
       margin-inline: 2px;
     }
 
     textarea {
-      display: inline flow-root;
+      display: inline flow;
       font: inherit;
       line-height: 1.2;
-      margin-block: 1px;
+      margin-block: 1px; /* default */ /* YOO: can we safely remove this since it's a UA default? */
     }
 
     input {
       display: inline flow-root;
-      font: inherit;
+      font: inherit; /* force to inherit */
       line-height: 1.2;
     }
     input[type="checkbox"] {
@@ -1319,7 +1313,7 @@
     }
     optgroup, optgroup::before,
     option {
-      display: block flow-root;
+      display: block flow;
     }
     select {
       display: inline flow-root;
@@ -1336,12 +1330,12 @@
 ** BGN: Pop-up dialogs / modals **
 *********************************/
   dialog {
-    display: block flow-root;
+    display: block flow;
     margin-inline: auto;
     margin-block: auto;
   }
-  ::backdrop {
-    display: block flow-root;
+  ::backdrop { /* YOO: do we need this? */
+    display: block flow;
   }
 /*********************************
 ** END: Pop-up dialogs / modals **
