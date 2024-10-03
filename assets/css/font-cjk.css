@@ -87,46 +87,60 @@
   }
 /** END: :root and classes **/
 
-  /* BGN: Hanzi (Traditional & Simple) */
-    :lang(yue),
-    :lang(zh) {
-      direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-      font-style: normal; /* ensure there are no italic and oblique styles */
-      font-synthesis: weight; /* only allow 'bold' synthesis */
-      /* font-variant-east-asian: */ /* Don't set this. Use -Hant or -Hans instead. */
-    }
-    :lang(zh-Hans) {
-      font-language-override: "ZHS";
-      font-variant-east-asian: simplified full-width;
-    }
-    :lang(zh-Hant) {
-      font-language-override: "ZHT";
-      font-variant-east-asian: traditional full-width;
-    }
-    :lang(zh-Hant-HK) {
-      font-language-override: "ZHH";
-    }
-    :lang(zh-Bopo) {
-      /* font-language-override: "ZHT"; */
-    }
-  /* END: Hanzi (Traditional & Simple) */
+    /* BGN: Hanzi (Traditional & Simple) */
+      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+        @supports not (selector(:lang(yue, zh))) {
+          :lang(yue),
+          :lang(zh) {
+            direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+            font-style: normal; /* ensure there are no italic and oblique styles */
+            font-synthesis: weight; /* only allow 'bold' synthesis */
+            /* font-variant-east-asian: */ /* Don't set this. Use -Hant or -Hans instead. */
+          }
+        }
+      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
 
-  /* BGN: Kana + Nihongo */
-    :lang(ja) {
-      direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-      font-language-override: "JAN";
-      font-style: normal; /* ensure there are no italic and oblique styles */
-      font-synthesis: weight; /* only allow 'bold' synthesis */
-      font-variant-east-asian: jis04 full-width;
-    }
-  /* END: Kana + Nihongo */
+      @supports selector(:lang(yue, zh)) {
+        :lang(yue, zh) {
+          direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+          font-style: normal; /* ensure there are no italic and oblique styles */
+          font-synthesis: weight; /* only allow 'bold' synthesis */
+          /* font-variant-east-asian: */ /* Don't set this. Use -Hant or -Hans instead. */
+        }
+      }
 
-  /* BGN: Hangeul + Hangugeo */
-    :lang(ko) {
-      direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-      font-language-override: "KOR";
-      font-style: normal; /* ensure there are no italic and oblique styles */
-      font-synthesis: weight; /* only allow 'bold' synthesis */
-      font-variant-east-asian: full-width;
-    }
-  /* END: Hangeul + Hangugeo */
+      :lang(zh-Hans) {
+        font-language-override: "ZHS";
+        font-variant-east-asian: simplified full-width;
+      }
+      :lang(zh-Hant) {
+        font-language-override: "ZHT";
+        font-variant-east-asian: traditional full-width;
+      }
+      :lang(zh-Hant-HK) {
+        font-language-override: "ZHH";
+      }
+      :lang(zh-Bopo) {
+        /* font-language-override: "ZHT"; */
+      }
+    /* END: Hanzi (Traditional & Simple) */
+
+    /* BGN: Nihongo (Kana) */
+      :lang(ja) {
+        direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+        font-language-override: "JAN";
+        font-style: normal; /* ensure there are no italic and oblique styles */
+        font-synthesis: weight; /* only allow 'bold' synthesis */
+        font-variant-east-asian: jis04 full-width;
+      }
+    /* END: Nihongo (Kana) */
+
+    /* BGN: Hangugeo (Hangeul) */
+      :lang(ko) {
+        direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+        font-language-override: "KOR";
+        font-style: normal; /* ensure there are no italic and oblique styles */
+        font-synthesis: weight; /* only allow 'bold' synthesis */
+        font-variant-east-asian: full-width;
+      }
+    /* END: Hangugeo (Hangeul) */

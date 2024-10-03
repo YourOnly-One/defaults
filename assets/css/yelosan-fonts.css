@@ -178,19 +178,24 @@
   /* END: MOST USED */
 
   /* BGN: LANG */
-    /***
-      * BGN: Special font-family override
-      *
-      *   - Subset fonts
-      *   - Pure Unicode-compliant fonts only
-    ***/
-
     /* BGN: Greek & Ancient Greek */
-      :lang(el),
-      :lang(grc) {
-        direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-        font-style: normal; /* ensure there are no italic and oblique styles */
-        font-synthesis: weight; /* only allow 'bold' synthesis */
+      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+        @supports not (selector(:lang(el, grc))) {
+          :lang(el),
+          :lang(grc) {
+            direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+            font-style: normal; /* ensure there are no italic and oblique styles */
+            font-synthesis: weight; /* only allow 'bold' synthesis */
+          }
+        }
+      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+
+      @supports selector(:lang(el, grc)) {
+        :lang(el, grc) {
+          direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+          font-style: normal; /* ensure there are no italic and oblique styles */
+          font-synthesis: weight; /* only allow 'bold' synthesis */
+        }
       }
 
       :lang(el) { /* Modern Greek */
@@ -231,32 +236,102 @@
     font-size: larger;
   }
 
-  /* BGN: :lang(\*-Latn) */
-    /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
-      @supports not (selector(:lang("\*-Latn"))) {
-        :lang(yue-jyutping), :lang(zh-yue-jyutping),
-        :lang(zh-Latn),
-        :lang(ja-Latn),
-        :lang(ko-Latn),
-        :lang(he-Latn), :lang(hbo-Latn),
-        :lang(el-Latn), :lang(grc-Latn) {
-          direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
-          font-language-override: normal; /* needed because :lang(C) is a wildcard match */
-          font-synthesis: initial;
+    /* BGN: Latin script */
+      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+        @supports not ((selector(:lang(yue-jyutping, zh-yue-jyutping))) and (selector(:lang("\*-Latn")))) {
+          :lang(yue-jyutping), :lang(zh-yue-jyutping),
+          :lang(zh-Latn),
+          :lang(ja-Latn),
+          :lang(ko-Latn),
+          :lang(he-Latn), :lang(hbo-Latn),
+          :lang(el-Latn), :lang(grc-Latn) {
+            direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
+            font-language-override: normal; /* needed because :lang(C) is a wildcard match */
+            font-style: initial;
+            font-synthesis: initial;
+          }
         }
-      }
-    /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
 
-    @supports selector(:lang("\*-Latn")) {
-      :lang(\*-jyutping),
-      :lang(\*-Latn) {
-        direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
-        font-language-override: normal; /* needed because :lang(C) is a wildcard match */
-        font-synthesis: initial;
-      }
-    }
-  /* END: :lang(\*-Latn) */
+        /* BGN: :lang(C, C, C) */
+          @supports (selector(:lang(yue-jyutping, zh-yue-jyutping))) and (not (selector(:lang("\*-Latn")))) {
+            :lang(yue-jyutping, zh-yue-jyutping),
+            :lang(zh-Latn, ja-Latn, ko-Latn),
+            :lang(he-Latn, hbo-Latn),
+            :lang(el-Latn, grc-Latn) {
+              direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
+              font-language-override: normal; /* needed because :lang(C) is a wildcard match */
+              font-style: initial;
+              font-synthesis: initial;
+            }
+          }
+        /* END: :lang(C, C, C) */
 
+        /* BGN: :lang("\*-C") */
+          @supports (not (selector(:lang("\*-jyutping", "\*-Latn")))) and (selector(:lang("\*-Latn"))) {
+            :lang(\*-jyutping),
+            :lang(\*-Latn) {
+              direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
+              font-language-override: normal; /* needed because :lang(C) is a wildcard match */
+              font-style: initial;
+              font-synthesis: initial;
+            }
+          }
+        /* END: :lang("\*-C") */
+      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+
+      /* BGN: :lang("\*-C", "\*-C", "\*-C") */
+        @supports (selector(:lang("\*-jyutping", "\*-Latn"))) and (selector(:lang("\*-Latn"))) {
+          :lang(\*-jyutping, \*-Latn) {
+            direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
+            font-language-override: normal; /* needed because :lang(C) is a wildcard match */
+            font-style: initial;
+            font-synthesis: initial;
+          }
+        }
+      /* END: :lang("\*-C", "\*-C", "\*-C") */
+    /* END: Latin script */
+
+    /* BGN: Hangeul (script) */
+      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+        @supports not ((selector(:lang(phi-Hang, fil-Hang))) and (selector(:lang("\*-Hang")))) {
+          :lang(pag-Hang), :lang(pam-Hang), :lang(war-Hang), :lang(bik-Hang), :lang(hil-Hang), :lang(ilo-Hang), :lang(ceb-Hang),
+          :lang(tbw-Hang), :lang(bku-Hang), :lang(hnn-Hang), :lang(tl-Hang),
+          :lang(phi-Hang), :lang(fil-Hang) {
+            direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
+            font-language-override: "PIL"; /* needed because :lang(C) is a wildcard match */
+            font-style: normal; /* ensure there are no italic and oblique styles */
+            font-synthesis: weight; /* only allow 'bold' synthesis */
+            font-variant-east-asian: full-width;
+          }
+        }
+
+        /* BGN: :lang(C, C, C) */
+          @supports (selector(:lang(phi-Hang, fil-Hang))) and (not (selector(:lang("\*-Hang")))) {
+            :lang(pag-Hang, pam-Hang, war-Hang, bik-Hang, hil-Hang, ilo-Hang, ceb-Hang),
+            :lang(tbw-Hang, bku-Hang, hnn-Hang, tl-Hang),
+            :lang(phi-Hang, fil-Hang) {
+              direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
+              font-language-override: "PIL"; /* needed because :lang(C) is a wildcard match */
+              font-style: normal; /* ensure there are no italic and oblique styles */
+              font-synthesis: weight; /* only allow 'bold' synthesis */
+              font-variant-east-asian: full-width;
+            }
+          }
+        /* END: :lang(C, C, C) */
+      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+
+      /* BGN: :lang("\*-C") */
+        @supports selector(:lang("\*-Hang")) {
+          :lang(\*-Hang) {
+            direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
+            font-language-override: normal; /* needed because :lang(C) is a wildcard match */
+            font-style: normal; /* ensure there are no italic and oblique styles */
+            font-synthesis: weight; /* only allow 'bold' synthesis */
+            font-variant-east-asian: full-width;
+          }
+        }
+      /* END: :lang("\*-C") */
+    /* END: Hangeul (script) */
 /***************
 ** END: FONTS **
 ***************/

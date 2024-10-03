@@ -157,37 +157,112 @@
   }
 /** END: :root and classes **/
 
-/***
-  * BGN: Special font-family override
-  *
-  *   - Subset fonts
-  *   - Pure Unicode-compliant fonts only, otherwise we have to manually subset.
-***/
+    /* BGN: Pilipino */
+      /* BGN: Pilipino in Latin script */
+        /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+          @supports not (selector(:lang(phi, fil, en-PH))) {
+            :lang(pag), :lang(pam), :lang(war), :lang(bik), :lang(hil), :lang(ilo), :lang(ceb),
+            :lang(tbw), :lang(bku), :lang(hnn), :lang(tl),
+            :lang(phi), :lang(fil), :lang(en-PH) {
+              direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+              font-language-override: "PIL";
+              font-style: initial;
+              font-synthesis: weight; /* only allow 'bold' synthesis */
+              font-variant-east-asian: full-width;
+            }
+          }
+        /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
 
-/* BGN: Pilipino in Latin script */
-  /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
-    @supports not (selector(:lang(phi, fil, en-PH))) {
-      :lang(pag), :lang(pam), :lang(war), :lang(bik), :lang(hil), :lang(ilo), :lang(ceb),
-      :lang(tbw), :lang(bku), :lang(hnn), :lang(tl),
-      :lang(phi), :lang(fil), :lang(en-PH) {
-        direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-        font-language-override: "PIL";
-        font-style: normal; /* ensure there are no italic and oblique styles */
-        font-synthesis: weight; /* only allow 'bold' synthesis */
-        font-variant-east-asian: full-width;
-      }
-    }
-  /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+        @supports selector(:lang(phi, fil, en-PH)) {
+          :lang(pag, pam, war, bik, hil, ilo, ceb),
+          :lang(tbw, bku, hnn, tl),
+          :lang(phi, fil, en-PH) {
+            direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
+            font-language-override: "PIL";
+            font-style: initial;
+            font-synthesis: weight; /* only allow 'bold' synthesis */
+            font-variant-east-asian: full-width;
+          }
+        }
+      /* END: Pilipino in Latin script */
 
-  @supports selector(:lang(phi, fil, en-PH)) {
-    :lang(pag, pam, war, bik, hil, ilo, ceb),
-    :lang(tbw, bku, hnn, tl),
-    :lang(phi, fil, en-PH) {
-      direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
-      font-language-override: "PIL";
-      font-style: normal; /* ensure there are no italic and oblique styles */
-      font-synthesis: weight; /* only allow 'bold' synthesis */
-      font-variant-east-asian: full-width;
-    }
-  }
-/* END: Pilipino in Latin script */
+      /* BGN: Pilipino in Baybayin script */
+        /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+          @supports not ((selector(:lang(phi-Tglg, fil-Tglg))) and (selector(:lang("\*-Tglg")))) {
+            :lang(pag-Tglg), :lang(pam-Tglg), :lang(war-Tglg), :lang(bik-Tglg), :lang(hil-Tglg), :lang(ilo-Tglg), :lang(ceb-Tglg),
+            :lang(tbw-Tglg), :lang(bku-Tglg), :lang(hnn-Tglg), :lang(tl-Tglg),
+            :lang(phi-Tglg), :lang(fil-Tglg) {
+              font-style: normal; /* ensure there are no italic and oblique styles */
+            }
+          }
+          @supports not ((selector(:lang(phi-Hano, fil-Hano))) and (selector(:lang("\*-Hano")))) {
+            :lang(pag-Hano), :lang(pam-Hano), :lang(war-Hano), :lang(bik-Hano), :lang(hil-Hano), :lang(ilo-Hano), :lang(ceb-Hano),
+            :lang(tbw-Hano), :lang(bku-Hano), :lang(hnn-Hano), :lang(tl-Hano),
+            :lang(phi-Hano), :lang(fil-Hano) {
+              font-style: normal; /* ensure there are no italic and oblique styles */
+            }
+          }
+          @supports not ((selector(:lang(phi-Buhd, fil-Buhd))) and (selector(:lang("\*-Buhd")))) {
+            :lang(pag-Buhd), :lang(pam-Buhd), :lang(war-Buhd), :lang(bik-Buhd), :lang(hil-Buhd), :lang(ilo-Buhd), :lang(ceb-Buhd),
+            :lang(tbw-Buhd), :lang(bku-Buhd), :lang(hnn-Buhd), :lang(tl-Buhd),
+            :lang(phi-Buhd), :lang(fil-Buhd) {
+              font-style: normal; /* ensure there are no italic and oblique styles */
+            }
+          }
+          @supports not ((selector(:lang(phi-Tagb, fil-Tagb))) and (selector(:lang("\*-Tagb")))) {
+            :lang(pag-Tagb), :lang(pam-Tagb), :lang(war-Tagb), :lang(bik-Tagb), :lang(hil-Tagb), :lang(ilo-Tagb), :lang(ceb-Tagb),
+            :lang(tbw-Tagb), :lang(bku-Tagb), :lang(hnn-Tagb), :lang(tl-Tagb),
+            :lang(phi-Tagb), :lang(fil-Tagb) {
+              font-style: normal; /* ensure there are no italic and oblique styles */
+            }
+          }
+
+          /* BGN: :lang(C, C, C) */
+            @supports (selector(:lang(phi-Tglg, fil-Tglg))) and (not (selector(:lang("\*-Tglg")))) {
+              :lang(pag-Tglg, pam-Tglg, war-Tglg, bik-Tglg, hil-Tglg, ilo-Tglg, ceb-Tglg),
+              :lang(tbw-Tglg, bku-Tglg, hnn-Tglg, tl-Tglg),
+              :lang(phi-Tglg, fil-Tglg) {
+                font-style: normal; /* ensure there are no italic and oblique styles */
+              }
+            }
+            @supports (selector(:lang(phi-Hano, fil-Hano))) and (not (selector(:lang("\*-Hano")))) {
+              :lang(pag-Hano, pam-Hano, war-Hano, bik-Hano, hil-Hano, ilo-Hano, ceb-Hano),
+              :lang(tbw-Hano, bku-Hano, hnn-Hano, tl-Hano),
+              :lang(phi-Hano, fil-Hano) {
+                font-style: normal; /* ensure there are no italic and oblique styles */
+              }
+            }
+            @supports (selector(:lang(phi-Buhd, fil-Buhd))) and (not (selector(:lang("\*-Buhd")))) {
+              :lang(pag-Buhd, pam-Buhd, war-Buhd, bik-Buhd, hil-Buhd, ilo-Buhd, ceb-Buhd),
+              :lang(tbw-Buhd, bku-Buhd, hnn-Buhd, tl-Buhd),
+              :lang(phi-Buhd, fil-Buhd) {
+                font-style: normal; /* ensure there are no italic and oblique styles */
+              }
+            }
+            @supports (selector(:lang(phi-Tagb, fil-Tagb))) and (not (selector(:lang("\*-Tagb")))) {
+              :lang(pag-Tagb, pam-Tagb, war-Tagb, bik-Tagb, hil-Tagb, ilo-Tagb, ceb-Tagb),
+              :lang(tbw-Tagb, bku-Tagb, hnn-Tagb, tl-Tagb),
+              :lang(phi-Tagb, fil-Tagb) {
+                font-style: normal; /* ensure there are no italic and oblique styles */
+              }
+            }
+          /* END: :lang(C, C, C) */
+
+          /* BGN: :lang("\*-C") */
+            @supports (not (selector(:lang("\*-Tglg", "\*-Hano", "\*-Buhd", "\*-Tagb")))) and (selector(:lang("\*-Tglg"))) {
+              :lang(\*-Tglg), :lang(\*-Hano), :lang(\*-Buhd), :lang(\*-Tagb) {
+                font-style: normal; /* ensure there are no italic and oblique styles */
+              }
+            }
+          /* END: :lang("\*-C") */
+        /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+
+        /* BGN: :lang("\*-C", "\*-C", "\*-C") */
+          @supports (selector(:lang("\*-Tglg", "\*-Hano", "\*-Buhd", "\*-Tagb"))) and (selector(:lang("\*-Tglg"))) {
+            :lang(\*-Tglg, \*-Hano, \*-Buhd, \*-Tagb) {
+              font-style: normal; /* ensure there are no italic and oblique styles */
+            }
+          }
+        /* END: :lang("\*-C", "\*-C", "\*-C") */
+      /* END: Pilipino in Baybayin script */
+    /* END: Pilipino */

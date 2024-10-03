@@ -111,34 +111,38 @@
   }
 /** END: :root and classes **/
 
-/* BGN: LANG */
-  /***
-    * BGN: Special font-family override
-    *
-    *   - Subset fonts
-    *   - Pure Unicode-compliant fonts only
-  ***/
+    /* BGN: Hebrew & Paleo-Hebrew */
+      /* NOTES: https://en.wikipedia.org/wiki/ISO_15924 && https://en.wikipedia.org/wiki/ISO_639-3
+          * he- or heb- - modern Hebrew
+          * hbo- - ancient Hebrew
+          * -Hebr - modern Hebrew script
+          * -Phnx - Paleo-Hebrew script
+      */
 
-  /* BGN: Catch all Hebrew langs and scripts */
-    /* NOTES: https://en.wikipedia.org/wiki/ISO_15924 && https://en.wikipedia.org/wiki/ISO_639-3
-        * -Hebr - modern Hebrew script
-        * -Phnx - Paleo-Hebrew script
-        * he- or heb- - modern Hebrew
-        * hbo- - ancient Hebrew
-    */
+      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+        @supports not (selector(:lang(he, hbo))) {
+          :lang(he),
+          :lang(hbo) {
+            direction: rtl; /* Be sure to also set dir="rtl" in HTML. */
+            font-style: normal; /* ensure there are no italic and oblique styles */
+            font-synthesis: weight; /* only allow 'bold' synthesis */
+          }
+        }
+      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
 
-    :lang(he),
-    :lang(hbo) {
-      direction: rtl; /* Be sure to also set dir="rtl" in HTML. */
-      font-style: normal; /* ensure there are no italic and oblique styles */
-      font-synthesis: weight; /* only allow 'bold' synthesis */
-    }
-    :lang(he) { /* Modern Hebrew */
-      font-language-override: "IWR";
-    }
-    /*
-    :lang(hbo) { /* Paleo-Hebrew * /
-    }
-    */
-  /* END: Catch all Hebrew langs and scripts */
-/* END: LANG */
+      @supports selector(:lang(he, hbo)) {
+        :lang(he, hbo) {
+          direction: rtl; /* Be sure to also set dir="rtl" in HTML. */
+          font-style: normal; /* ensure there are no italic and oblique styles */
+          font-synthesis: weight; /* only allow 'bold' synthesis */
+        }
+      }
+
+      :lang(he) { /* Modern Hebrew */
+        font-language-override: "IWR";
+      }
+      /*
+      :lang(hbo) { /* Paleo-Hebrew * /
+      }
+      */
+    /* END: Hebrew & Paleo-Hebrew */
