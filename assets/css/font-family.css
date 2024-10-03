@@ -43,13 +43,13 @@ html {
 
   /* BGN: Kana + Nihongo */
     :lang(ja) {
-      font-family: var(--font-jpan-sans-default);
+      font-family: var(--font-kana-sans-default);
     }
   /* END: Kana + Nihongo */
 
   /* BGN: Hangeul + Hangugeo */
     :lang(ko) {
-      font-family: var(--font-kore-sans-default);
+      font-family: var(--font-hang-sans-default);
     }
   /* END: Hangeul + Hangugeo */
 

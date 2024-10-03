@@ -260,8 +260,8 @@
         --font-hans-sans-default-fangsong-rotated: var(--font-hans-sans-noto-fangsong-rotated);
         --font-hans-sans-default-fangsong-vertical: var(--font-hans-sans-noto-fangsong-vertical);
 
-        --font-jpan-sans-default: var(--font-jpan-sans-noto), sans-serif;
-        --font-kore-sans-default: var(--font-kore-sans-noto), sans-serif;
+        --font-kana-sans-default: var(--font-kana-sans-noto), sans-serif;
+        --font-hang-sans-default: var(--font-hang-sans-noto), sans-serif;
 
         --font-hebr-sans-default: var(--font-hebr-sans-noto), sans-serif;
         --font-hebr-serif-default: var(--font-hebr-serif-noto), serif;

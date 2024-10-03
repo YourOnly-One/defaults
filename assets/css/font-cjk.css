@@ -64,8 +64,8 @@
     --font-hans-sans-noto-fangsong-rotated: "noto-sans", "Noto Sans", "Noto Fangsong KSS Rotated";
     --font-hans-sans-noto-fangsong-vertical: "noto-sans", "Noto Sans", "Noto Fangsong KSS Vertical";
 
-    --font-jpan-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK JP", "Noto Sans JP";
-    --font-kore-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK KR", "Noto Sans KR";
+    --font-kana-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK JP", "Noto Sans JP";
+    --font-hang-sans-noto: "noto-sans", "Noto Sans", "Noto Sans CJK KR", "Noto Sans KR";
   }
   .font-hans-sans-noto-fangsong-rotated {
     font-family: var(--font-hans-sans-noto-fangsong-rotated);
@@ -79,11 +79,13 @@
   .font-hant-sans-noto {
     font-family: var(--font-hant-sans-noto), sans-serif;
   }
-  .font-jpan-sans-noto {
-    font-family: var(--font-jpan-sans-noto), sans-serif;
+  .font-jpan-sans-noto, /* backwards compatibility */
+  .font-kana-sans-noto {
+    font-family: var(--font-kana-sans-noto), sans-serif;
   }
-  .font-kore-sans-noto {
-    font-family: var(--font-kore-sans-noto), sans-serif;
+  .font-kore-sans-noto, /* backwards compatibility */
+  .font-hang-sans-noto {
+    font-family: var(--font-hang-sans-noto), sans-serif;
   }
 /** END: :root and classes **/
 
