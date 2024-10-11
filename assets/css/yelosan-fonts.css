@@ -335,3 +335,78 @@
 /***************
 ** END: FONTS **
 ***************/
+
+/* Supposed to be in font-defaults.scss */
+    /* BGN: Latin script */
+      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+        @supports not ((selector(:lang(yue-jyutping, zh-yue-jyutping))) and (selector(:lang("\*-Latn")))) {
+          :lang(yue-jyutping), :lang(zh-yue-jyutping),
+          :lang(zh-Latn),
+          :lang(ja-Latn),
+          :lang(ko-Latn),
+          :lang(he-Latn), :lang(hbo-Latn),
+          :lang(el-Latn), :lang(grc-Latn) {
+            font-family: var(--font-sans-noto);
+          }
+        }
+
+        /* BGN: :lang(C, C, C) */
+          @supports (selector(:lang(yue-jyutping, zh-yue-jyutping))) and (not (selector(:lang("\*-Latn")))) {
+            :lang(yue-jyutping, zh-yue-jyutping),
+            :lang(zh-Latn, ja-Latn, ko-Latn),
+            :lang(he-Latn, hbo-Latn),
+            :lang(el-Latn, grc-Latn) {
+              font-family: var(--font-sans-noto);
+            }
+          }
+        /* END: :lang(C, C, C) */
+
+        /* BGN: :lang("\*-C") */
+          @supports (not (selector(:lang("\*-jyutping", "\*-Latn")))) and (selector(:lang("\*-Latn"))) {
+            :lang(\*-jyutping),
+            :lang(\*-Latn) {
+              font-family: var(--font-sans-noto);
+            }
+          }
+        /* END: :lang("\*-C") */
+      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+
+      /* BGN: :lang("\*-C", "\*-C", "\*-C") */
+        @supports (selector(:lang("\*-jyutping", "\*-Latn"))) and (selector(:lang("\*-Latn"))) {
+          :lang(\*-jyutping, \*-Latn) {
+            font-family: var(--font-sans-noto);
+          }
+        }
+      /* END: :lang("\*-C", "\*-C", "\*-C") */
+    /* END: Latin script */
+
+    /* BGN: Hangeul (script) */
+      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+        @supports not ((selector(:lang(phi-Hang, fil-Hang))) and (selector(:lang("\*-Hang")))) {
+          :lang(pag-Hang), :lang(pam-Hang), :lang(war-Hang), :lang(bik-Hang), :lang(hil-Hang), :lang(ilo-Hang), :lang(ceb-Hang),
+          :lang(tbw-Hang), :lang(bku-Hang), :lang(hnn-Hang), :lang(tl-Hang),
+          :lang(phi-Hang), :lang(fil-Hang) {
+            font-family: var(--font-hang-sans-noto);
+          }
+        }
+
+        /* BGN: :lang(C, C, C) */
+          @supports (selector(:lang(phi-Hang, fil-Hang))) and (not (selector(:lang("\*-Hang")))) {
+            :lang(pag-Hang, pam-Hang, war-Hang, bik-Hang, hil-Hang, ilo-Hang, ceb-Hang),
+            :lang(tbw-Hang, bku-Hang, hnn-Hang, tl-Hang),
+            :lang(phi-Hang, fil-Hang) {
+              font-family: var(--font-hang-sans-noto);
+            }
+          }
+        /* END: :lang(C, C, C) */
+      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+
+      /* BGN: :lang("\*-C") */
+        @supports selector(:lang("\*-Hang")) {
+          :lang(\*-Hang) {
+            font-family: var(--font-hang-sans-noto);
+          }
+        }
+      /* END: :lang("\*-C") */
+    /* END: Hangeul (script) */
+/* Supposed to be in font-defaults.scss */
