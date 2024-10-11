@@ -67,76 +67,180 @@ html {
     }
   /* END: Greek & Ancient Greek */
 
-  /* BGN: Pilipino */
-    /* BGN: Pilipino in Latin script */
-      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
-        @supports not (selector(:lang(phi, fil, en-PH))) {
-          :lang(pag), :lang(pam), :lang(war), :lang(bik), :lang(hil), :lang(ilo), :lang(ceb),
-          :lang(tbw), :lang(bku), :lang(hnn), :lang(tl),
-          :lang(phi), :lang(fil), :lang(en-PH) {
+    /* BGN: Pilipino */
+      /* BGN: Pilipino in Latin script */
+        /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+          @supports not (selector(:lang(phi, fil, en-PH))) {
+            :lang(pag), :lang(pam), :lang(war), :lang(bik), :lang(hil), :lang(ilo), :lang(ceb),
+            :lang(tbw), :lang(bku), :lang(hnn), :lang(tl),
+            :lang(phi), :lang(fil), :lang(en-PH) {
+              font-family: var(--font-pilipino-sans-default);
+            }
+          }
+        /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+
+        @supports selector(:lang(phi, fil, en-PH)) {
+          :lang(pag, pam, war, bik, hil, ilo, ceb),
+          :lang(tbw, bku, hnn, tl),
+          :lang(phi, fil, en-PH) {
             font-family: var(--font-pilipino-sans-default);
           }
         }
-      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
-      @supports selector(:lang(phi, fil, en-PH)) {
-        :lang(pag, pam, war, bik, hil, ilo, ceb),
-        :lang(tbw, bku, hnn, tl),
-        :lang(phi, fil, en-PH) {
-          font-family: var(--font-pilipino-sans-default);
-        }
-      }
-    /* END: Pilipino in Latin script */
+      /* END: Pilipino in Latin script */
 
-    /* BGN: Pilipino in Baybayin scripts */
+      /* BGN: Pilipino in Baybayin script */
+        /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+          @supports not ((selector(:lang(phi-Tglg, fil-Tglg))) and (selector(:lang("\*-Tglg")))) {
+            :lang(pag-Tglg), :lang(pam-Tglg), :lang(war-Tglg), :lang(bik-Tglg), :lang(hil-Tglg), :lang(ilo-Tglg), :lang(ceb-Tglg),
+            :lang(tbw-Tglg), :lang(bku-Tglg), :lang(hnn-Tglg), :lang(tl-Tglg),
+            :lang(phi-Tglg), :lang(fil-Tglg) {
+              font-family: var(--font-pilipino-sans-default); /* combined; different Unicode points */
+            }
+          }
+          @supports not ((selector(:lang(phi-Hano, fil-Hano))) and (selector(:lang("\*-Hano")))) {
+            :lang(pag-Hano), :lang(pam-Hano), :lang(war-Hano), :lang(bik-Hano), :lang(hil-Hano), :lang(ilo-Hano), :lang(ceb-Hano),
+            :lang(tbw-Hano), :lang(bku-Hano), :lang(hnn-Hano), :lang(tl-Hano),
+            :lang(phi-Hano), :lang(fil-Hano) {
+              font-family: var(--font-pilipino-sans-default); /* combined; different Unicode points */
+            }
+          }
+          @supports not ((selector(:lang(phi-Buhd, fil-Buhd))) and (selector(:lang("\*-Buhd")))) {
+            :lang(pag-Buhd), :lang(pam-Buhd), :lang(war-Buhd), :lang(bik-Buhd), :lang(hil-Buhd), :lang(ilo-Buhd), :lang(ceb-Buhd),
+            :lang(tbw-Buhd), :lang(bku-Buhd), :lang(hnn-Buhd), :lang(tl-Buhd),
+            :lang(phi-Buhd), :lang(fil-Buhd) {
+              font-family: var(--font-pilipino-sans-default); /* combined; different Unicode points */
+            }
+          }
+          @supports not ((selector(:lang(phi-Tagb, fil-Tagb))) and (selector(:lang("\*-Tagb")))) {
+            :lang(pag-Tagb), :lang(pam-Tagb), :lang(war-Tagb), :lang(bik-Tagb), :lang(hil-Tagb), :lang(ilo-Tagb), :lang(ceb-Tagb),
+            :lang(tbw-Tagb), :lang(bku-Tagb), :lang(hnn-Tagb), :lang(tl-Tagb),
+            :lang(phi-Tagb), :lang(fil-Tagb) {
+              font-family: var(--font-pilipino-sans-default); /* combined; different Unicode points */
+            }
+          }
+
+          /* BGN: :lang(C, C, C) */
+            @supports (selector(:lang(phi-Tglg, fil-Tglg))) and (not (selector(:lang("\*-Tglg")))) {
+              :lang(pag-Tglg, pam-Tglg, war-Tglg, bik-Tglg, hil-Tglg, ilo-Tglg, ceb-Tglg),
+              :lang(tbw-Tglg, bku-Tglg, hnn-Tglg, tl-Tglg),
+              :lang(phi-Tglg, fil-Tglg) {
+                font-family: var(--font-pilipino-sans-default); /* combined; different Unicode points */
+              }
+            }
+            @supports (selector(:lang(phi-Hano, fil-Hano))) and (not (selector(:lang("\*-Hano")))) {
+              :lang(pag-Hano, pam-Hano, war-Hano, bik-Hano, hil-Hano, ilo-Hano, ceb-Hano),
+              :lang(tbw-Hano, bku-Hano, hnn-Hano, tl-Hano),
+              :lang(phi-Hano, fil-Hano) {
+                font-family: var(--font-pilipino-sans-default); /* combined; different Unicode points */
+              }
+            }
+            @supports (selector(:lang(phi-Buhd, fil-Buhd))) and (not (selector(:lang("\*-Buhd")))) {
+              :lang(pag-Buhd, pam-Buhd, war-Buhd, bik-Buhd, hil-Buhd, ilo-Buhd, ceb-Buhd),
+              :lang(tbw-Buhd, bku-Buhd, hnn-Buhd, tl-Buhd),
+              :lang(phi-Buhd, fil-Buhd) {
+                font-family: var(--font-pilipino-sans-default); /* combined; different Unicode points */
+              }
+            }
+            @supports (selector(:lang(phi-Tagb, fil-Tagb))) and (not (selector(:lang("\*-Tagb")))) {
+              :lang(pag-Tagb, pam-Tagb, war-Tagb, bik-Tagb, hil-Tagb, ilo-Tagb, ceb-Tagb),
+              :lang(tbw-Tagb, bku-Tagb, hnn-Tagb, tl-Tagb),
+              :lang(phi-Tagb, fil-Tagb) {
+                font-family: var(--font-pilipino-sans-default); /* combined; different Unicode points */
+              }
+            }
+          /* END: :lang(C, C, C) */
+
+          /* BGN: :lang("\*-C") */
+            @supports (not (selector(:lang("\*-Tglg", "\*-Hano", "\*-Buhd", "\*-Tagb")))) and (selector(:lang("\*-Tglg"))) {
+              :lang(\*-Tglg), :lang(\*-Hano), :lang(\*-Buhd), :lang(\*-Tagb) {
+                font-family: var(--font-pilipino-sans-default); /* combined; different Unicode points */
+              }
+            }
+          /* END: :lang("\*-C") */
+        /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+
+        /* BGN: :lang("\*-C", "\*-C", "\*-C") */
+          @supports (selector(:lang("\*-Tglg", "\*-Hano", "\*-Buhd", "\*-Tagb"))) and (selector(:lang("\*-Tglg"))) {
+            :lang(\*-Tglg, \*-Hano, \*-Buhd, \*-Tagb) {
+              font-family: var(--font-pilipino-sans-default); /* combined; different Unicode points */
+            }
+          }
+        /* END: :lang("\*-C", "\*-C", "\*-C") */
+      /* END: Pilipino in Baybayin script */
+    /* END: Pilipino */
+
+    /* BGN: Latin script */
       /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
-        @supports not (selector(:lang("\*-Tagb", "\*-Buhd", "\*-Hano", "\*-Tglg"))) {
-          :lang(pag-Tagb), :lang(pag-Buhd), :lang(pag-Hano), :lang(pag-Tglg), /* Pangasinense in Baybayin */
-          :lang(pam-Tagb), :lang(pam-Buhd), :lang(pam-Hano), :lang(pam-Tglg), /* Kapampangan in Baybayin */
-          :lang(war-Tagb), :lang(war-Buhd), :lang(war-Hano), :lang(war-Tglg), /* Waray in Baybayin */
-          :lang(bik-Tagb), :lang(bik-Buhd), :lang(bik-Hano), :lang(bik-Tglg), /* Bikolano in Baybayin */
-          :lang(hil-Tagb), :lang(hil-Buhd), :lang(hil-Hano), :lang(hil-Tglg), /* Hiligaynon (Ilonggo) in Baybayin */
-          :lang(ilo-Tagb), :lang(ilo-Buhd), :lang(ilo-Hano), :lang(ilo-Tglg), /* Iloko (Ilokano) in Baybayin */
-          :lang(ceb-Tagb), :lang(ceb-Buhd), :lang(ceb-Hano), :lang(ceb-Tglg), /* Cebuano (Binasaya, Bisaya; Boholano) in Baybayin */
-          :lang(tbw-Tagb), :lang(tbw-Buhd), :lang(tbw-Hano), :lang(tbw-Tglg), /* Aborlan Tagbanwa in Baybayin */
-          :lang(bku-Tagb), :lang(bku-Buhd), :lang(bku-Hano), :lang(bku-Tglg), /* Mangyan Buhid in Baybayin */
-          :lang(hnn-Tagb), :lang(hnn-Buhd), :lang(hnn-Hano), :lang(hnn-Tglg), /* Mangyan Hanunoo in Baybayin */
-          :lang(tl-Tagb), :lang(tl-Buhd), :lang(tl-Hano), :lang(tl-Tglg), /* Tagalog in Baybayin */
-          :lang(phi-Tagb), :lang(phi-Buhd), :lang(phi-Hano), :lang(phi-Tglg), /* Philippine languages in Baybayin */
-          :lang(fil-Tagb), :lang(fil-Buhd), :lang(fil-Hano), :lang(fil-Tglg) /* Filipino language in Baybayin */
-          {
-            font-family: var(--font-baybayin-sans-default); /* combined; different Unicode points */
+        @supports not ((selector(:lang(yue-jyutping, zh-yue-jyutping))) and (selector(:lang("\*-Latn")))) {
+          :lang(yue-jyutping), :lang(zh-yue-jyutping),
+          :lang(zh-Latn),
+          :lang(ja-Latn),
+          :lang(ko-Latn),
+          :lang(he-Latn), :lang(hbo-Latn),
+          :lang(el-Latn), :lang(grc-Latn) {
+            font-family: var(--font-latn-sans-default);
           }
         }
-      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
-      @supports selector(:lang("\*-Tagb", "\*-Buhd", "\*-Hano", "\*-Tglg")) {
-        :lang(\*-Tagb), :lang(\*-Buhd), :lang(\*-Hano), :lang(\*-Tglg) /* in Baybayin */
-        {
-          font-family: var(--font-baybayin-sans-default); /* combined; different Unicode points */
-        }
-      }
-    /* END: Pilipino in Baybayin scripts */
-  /* END: Pilipino */
 
-  /* BGN: :lang(\*-Latn) */
-    /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
-      @supports not (selector(:lang("\*-Latn"))) {
-        :lang(yue-jyutping), :lang(zh-yue-jyutping),
-        :lang(zh-Latn),
-        :lang(ja-Latn),
-        :lang(ko-Latn),
-        :lang(he-Latn), :lang(hbo-Latn),
-        :lang(el-Latn), :lang(grc-Latn) {
-          font-family: var(--font-latn-sans-default);
+        /* BGN: :lang(C, C, C) */
+          @supports (selector(:lang(yue-jyutping, zh-yue-jyutping))) and (not (selector(:lang("\*-Latn")))) {
+            :lang(yue-jyutping, zh-yue-jyutping),
+            :lang(zh-Latn, ja-Latn, ko-Latn),
+            :lang(he-Latn, hbo-Latn),
+            :lang(el-Latn, grc-Latn) {
+              font-family: var(--font-latn-sans-default);
+            }
+          }
+        /* END: :lang(C, C, C) */
+
+        /* BGN: :lang("\*-C") */
+          @supports (not (selector(:lang("\*-jyutping", "\*-Latn")))) and (selector(:lang("\*-Latn"))) {
+            :lang(\*-jyutping),
+            :lang(\*-Latn) {
+              font-family: var(--font-latn-sans-default);
+            }
+          }
+        /* END: :lang("\*-C") */
+      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+
+      /* BGN: :lang("\*-C", "\*-C", "\*-C") */
+        @supports (selector(:lang("\*-jyutping", "\*-Latn"))) and (selector(:lang("\*-Latn"))) {
+          :lang(\*-jyutping, \*-Latn) {
+            font-family: var(--font-latn-sans-default);
+          }
         }
-      }
-    /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
-    @supports selector(:lang("\*-Latn")) {
-      :lang(\*-jyutping),
-      :lang(\*-Latn) {
-        font-family: var(--font-latn-sans-default);
-      }
-    }
-  /* END: :lang(\*-Latn) */
+      /* END: :lang("\*-C", "\*-C", "\*-C") */
+    /* END: Latin script */
+
+    /* BGN: Hangeul (script) */
+      /* BGN: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+        @supports not ((selector(:lang(phi-Hang, fil-Hang))) and (selector(:lang("\*-Hang")))) {
+          :lang(pag-Hang), :lang(pam-Hang), :lang(war-Hang), :lang(bik-Hang), :lang(hil-Hang), :lang(ilo-Hang), :lang(ceb-Hang),
+          :lang(tbw-Hang), :lang(bku-Hang), :lang(hnn-Hang), :lang(tl-Hang),
+          :lang(phi-Hang), :lang(fil-Hang) {
+            font-family: var(--font-hang-sans-default);
+          }
+        }
+
+        /* BGN: :lang(C, C, C) */
+          @supports (selector(:lang(phi-Hang, fil-Hang))) and (not (selector(:lang("\*-Hang")))) {
+            :lang(pag-Hang, pam-Hang, war-Hang, bik-Hang, hil-Hang, ilo-Hang, ceb-Hang),
+            :lang(tbw-Hang, bku-Hang, hnn-Hang, tl-Hang),
+            :lang(phi-Hang, fil-Hang) {
+              font-family: var(--font-hang-sans-default);
+            }
+          }
+        /* END: :lang(C, C, C) */
+      /* END: Dark Age (“spiritual successor of IE6”) engines like Chromium! BOO! */
+
+      /* BGN: :lang("\*-C") */
+        @supports selector(:lang("\*-Hang")) {
+          :lang(\*-Hang) {
+            font-family: var(--font-hang-sans-default);
+          }
+        }
+      /* END: :lang("\*-C") */
+    /* END: Hangeul (script) */
 /******************
 ** END: :lang(C) **
 ******************/

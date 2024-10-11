@@ -142,13 +142,14 @@
     --font-baybayin-nordenx: "baybayin-nordenx"; /* subset font */
     --font-latn-fantasy-barabara: "barabara";
   }
-  .font-baybayin-sans-noto.font-baybayin-sans-noto.font-baybayin-sans-noto {
+  .font-baybayin-sans-noto.font-baybayin-sans-noto.font-baybayin-sans-noto, /* backwards compatibility */
+  .font-pilipino-sans-noto.font-pilipino-sans-noto.font-pilipino-sans-noto {
     direction: ltr;
-    font-family: var(--font-baybayin-sans-noto), sans-serif;
+    font-family: var(--font-pilipino-sans-noto), sans-serif;
   }
   .font-baybayin-nordenx.font-baybayin-nordenx.font-baybayin-nordenx {
     direction: ltr;
-    font-family: var(--font-baybayin-nordenx);
+    font-family: var(--font-pilipino-nordenx);
   }
   .font-barabara-fantasy.font-barabara-fantasy.font-barabara-fantasy,
   .font-latn-fantasy-barabara {
@@ -166,8 +167,8 @@
             :lang(phi), :lang(fil), :lang(en-PH) {
               direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
               font-language-override: "PIL";
-              font-style: initial;
-              font-synthesis: weight; /* only allow 'bold' synthesis */
+              font-style: revert;
+              font-synthesis: revert;
               font-variant-east-asian: full-width;
             }
           }
@@ -179,8 +180,8 @@
           :lang(phi, fil, en-PH) {
             direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
             font-language-override: "PIL";
-            font-style: initial;
-            font-synthesis: weight; /* only allow 'bold' synthesis */
+            font-style: revert;
+            font-synthesis: revert;
             font-variant-east-asian: full-width;
           }
         }
@@ -193,6 +194,7 @@
             :lang(tbw-Tglg), :lang(bku-Tglg), :lang(hnn-Tglg), :lang(tl-Tglg),
             :lang(phi-Tglg), :lang(fil-Tglg) {
               font-style: normal; /* ensure there are no italic and oblique styles */
+              font-synthesis: weight; /* only allow 'bold' synthesis */
             }
           }
           @supports not ((selector(:lang(phi-Hano, fil-Hano))) and (selector(:lang("\*-Hano")))) {
@@ -200,6 +202,7 @@
             :lang(tbw-Hano), :lang(bku-Hano), :lang(hnn-Hano), :lang(tl-Hano),
             :lang(phi-Hano), :lang(fil-Hano) {
               font-style: normal; /* ensure there are no italic and oblique styles */
+              font-synthesis: weight; /* only allow 'bold' synthesis */
             }
           }
           @supports not ((selector(:lang(phi-Buhd, fil-Buhd))) and (selector(:lang("\*-Buhd")))) {
@@ -207,6 +210,7 @@
             :lang(tbw-Buhd), :lang(bku-Buhd), :lang(hnn-Buhd), :lang(tl-Buhd),
             :lang(phi-Buhd), :lang(fil-Buhd) {
               font-style: normal; /* ensure there are no italic and oblique styles */
+              font-synthesis: weight; /* only allow 'bold' synthesis */
             }
           }
           @supports not ((selector(:lang(phi-Tagb, fil-Tagb))) and (selector(:lang("\*-Tagb")))) {
@@ -214,6 +218,7 @@
             :lang(tbw-Tagb), :lang(bku-Tagb), :lang(hnn-Tagb), :lang(tl-Tagb),
             :lang(phi-Tagb), :lang(fil-Tagb) {
               font-style: normal; /* ensure there are no italic and oblique styles */
+              font-synthesis: weight; /* only allow 'bold' synthesis */
             }
           }
 
@@ -223,6 +228,7 @@
               :lang(tbw-Tglg, bku-Tglg, hnn-Tglg, tl-Tglg),
               :lang(phi-Tglg, fil-Tglg) {
                 font-style: normal; /* ensure there are no italic and oblique styles */
+                font-synthesis: weight; /* only allow 'bold' synthesis */
               }
             }
             @supports (selector(:lang(phi-Hano, fil-Hano))) and (not (selector(:lang("\*-Hano")))) {
@@ -230,6 +236,7 @@
               :lang(tbw-Hano, bku-Hano, hnn-Hano, tl-Hano),
               :lang(phi-Hano, fil-Hano) {
                 font-style: normal; /* ensure there are no italic and oblique styles */
+                font-synthesis: weight; /* only allow 'bold' synthesis */
               }
             }
             @supports (selector(:lang(phi-Buhd, fil-Buhd))) and (not (selector(:lang("\*-Buhd")))) {
@@ -237,6 +244,7 @@
               :lang(tbw-Buhd, bku-Buhd, hnn-Buhd, tl-Buhd),
               :lang(phi-Buhd, fil-Buhd) {
                 font-style: normal; /* ensure there are no italic and oblique styles */
+                font-synthesis: weight; /* only allow 'bold' synthesis */
               }
             }
             @supports (selector(:lang(phi-Tagb, fil-Tagb))) and (not (selector(:lang("\*-Tagb")))) {
@@ -244,6 +252,7 @@
               :lang(tbw-Tagb, bku-Tagb, hnn-Tagb, tl-Tagb),
               :lang(phi-Tagb, fil-Tagb) {
                 font-style: normal; /* ensure there are no italic and oblique styles */
+                font-synthesis: weight; /* only allow 'bold' synthesis */
               }
             }
           /* END: :lang(C, C, C) */
@@ -252,6 +261,7 @@
             @supports (not (selector(:lang("\*-Tglg", "\*-Hano", "\*-Buhd", "\*-Tagb")))) and (selector(:lang("\*-Tglg"))) {
               :lang(\*-Tglg), :lang(\*-Hano), :lang(\*-Buhd), :lang(\*-Tagb) {
                 font-style: normal; /* ensure there are no italic and oblique styles */
+                font-synthesis: weight; /* only allow 'bold' synthesis */
               }
             }
           /* END: :lang("\*-C") */
@@ -261,6 +271,7 @@
           @supports (selector(:lang("\*-Tglg", "\*-Hano", "\*-Buhd", "\*-Tagb"))) and (selector(:lang("\*-Tglg"))) {
             :lang(\*-Tglg, \*-Hano, \*-Buhd, \*-Tagb) {
               font-style: normal; /* ensure there are no italic and oblique styles */
+              font-synthesis: weight; /* only allow 'bold' synthesis */
             }
           }
         /* END: :lang("\*-C", "\*-C", "\*-C") */

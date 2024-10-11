@@ -89,23 +89,23 @@
     --font-hebr-sans-paleo-gezer: "noto-sans", "Noto Sans", "hebrew-sans-paleo-gezer";
     --font-hebr-sans-proto-canaanite: "noto-sans", "Noto Sans", "hebrew-sans-proto-canaanite";
   }
-  .font-hebrew-sans-noto.font-hebrew-sans-noto.font-hebrew-sans-noto,
-  .font-hebr-sans-noto {
+  .font-hebrew-sans-noto.font-hebrew-sans-noto.font-hebrew-sans-noto, /* backwards compatibility */
+  .font-hebr-sans-noto.font-hebr-sans-noto.font-hebr.sans-noto {
     direction: rtl;
     font-family: var(--font-hebr-sans-noto), sans-serif;
   }
-  .font-hebrew-serif-noto.font-hebrew-serif-noto.font-hebrew-serif-noto,
-  .font-hebr-serif-noto {
+  .font-hebrew-serif-noto.font-hebrew-serif-noto.font-hebrew-serif-noto, /* backwards compatibility */
+  .font-hebr-serif-noto.font-hebr-serif-noto.font-hebr-serif-noto {
     direction: rtl;
     font-family: var(--font-hebr-serif-noto), serif;
   }
-  .font-hebrew-sans-paleo-gezer.font-hebrew-sans-paleo-gezer.font-hebrew-sans-paleo-gezer,
-  .font-hebr-sans-paleo-gezer {
+  .font-hebrew-sans-paleo-gezer.font-hebrew-sans-paleo-gezer.font-hebrew-sans-paleo-gezer, /* backwards compatibility */
+  .font-hebr-sans-paleo-gezer.font-hebr-sans-paleo-gezer.font-hebr-sans-paleo-gezer {
     direction: rtl;
     font-family: var(--font-hebr-sans-paleo-gezer);
   }
-  .font-hebrew-sans-proto-canaanite.font-hebrew-sans-proto-canaanite.font-hebrew-sans-proto-canaanite,
-  .font-hebr-sans-proto-canaanite {
+  .font-hebrew-sans-proto-canaanite.font-hebrew-sans-proto-canaanite.font-hebrew-sans-proto-canaanite, /* backwards compatibility */
+  .font-hebr-sans-proto-canaanite.font-hebr-sans-proto-canaanite.font-hebr-sans-proto-canaanite {
     direction: rtl;
     font-family: var(--font-hebr-sans-proto-canaanite);
   }

@@ -199,6 +199,6 @@
   :lang(en) {
     direction: ltr; /* Be sure to also set dir="ltr" in HTML. */
     font-language-override: "ENG";
-    font-synthesis: initial;
+    font-synthesis: revert;
   }
 /* END: Catch all English */

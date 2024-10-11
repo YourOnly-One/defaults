@@ -247,8 +247,8 @@
           :lang(el-Latn), :lang(grc-Latn) {
             direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
             font-language-override: normal; /* needed because :lang(C) is a wildcard match */
-            font-style: initial;
-            font-synthesis: initial;
+            font-style: revert;
+            font-synthesis: revert;
           }
         }
 
@@ -260,8 +260,8 @@
             :lang(el-Latn, grc-Latn) {
               direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
               font-language-override: normal; /* needed because :lang(C) is a wildcard match */
-              font-style: initial;
-              font-synthesis: initial;
+              font-style: revert;
+              font-synthesis: revert;
             }
           }
         /* END: :lang(C, C, C) */
@@ -272,8 +272,8 @@
             :lang(\*-Latn) {
               direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
               font-language-override: normal; /* needed because :lang(C) is a wildcard match */
-              font-style: initial;
-              font-synthesis: initial;
+              font-style: revert;
+              font-synthesis: revert;
             }
           }
         /* END: :lang("\*-C") */
@@ -284,8 +284,8 @@
           :lang(\*-jyutping, \*-Latn) {
             direction: ltr; /* Be sure to also set dir="ltr" in HTML. */ /* needed because :lang(C) is a wildcard match */
             font-language-override: normal; /* needed because :lang(C) is a wildcard match */
-            font-style: initial;
-            font-synthesis: initial;
+            font-style: revert;
+            font-synthesis: revert;
           }
         }
       /* END: :lang("\*-C", "\*-C", "\*-C") */
