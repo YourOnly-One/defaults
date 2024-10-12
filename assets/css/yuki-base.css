@@ -262,6 +262,8 @@
 
         --font-kana-sans-default: var(--font-kana-sans-noto), sans-serif;
         --font-hang-sans-default: var(--font-hang-sans-noto), sans-serif;
+        --font-kana-serif-default: var(--font-kana-serif-noto), serif;
+        --font-hang-serif-default: var(--font-hang-serif-noto), serif;
 
         --font-hebr-sans-default: var(--font-hebr-sans-noto), sans-serif;
         --font-hebr-serif-default: var(--font-hebr-serif-noto), serif;
