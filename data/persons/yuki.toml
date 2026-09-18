@@ -1,30 +1,25 @@
 id = "https://iam.youronly.one/#yuki"
-additionalnames = ["Yahuhanan Yukiya Sese Cuneta", "Yuki", "YoHan", "Yo-Han", "יהוחנן", "ᜌᜓᜃᜒ", "사요한", "謝雪矢（ゆきや）", "스노", "Seu-No", "SeuNo", "Snow", "Yohanan", "ᜌᜓᜑᜈᜈ᜔", "ᜌᜓᜑᜈᜈ᜕", "ᜌᜑᜓᜑᜈᜈ᜔", "ᜌᜑᜓᜑᜈᜈ᜕"]
+additionalnames = ["Yohan Yukiya Sese Cuneta", "Yuki", "Yo-Han", "יהוחנן", "ᜌᜓᜃᜒ", "사요한", "謝雪矢（ゆきや）", "스노", "Seu-No", "SeuNo", "Snow", "Yohanan", "ᜌᜓᜑᜈᜈ᜔", "ᜌᜓᜑᜈᜈ᜕", "ᜌᜑᜓᜑᜈᜈ᜔", "ᜌᜑᜓᜑᜈᜈ᜕"]
 #email = ""
 jobtitles = ["Founder"]
-knowslanguage = ["en-PH", "tl", "fil", "tl-Tglg", "fil-Tglg", "en"]
+knowslanguage = ["en-PH", "tl", "fil", "tl-Tglg", "fil-Hano", "fil-Tglg", "en"]
 nationality = "Philippines"
 #taxid = ""
 #vatid = ""
-#isni = ""
+isni = "0000000530977207"
 description = "Yuki loves writing, from content to world building. He is also in web development and is managing his own websites."
 mainentityofpage = "https://iam.youronly.one/"
 name = "JC John Sese Cuneta"
 sameas = [
   "https://atmosphere.youronly.one",
   "https://blog.naver.com/youronlyone-ofcl",
-  "https://bookwyrm.social/@youronlyone",
-  "https://bsky.app/profile/youronly.one",
+  "https://aturi.to/profile/youronly.one",
   "https://fediverse.youronly.one",
   "https://c.im/@youronlyone",
-  "https://c.wtf/@youronlyone",
-  "https://catodon.social/@youronlyone",
   "https://codeberg.org/techmagus",
   "https://commons.wikimedia.org/wiki/User:Laibcoms",
-  "https://diasp.org/u/jcsesecuneta",
   "https://nostrich.youronly.one",
   "https://wiki.youronly.one",
-  "https://ecency.com/@youronlyone",
   "https://en.wikipedia.org/wiki/User:Laibcoms",
   "https://en.wiktionary.org/wiki/User:Laibcoms",
   "https://fedia.io/u/youronlyone",
@@ -32,10 +27,17 @@ sameas = [
   "https://fediverse.blog/@/yuki",
   "https://fediverse.blog/~/Sandbox/",
   "https://fediverse.blog/~/WhenSnowFalls",
-  "https://framagit.org/techmagus",
   "https://github.com/techmagus",
   "https://gitlab.com/techmagus",
-  "https://hive.blog/@youronlyone",
+  "https://guhit.youronly.one",
+  "https://dalisay.youronly.one",
+  "https://sahangganan.youronly.one",
+  "https://hangganan.youronly.one",
+  "https://austronesian.youronly.one",
+  "https://poems.youronly.one",
+  "https://surat.youronly.one",
+  "https://inawa.youronly.one",
+  "https://wiki.youronly.one",
   "https://iam.youronly.one",
   "https://im.youronly.one",
   "https://im.youronly.one/p/verified/",
@@ -48,17 +50,12 @@ sameas = [
   "https://matrix.to/#/@youronlyone:matrix.org",
   "https://medium.com/@youronlyone",
   "https://meta.wikimedia.org/wiki/User:Laibcoms",
-  "https://mozilla.social/@youronlyone",
   "https://myanimelist.net/profile/youronlyone",
   "https://mydramalist.com/profile/Shael",
   "https://node9.org/profile/youronlyone",
   "https://open.spotify.com/user/jcsesecuneta",
-  "https://p.lu/a/youronlyone",
-  "https://p.lu/c/youronly.one",
   "https://paper.wf/youronlyone",
   "https://pixelfed.social/youronlyone",
-  "https://qoto.org/@youronlyone",
-  "https://r.nf/u/youronlyone",
   "https://simkl.com/6599711/",
   "https://simple.wikipedia.org/wiki/User:Laibcoms",
   "https://social.vivaldi.net/@youronlyone",
@@ -82,7 +79,6 @@ sameas = [
   "https://www.flickr.com/people/laibcoms",
   "https://www.flickr.com/photos/laibcoms",
   "https://www.goodreads.com/youronlyone",
-  "https://www.instagram.com/youronly.one.ofcl",
   "https://www.last.fm/user/YourOnlyONEofcl",
   "https://www.linkedin.com/in/youronlyone",
   "https://www.pinterest.ph/youronlyoneofcl/",
@@ -125,6 +121,48 @@ url = "https://iam.youronly.one/"
   #url = ""
 
 # brands: optional
+#[[brands]]
+#  id = ""
+#  logo = ""
+#  name = ""
+#  url = ""
+#  iswebsite = true
+[[brands]]
+  id = "https://guhit.youronly.one/"
+  logo = ""
+  name = "Guhit Dalisay"
+  url = "https://guhit.youronly.one/"
+  iswebsite = true
+[[brands]]
+  id = "https://poems.youronly.one/"
+  logo = ""
+  name = "The Power of Words"
+  url = "https://poems.youronly.one/"
+  iswebsite = true
+[[brands]]
+  id = "https://austronesian.youronly.one/"
+  logo = ""
+  name = "The Austronesian Chronicles"
+  url = "https://austronesian.youronly.one/"
+  iswebsite = true
+[[brands]]
+  id = "https://surat.youronly.one/"
+  logo = ""
+  name = "Surat Inawa blog"
+  url = "https://surat.youronly.one/"
+  iswebsite = true
+[[brands]]
+  id = "https://inawa.youronly.one/"
+  logo = ""
+  name = "Surat Inawa wiki"
+  url = "https://inawa.youronly.one/"
+  iswebsite = true
+[[brands]]
+  id = "https://sahangganan.youronly.one/"
+  logo = ""
+  name = "Sa Hangganan"
+  url = "https://sahangganan.youronly.one/"
+  iswebsite = true
 [[brands]]
   id = "https://im.youronly.one/love/"
   logo = "https://rsc.youronly.one/img/y/Love_and_Relationship.webp"
@@ -188,11 +226,11 @@ url = "https://iam.youronly.one/"
 
 # images: required
 [[images]]
-  caption = "Yahuhanan Yukiya Sese Cuneta"
+  caption = "Yohan Yukiya Sese Cuneta"
   url = "https://rsc.youronly.one/img/y/Yuki-formal-bnw-600x.jpg"
   isphoto = true
 [[images]]
-  caption = "Yahuhanan Yukiya Sese Cuneta"
+  caption = "Yohan Yukiya Sese Cuneta"
   url = "https://rsc.youronly.one/img/y/Yuki-formal-bnw-600x.webp"
   isphoto = true
 
@@ -251,30 +289,30 @@ url = "https://iam.youronly.one/"
   #  tag = ""
   #  message = ""
   #  type = "tip jar"
-  [[author.gift]]
-    name = "Flattr"
-    code = ""
-    url = "https://flattr.com/@YourOnlyOne"
-    linktitle = "@YourOnlyOne"
-    tag = ""
-    message = ""
-    type = "tip jar"
-  [[author.gift]]
-    name = "Liberapay"
-    code = ""
-    url = "https://liberapay.com/youronlyone"
-    linktitle = "@youronlyone"
-    tag = ""
-    message = ""
-    type = "tip jar"
-  [[author.gift]]
-    name = "Patreon"
-    code = ""
-    url = "https://www.patreon.com/YourOnlyOne"
-    linktitle = "@youronlyone"
-    tag = ""
-    message = ""
-    type = "tip jar"
+  #[[author.gift]]
+  #  name = "Flattr"
+  #  code = ""
+  #  url = "https://flattr.com/@YourOnlyOne"
+  #  linktitle = "@YourOnlyOne"
+  #  tag = ""
+  #  message = ""
+  #  type = "tip jar"
+  #[[author.gift]]
+  #  name = "Liberapay"
+  #  code = ""
+  #  url = "https://liberapay.com/youronlyone"
+  #  linktitle = "@youronlyone"
+  #  tag = ""
+  #  message = ""
+  #  type = "tip jar"
+  #[[author.gift]]
+  #  name = "Patreon"
+  #  code = ""
+  #  url = "https://www.patreon.com/YourOnlyOne"
+  #  linktitle = "@youronlyone"
+  #  tag = ""
+  #  message = ""
+  #  type = "tip jar"
   #[[author.gift]]
   #  name = "GCash"
   #  code = ""
@@ -294,60 +332,60 @@ url = "https://iam.youronly.one/"
 ### END: Tip Jar ###
 
 ### BGN: Cryptocurrency ###
-  [[author.gift]]
-    name = "XLM (Stellar)"
-    code = "yukino*keybase.io"
-    url = ""
-    linktitle = ""
-    tag = "gift for https://youronly.one"
-    message = ""
-    type = "cryptocurrency"
-  [[author.gift]]
-    name = "USDC (Stellar)"
-    code = "yukino*keybase.io"
-    url = ""
-    linktitle = ""
-    tag = "gift for https://youronly.one"
-    message = ""
-    type = "cryptocurrency"
-  [[author.gift]]
-    name = "XRP (XRPL)"
-    code = "rU2mEJSLqBRkYLVTv55rFTgQajkLTnT6mA"
-    url = ""
-    linktitle = ""
-    tag = "246013"
-    message = ""
-    type = "cryptocurrency"
-  [[author.gift]]
-    name = "ETH (ERC-20)"
-    code = "0x739d2aae2a5b7a4e1d64c58d121c9d908d706c83"
-    url = ""
-    linktitle = ""
-    tag = ""
-    message = ""
-    type = "cryptocurrency"
-  [[author.gift]]
-    name = "USDC (ERC-20)"
-    code = "0x739d2aae2a5b7a4e1d64c58d121c9d908d706c83"
-    url = ""
-    linktitle = ""
-    tag = ""
-    message = ""
-    type = "cryptocurrency"
-  [[author.gift]]
-    name = "XBT (Bitcoin)"
-    code = "32w1De4wvr5jEzC4g5P4rkjvqg2bvMR8Vk"
-    url = ""
-    linktitle = ""
-    tag = ""
-    message = ""
-    type = "cryptocurrency"
-  [[author.gift]]
-    name = "BCH (BCHN)"
-    code = "pp8fkmchlu6a7c53a2s682jd70mncrzemsthca6ftl"
-    url = ""
-    linktitle = ""
-    tag = ""
-    message = ""
-    type = "cryptocurrency"
+  #[[author.gift]]
+  #  name = "XLM (Stellar)"
+  #  code = "yukino*keybase.io"
+  #  url = ""
+  #  linktitle = ""
+  #  tag = "gift for https://youronly.one"
+  #  message = ""
+  #  type = "cryptocurrency"
+  #[[author.gift]]
+  #  name = "USDC (Stellar)"
+  #  code = "yukino*keybase.io"
+  #  url = ""
+  #  linktitle = ""
+  #  tag = "gift for https://youronly.one"
+  #  message = ""
+  #  type = "cryptocurrency"
+  #[[author.gift]]
+  #  name = "XRP (XRPL)"
+  #  code = "rU2mEJSLqBRkYLVTv55rFTgQajkLTnT6mA"
+  #  url = ""
+  #  linktitle = ""
+  #  tag = "246013"
+  #  message = ""
+  #  type = "cryptocurrency"
+  #[[author.gift]]
+  #  name = "ETH (ERC-20)"
+  #  code = "0x739d2aae2a5b7a4e1d64c58d121c9d908d706c83"
+  #  url = ""
+  #  linktitle = ""
+  #  tag = ""
+  #  message = ""
+  #  type = "cryptocurrency"
+  #[[author.gift]]
+  #  name = "USDC (ERC-20)"
+  #  code = "0x739d2aae2a5b7a4e1d64c58d121c9d908d706c83"
+  #  url = ""
+  #  linktitle = ""
+  #  tag = ""
+  #  message = ""
+  #  type = "cryptocurrency"
+  #[[author.gift]]
+  #  name = "XBT (Bitcoin)"
+  #  code = "32w1De4wvr5jEzC4g5P4rkjvqg2bvMR8Vk"
+  #  url = ""
+  #  linktitle = ""
+  #  tag = ""
+  #  message = ""
+  #  type = "cryptocurrency"
+  #[[author.gift]]
+  #  name = "BCH (BCHN)"
+  #  code = "pp8fkmchlu6a7c53a2s682jd70mncrzemsthca6ftl"
+  #  url = ""
+  #  linktitle = ""
+  #  tag = ""
+  #  message = ""
+  #  type = "cryptocurrency"
 ### END: Cryptocurrency ###
