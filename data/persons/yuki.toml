@@ -37,14 +37,19 @@ sameas = [
   "https://poems.youronly.one",
   "https://surat.youronly.one",
   "https://inawa.youronly.one",
+  "https://gamut.youronly.one",
   "https://wiki.youronly.one",
+  "https://pro.youronly.one",
   "https://iam.youronly.one",
   "https://im.youronly.one",
   "https://im.youronly.one/p/verified/",
+  "https://isni.org/isni/0000000530977207",
+  "https://orcid.org/0000-0003-4755-4548",
   "https://inventaire.io/users/youronlyone/",
   "https://keybase.io/yukino",
   "https://keyoxide.org/989eb937bdf4a5cd65470204f2f9be4c3d8e4f53",
   "https://keyoxide.org/wkd/contact@im.youronly.one",
+  "https://sifa.id/p/sera.is.youronly.one",
   "https://launchpad.net/~techmagus",
   "https://libre.fm/user/Laibcoms",
   "https://matrix.to/#/@youronlyone:matrix.org",
@@ -161,6 +166,12 @@ url = "https://iam.youronly.one/"
   id = "https://sahangganan.youronly.one/"
   logo = ""
   name = "Sa Hangganan"
+  url = "https://sahangganan.youronly.one/"
+  iswebsite = true
+[[brands]]
+  id = "https://gamut.youronly.one/"
+  logo = ""
+  name = "Gamut Knowledgebase"
   url = "https://sahangganan.youronly.one/"
   iswebsite = true
 [[brands]]
