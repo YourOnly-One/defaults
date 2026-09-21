@@ -12,14 +12,13 @@ mainentityofpage = "https://iam.youronly.one/"
 name = "JC John Sese Cuneta"
 sameas = [
   "https://atmosphere.youronly.one",
-  "https://blog.naver.com/youronlyone-ofcl",
   "https://aturi.to/profile/youronly.one",
-  "https://fediverse.youronly.one",
+  "https://austronesian.youronly.one",
+  "https://blog.naver.com/youronlyone-ofcl",
   "https://c.im/@youronlyone",
   "https://codeberg.org/techmagus",
   "https://commons.wikimedia.org/wiki/User:Laibcoms",
-  "https://nostrich.youronly.one",
-  "https://wiki.youronly.one",
+  "https://dalisay.youronly.one",
   "https://en.wikipedia.org/wiki/User:Laibcoms",
   "https://en.wiktionary.org/wiki/User:Laibcoms",
   "https://fedia.io/u/youronlyone",
@@ -27,29 +26,21 @@ sameas = [
   "https://fediverse.blog/@/yuki",
   "https://fediverse.blog/~/Sandbox/",
   "https://fediverse.blog/~/WhenSnowFalls",
+  "https://fediverse.youronly.one",
+  "https://gamut.youronly.one",
   "https://github.com/techmagus",
   "https://gitlab.com/techmagus",
   "https://guhit.youronly.one",
-  "https://dalisay.youronly.one",
-  "https://sahangganan.youronly.one",
   "https://hangganan.youronly.one",
-  "https://austronesian.youronly.one",
-  "https://poems.youronly.one",
-  "https://surat.youronly.one",
-  "https://inawa.youronly.one",
-  "https://gamut.youronly.one",
-  "https://wiki.youronly.one",
-  "https://pro.youronly.one",
   "https://iam.youronly.one",
   "https://im.youronly.one",
   "https://im.youronly.one/p/verified/",
-  "https://isni.org/isni/0000000530977207",
-  "https://orcid.org/0000-0003-4755-4548",
+  "https://inawa.youronly.one",
   "https://inventaire.io/users/youronlyone/",
+  "https://isni.org/isni/0000000530977207",
   "https://keybase.io/yukino",
   "https://keyoxide.org/989eb937bdf4a5cd65470204f2f9be4c3d8e4f53",
   "https://keyoxide.org/wkd/contact@im.youronly.one",
-  "https://sifa.id/p/sera.is.youronly.one",
   "https://launchpad.net/~techmagus",
   "https://libre.fm/user/Laibcoms",
   "https://matrix.to/#/@youronlyone:matrix.org",
@@ -58,26 +49,32 @@ sameas = [
   "https://myanimelist.net/profile/youronlyone",
   "https://mydramalist.com/profile/Shael",
   "https://node9.org/profile/youronlyone",
+  "https://nostrich.youronly.one",
   "https://open.spotify.com/user/jcsesecuneta",
+  "https://orcid.org/0000-0003-4755-4548",
   "https://paper.wf/youronlyone",
   "https://pixelfed.social/youronlyone",
+  "https://poems.youronly.one",
+  "https://pro.youronly.one",
+  "https://sahangganan.youronly.one",
+  "https://sifa.id/p/sera.is.youronly.one",
   "https://simkl.com/6599711/",
   "https://simple.wikipedia.org/wiki/User:Laibcoms",
   "https://social.vivaldi.net/@youronlyone",
   "https://sopuli.xyz/u/youronlyone",
   "https://spoutible.com/youronlyone",
   "https://steamcommunity.com/id/youronlyone",
-  "https://steemit.com/@youronlyone",
+  "https://surat.youronly.one",
   "https://t.youronly.one",
   "https://tl.wikipedia.org/wiki/Tagagamit:Laibcoms",
   "https://tl.wiktionary.org/wiki/Tagagamit:Laibcoms",
   "https://trakt.tv/users/youronlyone",
   "https://twitter.com/YourOnlyONEofcl",
   "https://vero.co/youronlyone",
+  "https://wiki.youronly.one",
   "https://write.as/versesspace",
   "https://writing.exchange/@VersesSpace",
   "https://www.deviantart.com/laibcoms",
-  "https://www.eyeem.com/u/youronlyone",
   "https://www.facebook.com/youronly.one.ofcl",
   "https://www.fanfiction.net/~yugenbard",
   "https://www.fictionpress.com/~yugenbard",
@@ -94,12 +91,12 @@ sameas = [
   "https://www.twitch.tv/gameshogun",
   "https://www.wattpad.com/user/yugenbard",
   "https://www.wikidata.org/wiki/User:Laibcoms",
+  "https://www.youtube.com/YourOnlyONEofcl",
   "https://youronly.one",
   "https://youronly.one/?verify=keybase",
   "https://youronly.one/?verify=keyoxide",
   "https://youronly.one/?verify=whosum",
   "https://youronlyone.medium.com",
-  "https://www.youtube.com/YourOnlyONEofcl",
   "https://zotum.net/profile/youronlyone"
 ]
 url = "https://iam.youronly.one/"
@@ -133,28 +130,22 @@ url = "https://iam.youronly.one/"
 #  url = ""
 #  iswebsite = true
 [[brands]]
-  id = "https://guhit.youronly.one/"
-  logo = ""
-  name = "Guhit Dalisay"
-  url = "https://guhit.youronly.one/"
-  iswebsite = true
-[[brands]]
-  id = "https://poems.youronly.one/"
-  logo = ""
-  name = "The Power of Words"
-  url = "https://poems.youronly.one/"
-  iswebsite = true
-[[brands]]
   id = "https://austronesian.youronly.one/"
   logo = ""
   name = "The Austronesian Chronicles"
   url = "https://austronesian.youronly.one/"
   iswebsite = true
 [[brands]]
-  id = "https://surat.youronly.one/"
+  id = "https://gamut.youronly.one/"
   logo = ""
-  name = "Surat Inawa blog"
-  url = "https://surat.youronly.one/"
+  name = "Gamut Knowledgebase"
+  url = "https://sahangganan.youronly.one/"
+  iswebsite = true
+[[brands]]
+  id = "https://guhit.youronly.one/"
+  logo = ""
+  name = "Guhit Dalisay"
+  url = "https://guhit.youronly.one/"
   iswebsite = true
 [[brands]]
   id = "https://inawa.youronly.one/"
@@ -163,16 +154,22 @@ url = "https://iam.youronly.one/"
   url = "https://inawa.youronly.one/"
   iswebsite = true
 [[brands]]
+  id = "https://poems.youronly.one/"
+  logo = ""
+  name = "The Power of Words"
+  url = "https://poems.youronly.one/"
+  iswebsite = true
+[[brands]]
   id = "https://sahangganan.youronly.one/"
   logo = ""
   name = "Sa Hangganan"
   url = "https://sahangganan.youronly.one/"
   iswebsite = true
 [[brands]]
-  id = "https://gamut.youronly.one/"
+  id = "https://surat.youronly.one/"
   logo = ""
-  name = "Gamut Knowledgebase"
-  url = "https://sahangganan.youronly.one/"
+  name = "Surat Inawa blog"
+  url = "https://surat.youronly.one/"
   iswebsite = true
 [[brands]]
   id = "https://im.youronly.one/love/"
